@@ -1,0 +1,1103 @@
+fileFormatVersion: 2
+guid: 08f867b41fb82384980fa007702c791b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6400123445672703996
+    second: Ling Yin Attack_0
+  - first:
+      213: -6502864216963961985
+    second: Ling Yin Attack_1
+  - first:
+      213: -7522772502560070518
+    second: Ling Yin Attack_2
+  - first:
+      213: 2937350785562476692
+    second: Ling Yin Attack_3
+  - first:
+      213: -6993806677412550812
+    second: Ling Yin Attack_4
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ling Yin Attack_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 960
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 408870ea2a13e27a0800000000000000
+      internalID: -6400123445672703996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 960
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7ba345c27f21c5a0800000000000000
+      internalID: -6502864216963961985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_2
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 960
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a84a4da244eb99790800000000000000
+      internalID: -7522772502560070518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_3
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 955
+        width: 35
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4908a2a0af093c820800000000000000
+      internalID: 2937350785562476692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_4
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 910
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 467e115b1e101fe90800000000000000
+      internalID: -6993806677412550812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_5
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 911
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5283ea14be6a3a74491166da30bb8ac7
+      internalID: 421356445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_6
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 910
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ee4a2e6f4a5e3e419fe45c018ff0e54
+      internalID: -1183087642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_7
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 910
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f230972c63163bc478145aa6386c3312
+      internalID: -367174051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 861
+        width: 37
+        height: 32
+      alignment: 9
+      pivot: {x: 0.4650332, y: 0.5033722}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146dfc33f9479ea478fe5d7726e7b8d3
+      internalID: 1517996075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_9
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 861
+        width: 37
+        height: 32
+      alignment: 9
+      pivot: {x: 0.3806309, y: 0.5000038}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caec083ea79ee694f8410c7220380ec3
+      internalID: 712947471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_10
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 861
+        width: 36
+        height: 32
+      alignment: 9
+      pivot: {x: 0.2939769, y: 0.48903847}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f8d34ee8abcec84d82c42ee87ccb3ca
+      internalID: 1652949793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_11
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 861
+        width: 40
+        height: 32
+      alignment: 9
+      pivot: {x: 0.29684913, y: 0.50175095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1d475b9cbd9e8a49b92929889ed3ab4
+      internalID: 1130654346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 801
+        width: 42
+        height: 45
+      alignment: 9
+      pivot: {x: 0.59024715, y: 0.372248}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 260a9e1b0dd561b49bf7f526324949fd
+      internalID: -1921775492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_13
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 801
+        width: 16
+        height: 49
+      alignment: 9
+      pivot: {x: 0.47636986, y: 0.39020398}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d89e410eb4936d64ab9d1b94d8f9ed18
+      internalID: -1247963827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_14
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 800
+        width: 34
+        height: 41
+      alignment: 9
+      pivot: {x: 0.39135966, y: 0.3995421}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 533f2ab870bc0a54bbbf7db03291a82f
+      internalID: 1692916962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_15
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 800
+        width: 46
+        height: 49
+      alignment: 9
+      pivot: {x: 0.39263514, y: 0.46937612}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0a94e2249798814b9fab878fe232af6
+      internalID: -193274853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_16
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 750
+        width: 38
+        height: 31
+      alignment: 9
+      pivot: {x: 0.39797637, y: 0.4822683}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 680a2f56b0b751f44b507fab0cf48923
+      internalID: -1134096911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_17
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 750
+        width: 37
+        height: 41
+      alignment: 9
+      pivot: {x: 0.3949522, y: 0.41958693}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b580f28f737fb964989a5acbfdaf0a50
+      internalID: -445612078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_18
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 751
+        width: 16
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5080056, y: 0.4040602}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede6050bf727feb4ba24734c44906f4e
+      internalID: 392266802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_19
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 6
+        width: 36
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc594e20715e5a34d9d852657bbb66ea
+      internalID: 1451693042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_20
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cad382f2598e4a419925745af9dc9fd
+      internalID: -45395319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_21
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 708
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0db8555e7487bcc448eaf74a78181c5d
+      internalID: 1398951716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_22
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 710
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b5d10d45e7c6e6438bc30640b586ca3
+      internalID: -386486741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_23
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 710
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 279dc2094611f2c4c986ed2f8e564b2e
+      internalID: 925139498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_24
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 705
+        width: 37
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23f274f65f70a514299975cf80881102
+      internalID: -7750555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_25
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 660
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e54a592ca2da10f499c3f1193c551ee3
+      internalID: -1812372382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_26
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 660
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6978d236dfa0ee24d930bebd3bfe476a
+      internalID: 1883766497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_27
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 660
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4be8ab566b506874b936524c08afb3af
+      internalID: -531550147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_28
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 660
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2b35f1ebfcf894ba2cdf40da54b525
+      internalID: 416172440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_29
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 611
+        width: 40
+        height: 32
+      alignment: 9
+      pivot: {x: 0.69920653, y: 0.5101509}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6a64ac4c68c6b8469ecf98dd57d1275
+      internalID: 1895941408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_30
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 611
+        width: 36
+        height: 32
+      alignment: 9
+      pivot: {x: 0.65139896, y: 0.5171585}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bac3784e342fd4043b87b336b2070a35
+      internalID: -99785944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_31
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 611
+        width: 37
+        height: 32
+      alignment: 9
+      pivot: {x: 0.6023203, y: 0.5210304}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0ef4cd093c390a4fbdf7ce4ddc081da
+      internalID: -1073985538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_32
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 610
+        width: 37
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5181424, y: 0.5087185}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702a33d0069ded1469c0cba2f8263a59
+      internalID: -1270472102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_33
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 610
+        width: 37
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5181424, y: 0.5087185}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea48b46c7968d484793cfc465022c85f
+      internalID: 865351063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_34
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 551
+        width: 42
+        height: 45
+      alignment: 9
+      pivot: {x: 0.39143443, y: 0.40938857}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ecaec18fa94f474c9069457c4727abf
+      internalID: -79037158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_35
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 551
+        width: 16
+        height: 49
+      alignment: 9
+      pivot: {x: 0.47636986, y: 0.39020398}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eca86fb202c7e641a513db811d8d394
+      internalID: 1257618082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_36
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 550
+        width: 34
+        height: 41
+      alignment: 9
+      pivot: {x: 0.5824336, y: 0.40751833}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef775c73a0a05a14e99caf335bdfea48
+      internalID: 1341355087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_37
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 550
+        width: 46
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5168152, y: 0.332811}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f94eb60f1c0ba14ba9debe44c955e3c
+      internalID: -1404645695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_38
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 500
+        width: 38
+        height: 31
+      alignment: 9
+      pivot: {x: 0.39797637, y: 0.4822683}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c379f6d01c763aa44b674cd1f33ac16b
+      internalID: 1066306822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_39
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 500
+        width: 37
+        height: 41
+      alignment: 9
+      pivot: {x: 0.3949522, y: 0.41958693}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78f096a383a9e534d95dc6b8af8af595
+      internalID: -345714008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ling Yin Attack_40
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 501
+        width: 16
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5080056, y: 0.4040602}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7f9e8db5d387164b9e83b8767504fa8
+      internalID: 2069947565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b7d56213505759445b8400e0e0ac3610
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Ling Yin Attack_0: -6400123445672703996
+      Ling Yin Attack_1: -6502864216963961985
+      Ling Yin Attack_10: 1652949793
+      Ling Yin Attack_11: 1130654346
+      Ling Yin Attack_12: -1921775492
+      Ling Yin Attack_13: -1247963827
+      Ling Yin Attack_14: 1692916962
+      Ling Yin Attack_15: -193274853
+      Ling Yin Attack_16: -1134096911
+      Ling Yin Attack_17: -445612078
+      Ling Yin Attack_18: 392266802
+      Ling Yin Attack_19: 1451693042
+      Ling Yin Attack_2: -7522772502560070518
+      Ling Yin Attack_20: -45395319
+      Ling Yin Attack_21: 1398951716
+      Ling Yin Attack_22: -386486741
+      Ling Yin Attack_23: 925139498
+      Ling Yin Attack_24: -7750555
+      Ling Yin Attack_25: -1812372382
+      Ling Yin Attack_26: 1883766497
+      Ling Yin Attack_27: -531550147
+      Ling Yin Attack_28: 416172440
+      Ling Yin Attack_29: 1895941408
+      Ling Yin Attack_3: 2937350785562476692
+      Ling Yin Attack_30: -99785944
+      Ling Yin Attack_31: -1073985538
+      Ling Yin Attack_32: -1270472102
+      Ling Yin Attack_33: 865351063
+      Ling Yin Attack_34: -79037158
+      Ling Yin Attack_35: 1257618082
+      Ling Yin Attack_36: 1341355087
+      Ling Yin Attack_37: -1404645695
+      Ling Yin Attack_38: 1066306822
+      Ling Yin Attack_39: -345714008
+      Ling Yin Attack_4: -6993806677412550812
+      Ling Yin Attack_40: 2069947565
+      Ling Yin Attack_5: 421356445
+      Ling Yin Attack_6: -1183087642
+      Ling Yin Attack_7: -367174051
+      Ling Yin Attack_8: 1517996075
+      Ling Yin Attack_9: 712947471
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

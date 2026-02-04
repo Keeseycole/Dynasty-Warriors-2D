@@ -1,0 +1,1833 @@
+fileFormatVersion: 2
+guid: 7aefe8ced1e38fb4c985670d7a33c637
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9110571769354301559
+    second: yellow turban soilder_0
+  - first:
+      213: 4918246125857192762
+    second: yellow turban soilder_1
+  - first:
+      213: 1283595811420702822
+    second: yellow turban soilder_2
+  - first:
+      213: -5908892822169142790
+    second: yellow turban soilder_3
+  - first:
+      213: -5857793838288414684
+    second: yellow turban soilder_4
+  - first:
+      213: -5032483430906212700
+    second: yellow turban soilder_5
+  - first:
+      213: -2972873183531631223
+    second: yellow turban soilder_6
+  - first:
+      213: -2714011386425184017
+    second: yellow turban soilder_7
+  - first:
+      213: -3812207394741061192
+    second: yellow turban soilder_8
+  - first:
+      213: 6481576868672908813
+    second: yellow turban soilder_9
+  - first:
+      213: -347069334461389921
+    second: yellow turban soilder_10
+  - first:
+      213: -4781727482367071141
+    second: yellow turban soilder_11
+  - first:
+      213: -2654212665399311527
+    second: yellow turban soilder_12
+  - first:
+      213: -3754722724258007267
+    second: yellow turban soilder_13
+  - first:
+      213: 640512475160986325
+    second: yellow turban soilder_14
+  - first:
+      213: -2649351666908612779
+    second: yellow turban soilder_15
+  - first:
+      213: -6230499575597747218
+    second: yellow turban soilder_16
+  - first:
+      213: -2472968783000703009
+    second: yellow turban soilder_17
+  - first:
+      213: 4017754487802552618
+    second: yellow turban soilder_18
+  - first:
+      213: 1942693905666794039
+    second: yellow turban soilder_19
+  - first:
+      213: 3671578752411406077
+    second: yellow turban soilder_20
+  - first:
+      213: -549711222351113644
+    second: yellow turban soilder_21
+  - first:
+      213: 6769327962603390018
+    second: yellow turban soilder_22
+  - first:
+      213: -3809066817720460653
+    second: yellow turban soilder_23
+  - first:
+      213: -1588242243632188560
+    second: yellow turban soilder_24
+  - first:
+      213: 2644916991090351185
+    second: yellow turban soilder_25
+  - first:
+      213: -7435186143423191667
+    second: yellow turban soilder_26
+  - first:
+      213: 6698765798561489880
+    second: yellow turban soilder_27
+  - first:
+      213: 6910212588176747750
+    second: yellow turban soilder_28
+  - first:
+      213: -1750370233048508473
+    second: yellow turban soilder_29
+  - first:
+      213: 8119324614900993827
+    second: yellow turban soilder_30
+  - first:
+      213: 1062100743629281259
+    second: yellow turban soilder_31
+  - first:
+      213: 5470764354620400619
+    second: yellow turban soilder_32
+  - first:
+      213: -9010230622628095340
+    second: yellow turban soilder_33
+  - first:
+      213: -9128904362819916603
+    second: yellow turban soilder_34
+  - first:
+      213: -1786124292035363232
+    second: yellow turban soilder_35
+  - first:
+      213: 4251378270066171615
+    second: yellow turban soilder_36
+  - first:
+      213: -7817161418264410614
+    second: yellow turban soilder_37
+  - first:
+      213: -8064907661499322574
+    second: yellow turban soilder_38
+  - first:
+      213: 8989711694822474051
+    second: yellow turban soilder_39
+  - first:
+      213: 5270773782147849169
+    second: yellow turban soilder_40
+  - first:
+      213: 5753885118158631737
+    second: yellow turban soilder_41
+  - first:
+      213: 5410612645889957811
+    second: yellow turban soilder_42
+  - first:
+      213: -5080270335420637502
+    second: yellow turban soilder_43
+  - first:
+      213: -9083268117978101534
+    second: yellow turban soilder_44
+  - first:
+      213: 4796474114056436036
+    second: yellow turban soilder_45
+  - first:
+      213: 2332787210184867894
+    second: yellow turban soilder_46
+  - first:
+      213: 7031220413033772984
+    second: yellow turban soilder_47
+  - first:
+      213: 7018011989476160622
+    second: yellow turban soilder_48
+  - first:
+      213: -1897640751019714749
+    second: yellow turban soilder_49
+  - first:
+      213: 4738164043213656315
+    second: yellow turban soilder_50
+  - first:
+      213: 3543115157750769337
+    second: yellow turban soilder_51
+  - first:
+      213: -911271182996351012
+    second: yellow turban soilder_52
+  - first:
+      213: 7393562065457522433
+    second: yellow turban soilder_53
+  - first:
+      213: 3156050333920430219
+    second: yellow turban soilder_54
+  - first:
+      213: 4148521982699062215
+    second: yellow turban soilder_55
+  - first:
+      213: -3521289776801077063
+    second: yellow turban soilder_56
+  - first:
+      213: 1158060942782135313
+    second: yellow turban soilder_57
+  - first:
+      213: 8842896758989113077
+    second: yellow turban soilder_58
+  - first:
+      213: 6539458538595595065
+    second: yellow turban soilder_59
+  - first:
+      213: 318036954622646069
+    second: yellow turban soilder_60
+  - first:
+      213: 7765826903588712902
+    second: yellow turban soilder_61
+  - first:
+      213: 61356870320061133
+    second: yellow turban soilder_62
+  - first:
+      213: 2375838980513024750
+    second: yellow turban soilder_63
+  - first:
+      213: 2008424684105539806
+    second: yellow turban soilder_64
+  - first:
+      213: 5606962902246753289
+    second: yellow turban soilder_65
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: yellow turban soilder_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 759
+        width: 18
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98f4fe2ee3fb09180800000000000000
+      internalID: -9110571769354301559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 759
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3bb8a12bce114440800000000000000
+      internalID: 4918246125857192762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_2
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 759
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66809e6f69f30d110800000000000000
+      internalID: 1283595811420702822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_3
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 759
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af9b0cee8456ffda0800000000000000
+      internalID: -5908892822169142790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 719
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428d85d3a8fe4bea0800000000000000
+      internalID: -5857793838288414684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_5
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 719
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aecbca9bf6092ab0800000000000000
+      internalID: -5032483430906212700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_6
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 719
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98dff4d279b3eb6d0800000000000000
+      internalID: -2972873183531631223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 719
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe0f2c30605e55ad0800000000000000
+      internalID: -2714011386425184017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 679
+        width: 19
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b9775a8291581bc0800000000000000
+      internalID: -3812207394741061192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_9
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 679
+        width: 19
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0e23a932df23f950800000000000000
+      internalID: 6481576868672908813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_10
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 679
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f936ff67746fe2bf0800000000000000
+      internalID: -347069334461389921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_11
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 679
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5ca9c08034e3adb0800000000000000
+      internalID: -4781727482367071141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_12
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 599
+        width: 14
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9530888b4a75a2bd0800000000000000
+      internalID: -2654212665399311527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_13
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 639
+        width: 19
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d17b38e539b84ebc0800000000000000
+      internalID: -3754722724258007267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_14
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 639
+        width: 19
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d24d2cd3be83e800800000000000000
+      internalID: 640512475160986325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_15
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 639
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 557b2d022bc9b3bd0800000000000000
+      internalID: -2649351666908612779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_16
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 639
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee3364785a1d889a0800000000000000
+      internalID: -6230499575597747218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_17
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 599
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdfec948eff3eadd0800000000000000
+      internalID: -2472968783000703009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_18
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 559
+        width: 29
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a21e3307b6ee1c730800000000000000
+      internalID: 4017754487802552618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_19
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 599
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 732e59a70d5d5fa10800000000000000
+      internalID: 1942693905666794039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 559
+        width: 22
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfe8a562c6114f230800000000000000
+      internalID: 3671578752411406077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_21
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 559
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45257b64e880f58f0800000000000000
+      internalID: -549711222351113644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_22
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 520
+        width: 19
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2440813aaeb71fd50800000000000000
+      internalID: 6769327962603390018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_23
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 479
+        width: 14
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39a5b0c19e9732bc0800000000000000
+      internalID: -3809066817720460653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_24
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 520
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 073b803281e65f9e0800000000000000
+      internalID: -1588242243632188560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_25
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 520
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15cd5527df1a4b420800000000000000
+      internalID: 2644916991090351185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_26
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 479
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d85aa5a8899e0d890800000000000000
+      internalID: -7435186143423191667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_27
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 479
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d32bc0900cc6fc50800000000000000
+      internalID: 6698765798561489880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_28
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 439
+        width: 14
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ec25b0bcb106ef50800000000000000
+      internalID: 6910212588176747750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_29
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 479
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c7d9b10c8f65b7e0800000000000000
+      internalID: -1750370233048508473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_30
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 439
+        width: 22
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32f424f18b2ada070800000000000000
+      internalID: 8119324614900993827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_31
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 439
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be793b3cff65dbe00800000000000000
+      internalID: 1062100743629281259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_32
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 401
+        width: 19
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be3a407f13f0ceb40800000000000000
+      internalID: 5470764354620400619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_33
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 400
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49ad7e9acfa35f280800000000000000
+      internalID: -9010230622628095340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_34
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 401
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ccea9959dd9f4180800000000000000
+      internalID: -9128904362819916603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_35
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 359
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06e39807b696637e0800000000000000
+      internalID: -1786124292035363232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_36
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 359
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdedb19030eeffa30800000000000000
+      internalID: 4251378270066171615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_37
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 359
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0606707b1dd38390800000000000000
+      internalID: -7817161418264410614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_38
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 359
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23fa10a2631b31090800000000000000
+      internalID: -8064907661499322574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_39
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 320
+        width: 22
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 341811b282fd1cc70800000000000000
+      internalID: 8989711694822474051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_40
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 320
+        width: 19
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1db5d5044dc852940800000000000000
+      internalID: 5270773782147849169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_41
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 320
+        width: 21
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93370429708e9df40800000000000000
+      internalID: 5753885118158631737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_42
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 320
+        width: 19
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bfd187e88b561b40800000000000000
+      internalID: 5410612645889957811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_43
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 320
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ce5c4edb014f79b0800000000000000
+      internalID: -5080270335420637502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_44
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 280
+        width: 22
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e8c84c95cfb1f180800000000000000
+      internalID: -9083268117978101534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_45
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 280
+        width: 19
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 449b0be3bcf709240800000000000000
+      internalID: 4796474114056436036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_46
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 280
+        width: 21
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 630c4a7ab99bf5020800000000000000
+      internalID: 2332787210184867894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_47
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 280
+        width: 19
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b77a5076b9e39160800000000000000
+      internalID: 7031220413033772984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_48
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 280
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64b82ea8bcf46160800000000000000
+      internalID: 7018011989476160622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_49
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 240
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3471a248ac93aa5e0800000000000000
+      internalID: -1897640751019714749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_50
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 202
+        width: 17
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf0574be71751c140800000000000000
+      internalID: 4738164043213656315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_51
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 239
+        width: 18
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b66908b67cab2130800000000000000
+      internalID: 3543115157750769337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_52
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 239
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd7d37befa38a53f0800000000000000
+      internalID: -911271182996351012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_53
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 240
+        width: 17
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 107266896853b9660800000000000000
+      internalID: 7393562065457522433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_54
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 202
+        width: 18
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b888496ae0b8ccb20800000000000000
+      internalID: 3156050333920430219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_55
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 200
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c34da173c2829930800000000000000
+      internalID: 4148521982699062215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_56
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 199
+        width: 19
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b8ae86ca9dd12fc0800000000000000
+      internalID: -3521289776801077063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_57
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 163
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11c78c2ba42421010800000000000000
+      internalID: 1158060942782135313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_58
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 159
+        width: 19
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f6cff820c748ba70800000000000000
+      internalID: 8842896758989113077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_59
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 162
+        width: 17
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 933b260b4e2d0ca50800000000000000
+      internalID: 6539458538595595065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_60
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 123
+        width: 16
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 537dab9dce4e96400800000000000000
+      internalID: 318036954622646069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_61
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 121
+        width: 16
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1b3977c62c5cb60800000000000000
+      internalID: 7765826903588712902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_62
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 119
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcaf4fb9fbbf9d000800000000000000
+      internalID: 61356870320061133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_63
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eea410d07fca8f020800000000000000
+      internalID: 2375838980513024750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_64
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 18
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed0ac3eeb9b5fdb10800000000000000
+      internalID: 2008424684105539806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow turban soilder_65
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 0
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90406397d0fefcd40800000000000000
+      internalID: 5606962902246753289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      yellow turban soilder_0: -9110571769354301559
+      yellow turban soilder_1: 4918246125857192762
+      yellow turban soilder_10: -347069334461389921
+      yellow turban soilder_11: -4781727482367071141
+      yellow turban soilder_12: -2654212665399311527
+      yellow turban soilder_13: -3754722724258007267
+      yellow turban soilder_14: 640512475160986325
+      yellow turban soilder_15: -2649351666908612779
+      yellow turban soilder_16: -6230499575597747218
+      yellow turban soilder_17: -2472968783000703009
+      yellow turban soilder_18: 4017754487802552618
+      yellow turban soilder_19: 1942693905666794039
+      yellow turban soilder_2: 1283595811420702822
+      yellow turban soilder_20: 3671578752411406077
+      yellow turban soilder_21: -549711222351113644
+      yellow turban soilder_22: 6769327962603390018
+      yellow turban soilder_23: -3809066817720460653
+      yellow turban soilder_24: -1588242243632188560
+      yellow turban soilder_25: 2644916991090351185
+      yellow turban soilder_26: -7435186143423191667
+      yellow turban soilder_27: 6698765798561489880
+      yellow turban soilder_28: 6910212588176747750
+      yellow turban soilder_29: -1750370233048508473
+      yellow turban soilder_3: -5908892822169142790
+      yellow turban soilder_30: 8119324614900993827
+      yellow turban soilder_31: 1062100743629281259
+      yellow turban soilder_32: 5470764354620400619
+      yellow turban soilder_33: -9010230622628095340
+      yellow turban soilder_34: -9128904362819916603
+      yellow turban soilder_35: -1786124292035363232
+      yellow turban soilder_36: 4251378270066171615
+      yellow turban soilder_37: -7817161418264410614
+      yellow turban soilder_38: -8064907661499322574
+      yellow turban soilder_39: 8989711694822474051
+      yellow turban soilder_4: -5857793838288414684
+      yellow turban soilder_40: 5270773782147849169
+      yellow turban soilder_41: 5753885118158631737
+      yellow turban soilder_42: 5410612645889957811
+      yellow turban soilder_43: -5080270335420637502
+      yellow turban soilder_44: -9083268117978101534
+      yellow turban soilder_45: 4796474114056436036
+      yellow turban soilder_46: 2332787210184867894
+      yellow turban soilder_47: 7031220413033772984
+      yellow turban soilder_48: 7018011989476160622
+      yellow turban soilder_49: -1897640751019714749
+      yellow turban soilder_5: -5032483430906212700
+      yellow turban soilder_50: 4738164043213656315
+      yellow turban soilder_51: 3543115157750769337
+      yellow turban soilder_52: -911271182996351012
+      yellow turban soilder_53: 7393562065457522433
+      yellow turban soilder_54: 3156050333920430219
+      yellow turban soilder_55: 4148521982699062215
+      yellow turban soilder_56: -3521289776801077063
+      yellow turban soilder_57: 1158060942782135313
+      yellow turban soilder_58: 8842896758989113077
+      yellow turban soilder_59: 6539458538595595065
+      yellow turban soilder_6: -2972873183531631223
+      yellow turban soilder_60: 318036954622646069
+      yellow turban soilder_61: 7765826903588712902
+      yellow turban soilder_62: 61356870320061133
+      yellow turban soilder_63: 2375838980513024750
+      yellow turban soilder_64: 2008424684105539806
+      yellow turban soilder_65: 5606962902246753289
+      yellow turban soilder_7: -2714011386425184017
+      yellow turban soilder_8: -3812207394741061192
+      yellow turban soilder_9: 6481576868672908813
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
