@@ -103,7 +103,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -117,7 +117,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -141,7 +141,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -169,12 +169,12 @@ TextureImporter:
       name: Yellow Turban (Club)_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 759
+        x: 8
+        y: 760
         width: 29
         height: 35
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: Yellow Turban (Club)_1
       rect:
         serializedVersion: 2
-        x: 49
-        y: 759
+        x: 48
+        y: 760
         width: 29
-        height: 34
+        height: 35
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,12 +213,12 @@ TextureImporter:
       name: Yellow Turban (Club)_2
       rect:
         serializedVersion: 2
-        x: 89
-        y: 759
+        x: 88
+        y: 760
         width: 29
-        height: 33
+        height: 35
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -235,12 +235,12 @@ TextureImporter:
       name: Yellow Turban (Club)_3
       rect:
         serializedVersion: 2
-        x: 129
-        y: 759
+        x: 128
+        y: 760
         width: 29
-        height: 34
+        height: 35
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -257,12 +257,12 @@ TextureImporter:
       name: Yellow Turban (Club)_4
       rect:
         serializedVersion: 2
-        x: 169
-        y: 759
+        x: 168
+        y: 760
         width: 29
-        height: 34
+        height: 35
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -279,12 +279,12 @@ TextureImporter:
       name: Yellow Turban (Club)_5
       rect:
         serializedVersion: 2
-        x: 1
-        y: 559
-        width: 30
-        height: 41
+        x: 9
+        y: 600
+        width: 29
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -301,12 +301,12 @@ TextureImporter:
       name: Yellow Turban (Club)_6
       rect:
         serializedVersion: 2
-        x: 8
-        y: 599
-        width: 30
-        height: 41
+        x: 49
+        y: 600
+        width: 29
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -323,12 +323,12 @@ TextureImporter:
       name: Yellow Turban (Club)_7
       rect:
         serializedVersion: 2
-        x: 41
-        y: 559
-        width: 30
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 86
+        y: 600
+        width: 29
+        height: 39
+      alignment: 9
+      pivot: {x: 0.557513, y: 0.49795923}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -345,12 +345,12 @@ TextureImporter:
       name: Yellow Turban (Club)_8
       rect:
         serializedVersion: 2
-        x: 48
-        y: 599
-        width: 30
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 124
+        y: 600
+        width: 29
+        height: 39
+      alignment: 9
+      pivot: {x: 0.6726458, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -367,12 +367,12 @@ TextureImporter:
       name: Yellow Turban (Club)_9
       rect:
         serializedVersion: 2
-        x: 87
-        y: 599
-        width: 19
-        height: 31
+        x: 164
+        y: 600
+        width: 29
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -389,12 +389,12 @@ TextureImporter:
       name: Yellow Turban (Club)_10
       rect:
         serializedVersion: 2
-        x: 123
-        y: 599
-        width: 25
-        height: 31
+        x: 2
+        y: 560
+        width: 29
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -411,12 +411,12 @@ TextureImporter:
       name: Yellow Turban (Club)_11
       rect:
         serializedVersion: 2
-        x: 163
-        y: 599
-        width: 25
-        height: 31
+        x: 42
+        y: 560
+        width: 29
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -433,12 +433,12 @@ TextureImporter:
       name: Yellow Turban (Club)_12
       rect:
         serializedVersion: 2
-        x: 8
-        y: 519
-        width: 30
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 86
+        y: 560
+        width: 29
+        height: 39
+      alignment: 9
+      pivot: {x: 0.31351918, y: 0.49570563}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -455,12 +455,12 @@ TextureImporter:
       name: Yellow Turban (Club)_13
       rect:
         serializedVersion: 2
-        x: 91
-        y: 559
-        width: 19
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 126
+        y: 560
+        width: 29
+        height: 39
+      alignment: 9
+      pivot: {x: 0.322394, y: 0.49413124}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -477,12 +477,12 @@ TextureImporter:
       name: Yellow Turban (Club)_14
       rect:
         serializedVersion: 2
-        x: 131
-        y: 559
-        width: 25
-        height: 31
+        x: 165
+        y: 560
+        width: 29
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -499,19 +499,19 @@ TextureImporter:
       name: Yellow Turban (Club)_15
       rect:
         serializedVersion: 2
-        x: 132
-        y: 519
-        width: 19
-        height: 40
+        x: 8
+        y: 520
+        width: 29
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 64a9c57d1afcb4b80800000000000000
+      spriteID: 050147a36ed7231448f7cdce542a39ca
       internalID: -8409399585174414778
       vertices: []
       indices: 
@@ -521,19 +521,19 @@ TextureImporter:
       name: Yellow Turban (Club)_16
       rect:
         serializedVersion: 2
-        x: 170
-        y: 559
-        width: 25
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 42
+        y: 520
+        width: 29
+        height: 39
+      alignment: 9
+      pivot: {x: 0.79847294, y: 0.49866349}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 64cddf791882a7380800000000000000
+      spriteID: 58bdb14f1afc2d141bbecc3aedea9513
       internalID: -8972814770516403130
       vertices: []
       indices: 
@@ -543,19 +543,19 @@ TextureImporter:
       name: Yellow Turban (Club)_17
       rect:
         serializedVersion: 2
-        x: 170
-        y: 519
-        width: 19
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 86
+        y: 520
+        width: 29
+        height: 39
+      alignment: 9
+      pivot: {x: 0.69946235, y: 0.49008256}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 270d996f9c6821060800000000000000
+      spriteID: f0bca8344ca2257469f7fbbbe3c97582
       internalID: 6922743779205697650
       vertices: []
       indices: 
@@ -565,19 +565,19 @@ TextureImporter:
       name: Yellow Turban (Club)_18
       rect:
         serializedVersion: 2
-        x: 51
-        y: 519
-        width: 19
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 126
+        y: 520
+        width: 29
+        height: 39
+      alignment: 9
+      pivot: {x: 0.69965124, y: 0.7165512}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a33bed9a96c985a30800000000000000
+      spriteID: 466a307aea8162942b25bf8269df8491
       internalID: 4204282229785801530
       vertices: []
       indices: 
@@ -587,86 +587,20 @@ TextureImporter:
       name: Yellow Turban (Club)_19
       rect:
         serializedVersion: 2
-        x: 92
-        y: 519
-        width: 19
-        height: 31
+        x: 165
+        y: 520
+        width: 29
+        height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d0941368191253390800000000000000
+      spriteID: b5d6b929b080d2042aad1130ea0b52ca
       internalID: -7839322667463128819
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Yellow Turban (Club)_20
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 399
-        width: 26
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b6e3ccd0b25fe090800000000000000
-      internalID: -8003087093242534215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Yellow Turban (Club)_21
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 359
-        width: 15
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1f0bc908f9106d7a0800000000000000
-      internalID: -6352888439790325519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Yellow Turban (Club)_22
-      rect:
-        serializedVersion: 2
-        x: 43
-        y: 359
-        width: 26
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2bafdd16fd66b50c0800000000000000
-      internalID: -4585958685941040462
       vertices: []
       indices: 
       edges: []
@@ -675,7 +609,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f2ff19b74e7218649879a878f5070114
     internalID: 0
     vertices: []
     indices: 
