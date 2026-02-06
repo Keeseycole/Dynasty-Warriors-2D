@@ -95,4 +95,22 @@ public class PlayerController : MonoBehaviour
 
         transform.position += moveInput * moveSpeed * Time.deltaTime;
     }
+
+    public void Knock(Rigidbody2D rb, float knockbackTime)
+    {
+        StartCoroutine(KnockbackCo(rb, knockbackTime));
+    }
+    private IEnumerator KnockbackCo(Rigidbody2D rb, float knockbackTime)
+    {
+        if (rb != null)
+        {
+            yield return new WaitForSeconds(knockbackTime);
+
+            rb.linearVelocity = Vector2.zero;
+
+            currentState = PlayerState.idle;
+
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
 }

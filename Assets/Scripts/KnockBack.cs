@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using DG.Tweening;
 
 public class KnockBack : MonoBehaviour
 {
@@ -14,18 +15,21 @@ public class KnockBack : MonoBehaviour
  
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(TagtoHit))
+        if (other.gameObject.CompareTag(TagtoHit) && other.isTrigger)
         {
 
-            Rigidbody2D hit = other.GetComponent<Rigidbody2D>();
+            Rigidbody2D hit = other.GetComponentInParent<Rigidbody2D>();
 
             if (hit != null)
             {
-                Vector2 difference = hit.transform.position - transform.position;
+                Vector3 difference = hit.transform.position - transform.position;
 
                 difference = difference.normalized * thrust;
 
-                hit.AddForce(difference, ForceMode2D.Impulse);
+                hit.DOMove(hit.transform.position + difference, knockbackTime);
+
+
+               // hit.AddForce(difference, ForceMode2D.Impulse);
 
                 if (other.gameObject.CompareTag("Enemy"))
                 {
@@ -36,11 +40,10 @@ public class KnockBack : MonoBehaviour
 
                 if (other.gameObject.CompareTag("Player"))
                 {
-                 
+                    other.GetComponentInParent<PlayerController>().Knock(hit, knockbackTime);
+
                     hit.GetComponent<PlayerController>().currentState = PlayerState.stagger;
                    
-
-
                 }
               
             }
