@@ -8,6 +8,7 @@ public enum EnemyState
     Idle,
     Walk,
     Attack,
+    Strafe,
     Stagger
 }
 
@@ -22,8 +23,14 @@ public class Enemy : MonoBehaviour
     public string enemyName;
 
     public float moveSpeed;
+
    
-    
+    private void Update()
+    {
+     
+    }
+
+
     public void Knock(Rigidbody2D rb, float knockbackTime)
     {
         StartCoroutine(KnockbackCo(rb, knockbackTime));

@@ -1,0 +1,364 @@
+fileFormatVersion: 2
+guid: 6494571298ddc6f418ba6a0fae55a980
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6565566679664476781
+    second: Yellow Turban(Club) Run_0
+  - first:
+      213: -7355952013213672849
+    second: Yellow Turban(Club) Run_1
+  - first:
+      213: -4050897379624152251
+    second: Yellow Turban(Club) Run_2
+  - first:
+      213: -5355508355426910885
+    second: Yellow Turban(Club) Run_3
+  - first:
+      213: -2980941654968144784
+    second: Yellow Turban(Club) Run_4
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Yellow Turban(Club) Run_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39d357504eb62e4a0800000000000000
+      internalID: -6565566679664476781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban(Club) Run_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 160
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6a54931e986ae990800000000000000
+      internalID: -7355952013213672849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban(Club) Run_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 160
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54311f9bb4258c7c0800000000000000
+      internalID: -4050897379624152251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban(Club) Run_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 160
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5d742386896da5b0800000000000000
+      internalID: -5355508355426910885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban(Club) Run_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07c6577cb5191a6d0800000000000000
+      internalID: -2980941654968144784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban(Club) Run_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 121
+        width: 27
+        height: 33
+      alignment: 9
+      pivot: {x: 0.73951775, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d93e5465c2a636459e80479b9a1e860
+      internalID: -552008580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban(Club) Run_6
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 121
+        width: 27
+        height: 33
+      alignment: 9
+      pivot: {x: 0.75662625, y: 0.504666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61a0acc32f67e5c47ad363218a813cd4
+      internalID: 2064562103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban(Club) Run_7
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 120
+        width: 27
+        height: 33
+      alignment: 9
+      pivot: {x: 0.73951775, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64fb8f429eb8e0142bc81c58f4941201
+      internalID: -2136098374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban(Club) Run_8
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 121
+        width: 27
+        height: 33
+      alignment: 9
+      pivot: {x: 0.75662625, y: 0.504666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51aa22a13b6ac9e4aa9c3a47d5fbace9
+      internalID: 681155213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban(Club) Run_9
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 120
+        width: 27
+        height: 33
+      alignment: 9
+      pivot: {x: 0.75662625, y: 0.4906681}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cf320807626f8c46a8e613bc7f0730a
+      internalID: -511861536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2747288e03e26d346b3291644af29be1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Yellow Turban(Club) Run_0: -6565566679664476781
+      Yellow Turban(Club) Run_1: -7355952013213672849
+      Yellow Turban(Club) Run_2: -4050897379624152251
+      Yellow Turban(Club) Run_3: -5355508355426910885
+      Yellow Turban(Club) Run_4: -2980941654968144784
+      Yellow Turban(Club) Run_5: -552008580
+      Yellow Turban(Club) Run_6: 2064562103
+      Yellow Turban(Club) Run_7: -2136098374
+      Yellow Turban(Club) Run_8: 681155213
+      Yellow Turban(Club) Run_9: -511861536
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

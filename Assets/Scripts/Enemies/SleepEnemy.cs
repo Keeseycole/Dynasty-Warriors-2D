@@ -93,8 +93,4 @@ public class sleepEnemy : Enemy
         animator.SetFloat("moveY", setVec.y);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        
-    }
 }
