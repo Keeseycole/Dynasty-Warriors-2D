@@ -498,10 +498,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 10
   m_AngularDamping: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9b2aeb09626578e4b8db14e79e49c974, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1122,11 +1122,11 @@ MonoBehaviour:
   comboStarted: 0
   strafeMagnitude: 1
   strafeDuration: 4
-  strafeSpeed: 0
-  strafeTimer: 2
+  strafeSpeed: 1.5
+  strafeTimer: 6
   randomValue: 0
   chooseCombo: 0
-  chooseStrafe: 0
+  isStrafing: 0
 --- !u!95 &809004655
 Animator:
   serializedVersion: 7
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   strafeTimer: 2
   randomValue: 0
   chooseCombo: 0
-  chooseStrafe: 0
+  isStrafing: 0
 --- !u!95 &819698494
 Animator:
   serializedVersion: 7

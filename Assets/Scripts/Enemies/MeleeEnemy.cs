@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 using Random = UnityEngine.Random;
 
 public class MeleeEnemy : sleepEnemy
@@ -27,9 +28,12 @@ public class MeleeEnemy : sleepEnemy
 
     public bool chooseCombo;
 
-    public bool chooseStrafe;
+    public bool isStrafing;
 
-    private float chooseTimer = 5f;
+    private float chooseTimer;
+
+    // Store a reference to the coroutine so we can stop it later
+private Coroutine brainRoutine;
 
 
     private void Update()
@@ -39,7 +43,7 @@ public class MeleeEnemy : sleepEnemy
             Combo1(),
             Combo2(),
             Combo3(),
-           
+
         };
 
         strafeTimer -= Time.deltaTime;
@@ -50,36 +54,47 @@ public class MeleeEnemy : sleepEnemy
 
     public override void CheckDistance()
     {
-        if (Vector3.Distance(target.position, transform.position) <= chaseRadius &&
-            Vector3.Distance(target.position, transform.position) > attackRadius)
+        float currentDist = Vector3.Distance(target.position, transform.position);
+
+        if (comboStarted)
         {
-            if (currentState == EnemyState.Idle || currentState == EnemyState.Walk &&
-                currentState != EnemyState.Stagger)
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        // ATTACK/STRAFE RANGE
+        if (currentDist <= chaseRadius && currentDist <= attackRadius)
+        {
+            // Only start if we aren't already in the Attack state
+            if (currentState != EnemyState.Attack && currentState != EnemyState.Stagger)
+            {
+                ChangeState(EnemyState.Attack);
+                // Safety: Stop any existing routine before starting a new one
+                if (brainRoutine != null) StopCoroutine(brainRoutine);
+                brainRoutine = StartCoroutine(StartRandomCoroutine());
+            }
+        }
+        // CHASE RANGE (Out of attack range)
+        else if (currentDist <= chaseRadius && currentDist > attackRadius)
+        {
+            // If we were attacking/strafing, stop the brain to chase
+            if (currentState == EnemyState.Attack)
+            {
+                if (brainRoutine != null) StopCoroutine(brainRoutine);
+                brainRoutine = null;
+                ChangeState(EnemyState.Idle);
+            }
+
+            if (currentState == EnemyState.Idle || (currentState == EnemyState.Walk && currentState != EnemyState.Stagger))
             {
                 Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-
                 ChangeAnim(temp - transform.position);
                 rb.MovePosition(temp);
                 ChangeState(EnemyState.Walk);
-                //animator.SetBool("isMoving", true);
-
             }
         }
-        else if (Vector3.Distance(target.position, transform.position) <= chaseRadius &&
-            Vector3.Distance(target.position, transform.position) <= attackRadius)
-        {
-          
-            if (currentState == EnemyState.Idle || currentState == EnemyState.Walk &&
-                currentState != EnemyState.Stagger)
-            {
-                //StartCoroutine(RandomBoolRoutine());
-                StartCoroutine(ChooseCombo());
-                StartCoroutine(ChooseStrafe());
-            }
-        }
-       
     }
-
+   
     public IEnumerator Attack1()
     {
         currentState = EnemyState.Attack;
@@ -111,7 +126,7 @@ public class MeleeEnemy : sleepEnemy
     {
         comboStarted = true;
         yield return new WaitForSeconds(.1f);
-       StartCoroutine(Attack1());
+        StartCoroutine(Attack1());
         yield return new WaitForSeconds(1f);
         comboStarted = false;
     }
@@ -142,77 +157,74 @@ public class MeleeEnemy : sleepEnemy
 
     public IEnumerator ChooseCombo()
     {
-        if (!comboStarted)
-        {       
-            yield return StartCoroutine(ComboChains[Random.Range(0, ComboChains.Count)]);
-        }
-    }
+        comboStarted = true;
+        yield return StartCoroutine(ComboChains[Random.Range(0, ComboChains.Count)]);
 
-    public IEnumerator ChooseStrafe()
-    {    
-            yield return StartCoroutine(Strafe());        
     }
 
     public IEnumerator StartRandomCoroutine()
     {
-        yield return new WaitForSeconds(chooseTimer);
-
-        yield return StartCoroutine(ChooseStrafe());
-
-        yield return new WaitForSeconds(chooseTimer);
-
-        yield return  StartCoroutine(ChooseCombo());
-                    
-    }
-
-    IEnumerator RandomBoolRoutine()
-    {
         while (true)
         {
+            // 1. Pause before picking the next action
             yield return new WaitForSeconds(chooseTimer);
 
-            // Generate two random bools (50/50 chance)
-            chooseStrafe = Random.value > 0.5f;
-            chooseCombo = UnityEngine.Random.value > 0.5f;
+            // 2. Only pick a new action if a combo isn't currently running
+            if (!comboStarted)
+            {
+                if (Random.value > 0.5f)
+                {
+                    // Strafe for a random duration; this routine waits until finished
+                    yield return StartCoroutine(StrafeDuration(Random.Range(1f, 3f)));
+                }
+                else
+                {
+                    // Start the combo; this routine waits until the combo is done
+                    yield return StartCoroutine(ChooseCombo());
+                }
+            }
 
-            //Debug.Log($"Bool1: {bool1}, Bool2: {bool2}");
-
-            // Wait for the specified time
-           
+            // 3. Optional: Brief recovery wait after an action completes
+            yield return new WaitForSeconds(chooseTimer);
         }
     }
 
-    public IEnumerator Strafe()
+    public IEnumerator StrafeDuration(float duration)
     {
-        //chooseStrafe = true;
-        yield return new  WaitForSeconds(.1f);
+        
+        float timer = 0;
 
-        currentState = EnemyState.Strafe;
-        animator.SetBool("isStrafing", true);
+        // Randomly choose to strafe left (-1) or right (1)
+        float strafeDir = Random.value > 0.5f ? 1f : -1f;
 
-        if (strafeTimer <= 0)
+        while (timer < duration)
         {
-            strafeTimer = 0;
-            strafeDirection *= -1; // Reverse direction
-            strafeTimer = strafeDuration;
+          
+            // 1. Safety: If a combo starts or enemy is staggered, stop strafing
+            if (comboStarted || currentState == EnemyState.Stagger) yield break;
+
+            // 2. Calculate direction to player
+            Vector2 dirToPlayer = (target.position - transform.position).normalized;
+
+            // 3. Create perpendicular "Strafe" vector
+            // In 2D: Perpendicular of (x, y) is (-y, x)
+            Vector2 strafeVector = new Vector2(-dirToPlayer.y, dirToPlayer.x) * strafeDir;
+
+            // 4. Calculate new position
+            Vector2 newPos = rb.position + (strafeVector * moveSpeed * Time.deltaTime);
+
+            // 5. Update animation and move
+            ChangeAnim(dirToPlayer); // Keep facing the player while moving sideways
+            animator.SetBool("isStrafing", true);
+            rb.MovePosition(newPos);
+
+            timer += Time.deltaTime;
+            yield return null; // Wait for next frame
         }
 
-        Vector3 directionToTarget = target.position - transform.position;
-
-        Vector3 perpendicularDirection = new Vector3(directionToTarget.y, -directionToTarget.x, 0f);
-
-        // Calculate strafe movement (using transform.right for local right, or a calculated perpendicular vector)
-        Vector3 strafeMovement = perpendicularDirection * strafeDirection * strafeMagnitude * Time.deltaTime;
-
-        transform.position -= strafeMovement; // Add movement
-   
-        directionToTarget.Normalize(); // Normalize to get just the direction
-    
-        // This vector points along the circle's circumference.
-        Vector3 movementVector = perpendicularDirection * strafeSpeed * Time.deltaTime;
-
-      
+        // Stop movement when done
+        animator.SetBool("isStrafing", false);
+        rb.linearVelocity = Vector2.zero;
 
     }
-
 }
