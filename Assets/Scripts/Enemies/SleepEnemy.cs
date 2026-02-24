@@ -5,7 +5,7 @@ public class sleepEnemy : Enemy
 
     public Rigidbody2D rb;
 
-    public Transform target;
+    public Transform currentTarget;
 
     public float chaseRadius;
 
@@ -16,9 +16,15 @@ public class sleepEnemy : Enemy
     void Start()
     {
         currentState = EnemyState.Idle;
-        target = GameObject.FindWithTag("Player").transform;
+        currentTarget = GameObject.FindWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        if(currentTarget == null)
+        {
+            return;
+        }
+        // Safety: If Rigidbody is missing, add it or log an error
+        if (rb == null) Debug.LogError("Rigidbody2D is missing on " + gameObject.name);
     }
 
     // Update is called once per frame
@@ -29,14 +35,16 @@ public class sleepEnemy : Enemy
 
     public virtual void CheckDistance()
     {
-        if (Vector3.Distance(target.position, transform.position) <= chaseRadius &&
-            Vector3.Distance(target.position, transform.position) > attackRadius)
+
+
+        if (Vector3.Distance(currentTarget.position, transform.position) <= chaseRadius &&
+            Vector3.Distance(currentTarget.position, transform.position) > attackRadius)
         {
             if (currentState == EnemyState.Idle || currentState == EnemyState.Walk &&
                 currentState != EnemyState.Stagger)
             {
 
-                Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                Vector3 temp = Vector3.MoveTowards(transform.position, currentTarget.position, moveSpeed * Time.deltaTime);
 
                 ChangeAnim(temp - transform.position);
                 rb.MovePosition(temp);
@@ -44,7 +52,7 @@ public class sleepEnemy : Enemy
                 animator.SetBool("wakeUp", true);
 
             }
-        } else if (Vector3.Distance(target.position, transform.position) > chaseRadius)
+        } else if (Vector3.Distance(currentTarget.position, transform.position) > chaseRadius)
         {
             animator.SetBool("wakeUp", false);
         }

@@ -16,19 +16,11 @@ public class Enemy : MonoBehaviour
 {
     public EnemyState currentState;
 
-    public int health;
-
     public int baseAttack;
 
     public string enemyName;
 
     public float moveSpeed;
-
-   
-    private void Update()
-    {
-     
-    }
 
 
     public void Knock(Rigidbody2D rb, float knockbackTime)
@@ -47,7 +39,9 @@ public class Enemy : MonoBehaviour
 
             rb.linearVelocity = Vector2.zero;
         }
+
     }
+
 }
 
 
