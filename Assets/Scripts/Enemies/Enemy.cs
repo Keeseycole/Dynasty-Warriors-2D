@@ -9,7 +9,9 @@ public enum EnemyState
     Walk,
     Attack,
     Strafe,
-    Stagger
+    Stagger,
+    Block,
+    Death
 }
 
 public class Enemy : MonoBehaviour

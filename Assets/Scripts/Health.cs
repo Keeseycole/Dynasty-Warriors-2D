@@ -1,83 +1,208 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public float currentHealth, maxHealth;
+    public float  maxHealth;
     public FloatingHealthBar healthBar;
 
-    private Animator anim;
+    public CharacterData stats; // Drag your ScriptableObject here
 
-    // DW3 References
-    private MeleeEnemy enemyAI;
+    public float currentHealth;
+
+    private Animator anim;
     private Rigidbody2D rb;
+
+    // UPDATED: Now points to the unified script
+    private MusouUnit unitAI;
+
+    [Tooltip("True = Active/Near Player, False = Culled/Far away")]
+    public bool isSimulating = true;
+
+    public SpriteRenderer minimapIconRenderer;
+   
+
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+    private Coroutine flashCoroutine;
+
+    public GameObject flashOverlay;
+
+    private RectTransform sliderRect;
 
     private void Awake()
     {
-        currentHealth = maxHealth;
-        enemyAI = GetComponent<MeleeEnemy>();
+       
+
+        unitAI = GetComponent<MusouUnit>(); // Updated Reference
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-    }
 
-    public void TakeDamage(float damage)
-    {
+        // Find animator in children because of your 'Visuals' object
+        anim = GetComponentInChildren<Animator>();
 
-        if (enemyAI != null)
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        if (spriteRenderer != null)
         {
-            enemyAI.TriggerHit();
+            originalColor = spriteRenderer.color;
+        }
+        else
+        {
+            Debug.LogError("SpriteRenderer still not found on " + gameObject.name + " or its children!");
         }
 
-        if (currentHealth <= 0) return;
+        if (flashOverlay != null)
+        {
+            SpriteRenderer mainRenderer = GetComponentInChildren<SpriteRenderer>();
+            SpriteRenderer overlayRenderer = flashOverlay.GetComponent<SpriteRenderer>();
 
-        healthBar.gameObject.SetActive(true);
+            if (mainRenderer != null && overlayRenderer != null)
+            {
+                // This ensures the flash ALWAYS matches the enemy's current sprite
+                overlayRenderer.sprite = mainRenderer.sprite;
+
+                // Set the flash color (Solid White or Yellow)
+                overlayRenderer.color = Color.white;
+
+                // Make sure the flash is initially hidden
+                flashOverlay.SetActive(false);
+            }
+        }
+    }
+
+    void Start()
+    {
+        if (BattleManager.Instance != null)
+            BattleManager.Instance.activeUnits.Add(this);
+    }
+
+    public void TakeDamage(float damage, Vector2 attackerPosition, Vector2 knockback)
+    {
+        if (currentHealth <= 0) return;
 
         currentHealth -= damage;
 
-        StartCoroutine(HitlagRoutine(0.05f));
-
-        // 1. Update the UI Bar
+        // This is the missing link!
         if (healthBar != null)
-
-            healthBar.UpdateBar(currentHealth, maxHealth);
-
-        // 2. DW3 STAGGER: Tell the AI to "Flinch" so they stop attacking
-        if (enemyAI != null)
         {
-            enemyAI.ChangeState(EnemyState.Stagger);
+            healthBar.UpdateBar(currentHealth, maxHealth);
         }
 
-        // 4. Automatic Death Check
-        if (currentHealth <= 0) Die();
+        if (isSimulating)
+        {
+            // APPLY THE KNOCKBACK
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                // Impulse is best for sudden "hit" forces
+                rb.AddForce(knockback, ForceMode2D.Impulse);
+            }
+
+            if (unitAI != null)
+            {
+               unitAI.TriggerHit(attackerPosition);
+            }
+    
+    
+
+            StartCoroutine(HitlagRoutine(0.05f));
+
+            // Trigger the flash!
+            if (flashCoroutine != null) StopCoroutine(flashCoroutine);
+            flashCoroutine = StartCoroutine(HitFlashRoutine());
+        }
+        else
+        {
+            // If culled, still flash the minimap to show a fight is happening
+            if (flashCoroutine == null) flashCoroutine = StartCoroutine(MinimapFlashTick());
+        }
+
+        // 4. DEATH CHECK
+        if (currentHealth <= 0)
+        {
+            anim.SetBool("isHit", false);
+            anim.SetBool("isBlocking", false);
+            anim.SetBool("isDead", true);
+            Die();
+        }
+    }
+      void Die()
+    {
+        // 1. Unregister from the battle manager immediately
+        if (BattleManager.Instance != null)
+            BattleManager.Instance.activeUnits.Remove(this);
+
+        // 2. Shut down the AI and Physics so the "ghost" doesn't keep fighting
+        if (unitAI != null)
+        {
+            unitAI.StopAllCoroutines();
+            unitAI.enabled = false; // Turn off the brain
+            unitAI.ChangeState(EnemyState.Death); // If you have a death state
+        }
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.simulated = false; // Stop physics collisions
+        }
+
+        // 4. Start the fade-out effect
+        StartCoroutine(DeathFadeRoutine());
     }
 
-    public void Die()
+    private IEnumerator DeathFadeRoutine()
     {
-        // Notify the squad leader if this unit dies
-        //SquadLeader leader = GetComponent<SquadLeader>();
-        //if (leader != null) leader.OnLeaderDeath();
+        // Wait a moment for the death animation to play (e.g., falling over)
+        yield return new WaitForSeconds(1f);
+
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+        if (sr != null)
+        {
+            float fadeTime = 1f;
+            float startAlpha = sr.color.a;
+
+            for (float t = 0; t < fadeTime; t += Time.deltaTime)
+            {
+                Color c = sr.color;
+                c.a = Mathf.Lerp(startAlpha, 0, t / fadeTime);
+                sr.color = c;
+                yield return null;
+            }
+        }
 
         Destroy(gameObject);
+    }
+
+    private IEnumerator MinimapFlashTick()
+    {
+        if (minimapIconRenderer == null) yield break;
+        Color originalColor = minimapIconRenderer.color;
+        minimapIconRenderer.color = Color.yellow;
+        yield return new WaitForSeconds(0.1f);
+        minimapIconRenderer.color = originalColor;
+        flashCoroutine = null;
     }
 
     private IEnumerator HitlagRoutine(float duration)
     {
         if (anim == null || rb == null) yield break;
-
-        // 1. FREEZE: Stop the animation and physics movement
         float originalSpeed = anim.speed;
-        Vector2 originalVelocity = rb.linearVelocity;
-
         anim.speed = 0;
-        rb.linearVelocity = Vector2.zero;
-
-        // 2. WAIT: This creates the "crunchy" impact feel
         yield return new WaitForSeconds(duration);
-
-        // 3. UNFREEZE: Restore everything
         anim.speed = originalSpeed;
-        rb.linearVelocity = originalVelocity;
     }
 
+    private IEnumerator HitFlashRoutine()
+    {
+        Debug.Log("Flash Started on " + gameObject.name); // Check your Console for this!
+        spriteRenderer.color = Color.red;
+
+        yield return new WaitForSeconds(0.2f); // Longer for testing
+
+        spriteRenderer.color = originalColor;
+        Debug.Log("Flash Ended");
+    }
+
+  
 }

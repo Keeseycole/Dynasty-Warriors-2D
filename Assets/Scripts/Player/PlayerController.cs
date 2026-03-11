@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 moveInput = new Vector3(0f, 0f, 0f);
 
-    private Vector2 lastLookDir;
+    public Vector2 lastLookDir;
 
     public float pickupRange = 1.5f;
 
@@ -113,4 +113,8 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
         }
     }
+
+    public Vector2 GetLastLookDir() => lastLookDir;
+
+
 }

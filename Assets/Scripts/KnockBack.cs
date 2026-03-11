@@ -12,42 +12,39 @@ public class KnockBack : MonoBehaviour
 
     [SerializeField] private string TagtoHit;
 
- 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(TagtoHit) && other.isTrigger)
+        // 1. Check tag and ensure it's the trigger we want
+        if (other.gameObject.CompareTag(TagtoHit))
         {
+            // 2. Get the Rigidbody from the PARENT (where the main script usually lives)
+            Rigidbody2D hitRb = other.GetComponentInParent<Rigidbody2D>();
 
-            Rigidbody2D hit = other.GetComponentInParent<Rigidbody2D>();
-
-            if (hit != null)
+            if (hitRb != null)
             {
-                Vector3 difference = hit.transform.position - transform.position;
+                Vector3 difference = (hitRb.transform.position - transform.position).normalized * thrust;
 
-                difference = difference.normalized * thrust;
+                // Apply the DOTween movement
+                hitRb.DOMove(hitRb.transform.position + difference, knockbackTime);
 
-                hit.DOMove(hit.transform.position + difference, knockbackTime);
-
-
-               // hit.AddForce(difference, ForceMode2D.Impulse);
-
-                if (other.gameObject.CompareTag("Enemy"))
+                // 3. Handle Enemy Logic SAFELY
+                Enemy enemyScript = hitRb.GetComponent<Enemy>();
+                if (enemyScript != null)
                 {
-                    hit.GetComponent<Enemy>().currentState = EnemyState.Stagger;
-
-                    other.GetComponent<Enemy>().Knock(hit, knockbackTime);
+                    enemyScript.currentState = EnemyState.Stagger;
+                    enemyScript.Knock(hitRb, knockbackTime);
+                    return; // Exit so we don't check Player logic
                 }
 
-                if (other.gameObject.CompareTag("Player"))
+                // 4. Handle Player Logic SAFELY
+                PlayerController playerScript = hitRb.GetComponent<PlayerController>();
+                if (playerScript != null)
                 {
-                    other.GetComponentInParent<PlayerController>().Knock(hit, knockbackTime);
-
-                    hit.GetComponent<PlayerController>().currentState = PlayerState.stagger;
-                   
+                    playerScript.currentState = PlayerState.stagger;
+                    playerScript.Knock(hitRb, knockbackTime);
                 }
-              
             }
-
         }
     }
 

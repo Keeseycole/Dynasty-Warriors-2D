@@ -27,8 +27,15 @@ public class MeleeEnemy : sleepEnemy
     private float nextAttackTime;
 
     public Transform target;
+
+    public float strafeSpeed;
+
+    private Health health;
     private void Start()
     {
+
+        InvokeRepeating("FindNearestTarget", 0f, 0.5f); // Scan for targets twice a second, not 50 times!
+
         // 1. Give this enemy a unique angle so they surround the target
         float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         myPersonalSpot = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 1.5f;
@@ -37,6 +44,22 @@ public class MeleeEnemy : sleepEnemy
         comboList = new List<System.Func<IEnumerator>> { Combo1, Combo2, Combo3 };
     
     }
+
+  
+    void Awake()
+    {
+        health = GetComponent<Health>(); // Get reference to the Health script on the parent
+    }
+
+    private void Update()
+    {
+        // If the unit is off-screen, skip the AI logic
+        if (health != null && health.isSimulating)
+        {
+            return;
+        }
+    }
+
 
     private void FixedUpdate()
     {
@@ -137,37 +160,35 @@ public class MeleeEnemy : sleepEnemy
         isBusy = true;
         StopMoving();
 
-        // 1. THE AGGRESSION CHECK (Move this to the TOP)
-        // Roll a dice (0.0 to 1.0). If it's HIGHER than our score, we circle instead of attacking.
-        // Example: If aggression is 0.2, there's an 80% chance we just circle.
-        bool feelBrave = Random.value < aggressionScore;
-
-        // 2. THE COOLDOWN CHECK
+        // 1. Check if we are ready to swing
         bool readyToSwing = Time.time >= nextAttackTime;
 
-        if (feelBrave && readyToSwing)
+        // 2. Roll for Aggression
+        float diceRoll = Random.value;
+
+        if (readyToSwing && diceRoll < aggressionScore)
         {
-            // 3. THE DIRECTOR CHECK (Only ask if we actually WANT to attack)
+            // TRY TO ATTACK
             if (AttackDirector.instance != null && AttackDirector.instance.RequestAttackToken(currentTarget))
             {
-                ChangeState(EnemyState.Attack);
                 int randomCombo = Random.Range(0, comboList.Count);
                 yield return StartCoroutine(comboList[randomCombo]());
-
-                // Set the cooldown: Braver units wait less time
-                nextAttackTime = Time.time + (attackCooldown * (1f - aggressionScore));
-
-                AttackDirector.instance.ReturnAttackToken(currentTarget);
+                nextAttackTime = Time.time + attackCooldown;
             }
             else
             {
-                // Director said no? Circle instead.
-                yield return StartCoroutine(StrafeBehavior());
+                // Director said NO? Instead of just walking, let's BLOCK
+                yield return StartCoroutine(Block(Random.Range(1f, 1.5f)));
             }
+        }
+        else if (diceRoll > 0.8f) // 20% chance to block if not attacking
+        {
+            // THE CALL: Start the blocking behavior
+            yield return StartCoroutine(Block(Random.Range(1f, 2f)));
         }
         else
         {
-            // Not brave or on cooldown? Circle instead.
+            // Just circle the player
             yield return StartCoroutine(StrafeBehavior());
         }
 
@@ -209,7 +230,7 @@ public class MeleeEnemy : sleepEnemy
 
             // Move sideways relative to the target
             Vector2 sideDir = Vector2.Perpendicular((currentTarget.position - transform.position).normalized) * strafeDir;
-            rb.linearVelocity = sideDir * moveSpeed * 0.7f;
+            rb.linearVelocity = sideDir * strafeSpeed * 0.7f;
 
             ChangeAnim((currentTarget.position - transform.position).normalized);
             timer += Time.deltaTime;
@@ -319,15 +340,26 @@ public class MeleeEnemy : sleepEnemy
     currentState = EnemyState.Idle;
 }
 
-    void ApplyDamageToTarget()
+    private IEnumerator Block(float blockTime)
+    {
+        ChangeState(EnemyState.Block);
+        animator.SetBool("isBlocking", true);
+        rb.linearVelocity = Vector2.zero;
+        yield return new WaitForSeconds(blockTime);
+        animator.SetBool("isBlocking", false);
+    }
+
+    public void ApplyDamageToTarget()
     {
         if (currentTarget == null) return;
-
         Health targetHealth = currentTarget.GetComponent<Health>();
         if (targetHealth != null)
         {
-           
-            targetHealth.TakeDamage(damageToGive);
+            // Calculate knockback direction (from the attacker to the target)
+            Vector2 knockbackDir = (currentTarget.position - transform.position).normalized;
+            float force = 5f; // Or add a 'knockbackForce' variable to your header
+
+            targetHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force);
         }
     }
 }

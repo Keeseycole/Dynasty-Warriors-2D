@@ -1049,7 +1049,7 @@ TextureImporter:
       name: Yellow Turban (Club)_40
       rect:
         serializedVersion: 2
-        x: 5
+        x: 2
         y: 320
         width: 32
         height: 35
@@ -1115,7 +1115,7 @@ TextureImporter:
       name: Yellow Turban (Club)_43
       rect:
         serializedVersion: 2
-        x: 5
+        x: 2
         y: 320
         width: 32
         height: 35
@@ -1181,7 +1181,7 @@ TextureImporter:
       name: Yellow Turban (Club)_46
       rect:
         serializedVersion: 2
-        x: 4
+        x: 2
         y: 280
         width: 32
         height: 35
@@ -1291,7 +1291,7 @@ TextureImporter:
       name: Yellow Turban (Club)_51
       rect:
         serializedVersion: 2
-        x: 3
+        x: 6
         y: 240
         width: 32
         height: 35
@@ -1401,7 +1401,7 @@ TextureImporter:
       name: Yellow Turban (Club)_56
       rect:
         serializedVersion: 2
-        x: 5
+        x: 6
         y: 200
         width: 32
         height: 35
@@ -1511,7 +1511,7 @@ TextureImporter:
       name: Yellow Turban (Club)_58
       rect:
         serializedVersion: 2
-        x: 7
+        x: 6
         y: 160
         width: 32
         height: 35

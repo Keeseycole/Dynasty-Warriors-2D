@@ -12,6 +12,9 @@ public class sleepEnemy : Enemy
     public float attackRadius;
 
     public Animator animator;
+
+    private Vector2 lastFacingDir;
+    public Vector2 GetFacingDirection() => lastFacingDir;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -70,6 +73,8 @@ public class sleepEnemy : Enemy
 
     public void ChangeAnim(Vector2 dir)
     {
+        if (dir != Vector2.zero) lastFacingDir = dir.normalized;
+
         if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
         {
 
