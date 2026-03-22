@@ -147,6 +147,10 @@ public class Health : MonoBehaviour
             rb.simulated = false; // Stop physics collisions
         }
 
+        if (KOCounter.instance != null)
+        {
+            KOCounter.instance.AddKO();
+        }
         // 4. Start the fade-out effect
         StartCoroutine(DeathFadeRoutine());
     }

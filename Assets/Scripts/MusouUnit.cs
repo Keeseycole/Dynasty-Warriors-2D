@@ -11,6 +11,8 @@ public class MusouUnit : sleepEnemy
     public bool followsPlayer;
     public LayerMask searchLayers;
 
+ 
+
     [Header("Movement & Detection")]
     public float detectionRange = 10f;
     public float followDistance = 3f;
@@ -34,13 +36,19 @@ public class MusouUnit : sleepEnemy
     private Transform playerTransform;
 
     private Coroutine recoveryCoroutine;
+    private Coroutine activeAction;
 
     [Header("Combat Movement")]
     public float attackStepForce = 4f; // How much they lunge forward
 
     public float hitForce = 4f; // How much they lunge forward
 
-    private void Start()
+    [Header("Squad Follower Settings")]
+    public SquadLeader myLeader;
+    public int squadIndex; // Assigned by the leader (0, 1, 2, etc.)
+    public float stoppingDistance = 0.2f;
+
+    public void Start()
     {
         health = GetComponent<Health>();
         if (playerTransform == null)
@@ -58,6 +66,19 @@ public class MusouUnit : sleepEnemy
         // Start the scanning loop (Don't run FindNearestTarget every single frame!)
         InvokeRepeating("FindNearestTarget", 0f, 0.5f);
     }
+    void Update()
+    {
+        // If I'm an enemy leader and I don't have a target, 
+        // constantly look for the player specifically.
+        if (unitTeam == Team.EnemySide && currentTarget == null)
+        {
+            float d = Vector2.Distance(transform.position, playerTransform.position);
+            if (d < detectionRange)
+            {
+                currentTarget = playerTransform;
+            }
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -69,13 +90,9 @@ public class MusouUnit : sleepEnemy
 
     public override void CheckDistance()
     {
-        // GUARDS: Stop if busy, staggered, or hitting
-        if (isBusy || currentState == EnemyState.Stagger || animator.GetBool("isHit"))
-        {
-            return;
-        }
+        if (isBusy || currentState == EnemyState.Stagger || animator.GetBool("isHit")) return;
 
-        // DECISION 1: Is there an enemy nearby?
+        // 1. COMBAT: If I see the player/enemy, CHARGE!
         if (currentTarget != null)
         {
             float distToEnemy = Vector2.Distance(transform.position, currentTarget.position);
@@ -87,19 +104,30 @@ public class MusouUnit : sleepEnemy
             {
                 MoveTowards(currentTarget.position, true);
             }
+            return;
         }
-        // DECISION 2: No enemies? Am I supposed to follow the player?
-        else if (followsPlayer && playerTransform != null)
+
+        // 2. SQUAD LOGIC: Only if I am a follower
+        if (myLeader != null && myLeader != this)
+        {
+            MoveTowards(myLeader.GetSlotPosition(squadIndex), false);
+            return;
+        }
+
+        // 3. ENEMY LEADER SEARCH: If I am an Enemy Leader and have no target
+        if (unitTeam == Team.EnemySide && playerTransform != null)
         {
             float distToPlayer = Vector2.Distance(transform.position, playerTransform.position);
-            if (distToPlayer > followDistance)
-                MoveTowards((Vector2)playerTransform.position + myFormationSpot, false);
+
+            // If the player is within a large "Aggro Range," move toward them to start the fight
+            if (distToPlayer < detectionRange)
+            {
+                MoveTowards(playerTransform.position, true);
+            }
             else
-                StopMoving();
-        }
-        else
-        {
-            StopMoving();
+            {
+                StopMoving(); // Or stay at their guard post
+            }
         }
     }
 
@@ -141,7 +169,8 @@ public class MusouUnit : sleepEnemy
             if (AttackDirector.instance != null && AttackDirector.instance.RequestAttackToken(currentTarget))
             {
                 int randomCombo = Random.Range(0, comboList.Count);
-                yield return StartCoroutine(comboList[randomCombo]());
+                activeAction = StartCoroutine(comboList[randomCombo]());
+                yield return activeAction;
                 nextAttackTime = Time.time + attackCooldown;
                 AttackDirector.instance.ReturnAttackToken(currentTarget);
             }
@@ -269,7 +298,9 @@ public class MusouUnit : sleepEnemy
     // --- DAMAGE & STAGGER ---
     public void TriggerHit(Vector2 attackerPos)
     {
-        if (recoveryCoroutine != null) StopCoroutine(recoveryCoroutine);
+
+        if (activeAction != null) StopCoroutine(activeAction); // Stops BrainTick/Combos/Strafe
+        if (recoveryCoroutine != null) StopCoroutine(recoveryCoroutine); // Resets stagger timer if hit again
 
         Vector2 knockbackDir = ((Vector2)transform.position - attackerPos).normalized;
 

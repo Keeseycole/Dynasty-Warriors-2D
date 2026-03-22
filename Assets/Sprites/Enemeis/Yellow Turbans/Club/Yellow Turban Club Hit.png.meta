@@ -335,7 +335,7 @@ TextureImporter:
         x: 40
         y: 123
         width: 30
-        height: 40
+        height: 37
       alignment: 9
       pivot: {x: 0.77527416, y: 0.5081402}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,6 +394,72 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Yellow Turban Club Hit_13
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 161
+        width: 29
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d745c0cea620e7e41b95a366a4030680
+      internalID: 536903588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban Club Hit_14
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 163
+        width: 29
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86f54a980fc3b8a46ba0ba6e74a11663
+      internalID: -1563234735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Turban Club Hit_15
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 160
+        width: 29
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3080604b3d80744b6e22d4042fb249
+      internalID: -1544493607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -413,6 +479,9 @@ TextureImporter:
       Yellow Turban Club Hit_10: -1088361117
       Yellow Turban Club Hit_11: 1630002198
       Yellow Turban Club Hit_12: -1430322170
+      Yellow Turban Club Hit_13: 536903588
+      Yellow Turban Club Hit_14: -1563234735
+      Yellow Turban Club Hit_15: -1544493607
       Yellow Turban Club Hit_2: 50464005855741308
       Yellow Turban Club Hit_3: 3461163072733012975
       Yellow Turban Club Hit_4: -1128044172
