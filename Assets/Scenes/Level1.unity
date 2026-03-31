@@ -47407,7 +47407,7 @@ Transform:
   m_GameObject: {fileID: 471191496}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.6, y: 25.3, z: 0}
+  m_LocalPosition: {x: -23.2, y: 22.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49224,7 +49224,7 @@ GameObject:
   - component: {fileID: 796351019}
   - component: {fileID: 796351018}
   m_Layer: 6
-  m_Name: YT_Sword (1)
+  m_Name: YT_Spear
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49239,7 +49239,7 @@ Transform:
   m_GameObject: {fileID: 796351016}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.799999, y: 15, z: 0}
+  m_LocalPosition: {x: -15.77, y: 23.07, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49277,7 +49277,7 @@ MonoBehaviour:
     m_Bits: 256
   detectionRange: 3
   followDistance: 3
-  strafeSpeed: 1
+  strafeSpeed: 0.5
   damageToGive: 5
   aggressionScore: 0.27
   attackCooldown: 1.5
@@ -49285,7 +49285,7 @@ MonoBehaviour:
   separationStrength: 4.49
   attackStepForce: 3
   hitForce: 2
-  myLeader: {fileID: 1549967375}
+  myLeader: {fileID: 0}
   squadIndex: 1
   stoppingDistance: 0.2
 --- !u!114 &796351019
@@ -49368,17 +49368,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.20638692, y: -0.7252058}
+  m_Offset: {x: 0.0039066076, y: -0.65035576}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.78926855, y: 0.55860406}
-    oldSize: {x: 1.875, y: 2.5}
-    newSize: {x: 1.875, y: 2.5}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5, y: 2.0625}
+    newSize: {x: 1.5, y: 2.0625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9060689, y: 0.556335}
+  m_Size: {x: 0.71359634, y: 0.49217856}
   m_EdgeRadius: 0
 --- !u!50 &796351023
 Rigidbody2D:
@@ -96136,7 +96136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1319255926
 Transform:
   m_ObjectHideFlags: 0
@@ -96602,7 +96602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1542886707
 Transform:
   m_ObjectHideFlags: 0
@@ -96650,7 +96650,7 @@ MonoBehaviour:
     m_Bits: 256
   detectionRange: 3
   followDistance: 3
-  strafeSpeed: 1
+  strafeSpeed: 0.5
   damageToGive: 5
   aggressionScore: 0.27
   attackCooldown: 1.5
@@ -96801,7 +96801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1549967368
 Transform:
   m_ObjectHideFlags: 0
@@ -97554,7 +97554,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.23077238, y: -0.13156843}
+  m_Offset: {x: 0.008034438, y: 0.053776085}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -97564,7 +97564,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1187527, y: 1.8044801}
+  m_Size: {x: 0.75519556, y: 1.890025}
   m_EdgeRadius: 0
 --- !u!1 &1780068123
 GameObject:
@@ -98064,7 +98064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1854461960
 Transform:
   m_ObjectHideFlags: 0
@@ -98112,7 +98112,7 @@ MonoBehaviour:
     m_Bits: 256
   detectionRange: 3
   followDistance: 3
-  strafeSpeed: 1
+  strafeSpeed: 0.5
   damageToGive: 5
   aggressionScore: 0.27
   attackCooldown: 1.5
@@ -98393,7 +98393,7 @@ Animator:
   m_GameObject: {fileID: 1928820595}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 295fb911ddf716e4a8dda946ac16725c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3943cae1259bf7f47b5e63e91663e581, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -98454,7 +98454,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -5857793838288414684, guid: 7aefe8ced1e38fb4c985670d7a33c637, type: 3}
+  m_Sprite: {fileID: 2191332501038488177, guid: 5a83b1f8b76aec049842136bba2bc9aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98649,7 +98649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1973568151
 Transform:
   m_ObjectHideFlags: 0
@@ -98697,7 +98697,7 @@ MonoBehaviour:
     m_Bits: 256
   detectionRange: 3
   followDistance: 3
-  strafeSpeed: 1
+  strafeSpeed: 0.5
   damageToGive: 5
   aggressionScore: 0.27
   attackCooldown: 1.5

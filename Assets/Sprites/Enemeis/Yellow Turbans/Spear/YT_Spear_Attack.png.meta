@@ -1,0 +1,716 @@
+fileFormatVersion: 2
+guid: 44a716eb1abb9094b873838f7aaab8e8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7454277061695308378
+    second: YT_Spear_Attack_0
+  - first:
+      213: 136962425526320237
+    second: YT_Spear_Attack_1
+  - first:
+      213: -2546166897036636143
+    second: YT_Spear_Attack_2
+  - first:
+      213: -4845020931755307360
+    second: YT_Spear_Attack_3
+  - first:
+      213: -6763158447783039914
+    second: YT_Spear_Attack_4
+  - first:
+      213: 8755613053200307132
+    second: YT_Spear_Attack_5
+  - first:
+      213: -8782493337633891999
+    second: YT_Spear_Attack_6
+  - first:
+      213: 3009059521791992819
+    second: YT_Spear_Attack_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: YT_Spear_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 441
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5201bf3e79e27760800000000000000
+      internalID: 7454277061695308378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 441
+        width: 24
+        height: 33
+      alignment: 9
+      pivot: {x: 0.3974463, y: 0.4828778}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6c7211b99696e100800000000000000
+      internalID: 136962425526320237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 440
+        width: 25
+        height: 36
+      alignment: 9
+      pivot: {x: 0.33900666, y: 0.46992323}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 110d54382b23aacd0800000000000000
+      internalID: -2546166897036636143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 441
+        width: 25
+        height: 33
+      alignment: 9
+      pivot: {x: 0.3417151, y: 0.4824228}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ae8461f12703ccb0800000000000000
+      internalID: -4845020931755307360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_4
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 401
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ca538793f6422a0800000000000000
+      internalID: -6763158447783039914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 401
+        width: 22
+        height: 33
+      alignment: 9
+      pivot: {x: 0.40952232, y: 0.50000095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb317c2ceaf228970800000000000000
+      internalID: 8755613053200307132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_6
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 402
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 169d81057d05e1680800000000000000
+      internalID: -8782493337633891999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 402
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f32b6041b352c920800000000000000
+      internalID: 3009059521791992819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_8
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 362
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d4a5096f62f8de4e82795e9204a09d5
+      internalID: 927760010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 361
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbca473063187ec4cad7f9329da867d4
+      internalID: 501182672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_10
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 361
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98e3ee1bc1613874cad5a47b99fb0956
+      internalID: -414147268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_11
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 361
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 177ac1820bb97be4c886e7b517bc184a
+      internalID: -912546032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_12
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 320
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25a2b313e1118b546ac9356e234661f2
+      internalID: -946779352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_13
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 320
+        width: 26
+        height: 32
+      alignment: 9
+      pivot: {x: 0.58125967, y: 0.498621}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9da3bc2b331c064cb3165297d2a1e0a
+      internalID: 50746489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_14
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 321
+        width: 26
+        height: 32
+      alignment: 9
+      pivot: {x: 0.6553383, y: 0.47106552}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66de85a7e6912594ca878e1f11b3bb44
+      internalID: -19787283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_15
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 321
+        width: 26
+        height: 32
+      alignment: 9
+      pivot: {x: 0.64961123, y: 0.46930408}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d8751387c071e7418278208f139b65a
+      internalID: -799196175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_16
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 280
+        width: 26
+        height: 32
+      alignment: 9
+      pivot: {x: 0.61016107, y: 0.49999905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1d922ae866024541a206be4c36facd0
+      internalID: 1533500254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_17
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 280
+        width: 26
+        height: 32
+      alignment: 9
+      pivot: {x: 0.61016095, y: 0.4910488}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b88c29eb1f272445aec58d984b882ac
+      internalID: -1183904595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_18
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 280
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bccea5d996c4807488298382f80383fe
+      internalID: 1085415713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_19
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 281
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83f77251332cae54580d0ed737a437d4
+      internalID: -1671081071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_20
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 281
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e93d6f1a1b995534e96a4b0e8d45eb7f
+      internalID: 273068297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_21
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 242
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e7bf786d1814b048863ecc717b85e22
+      internalID: -1533993275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_22
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 241
+        width: 26
+        height: 32
+      alignment: 9
+      pivot: {x: 0.59347767, y: 0.50000095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b00a4c838bd5b243a8bc430208d0ec8
+      internalID: -525398613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_23
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 241
+        width: 26
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5331515, y: 0.5032921}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e4c1e72f9d6fec44bbb72a3468d3dde
+      internalID: -1770243442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Attack_24
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 241
+        width: 26
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5341803, y: 0.50001717}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f5b2ab4ebed99e4cab1a43d5252e8a7
+      internalID: 21740419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 83d7f751f326519489756b130b3164e2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      YT_Spear_Attack_0: 7454277061695308378
+      YT_Spear_Attack_1: 136962425526320237
+      YT_Spear_Attack_10: -414147268
+      YT_Spear_Attack_11: -912546032
+      YT_Spear_Attack_12: -946779352
+      YT_Spear_Attack_13: 50746489
+      YT_Spear_Attack_14: -19787283
+      YT_Spear_Attack_15: -799196175
+      YT_Spear_Attack_16: 1533500254
+      YT_Spear_Attack_17: -1183904595
+      YT_Spear_Attack_18: 1085415713
+      YT_Spear_Attack_19: -1671081071
+      YT_Spear_Attack_2: -2546166897036636143
+      YT_Spear_Attack_20: 273068297
+      YT_Spear_Attack_21: -1533993275
+      YT_Spear_Attack_22: -525398613
+      YT_Spear_Attack_23: -1770243442
+      YT_Spear_Attack_24: 21740419
+      YT_Spear_Attack_3: -4845020931755307360
+      YT_Spear_Attack_4: -6763158447783039914
+      YT_Spear_Attack_5: 8755613053200307132
+      YT_Spear_Attack_6: -8782493337633891999
+      YT_Spear_Attack_7: 3009059521791992819
+      YT_Spear_Attack_8: 927760010
+      YT_Spear_Attack_9: 501182672
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

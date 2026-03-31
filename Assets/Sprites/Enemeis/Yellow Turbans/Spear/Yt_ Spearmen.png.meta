@@ -73,7 +73,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -87,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -249,10 +249,10 @@ TextureImporter:
       name: Yt_ Spearmen_5
       rect:
         serializedVersion: 2
-        x: 6
-        y: 119
-        width: 19
-        height: 33
+        x: 8
+        y: 120
+        width: 22
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,10 +271,10 @@ TextureImporter:
       name: Yt_ Spearmen_6
       rect:
         serializedVersion: 2
-        x: 45
-        y: 119
-        width: 19
-        height: 32
+        x: 48
+        y: 120
+        width: 22
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -293,10 +293,10 @@ TextureImporter:
       name: Yt_ Spearmen_7
       rect:
         serializedVersion: 2
-        x: 85
-        y: 119
-        width: 19
-        height: 31
+        x: 88
+        y: 120
+        width: 22
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,10 +315,10 @@ TextureImporter:
       name: Yt_ Spearmen_8
       rect:
         serializedVersion: 2
-        x: 124
-        y: 119
-        width: 19
-        height: 31
+        x: 128
+        y: 120
+        width: 22
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,9 +337,9 @@ TextureImporter:
       name: Yt_ Spearmen_9
       rect:
         serializedVersion: 2
-        x: 13
+        x: 10
         y: 79
-        width: 19
+        width: 22
         height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -359,9 +359,9 @@ TextureImporter:
       name: Yt_ Spearmen_10
       rect:
         serializedVersion: 2
-        x: 58
+        x: 50
         y: 79
-        width: 19
+        width: 22
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -381,9 +381,9 @@ TextureImporter:
       name: Yt_ Spearmen_11
       rect:
         serializedVersion: 2
-        x: 97
+        x: 90
         y: 79
-        width: 19
+        width: 22
         height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -403,9 +403,9 @@ TextureImporter:
       name: Yt_ Spearmen_12
       rect:
         serializedVersion: 2
-        x: 136
+        x: 130
         y: 79
-        width: 19
+        width: 22
         height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -417,6 +417,138 @@ TextureImporter:
       bones: []
       spriteID: 7c1a2fb5960706200800000000000000
       internalID: 171260383656583623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yt_ Spearmen_13
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 120
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df03d01d52f3ca548824484e10d8f801
+      internalID: -2035058187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yt_ Spearmen_14
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 80
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5697194486689449bb94e61d36232a5
+      internalID: -529698787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yt_ Spearmen_15
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e764ca1bc95504f842642348b7cdfd
+      internalID: -1356839479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yt_ Spearmen_16
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa84a991f8f5f14cbd11a09d2c0a6af
+      internalID: 30378889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yt_ Spearmen_17
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4c24382c9b83e44ebca315bf1c0ecbb
+      internalID: 243239943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yt_ Spearmen_18
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 1
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c800fa62b303c4e973222059d2e62c
+      internalID: 1278976765
       vertices: []
       indices: 
       edges: []
@@ -440,6 +572,12 @@ TextureImporter:
       Yt_ Spearmen_10: -3568617564483241065
       Yt_ Spearmen_11: -7459964242959384731
       Yt_ Spearmen_12: 171260383656583623
+      Yt_ Spearmen_13: -2035058187
+      Yt_ Spearmen_14: -529698787
+      Yt_ Spearmen_15: -1356839479
+      Yt_ Spearmen_16: 30378889
+      Yt_ Spearmen_17: 243239943
+      Yt_ Spearmen_18: 1278976765
       Yt_ Spearmen_2: -5643000530828778825
       Yt_ Spearmen_3: 2191332501038488177
       Yt_ Spearmen_4: -5334403329684231722
