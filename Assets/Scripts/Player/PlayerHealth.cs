@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI; // Essential for Slider
 
@@ -11,16 +12,21 @@ public class PlayerHealth : MonoBehaviour
     public float pixelsPerHealthPoint = 1f; // Each 1 HP adds 1 pixel of width
     private RectTransform sliderRect;
 
+    [Header("I-Frames")]
+    public float invincibilityDuration = 0.5f;
+    private bool isInvincible = false;
+
     void Awake()
     {
         currentHealth = maxHealth;
         sliderRect = healthSlider.GetComponent<RectTransform>();
         UpdateBarVisuals();
     }
-    // Update your TakeDamage function to this:
-    // Change this in PlayerHealth.cs
+
     public void TakeDamage(float amount, Vector2 attackerPos, Vector2 knockbackForce)
     {
+        if (isInvincible || currentHealth <= 0) return;
+
         currentHealth -= (int)amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
@@ -31,6 +37,16 @@ public class PlayerHealth : MonoBehaviour
         if (rb != null) rb.AddForce(knockbackForce, ForceMode2D.Impulse);
 
         if (currentHealth <= 0) Die();
+
+        StartCoroutine(InvincibilityRoutine());
+    }
+
+    private IEnumerator InvincibilityRoutine()
+    {
+        isInvincible = true;
+        // Optional: Make the player sprite flicker
+        yield return new WaitForSeconds(invincibilityDuration);
+        isInvincible = false;
     }
 
     void Die()
@@ -39,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
         // Add death logic here (e.g., Reload scene or Play animation)
     }
 
-    // --- ADD THIS FUNCTION ---
+  
     public void IncreaseMaxHealth(int increaseAmount)
     {
         maxHealth += increaseAmount;
@@ -60,4 +76,5 @@ public class PlayerHealth : MonoBehaviour
             healthSlider.value = currentHealth;
         }
     }
+
 }

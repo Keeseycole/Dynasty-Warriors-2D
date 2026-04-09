@@ -33,7 +33,7 @@ public class MusouUnit : sleepEnemy
     private bool isBusy = false;
     private Vector2 myFormationSpot;
     private Health health;
-    private Transform playerTransform;
+    public Transform playerTransform;
 
     private Coroutine recoveryCoroutine;
     private Coroutine activeAction;
@@ -48,6 +48,16 @@ public class MusouUnit : sleepEnemy
     public int squadIndex; // Assigned by the leader (0, 1, 2, etc.)
     public float stoppingDistance = 0.2f;
 
+
+    [Header("Spacing Settings")]
+    public float personalSpaceRadius = 1.5f; // How far they stay from your center
+    private Vector2 attackOffset; // Their unique "slot" around you
+
+    [Header("Starting Face Direction")]
+    public Vector2 startingDirection = Vector2.down; // Default to facing Down
+
+
+
     public void Start()
     {
         health = GetComponent<Health>();
@@ -57,6 +67,13 @@ public class MusouUnit : sleepEnemy
             if (player != null) playerTransform = player.transform;
         }
 
+        // FORCE STARTING DIRECTION
+        ChangeAnim(startingDirection.normalized);
+
+        // If you use a Blend Tree, also set the parameters directly
+        animator.SetFloat("moveX", startingDirection.x);
+        animator.SetFloat("moveY", startingDirection.y);
+
         // Give each unit a unique offset so they surround targets/player
         float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         myFormationSpot = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 1.5f;
@@ -65,6 +82,9 @@ public class MusouUnit : sleepEnemy
 
         // Start the scanning loop (Don't run FindNearestTarget every single frame!)
         InvokeRepeating("FindNearestTarget", 0f, 0.5f);
+
+        float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+        attackOffset = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * personalSpaceRadius;
     }
     void Update()
     {
@@ -80,53 +100,43 @@ public class MusouUnit : sleepEnemy
         }
     }
 
-    private void FixedUpdate()
-    {
-        // Guard: Don't move if dead or simulating off-screen
-        if (health != null && !health.isSimulating) return;
-
-        CheckDistance();
-    }
-
     public override void CheckDistance()
     {
         if (isBusy || currentState == EnemyState.Stagger || animator.GetBool("isHit")) return;
 
-        // 1. COMBAT: If I see the player/enemy, CHARGE!
+        // 1. COMBAT MODE
         if (currentTarget != null)
         {
-            float distToEnemy = Vector2.Distance(transform.position, currentTarget.position);
+            // Instead of the exact player position, aim for a spot NEAR the player
+            Vector2 targetPosWithOffset = (Vector2)currentTarget.position + attackOffset;
+            float distToEnemy = Vector2.Distance(transform.position, targetPosWithOffset);
+
             if (distToEnemy <= attackRadius)
             {
+                StopMoving();
                 if (!isBusy) StartCoroutine(BrainTick());
             }
             else
             {
-                MoveTowards(currentTarget.position, true);
+                MoveTowards(targetPosWithOffset, true);
             }
             return;
         }
 
-        // 2. SQUAD LOGIC: Only if I am a follower
-        if (myLeader != null && myLeader != this)
+        // 2. SQUAD MODE (The fix is here)
+        if (myLeader != null)
         {
-            MoveTowards(myLeader.GetSlotPosition(squadIndex), false);
-            return;
-        }
+            Vector2 slotPos = myLeader.GetSlotPosition(squadIndex);
+            float distToSlot = Vector2.Distance(transform.position, slotPos);
 
-        // 3. ENEMY LEADER SEARCH: If I am an Enemy Leader and have no target
-        if (unitTeam == Team.EnemySide && playerTransform != null)
-        {
-            float distToPlayer = Vector2.Distance(transform.position, playerTransform.position);
-
-            // If the player is within a large "Aggro Range," move toward them to start the fight
-            if (distToPlayer < detectionRange)
+            // ADD THIS: If we are within 0.2 units of the slot, stop running!
+            if (distToSlot < 0.2f)
             {
-                MoveTowards(playerTransform.position, true);
+                StopMoving();
             }
             else
             {
-                StopMoving(); // Or stay at their guard post
+                MoveTowards(slotPos, false);
             }
         }
     }
@@ -134,25 +144,39 @@ public class MusouUnit : sleepEnemy
     // --- MOVEMENT ---
     void MoveTowards(Vector2 targetPos, bool isChasing)
     {
-        Vector2 path = (targetPos - (Vector2)transform.position).normalized;
+        // If chasing the player, target the OFFSET spot, not the player's 0,0
+        if (isChasing && currentTarget.CompareTag("Player"))
+        {
+            targetPos += attackOffset;
+        }
+
+        Vector2 dir = (targetPos - (Vector2)transform.position).normalized;
         Vector2 separation = ComputeSeparationForce();
 
-        rb.linearVelocity = (path + (separation * 0.4f)).normalized * moveSpeed;
+        // Prioritize SEPARATION over CHASE (Strength 1.5 vs 1.0)
+        // This pushes them apart if they overlap while running
+        Vector2 finalVelocity = (dir + (separation * 1.5f)).normalized * moveSpeed;
 
-        // Face the target if chasing, otherwise face movement direction
-        Vector2 faceDir = isChasing && currentTarget != null ? (Vector2)(currentTarget.position - transform.position) : path;
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, finalVelocity, Time.fixedDeltaTime * 10f);
+
+        // Standard animation updates
+        Vector2 faceDir = isChasing && currentTarget != null ? (Vector2)(currentTarget.position - transform.position) : dir;
         ChangeAnim(faceDir.normalized);
-
         animator.SetBool("isMoving", true);
-        ChangeState(EnemyState.Walk);
     }
 
     void StopMoving()
     {
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("isMoving", false);
+
+        rb.linearVelocity = Vector2.zero;
+        animator.SetBool("isMoving", false);
         animator.SetBool("isStrafing", false);
+
         ChangeState(EnemyState.Idle);
+
+
     }
 
     // --- BRAIN & COMBAT ---
@@ -283,14 +307,29 @@ public class MusouUnit : sleepEnemy
     private Vector2 ComputeSeparationForce()
     {
         Vector2 separation = Vector2.zero;
-        // Use searchLayers to avoid clumping with ANY unit (Ally or Enemy)
         Collider2D[] nearby = Physics2D.OverlapCircleAll(transform.position, separationRadius, searchLayers);
 
         foreach (var other in nearby)
         {
             if (other.gameObject == this.gameObject) continue;
+
             Vector2 diff = (Vector2)transform.position - (Vector2)other.transform.position;
-            separation += diff.normalized / (diff.magnitude + 0.1f);
+            float distance = diff.magnitude;
+
+            // THE FIX: If distance is 0, they are "inside" each other.
+            // Give them a tiny random push so the math doesn't break.
+            if (distance < 0.01f)
+            {
+                diff = Random.insideUnitCircle.normalized * 0.1f;
+                distance = 0.1f;
+            }
+
+            if (distance < separationRadius)
+            {
+                // Use a clamped force so it never explodes to Infinity
+                float force = (separationRadius - distance) / separationRadius;
+                separation += diff.normalized * force;
+            }
         }
         return separation * separationStrength;
     }
@@ -351,6 +390,11 @@ public class MusouUnit : sleepEnemy
             playerHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force);
         }
         
+    }
+
+    public virtual Vector2 GetSlotPosition(int index)
+    {
+        return transform.position; // Default: just return my own position
     }
 
     IEnumerator Combo1() { yield return StartCoroutine(PlayAttack("attack1")); }

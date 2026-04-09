@@ -34,10 +34,11 @@ public class BattleManager : MonoBehaviour
     {
         unitGrid.Clear();
 
-        // 1. Sort all units into grid cells
-        Health[] allUnits = Object.FindObjectsByType<Health>(FindObjectsSortMode.None);
-        foreach (var unit in allUnits)
+        // 1. Use your existing list (Performance Fix)
+        foreach (var unit in activeUnits)
         {
+            if (unit == null) continue;
+
             Vector2Int gridPos = new Vector2Int(
                 Mathf.FloorToInt(unit.transform.position.x / cellSize),
                 Mathf.FloorToInt(unit.transform.position.y / cellSize)
@@ -47,22 +48,36 @@ public class BattleManager : MonoBehaviour
             unitGrid[gridPos].Add(unit);
         }
 
-        // 2. Units in the same cell fight each other
+        // 2. Simulated Battle Loop
         foreach (var cell in unitGrid.Values)
         {
-            if (cell.Count < 2) continue; // Need at least 2 units to fight
+            if (cell.Count < 2) continue;
 
             foreach (var unitA in cell)
             {
-                if (!unitA.isSimulating) continue; // Only simulate off-screen units
+                // NOTE: Change this to !isSimulating because you want to 
+                // simulate the ones the player CANNOT see.
+                if (unitA.isSimulating) continue;
+
+                MusouUnit aiA = unitA.GetComponent<MusouUnit>();
 
                 foreach (var unitB in cell)
                 {
-                    // If they are on different teams, apply simulated damage
-                    // if (unitA.faction != unitB.faction) 
-                    // {
-                    //    unitA.SimulatedDamage(1f * Time.deltaTime);
-                    // }
+                    if (unitA == unitB) continue;
+                    MusouUnit aiB = unitB.GetComponent<MusouUnit>();
+
+                    // 3. Team Check & Pulse Trigger
+                    if (aiA != null && aiB != null && aiA.unitTeam != aiB.unitTeam)
+                    {
+                        // DW3 FEEL: Assign target so the Minimap Pulse starts!
+                        aiA.currentTarget = unitB.transform;
+
+                        // Apply a tiny amount of damage over time
+                        unitA.TakeDamage(0.5f * Time.deltaTime, unitB.transform.position, Vector2.zero);
+
+                        // Break so we don't fight EVERY single enemy in the cell at once
+                        break;
+                    }
                 }
             }
         }

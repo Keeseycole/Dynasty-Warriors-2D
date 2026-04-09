@@ -1,8 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+public enum FormationType { Wedge, Circle, Square, Line }
+
 public class SquadLeader : MusouUnit // Inherit from your unit script
 {
+   
+
+    [Header("New Formation Settings")]
+    public FormationType currentFormation;
+    public float formationRotation = 0f; // Degrees (e.g., 0 = Down, 90 = Left)
+
     [Header("Squad Management")]
     public List<MusouUnit> squadMembers = new List<MusouUnit>();
     public float formationSpacing = 2.0f;
@@ -13,6 +21,8 @@ public class SquadLeader : MusouUnit // Inherit from your unit script
     [Range(0.5f, 10f)] // Adds a slider to the Inspector
     public float spacing = 2.0f;
 
+    public float engageDistance = 8f; // When the squad breaks formation to fight
+    private bool squadEngaged = false;
 
 
     private void Start()
@@ -33,22 +43,92 @@ public class SquadLeader : MusouUnit // Inherit from your unit script
 
     private void Update()
     {
-        // If the Leader finds a target, tell the whole squad to attack it!
-        if (currentTarget != null)
+
+  
+        // 1. If we don't have a player reference, find one
+        if (playerTransform == null)
         {
-            BroadcastTarget(currentTarget);
+            GameObject p = GameObject.FindGameObjectWithTag("Player");
+            if (p != null) playerTransform = p.transform;
         }
 
+        if (playerTransform == null) return;
+
+        // 2. Simple DW3 Distance Check
+        float distToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+
+        // 3. Trigger the Squad Rush
+        if (distToPlayer <= engageDistance && !squadEngaged)
+        {
+            SetSquadMode(true);
+        }
+        else if (distToPlayer > engageDistance + 5f && squadEngaged)
+        {
+            SetSquadMode(false);
+        }
+
+        // 4. If we are fighting, make sure everyone knows who to hit
+        if (squadEngaged)
+        {
+            currentTarget = playerTransform;
+            BroadcastTarget(playerTransform);
+        }
+    }
+    void SetSquadMode(bool attack)
+    {
+        squadEngaged = attack;
+
+        foreach (MusouUnit member in squadMembers)
+        {
+            if (member == null) continue;
+
+            if (attack)
+            {
+                member.currentTarget = playerTransform;
+                // Optional: Give them a random offset so they don't all stack on one pixel
+                member.moveSpeed *= 1.2f;
+            }
+            else
+            {
+                // This is how they "go back" to the leader after the player runs away
+                member.currentTarget = null;
+                member.moveSpeed /= 1.2f;
+            }
+        }
     }
 
     // This math creates a V-shape / Staggered Grid
-    public Vector2 GetSlotPosition(int index)
+    public override Vector2 GetSlotPosition(int index)
     {
-        // Alternating Left/Right math
-        float xOffset = (index % 2 == 0 ? 1 : -1) * spacing * ((index / 2) + 1);
-        float yOffset = -spacing * ((index / 2) + 1);
+        Vector2 offset = Vector2.zero;
 
-        return (Vector2)transform.position + new Vector2(xOffset, yOffset);
+        switch (currentFormation)
+        {
+            case FormationType.Wedge: // Classic V-shape
+                float xW = (index % 2 == 0 ? 1 : -1) * spacing * ((index / 2) + 1);
+                float yW = -spacing * ((index / 2) + 1);
+                offset = new Vector2(xW, yW);
+                break;
+
+            case FormationType.Circle:
+                float angle = (360f / 8f) * index * Mathf.Deg2Rad; // Assumes ~8 units
+                offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * spacing * 2;
+                break;
+
+            case FormationType.Square:
+                int columns = 3;
+                float xS = (index % columns) * spacing;
+                float yS = -(index / columns) * spacing;
+                offset = new Vector2(xS, yS);
+                break;
+
+            case FormationType.Line:
+                offset = new Vector2((index - 4) * spacing, -spacing); // Horizontal line
+                break;
+        }
+
+        // APPLY STARTING DIRECTION: Rotate the offset based on formationRotation
+        return (Vector2)transform.position + (Vector2)(Quaternion.Euler(0, 0, formationRotation) * offset);
     }
 
     public void BroadcastTarget(Transform target)

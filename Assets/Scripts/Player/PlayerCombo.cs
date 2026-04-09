@@ -148,7 +148,7 @@ public class PlayerCombo : MonoBehaviour
 
     private System.Collections.IEnumerator Hitstop(float duration)
     {
-        Time.timeScale = 0.05f;
+        Time.timeScale = 0.5f;
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = 1f;
     }

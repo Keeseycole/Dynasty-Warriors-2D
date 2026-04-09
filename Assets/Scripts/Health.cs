@@ -27,13 +27,16 @@ public class Health : MonoBehaviour
     private Color originalColor;
     private Coroutine flashCoroutine;
 
+    private Collider2D myCollider;
+
     public GameObject flashOverlay;
 
     private RectTransform sliderRect;
 
+
     private void Awake()
     {
-       
+        myCollider = GetComponent<Collider2D>();
 
         unitAI = GetComponent<MusouUnit>(); // Updated Reference
         rb = GetComponent<Rigidbody2D>();
@@ -103,8 +106,11 @@ public class Health : MonoBehaviour
             {
                unitAI.TriggerHit(attackerPosition);
             }
-    
-    
+
+            if (flashCoroutine == null)
+            {
+                flashCoroutine = StartCoroutine(MinimapFlashTick());
+            }
 
             StartCoroutine(HitlagRoutine(0.05f));
 
@@ -146,7 +152,7 @@ public class Health : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.simulated = false; // Stop physics collisions
         }
-
+ 
         if (KOCounter.instance != null)
         {
             KOCounter.instance.AddKO();
@@ -181,11 +187,43 @@ public class Health : MonoBehaviour
     private IEnumerator MinimapFlashTick()
     {
         if (minimapIconRenderer == null) yield break;
-        Color originalColor = minimapIconRenderer.color;
-        minimapIconRenderer.color = Color.yellow;
-        yield return new WaitForSeconds(0.1f);
-        minimapIconRenderer.color = originalColor;
+
+        Color teamColor = minimapIconRenderer.color;
+        float timer = 0f;
+        float pulseDuration = 2.0f; // Increased from 0.4s to 1.0s for a slower pulse
+
+        while (unitAI != null && unitAI.currentTarget != null)
+        {
+            timer += Time.deltaTime;
+
+            // Use a slower Sine wave for a gentle "breathing" transition
+            // Dividing timer by pulseDuration stretches the wave out
+            float t = (Mathf.Sin(timer * (Mathf.PI * 2) / pulseDuration) + 1f) / 2f;
+
+            minimapIconRenderer.color = Color.Lerp(teamColor, Color.white, t);
+
+            if (currentHealth <= 0) yield break;
+            yield return null;
+        }
+
+        minimapIconRenderer.color = teamColor;
         flashCoroutine = null;
+    }
+
+    public void SetCulling(bool isVisible)
+    {
+        isSimulating = isVisible; // Your simulation flag
+
+        // Hide the actual soldier, but KEEP the GameObject active
+        // This allows the MinimapFlashTick coroutine to keep running!
+        spriteRenderer.enabled = isVisible;
+        myCollider.enabled = isVisible;
+
+        // Ensure the minimap icon stays visible even when the unit is 'culled'
+        if (minimapIconRenderer != null)
+        {
+            minimapIconRenderer.enabled = true;
+        }
     }
 
     private IEnumerator HitlagRoutine(float duration)
@@ -208,5 +246,12 @@ public class Health : MonoBehaviour
         Debug.Log("Flash Ended");
     }
 
-  
+    void OnEnable()
+    {
+        if (unitAI != null && unitAI.currentTarget != null && flashCoroutine == null)
+        {
+            flashCoroutine = StartCoroutine(MinimapFlashTick());
+        }
+    }
+
 }

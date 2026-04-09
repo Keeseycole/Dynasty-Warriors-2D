@@ -1,0 +1,521 @@
+fileFormatVersion: 2
+guid: 6afc194ba90bfa1489f717f19c2670ac
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1187156312625246769
+    second: YT_Spear_Strafe_0
+  - first:
+      213: -1181518091209814674
+    second: YT_Spear_Strafe_1
+  - first:
+      213: -369095696611633428
+    second: YT_Spear_Strafe_2
+  - first:
+      213: -5911902717012494104
+    second: YT_Spear_Strafe_3
+  - first:
+      213: 1780520822868755948
+    second: YT_Spear_Strafe_4
+  - first:
+      213: 2226801247707485636
+    second: YT_Spear_Strafe_5
+  - first:
+      213: 1189453596971142198
+    second: YT_Spear_Strafe_6
+  - first:
+      213: 60269908122105988
+    second: YT_Spear_Strafe_7
+  - first:
+      213: 8685577900529902596
+    second: YT_Spear_Strafe_8
+  - first:
+      213: -3098380157304351804
+    second: YT_Spear_Strafe_9
+  - first:
+      213: 3657627414486007894
+    second: YT_Spear_Strafe_10
+  - first:
+      213: -7311731930046841992
+    second: YT_Spear_Strafe_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 119
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcd0c1d9f9f568fe0800000000000000
+      internalID: -1187156312625246769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 119
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6dcdb55e876a9fe0800000000000000
+      internalID: -1181518091209814674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 119
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce696536b65b0eaf0800000000000000
+      internalID: -369095696611633428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_3
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 119
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e8bdcd2dc3b4fda0800000000000000
+      internalID: -5911902717012494104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_4
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 79
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce5474a314ea5b810800000000000000
+      internalID: 1780520822868755948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_5
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 79
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c5500bcfef27ee10800000000000000
+      internalID: 2226801247707485636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_6
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 79
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63c86449eb9c18010800000000000000
+      internalID: 1189453596971142198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_7
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 79
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4887340892f16d000800000000000000
+      internalID: 60269908122105988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_8
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 39
+        width: 14
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4046116151f598870800000000000000
+      internalID: 8685577900529902596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_9
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 39
+        width: 13
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c351c0b9a75005d0800000000000000
+      internalID: -3098380157304351804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_10
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 39
+        width: 13
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6504b2921c082c230800000000000000
+      internalID: 3657627414486007894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_11
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 39
+        width: 13
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87b3da08c82878a90800000000000000
+      internalID: -7311731930046841992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_12
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff82dc8d21337c342a8fd0efa2d02557
+      internalID: 1313487401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_13
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 0
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7522a99f1ada7664c908d079afa7c131
+      internalID: 1090857532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_14
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 0
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7467cca6c8ae8034e9ddb57e2026c260
+      internalID: -30549069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YT_Spear_Strafe_15
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 0
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d2432097eb73e478fc713f4c73f2d6
+      internalID: -497740385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6fc5e8126e3e90a42a6fe5ac58f70cb3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      YT_Spear_Strafe_0: -1187156312625246769
+      YT_Spear_Strafe_1: -1181518091209814674
+      YT_Spear_Strafe_10: 3657627414486007894
+      YT_Spear_Strafe_11: -7311731930046841992
+      YT_Spear_Strafe_12: 1313487401
+      YT_Spear_Strafe_13: 1090857532
+      YT_Spear_Strafe_14: -30549069
+      YT_Spear_Strafe_15: -497740385
+      YT_Spear_Strafe_2: -369095696611633428
+      YT_Spear_Strafe_3: -5911902717012494104
+      YT_Spear_Strafe_4: 1780520822868755948
+      YT_Spear_Strafe_5: 2226801247707485636
+      YT_Spear_Strafe_6: 1189453596971142198
+      YT_Spear_Strafe_7: 60269908122105988
+      YT_Spear_Strafe_8: 8685577900529902596
+      YT_Spear_Strafe_9: -3098380157304351804
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
