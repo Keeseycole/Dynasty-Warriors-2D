@@ -6,12 +6,15 @@ public class MusouUnit : sleepEnemy
 {
     public enum Team { PlayerSide, EnemySide, Neutral }
 
+    public enum AIMission { FollowLeader, CaptureBase, AttackCommander }
+   
+    public AIMission currentMission = AIMission.FollowLeader;
+    public Transform missionTarget; // This could be a Base or the Commander
+
     [Header("Faction Settings")]
     public Team unitTeam;
     public bool followsPlayer;
     public LayerMask searchLayers;
-
- 
 
     [Header("Movement & Detection")]
     public float detectionRange = 10f;
@@ -56,7 +59,7 @@ public class MusouUnit : sleepEnemy
     [Header("Starting Face Direction")]
     public Vector2 startingDirection = Vector2.down; // Default to facing Down
 
-
+    public bool isOfficer;
 
     public void Start()
     {
@@ -78,7 +81,20 @@ public class MusouUnit : sleepEnemy
         float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         myFormationSpot = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 1.5f;
 
-        comboList = new List<System.Func<IEnumerator>> { Combo1, Combo2, Combo3 };
+        if (isOfficer)
+        {
+            // Officers get the full 5-hit chain
+            comboList = new List<System.Func<IEnumerator>> { Combo1, Combo2, Combo3, Combo4, Combo5 };
+
+            // Pro Tip: You can also boost officer stats here
+            damageToGive *= 2f;
+            aggressionScore = 0.9f;
+        }
+        else
+        {
+            // Regular grunts are limited to 3-hit combos
+            comboList = new List<System.Func<IEnumerator>> { Combo1, Combo2, Combo3 };
+        }
 
         // Start the scanning loop (Don't run FindNearestTarget every single frame!)
         InvokeRepeating("FindNearestTarget", 0f, 0.5f);
@@ -102,12 +118,13 @@ public class MusouUnit : sleepEnemy
 
     public override void CheckDistance()
     {
+        // 0. STOP: If hurt or busy, don't do anything
         if (isBusy || currentState == EnemyState.Stagger || animator.GetBool("isHit")) return;
 
-        // 1. COMBAT MODE
+        // 1. PRIORITY: COMBAT (Stay and Fight)
+        // If we have a target, stay here until it's dead or we lose it
         if (currentTarget != null)
         {
-            // Instead of the exact player position, aim for a spot NEAR the player
             Vector2 targetPosWithOffset = (Vector2)currentTarget.position + attackOffset;
             float distToEnemy = Vector2.Distance(transform.position, targetPosWithOffset);
 
@@ -116,36 +133,55 @@ public class MusouUnit : sleepEnemy
                 StopMoving();
                 if (!isBusy) StartCoroutine(BrainTick());
             }
-            else
+            else if (distToEnemy < detectionRange * 1.5f) // Chase range
             {
                 MoveTowards(targetPosWithOffset, true);
             }
-            return;
+            else
+            {
+                // Enemy got too far away, give up and return to mission
+                currentTarget = null;
+            }
+
+            return; // Exit! Don't look at missions while fighting.
         }
 
-        // 2. SQUAD MODE (The fix is here)
+        // 2. PRIORITY: MISSION (Advance when clear)
+        if (missionTarget != null)
+        {
+            Debug.DrawLine(transform.position, missionTarget.position, Color.green);
+            float distToMission = Vector2.Distance(transform.position, missionTarget.position);
+
+            if (distToMission > 1.5f)
+            {
+                MoveTowards(missionTarget.position, false);
+                return;
+            }
+            else
+            {
+                missionTarget = null;
+                StopMoving();
+            }
+        }
+
+        // 3. PRIORITY: SQUAD (Follower logic)
         if (myLeader != null)
         {
             Vector2 slotPos = myLeader.GetSlotPosition(squadIndex);
             float distToSlot = Vector2.Distance(transform.position, slotPos);
 
-            // ADD THIS: If we are within 0.2 units of the slot, stop running!
-            if (distToSlot < 0.2f)
-            {
-                StopMoving();
-            }
-            else
-            {
-                MoveTowards(slotPos, false);
-            }
+            if (distToSlot < 0.2f) StopMoving();
+            else MoveTowards(slotPos, false);
         }
     }
 
     // --- MOVEMENT ---
     void MoveTowards(Vector2 targetPos, bool isChasing)
     {
-        // If chasing the player, target the OFFSET spot, not the player's 0,0
-        if (isChasing && currentTarget.CompareTag("Player"))
+        Debug.Log($"{gameObject.name} is moving to {targetPos}. Speed: {moveSpeed}");
+
+        // FIX: Only check the tag if currentTarget is NOT null
+        if (isChasing && currentTarget != null && currentTarget.CompareTag("Player"))
         {
             targetPos += attackOffset;
         }
@@ -153,11 +189,17 @@ public class MusouUnit : sleepEnemy
         Vector2 dir = (targetPos - (Vector2)transform.position).normalized;
         Vector2 separation = ComputeSeparationForce();
 
-        // Prioritize SEPARATION over CHASE (Strength 1.5 vs 1.0)
-        // This pushes them apart if they overlap while running
-        Vector2 finalVelocity = (dir + (separation * 1.5f)).normalized * moveSpeed;
+        // DW3 Optimization: Reduce separation strength when marching to a mission
+        float sepWeight = isChasing ? 1.5f : 0.2f;
 
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, finalVelocity, Time.fixedDeltaTime * 10f);
+        Vector2 finalVelocity = (dir + (separation * sepWeight)).normalized * moveSpeed;
+      
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, finalVelocity, Time.deltaTime * 10f);
+
+        if (rb.linearVelocity.magnitude < 0.1f)
+        {
+            Debug.LogWarning($"{gameObject.name} has almost zero velocity!");
+        }
 
         // Standard animation updates
         Vector2 faceDir = isChasing && currentTarget != null ? (Vector2)(currentTarget.position - transform.position) : dir;
@@ -397,7 +439,28 @@ public class MusouUnit : sleepEnemy
         return transform.position; // Default: just return my own position
     }
 
-    IEnumerator Combo1() { yield return StartCoroutine(PlayAttack("attack1")); }
-    IEnumerator Combo2() { yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2")); }
-    IEnumerator Combo3() { yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2")); yield return StartCoroutine(PlayAttack("attack3")); }
+    IEnumerator Combo1() 
+    { 
+        yield return StartCoroutine(PlayAttack("attack1")); 
+    }
+    IEnumerator Combo2() 
+    { 
+        yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2")); 
+    }
+    IEnumerator Combo3() 
+    {
+        yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2"));
+        yield return StartCoroutine(PlayAttack("attack3")); 
+    }
+    IEnumerator Combo4() 
+    { 
+     yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2")); 
+     yield return StartCoroutine(PlayAttack("attack3")); yield return StartCoroutine(PlayAttack("attack4"));
+    }
+
+    IEnumerator Combo5()
+    {
+        yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2"));
+        yield return StartCoroutine(PlayAttack("attack3")); yield return StartCoroutine(PlayAttack("attack4"));
+    }
 }

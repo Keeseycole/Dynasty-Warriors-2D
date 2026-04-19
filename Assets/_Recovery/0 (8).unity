@@ -96464,11 +96464,11 @@ MonoBehaviour:
   currentState: 0
   baseAttack: 0
   enemyName: 
-  moveSpeed: 4
+  moveSpeed: 6
   rb: {fileID: 1634997913}
   currentTarget: {fileID: 0}
-  chaseRadius: 4
-  attackRadius: 1.5
+  chaseRadius: 5
+  attackRadius: 2
   animator: {fileID: 170798399}
   currentMission: 0
   missionTarget: {fileID: 0}

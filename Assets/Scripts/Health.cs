@@ -189,20 +189,21 @@ public class Health : MonoBehaviour
         if (minimapIconRenderer == null) yield break;
 
         Color teamColor = minimapIconRenderer.color;
-        float timer = 0f;
-        float pulseDuration = 2.0f; // Increased from 0.4s to 1.0s for a slower pulse
+        // Add a random starting point so units don't pulse at the exact same time
+        float timer = Random.Range(0f, 2f);
+        float pulseDuration = 1.2f;
 
         while (unitAI != null && unitAI.currentTarget != null)
         {
             timer += Time.deltaTime;
 
-            // Use a slower Sine wave for a gentle "breathing" transition
-            // Dividing timer by pulseDuration stretches the wave out
+            // Use the Sine wave for the "Smooth" transition
             float t = (Mathf.Sin(timer * (Mathf.PI * 2) / pulseDuration) + 1f) / 2f;
 
-            minimapIconRenderer.color = Color.Lerp(teamColor, Color.white, t);
+            // "Classic" Fade: Pulse between the Team Color and a Bright Highlight
+            // This keeps the icon visible (non-transparent) at all times
+            minimapIconRenderer.color = teamColor + (Color.yellow * t * 0.5f);
 
-            if (currentHealth <= 0) yield break;
             yield return null;
         }
 
