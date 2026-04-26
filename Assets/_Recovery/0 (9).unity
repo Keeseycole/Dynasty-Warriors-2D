@@ -841,7 +841,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1490654705367763200, guid: d9181e61fb29abc46a74ed92b3032f13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -96469,8 +96469,8 @@ MonoBehaviour:
   moveSpeed: 4
   rb: {fileID: 1634997913}
   currentTarget: {fileID: 0}
-  chaseRadius: 3
-  attackRadius: 3
+  chaseRadius: 4
+  attackRadius: 1.5
   animator: {fileID: 170798399}
   currentMission: 0
   missionTarget: {fileID: 0}
@@ -96479,11 +96479,11 @@ MonoBehaviour:
   searchLayers:
     serializedVersion: 2
     m_Bits: 384
-  detectionRange: 4
-  followDistance: 3
+  detectionRange: 5
+  followDistance: 5
   strafeSpeed: 0.5
   damageToGive: 5
-  aggressionScore: 0.607
+  aggressionScore: 0.27
   attackCooldown: 1.5
   separationRadius: 1.21
   separationStrength: 4.49
@@ -96495,7 +96495,7 @@ MonoBehaviour:
   stoppingDistance: 0.2
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
-  isOfficer: 1
+  isOfficer: 0
 --- !u!114 &1634997909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96526,7 +96526,7 @@ MonoBehaviour:
   maxHealth: 150
   healthBar: {fileID: 58555166}
   stats: {fileID: 0}
-  currentHealth: 150
+  currentHealth: 20
   isSimulating: 0
   minimapIconRenderer: {fileID: 1381092170}
   flashOverlay: {fileID: 2082667276}

@@ -1,28 +1,19 @@
 fileFormatVersion: 2
-guid: bafdf53f81019ff49ba10b8a036268fe
+guid: 0fc9a7c3f871ce144bc23ed034b2d7f5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2030469662206570547
-    second: Zhang Jiao Combo Right_0
+      213: 2550520141338821408
+    second: Zhang Jiao Strafe_0
   - first:
-      213: -111754926517664094
-    second: Zhang Jiao Combo Right_1
+      213: 7408636748357456224
+    second: Zhang Jiao Strafe_1
   - first:
-      213: -3573960549087684741
-    second: Zhang Jiao Combo Right_2
+      213: -2083719425174945153
+    second: Zhang Jiao Strafe_2
   - first:
-      213: -8754588901742155831
-    second: Zhang Jiao Combo Right_3
-  - first:
-      213: 7629290044515127063
-    second: Zhang Jiao Combo Right_4
-  - first:
-      213: -7353331451455047481
-    second: Zhang Jiao Combo Right_5
-  - first:
-      213: 8571770584084821983
-    second: Zhang Jiao Combo Right_6
+      213: 4984460150473748989
+    second: Zhang Jiao Strafe_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Zhang Jiao Combo Right_0
+      name: Zhang Jiao Strafe_0
       rect:
         serializedVersion: 2
         x: 0
@@ -133,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 330b70f566dad2c10800000000000000
-      internalID: 2030469662206570547
+      spriteID: 023caf82e84456320800000000000000
+      internalID: 2550520141338821408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zhang Jiao Combo Right_1
+      name: Zhang Jiao Strafe_1
       rect:
         serializedVersion: 2
         x: 40
@@ -155,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a6c3078c77f27ef0800000000000000
-      internalID: -111754926517664094
+      spriteID: 06150c7bed3c0d660800000000000000
+      internalID: 7408636748357456224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zhang Jiao Combo Right_2
+      name: Zhang Jiao Strafe_2
       rect:
         serializedVersion: 2
         x: 80
@@ -177,149 +168,105 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b775e56f0ddb66ec0800000000000000
-      internalID: -3573960549087684741
+      spriteID: f72cdda09342513e0800000000000000
+      internalID: -2083719425174945153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zhang Jiao Combo Right_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 120
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c7e41517c3718680800000000000000
-      internalID: -8754588901742155831
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zhang Jiao Combo Right_4
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 120
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 71f8fbfafdea0e960800000000000000
-      internalID: 7629290044515127063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zhang Jiao Combo Right_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 120
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7c870582108b3f990800000000000000
-      internalID: -7353331451455047481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zhang Jiao Combo Right_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 80
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd7b4885eeb05f670800000000000000
-      internalID: 8571770584084821983
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zhang Jiao Combo Right_7
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 80
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7538dbd0a070b9049a1d2411e9254d8f
-      internalID: 2046435050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zhang Jiao Combo Right_8
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 80
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7525f9c3479ffd140ae584a308a395cb
-      internalID: -462030185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zhang Jiao Combo Right_9
+      name: Zhang Jiao Strafe_3
       rect:
         serializedVersion: 2
         x: 120
+        y: 160
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df1f31a191c5c2540800000000000000
+      internalID: 4984460150473748989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhang Jiao Strafe_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccd5caca6b2f66a4ab7399d85d25af43
+      internalID: -1487568723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhang Jiao Strafe_5
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 120
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52a95a46205c97943a8c3188b63d1db3
+      internalID: -1374486081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhang Jiao Strafe_6
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 120
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13bd394f4cb935a49b15f0c2e9c27b1a
+      internalID: -1740151374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhang Jiao Strafe_7
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 80
         width: 40
         height: 40
@@ -331,14 +278,58 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4d105ec37c6d8a4683ae30537164392
-      internalID: 809593457
+      spriteID: e15e307d255faaf45b40d0903cedcd32
+      internalID: -1226863618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zhang Jiao Combo Right_10
+      name: Zhang Jiao Strafe_8
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 80
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bd2cc13f7d29a448ab02d86f608d75a
+      internalID: -1295598499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhang Jiao Strafe_9
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3eb87cd352cc394ea7f0455030c07e7
+      internalID: 1493278156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zhang Jiao Strafe_10
       rect:
         serializedVersion: 2
         x: 0
@@ -353,14 +344,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95e402284cd8d0a46bcdabbb88766aa5
-      internalID: 20777655
+      spriteID: 73457d32fab65114798f1f5aae58bf60
+      internalID: 1570127437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zhang Jiao Combo Right_11
+      name: Zhang Jiao Strafe_11
       rect:
         serializedVersion: 2
         x: 40
@@ -375,14 +366,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c0fc18143ba1874d8d6cb41e671d594
-      internalID: -145893475
+      spriteID: 2b001c70b2651d3468e8dd5ba211bf0f
+      internalID: 1629659397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zhang Jiao Combo Right_12
+      name: Zhang Jiao Strafe_12
       rect:
         serializedVersion: 2
         x: 80
@@ -397,14 +388,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16c1ba5cd52085c47a0c5cef498537c5
-      internalID: -928901121
+      spriteID: 4a59cff73c5b7aa4c9d941f769fcf5e7
+      internalID: -384325795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zhang Jiao Combo Right_13
+      name: Zhang Jiao Strafe_13
       rect:
         serializedVersion: 2
         x: 0
@@ -419,14 +410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79d155236cd9d0749ace8f4261171a24
-      internalID: -293673034
+      spriteID: f921227e1569d364b87da2b42ff77ece
+      internalID: -1504269969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zhang Jiao Combo Right_14
+      name: Zhang Jiao Strafe_14
       rect:
         serializedVersion: 2
         x: 40
@@ -441,14 +432,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b94cc515b6308fe4eac9601bf41a1032
-      internalID: -735175731
+      spriteID: 29f0129c5920aa942a3fc5f87a8f7e16
+      internalID: 393334202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zhang Jiao Combo Right_15
+      name: Zhang Jiao Strafe_15
       rect:
         serializedVersion: 2
         x: 80
@@ -463,52 +454,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12d8d0e6ed81d11489d0af59b318256a
-      internalID: -1918015816
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zhang Jiao Combo Right_16
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: faf74232e75d1c2409544656da2d0066
-      internalID: 28221048
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zhang Jiao Combo Right_17
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd76499c42f38d946892bdba79a30c97
-      internalID: 2129607730
+      spriteID: fdb68934906d564439c0c1ecde1c22aa
+      internalID: 1673907680
       vertices: []
       indices: 
       edges: []
@@ -517,7 +464,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a70e2b0e153be2846b121de77465a445
+    spriteID: 572e141d9567f9c40980009c0d0834e4
     internalID: 0
     vertices: []
     indices: 
@@ -527,26 +474,24 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":40.0,"y":40.0},"gridSpriteSize":{"x":40.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":40.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Zhang Jiao Combo Right_0: 2030469662206570547
-      Zhang Jiao Combo Right_1: -111754926517664094
-      Zhang Jiao Combo Right_10: 20777655
-      Zhang Jiao Combo Right_11: -145893475
-      Zhang Jiao Combo Right_12: -928901121
-      Zhang Jiao Combo Right_13: -293673034
-      Zhang Jiao Combo Right_14: -735175731
-      Zhang Jiao Combo Right_15: -1918015816
-      Zhang Jiao Combo Right_16: 28221048
-      Zhang Jiao Combo Right_17: 2129607730
-      Zhang Jiao Combo Right_2: -3573960549087684741
-      Zhang Jiao Combo Right_3: -8754588901742155831
-      Zhang Jiao Combo Right_4: 7629290044515127063
-      Zhang Jiao Combo Right_5: -7353331451455047481
-      Zhang Jiao Combo Right_6: 8571770584084821983
-      Zhang Jiao Combo Right_7: 2046435050
-      Zhang Jiao Combo Right_8: -462030185
-      Zhang Jiao Combo Right_9: 809593457
+      Zhang Jiao Strafe_0: 2550520141338821408
+      Zhang Jiao Strafe_1: 7408636748357456224
+      Zhang Jiao Strafe_10: 1570127437
+      Zhang Jiao Strafe_11: 1629659397
+      Zhang Jiao Strafe_12: -384325795
+      Zhang Jiao Strafe_13: -1504269969
+      Zhang Jiao Strafe_14: 393334202
+      Zhang Jiao Strafe_15: 1673907680
+      Zhang Jiao Strafe_2: -2083719425174945153
+      Zhang Jiao Strafe_3: 4984460150473748989
+      Zhang Jiao Strafe_4: -1487568723
+      Zhang Jiao Strafe_5: -1374486081
+      Zhang Jiao Strafe_6: -1740151374
+      Zhang Jiao Strafe_7: -1226863618
+      Zhang Jiao Strafe_8: -1295598499
+      Zhang Jiao Strafe_9: 1493278156
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

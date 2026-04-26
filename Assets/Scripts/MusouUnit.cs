@@ -88,7 +88,7 @@ public class MusouUnit : sleepEnemy
 
             // Pro Tip: You can also boost officer stats here
             damageToGive *= 2f;
-            aggressionScore = 0.9f;
+           // aggressionScore = 0.9f;
         }
         else
         {
@@ -462,5 +462,6 @@ public class MusouUnit : sleepEnemy
     {
         yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2"));
         yield return StartCoroutine(PlayAttack("attack3")); yield return StartCoroutine(PlayAttack("attack4"));
+        yield return StartCoroutine(PlayAttack("attack5"));
     }
 }
