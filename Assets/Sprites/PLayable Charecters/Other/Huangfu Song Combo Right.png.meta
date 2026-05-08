@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: 7f7d7276e52e65f4690fdced0bacae71
+guid: b6af0a3d3eca5ae40b7f9902b5e1ad58
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4826397654746514499
-    second: Huangfu Song_Idle_0
+      213: -6246345413303455979
+    second: Huangfu Song Combo Right_0
   - first:
-      213: 1825484954303734257
-    second: Huangfu Song_Idle_1
+      213: 1902403053295078466
+    second: Huangfu Song Combo Right_1
+  - first:
+      213: 7978257024193991123
+    second: Huangfu Song Combo Right_2
+  - first:
+      213: -5104068674995897449
+    second: Huangfu Song Combo Right_3
+  - first:
+      213: 6332286992510301570
+    second: Huangfu Song Combo Right_4
+  - first:
+      213: -5800865322419158274
+    second: Huangfu Song Combo Right_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Huangfu Song_Idle_0
+      name: Huangfu Song Combo Right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 344c1fb781fcaf240800000000000000
-      internalID: 4826397654746514499
+      spriteID: 51f28afe0f58059a0800000000000000
+      internalID: -6246345413303455979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huangfu Song_Idle_1
+      name: Huangfu Song Combo Right_1
       rect:
         serializedVersion: 2
         x: 40
@@ -140,14 +152,58 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f12814e4ec655910800000000000000
-      internalID: 1825484954303734257
+      spriteID: 24c85436f71b66a10800000000000000
+      internalID: 1902403053295078466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huangfu Song_Idle_2
+      name: Huangfu Song Combo Right_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 160
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d119dd2e7678be60800000000000000
+      internalID: 7978257024193991123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huangfu Song Combo Right_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 160
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79bbba52594ba29b0800000000000000
+      internalID: -5104068674995897449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huangfu Song Combo Right_4
       rect:
         serializedVersion: 2
         x: 0
@@ -160,16 +216,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 60dc91b5efa2698479ee930fcf381be3
-      internalID: -882913721
+      spriteID: 2853764487dc0e750800000000000000
+      internalID: 6332286992510301570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huangfu Song_Idle_3
+      name: Huangfu Song Combo Right_5
       rect:
         serializedVersion: 2
         x: 40
@@ -182,16 +238,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: eed49c55721de8249af60daa979f738b
-      internalID: 1099778621
+      spriteID: ef2035b39bf2f7fa0800000000000000
+      internalID: -5800865322419158274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huangfu Song_Idle_4
+      name: Huangfu Song Combo Right_6
       rect:
         serializedVersion: 2
         x: 80
@@ -206,14 +262,168 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6acdd4c0d1137554498458e2c75fc671
-      internalID: -961578725
+      spriteID: 5b02a1deca2bacd4f83715a20ac5571c
+      internalID: 1743663966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Huangfu Song_Idle_5
+      name: Huangfu Song Combo Right_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7296a56b1483e84d96f543e02a85ac9
+      internalID: -1100237240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huangfu Song Combo Right_8
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 80
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b57d15290e84f41b06628496f77eac
+      internalID: 1846179791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huangfu Song Combo Right_9
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2821be9691be16944926963c9871c354
+      internalID: -1770892002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huangfu Song Combo Right_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b301e710ae9dd4a43a06d6e444069c92
+      internalID: 1718145358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huangfu Song Combo Right_11
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2141d2636067b54f9f64525afdf495d
+      internalID: 718901926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huangfu Song Combo Right_12
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9392d544462a94e4da674b5362319166
+      internalID: -926455674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huangfu Song Combo Right_13
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd4d471e96ccf984f99a22755e43a8d8
+      internalID: 583022856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huangfu Song Combo Right_14
       rect:
         serializedVersion: 2
         x: 120
@@ -228,360 +438,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fce0529d626bf624287dda6e1cb1450a
-      internalID: 1457612486
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_6
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 120
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16309dfcf6999964780bc32eaeff9bfb
-      internalID: 1680200083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 80
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eae4361bcf44aed41a0c5ca09f642df6
-      internalID: -436669986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_8
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 80
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1a1916bd37f04445ac0619da19354f0
-      internalID: 213488264
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_9
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 80
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f25bd09a9fa62e04dbeff1839ec2a882
-      internalID: -83332278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_10
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 80
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e230aec633dd8ee42bcf2d36d85c1d55
-      internalID: -214669830
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_11
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 80
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f711877b504df9c428ba6ed202d4f23c
-      internalID: -1809233172
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e88b660c79b65cc4c9eaa878afd6c57c
-      internalID: 1557768199
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_13
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ce400fb68814df5438ebc475e6dae0e4
-      internalID: 2008565205
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_14
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a4c9a57b4bfb3540ac22766a01faee4
-      internalID: 1325202458
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_15
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 320da80411c3136458aa476aaf5e2207
-      internalID: -903665307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_16
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ee9f6b39918e984fb6ceabbae1b17b5
-      internalID: 76313400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_17
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0d3d08037aed7641b54f191bd0f384b
-      internalID: -1652467029
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_18
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 0
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 191c52cdd0259934589b53f6c26518af
-      internalID: -707958083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_19
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d08ab4db574cf204097b3d1ee11fd419
-      internalID: -466801902
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_20
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: be4c389fa040fbe4da74a6178b8a131f
-      internalID: 473609508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Huangfu Song_Idle_21
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56377b9fb6a01544ab1f927cf1e2a07f
-      internalID: -1046164089
+      spriteID: 9c7e5039193374e4e84fdb8bbc8abba0
+      internalID: -1356983463
       vertices: []
       indices: 
       edges: []
@@ -590,7 +448,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 98931024107a2c043861afc31c68cb6f
+    spriteID: 6e3292c46a128c149b2c41f2d18436da
     internalID: 0
     vertices: []
     indices: 
@@ -602,28 +460,21 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":40.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Huangfu Song_Idle_0: 4826397654746514499
-      Huangfu Song_Idle_1: 1825484954303734257
-      Huangfu Song_Idle_10: -214669830
-      Huangfu Song_Idle_11: -1809233172
-      Huangfu Song_Idle_12: 1557768199
-      Huangfu Song_Idle_13: 2008565205
-      Huangfu Song_Idle_14: 1325202458
-      Huangfu Song_Idle_15: -903665307
-      Huangfu Song_Idle_16: 76313400
-      Huangfu Song_Idle_17: -1652467029
-      Huangfu Song_Idle_18: -707958083
-      Huangfu Song_Idle_19: -466801902
-      Huangfu Song_Idle_2: -882913721
-      Huangfu Song_Idle_20: 473609508
-      Huangfu Song_Idle_21: -1046164089
-      Huangfu Song_Idle_3: 1099778621
-      Huangfu Song_Idle_4: -961578725
-      Huangfu Song_Idle_5: 1457612486
-      Huangfu Song_Idle_6: 1680200083
-      Huangfu Song_Idle_7: -436669986
-      Huangfu Song_Idle_8: 213488264
-      Huangfu Song_Idle_9: -83332278
+      Huangfu Song Combo Right_0: -6246345413303455979
+      Huangfu Song Combo Right_1: 1902403053295078466
+      Huangfu Song Combo Right_10: 1718145358
+      Huangfu Song Combo Right_11: 718901926
+      Huangfu Song Combo Right_12: -926455674
+      Huangfu Song Combo Right_13: 583022856
+      Huangfu Song Combo Right_14: -1356983463
+      Huangfu Song Combo Right_2: 7978257024193991123
+      Huangfu Song Combo Right_3: -5104068674995897449
+      Huangfu Song Combo Right_4: 6332286992510301570
+      Huangfu Song Combo Right_5: -5800865322419158274
+      Huangfu Song Combo Right_6: 1743663966
+      Huangfu Song Combo Right_7: -1100237240
+      Huangfu Song Combo Right_8: 1846179791
+      Huangfu Song Combo Right_9: -1770892002
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
