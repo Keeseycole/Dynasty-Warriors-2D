@@ -630,7 +630,7 @@ AnimatorStateMachine:
     m_Position: {x: 310, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3867167055942059383}
-    m_Position: {x: 310, y: 60, z: 0}
+    m_Position: {x: 630, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6529389781098436822}
     m_Position: {x: -90, y: 380, z: 0}
@@ -742,7 +742,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Movement Tree
+  m_Name: Run Tree
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
