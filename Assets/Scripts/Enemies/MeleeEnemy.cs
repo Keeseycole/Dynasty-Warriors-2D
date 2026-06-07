@@ -359,7 +359,7 @@ public class MeleeEnemy : sleepEnemy
             Vector2 knockbackDir = (currentTarget.position - transform.position).normalized;
             float force = 5f; // Or add a 'knockbackForce' variable to your header
 
-            targetHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force);
+            targetHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force, null, null);
         }
     }
 }

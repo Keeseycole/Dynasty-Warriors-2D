@@ -1,0 +1,241 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BattleEventManager : MonoBehaviour
+{
+    public static BattleEventManager Instance;
+
+    [Header("Mission Parameters")]
+    private int totalObjectsNeeded = 0;      // Automatically calculated at Start
+    private int objectsDestroyedCount = 0;   // Current count tracker
+    private bool eventTriggered = false;
+
+    [Header("Ambush Reinforcements")]
+    public Transform finalObjectiveTarget;
+
+    [Tooltip("Drag your sequential path nodes here in the exact order they should march")]
+    public List<Transform> pathNodes;
+
+    [Header("Dynamic Objective Tracking")]
+    [Tooltip("Drag ANY number of GameObjects that must be destroyed to complete this mission (Rams, towers, gates, etc.)")]
+    public List<GameObject> targetObjectsToDestroy;
+
+    [Tooltip("Drag your inactive Ambush Squad GameObjects here (Match the order of your target objects list)")]
+    public List<GameObject> ambushSquadContainers;
+
+    // Track which indexes we have already activated so we don't loop-spam them
+    private HashSet<int> activatedIndexes = new HashSet<int>();
+
+    [Header("Retreat Strategy")]
+    [Tooltip("Drag the Enemy General / SquadLeader who should flee after the fire attack")]
+    public SquadLeader enemyGeneralToRetreat;
+
+    [Tooltip("Drag sequential nodes the general must follow to safely escape the map")]
+    public List<Transform> retreatPathNodes;
+
+    [Tooltip("The final gate where the general completely despawns and escapes")]
+    public Transform finalEscapePoint;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        // ORGANIC COUNTING: Automatically matches mission scale to your Inspector list size!
+        if (targetObjectsToDestroy != null)
+        {
+            totalObjectsNeeded = targetObjectsToDestroy.Count;
+            Debug.Log($"[MISSION START] Target Objective Initialized. Total items to destroy: {totalObjectsNeeded}");
+        }
+    }
+
+    private void Update()
+    {
+        if (targetObjectsToDestroy == null || ambushSquadContainers == null || eventTriggered) return;
+
+        for (int i = 0; i < targetObjectsToDestroy.Count; i++)
+        {
+            if (activatedIndexes.Contains(i)) continue;
+
+            if (targetObjectsToDestroy[i] == null || !targetObjectsToDestroy[i].activeInHierarchy)
+            {
+                activatedIndexes.Add(i);
+                objectsDestroyedCount++;
+
+                Debug.Log($"[OBJECTIVE] Item at list position {i} eliminated! Progress: {objectsDestroyedCount}/{totalObjectsNeeded}");
+
+                if (i < ambushSquadContainers.Count && ambushSquadContainers[i] != null)
+                {
+                    StartCoroutine(DeployAmbushSequence(ambushSquadContainers[i]));
+                }
+
+                if (objectsDestroyedCount >= totalObjectsNeeded)
+                {
+                    eventTriggered = true;
+                    CompleteSiegeMission();
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Handles the classic Dynasty Warriors cinematic freeze frame and board wipe via a dynamic Trigger Zone.
+    /// </summary>
+    public void ExecuteFireAttackCutscene(Vector3 bombCenter, List<Health> victimsToScorched)
+    {
+        StartCoroutine(FireAttackCinematicRoutine(bombCenter, victimsToScorched));
+    }
+
+    private IEnumerator FireAttackCinematicRoutine(Vector3 bombCenter, List<Health> victimsToScorched)
+    {
+        // 1. TIME FREEZE: Stop the rest of the battlefield dead in their tracks
+        Time.timeScale = 0f;
+
+        // 2. CINEMATIC CUTSCENE BANNER (Text Display Log)
+        Debug.LogWarning("==================================================");
+        Debug.LogWarning("š CRITICAL STRATAGEM ACTIVATE: FIRE ATTACK SUCCESS š");
+        Debug.LogWarning("Commander: 'The trap is sprung! Burn them to ashes!'");
+        Debug.LogWarning("==================================================");
+
+        if (CameraShake.Instance != null) CameraShake.Instance.Shake(1.5f, 0.4f);
+
+        // Wait in absolute RealTime while the screen is frozen so the player can witness the vibration
+        yield return new WaitForSecondsRealtime(2.0f);
+
+        // 3. UNFREEZE PHYSICS: Wake the game clock back up to calculate forces
+        Time.timeScale = 1f;
+
+        // 4. SPAWN EXPLOSION ARTWORK: Trigger your custom 2D sprite hit animation prefab
+        if (HitParticleManager.Instance != null)
+        {
+            // FIXED: Added Vector2.up as a neutral parameter to support the Basara direction checker
+            HitParticleManager.Instance.SpawnHitSpark(bombCenter, true, Vector2.up);
+        }
+
+        // 5. THE TRIGGER BOARD WIPE: Wipe out exactly who was caught in your custom Trigger zone boundaries
+        Debug.Log($"[STRATAGEM] Detonating! Eliminating {victimsToScorched.Count} enemies caught inside the trigger volume zone.");
+
+        foreach (Health victim in victimsToScorched)
+        {
+            if (victim != null && victim.currentHealth > 0)
+            {
+                // Calculate an explosive blow away vector outward from the epicenter
+                Vector2 blastDirection = ((Vector2)victim.transform.position - (Vector2)bombCenter).normalized;
+                float lethalBlastForce = 25f;
+
+                // Pass total lethal damage (9999) to activate their health death/fade coroutines
+                // Inside BattleEventManager.cs -> FireAttackCinematicRoutine loop:
+                victim.TakeDamage(9999f, bombCenter, blastDirection * lethalBlastForce, null, null);
+            }
+        }
+
+        if (enemyGeneralToRetreat != null && retreatPathNodes.Count > 0)
+        {
+            StartCoroutine(ExecuteGeneralRetreatPath(enemyGeneralToRetreat));
+        }
+    }
+
+    private IEnumerator DeployAmbushSequence(GameObject squadRoot)
+    {
+        
+        //Debug.LogWarning("Commander: 'An enemy tactical asset has been dismantled! Ambush squads, advance!'");
+       
+
+        yield return new WaitForSeconds(2.0f);
+
+        squadRoot.SetActive(true);
+      //  Debug.Log($"[EVENT] Activated hidden squad container: {squadRoot.name}");
+
+        MusouUnit[] soldiersInSquad = squadRoot.GetComponentsInChildren<MusouUnit>(true);
+
+        foreach (MusouUnit soldier in soldiersInSquad)
+        {
+            if (soldier != null)
+            {
+                soldier.unitTeam = MusouUnit.Team.PlayerSide;
+                soldier.isOfficer = false;
+
+                StartCoroutine(DeployUnitOnPath(soldier));
+            }
+        }
+    }
+
+    private IEnumerator DeployUnitOnPath(MusouUnit unit)
+    {
+        // Force the soldier to navigate sequentially through your structural path node checkpoints
+        foreach (Transform node in pathNodes)
+        {
+            if (unit == null || !unit.enabled) yield break;
+
+            unit.missionTarget = node;
+
+            // Performance optimized loop check interval (Checks distance 5 times a second instead of every frame)
+            while (unit != null && Vector2.Distance(unit.transform.position, node.position) > 1.5f)
+            {
+                yield return new WaitForSeconds(0.2f);
+            }
+        }
+
+        // Final Node Reached: Release their steering weights directly onto your ultimate Objective target point
+        if (unit != null)
+        {
+            unit.missionTarget = finalObjectiveTarget;
+            Debug.Log($"[SQUAD] {unit.gameObject.name} cleared the layout nodes and is charging the final objective!");
+        }
+    }
+
+    private void CompleteSiegeMission()
+    {
+        Debug.Log("<color=green>MISSION COMPLETE: All target objects destroyed! Major victory conditions satisfied!</color>");
+    }
+
+    private IEnumerator ExecuteGeneralRetreatPath(SquadLeader general)
+    {
+        if (general == null) yield break;
+
+      
+        general.moveSpeed *= 1.2f; // Give them a panicked speed boost
+
+        // 2. Guide the squad leader through each structural retreat checkpoint node
+        foreach (Transform node in retreatPathNodes)
+        {
+            if (general == null) yield break;
+
+            // Command the entire squad to update their pathfinding destination node
+            general.AssignSquadMission(MusouUnit.AIMission.CaptureBase, node);
+
+            // Standard performance-optimized check interval (5 times a second)
+            while (general != null && Vector2.Distance(general.transform.position, node.position) > 1.8f)
+            {
+                yield return new WaitForSeconds(0.2f);
+            }
+        }
+
+        // 3. Final Escape Node Reached: March them to the absolute boundary edge
+        if (general != null && finalEscapePoint != null)
+        {
+            general.AssignSquadMission(MusouUnit.AIMission.CaptureBase, finalEscapePoint);
+
+            while (general != null && Vector2.Distance(general.transform.position, finalEscapePoint.position) > 1.5f)
+            {
+                yield return new WaitForSeconds(0.2f);
+            }
+
+            // 4. DESPAWN BOARDS: Clean up the escaped squad units to preserve memory
+            if (general != null)
+            {
+                foreach (MusouUnit member in general.squadMembers)
+                {
+                    if (member != null) Destroy(member.gameObject);
+                }
+
+                Debug.LogWarning($"[RETREAT] {general.gameObject.name} has successfully escaped through the path!");
+                Destroy(general.gameObject);
+            }
+        }
+    }
+}

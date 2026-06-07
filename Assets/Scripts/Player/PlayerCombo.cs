@@ -1,58 +1,79 @@
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public enum ComboState
 {
     None,
     Attack1,
-    Attack2, 
-    Attack3, 
+    Attack2,
+    Attack3,
     Attack4,
     Attack5
-
 }
+
 public class PlayerCombo : MonoBehaviour
 {
     PlayerState playerState;
-
     PlayerController playerController;
-
-
     private CharecterAnimations attackAnim;
+    private Rigidbody2D rb;
+    public Animator myNativeAnimator;
 
     private bool ActivateResetTimer;
-
     private float defultComboTimer = .6f;
-
     private float currentComboTimer;
-
     private ComboState currentComboState;
 
-   public bool isAttacking;
+    public bool isAttacking;
+
+    [Header("Debug Live Feeds")]
+    [Tooltip("Watch this value live while hitting enemies. It will snap to 0 on impact!")]
+    public float liveAnimatorSpeedTracker;
 
     [Header("Attack Movement")]
     public float basicStepForce = 3f;
     public float finisherStepForce = 7f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Combat Tuning")]
+    public float attackRange = 1.5f;
+    public float finisherRangeMultiplier = 1.66f;
+    public float basicHitLagDuration = 0.08f;
+    public float finisherHitLagDuration = 0.15f;
 
     void Awake()
     {
-        attackAnim= GetComponent<CharecterAnimations>();
-
+        attackAnim = GetComponent<CharecterAnimations>();
         playerController = GetComponent<PlayerController>();
-    }
+        rb = GetComponent<Rigidbody2D>();
 
+        myNativeAnimator = GetComponent<Animator>();
+        if (myNativeAnimator == null)
+        {
+            myNativeAnimator = GetComponentInChildren<Animator>();
+        }
+    }
 
     private void Start()
     {
         currentComboTimer = defultComboTimer;
-
         currentComboState = ComboState.None;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (myNativeAnimator != null)
+        {
+            liveAnimatorSpeedTracker = myNativeAnimator.speed;
+        }
+
+        if (myNativeAnimator != null && myNativeAnimator.speed == 0f)
+        {
+            if (rb != null) rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         ComboAttacks();
         ResetComboState();
     }
@@ -61,24 +82,23 @@ public class PlayerCombo : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-           
-            // Don't skip states! Only go to the next one if we aren't at the end
-            if (isAttacking||currentComboState == ComboState.Attack5) return;
+            SoundManager.Instance.PlaySFX("swordswing", 0.8f, 0.05f);
+
+            if (currentComboState == ComboState.Attack5) return;
 
             currentComboState++;
             ActivateResetTimer = true;
             currentComboTimer = defultComboTimer;
+            isAttacking = true;
 
-            // --- ADD THIS BIT ---
             float force = (currentComboState == ComboState.Attack5) ? finisherStepForce : basicStepForce;
             Vector2 stepDir = playerController.lastLookDir;
 
-            // Apply a quick burst of movement
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb.AddForce(stepDir * force, ForceMode2D.Impulse);
+            if (rb != null)
+            {
+                rb.AddForce(stepDir * force, ForceMode2D.Impulse);
+            }
 
-            // Trigger the specific animation
-            // Using a Switch statement is cleaner than 5 'if' blocks!
             switch (currentComboState)
             {
                 case ComboState.Attack1: attackAnim.Attack1(); break;
@@ -90,6 +110,7 @@ public class PlayerCombo : MonoBehaviour
 
         }
     }
+
     public void ResetComboState()
     {
         if (ActivateResetTimer)
@@ -99,58 +120,124 @@ public class PlayerCombo : MonoBehaviour
             if (currentComboTimer <= 0)
             {
                 currentComboState = ComboState.None;
-
                 ActivateResetTimer = false;
-
                 currentComboTimer = defultComboTimer;
+                isAttacking = false;
             }
         }
     }
+
     public void FinishAttack()
     {
         isAttacking = false;
     }
-    void CheckForHit()
-    {
-        float range = 1.5f;
-        float damage = 10f;
-        float knockbackForce = 5f; // Standard push for normal hits
 
-        // --- ATTACK 5 MODIFIERS ---
-        if (currentComboState == ComboState.Attack5)
+    public void CheckForHit()
+    {
+        float currentRange = attackRange;
+        float damage = 10f;
+        float knockbackForce = .5f;
+
+        bool isFinisher = (currentComboState == ComboState.Attack5);
+
+        if (isFinisher)
         {
-           // range = 3.0f;          // Double the reach for a big finisher
-           // damage = 30f;         // Triple the damage
-            knockbackForce = 15f; // SEND THEM FLYING!
+            currentRange = attackRange * finisherRangeMultiplier;
+            damage = 13f;
+            knockbackForce = 1.5f;
         }
 
         LayerMask enemyLayer = LayerMask.GetMask("Enemy");
         Vector2 attackDir = playerController.lastLookDir;
         Vector2 attackPos = (Vector2)transform.position + attackDir * 1.0f;
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPos, range, enemyLayer);
+        // --- DEBUG LOG 1 ---
+        Debug.Log($"[COMBAT TRACE] Checking for hits at {attackPos} with range {currentRange} on layer mask '{enemyLayer.value}'");
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPos, currentRange, enemyLayer);
+
+        // --- DEBUG LOG 2 ---
+        Debug.Log($"[COMBAT TRACE] Physics overlap found {hits.Length} colliders on the Enemy layer.");
+
+        List<MonoBehaviour> victimsThisFrame = new List<MonoBehaviour>();
 
         foreach (Collider2D enemy in hits)
         {
             Health enemyHealth = enemy.GetComponent<Health>();
-            if (enemyHealth != null)
+
+            if (enemyHealth == null)
             {
-                // Calculate a direction AWAY from the player
-                Vector2 dir = (enemy.transform.position - transform.position).normalized;
+                // --- DEBUG LOG 3 ---
+                Debug.LogWarning($"[COMBAT TRACE] Found object '{enemy.gameObject.name}', but it is missing a Health component!");
+                continue;
+            }
 
-                // Pass the knockback force into our TakeDamage function
-                enemyHealth.TakeDamage(damage, transform.position, dir * knockbackForce);
+            if (enemyHealth.currentHealth <= 0)
+            {
+                // --- DEBUG LOG 4 ---
+                Debug.Log($"[COMBAT TRACE] Found '{enemy.gameObject.name}', but they are already dead (Health <= 0).");
+                continue;
+            }
 
-                StartCoroutine(Hitstop(0.05f));
+            Vector2 dir = (enemy.transform.position - transform.position).normalized;
+
+            Vector2 resultingForce = dir * knockbackForce;
+            if (!isFinisher)
+            {
+                Vector2 pullVector = (attackPos - (Vector2)enemy.transform.position).normalized;
+                resultingForce = (dir + pullVector * 0.8f).normalized * knockbackForce;
+            }
+
+            enemyHealth.TakeDamage(damage, transform.position, resultingForce, myNativeAnimator, rb);
+            victimsThisFrame.Add(enemyHealth);
+
+            if (HitParticleManager.Instance != null)
+            {
+                Vector2 sparkPos = Vector2.Lerp(enemy.transform.position, transform.position, 0.2f);
+
+                // --- DEBUG LOG 5 ---
+                Debug.Log($"[COMBAT TRACE] Attempting to spawn particle spark via HitParticleManager at {sparkPos}");
+
+                HitParticleManager.Instance.SpawnHitSpark(sparkPos, isFinisher, attackDir);
+            }
+            else
+            {
+                // --- DEBUG LOG 6 ---
+                Debug.LogError("[COMBAT TRACE] HitParticleManager.Instance is NULL! Is the script active on an object in your scene?");
+            }
+        }
+
+        if (victimsThisFrame.Count > 0 && HitLagManager.Instance != null)
+        {
+            float hitStopDuration = isFinisher ?
+                HitLagManager.Instance.heavyHitLagDuration :
+                HitLagManager.Instance.standardHitLagDuration;
+
+            Vector2 combinedStructuralKnockback = attackDir * (isFinisher ? 14f : 5f);
+
+            HitLagManager.Instance.TriggerBasaraHitLag(
+                myNativeAnimator,
+                rb,
+                victimsThisFrame,
+                hitStopDuration,
+                combinedStructuralKnockback
+            );
+
+            if (CameraShake.Instance != null)
+            {
+                if (isFinisher) CameraShake.Instance.HitPunch(attackDir, 0.6f, hitStopDuration + 0.08f);
+                else CameraShake.Instance.HitPunch(attackDir, 0.2f, hitStopDuration + 0.04f);
             }
         }
     }
 
-    private System.Collections.IEnumerator Hitstop(float duration)
+    private void OnDrawGizmosSelected()
     {
-        Time.timeScale = 0.5f;
-        yield return new WaitForSecondsRealtime(duration);
-        Time.timeScale = 1f;
+        if (playerController == null) return;
+        Gizmos.color = Color.red;
+        Vector2 attackDir = playerController.lastLookDir;
+        Vector2 attackPos = (Vector2)transform.position + attackDir * 1.0f;
+        float finalRange = (currentComboState == ComboState.Attack5) ? (attackRange * finisherRangeMultiplier) : attackRange;
+        Gizmos.DrawWireSphere(attackPos, finalRange);
     }
-
 }

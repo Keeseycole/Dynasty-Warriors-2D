@@ -46,6 +46,10 @@ public class MusouUnit : sleepEnemy
 
     public float hitForce = 4f; // How much they lunge forward
 
+    // NEW INSPECTOR VARIABLE FOR ENEMY HIT-LAG
+    [Tooltip("How long the game freezes when this unit hits a target")]
+    public float enemyHitLagDuration = 0.06f;
+
     [Header("Squad Follower Settings")]
     public SquadLeader myLeader;
     public int squadIndex; // Assigned by the leader (0, 1, 2, etc.)
@@ -61,7 +65,9 @@ public class MusouUnit : sleepEnemy
 
     public bool isOfficer;
 
-    public void Start()
+    
+
+    public virtual void Start()
     {
         health = GetComponent<Health>();
         if (playerTransform == null)
@@ -97,7 +103,9 @@ public class MusouUnit : sleepEnemy
         }
 
         // Start the scanning loop (Don't run FindNearestTarget every single frame!)
-        InvokeRepeating("FindNearestTarget", 0f, 0.5f);
+
+        // Give the engine 0.25 seconds to stabilize physics before grunts scan layers!
+        InvokeRepeating("FindNearestTarget", 0.25f, 0.5f);
 
         float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         attackOffset = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * personalSpaceRadius;
@@ -178,8 +186,7 @@ public class MusouUnit : sleepEnemy
     // --- MOVEMENT ---
     void MoveTowards(Vector2 targetPos, bool isChasing)
     {
-        Debug.Log($"{gameObject.name} is moving to {targetPos}. Speed: {moveSpeed}");
-
+        
         // FIX: Only check the tag if currentTarget is NOT null
         if (isChasing && currentTarget != null && currentTarget.CompareTag("Player"))
         {
@@ -234,6 +241,13 @@ public class MusouUnit : sleepEnemy
         {
             if (AttackDirector.instance != null && AttackDirector.instance.RequestAttackToken(currentTarget))
             {
+
+                if (SoundManager.Instance != null)
+                {
+                    // Plays the slash sound with a subtle, natural pitch variation
+                    SoundManager.Instance.PlaySFX("swordswing", 0.6f, 0.08f);
+                }
+
                 int randomCombo = Random.Range(0, comboList.Count);
                 activeAction = StartCoroutine(comboList[randomCombo]());
                 yield return activeAction;
@@ -398,7 +412,7 @@ public class MusouUnit : sleepEnemy
         animator.SetBool("isHit", true);
         animator.SetBool("isMoving", false);
 
-        recoveryCoroutine = StartCoroutine(RecoveryRoutine(0.3f));
+        recoveryCoroutine = StartCoroutine(RecoveryRoutine(0.15f));
     }
 
     private IEnumerator RecoveryRoutine(float waitTime)
@@ -416,24 +430,37 @@ public class MusouUnit : sleepEnemy
         Vector2 knockbackDir = (currentTarget.position - transform.position).normalized;
         float force = 5f;
 
-        // 1. Try to hit a standard Enemy/Ally (Health script)
-        Health targetHealth = currentTarget.GetComponent<Health>();
-        if (targetHealth != null)
-        {
-            targetHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force);
+        // Create a unified list of scripts that inherit from MonoBehaviour
+        List<MonoBehaviour> victims = new List<MonoBehaviour>();
 
-            return; // Stop here if we hit a standard unit
+        // 1. Check for standard enemy units
+        Health targetHealth = currentTarget.GetComponent<Health>();
+        if (targetHealth != null && targetHealth.currentHealth > 0)
+        {
+            targetHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force, null, null);
+            victims.Add(targetHealth);
         }
 
-        // 2. Try to hit the Player (PlayerHealth script)
+        // 2. Check for the Player unit
         PlayerHealth playerHealth = currentTarget.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
+        if (playerHealth != null && playerHealth.currentHealth > 0)
         {
             playerHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force);
+            victims.Add(playerHealth);
         }
-        
-    }
 
+        // BASARA HIT-STOP: Freeze this attacking unit and the hit target
+        // BASARA HIT-STOP: Uses the exposed inspector variable now
+        if (victims.Count > 0 && HitLagManager.Instance != null)
+        {
+            HitLagManager.Instance.TriggerBasaraHitLag(
+                GetComponentInChildren<Animator>(),
+                rb,
+                victims,
+                enemyHitLagDuration // Controlled in the Inspector per-grunt/per-officer
+            );
+        }
+    }
     public virtual Vector2 GetSlotPosition(int index)
     {
         return transform.position; // Default: just return my own position
@@ -443,25 +470,43 @@ public class MusouUnit : sleepEnemy
     { 
         yield return StartCoroutine(PlayAttack("attack1")); 
     }
-    IEnumerator Combo2() 
-    { 
-        yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2")); 
-    }
-    IEnumerator Combo3() 
+    IEnumerator Combo2()
     {
-        yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2"));
-        yield return StartCoroutine(PlayAttack("attack3")); 
+        yield return StartCoroutine(PlayAttack("attack1"));
+        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        yield return StartCoroutine(PlayAttack("attack2"));
     }
-    IEnumerator Combo4() 
-    { 
-     yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2")); 
-     yield return StartCoroutine(PlayAttack("attack3")); yield return StartCoroutine(PlayAttack("attack4"));
+
+    IEnumerator Combo3()
+    {
+        yield return StartCoroutine(PlayAttack("attack1"));
+        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        yield return StartCoroutine(PlayAttack("attack2"));
+        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        yield return StartCoroutine(PlayAttack("attack3"));
+    }
+
+    IEnumerator Combo4()
+    {
+        yield return StartCoroutine(PlayAttack("attack1"));
+        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        yield return StartCoroutine(PlayAttack("attack2"));
+        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        yield return StartCoroutine(PlayAttack("attack3"));
+        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        yield return StartCoroutine(PlayAttack("attack4"));
     }
 
     IEnumerator Combo5()
     {
-        yield return StartCoroutine(PlayAttack("attack1")); yield return StartCoroutine(PlayAttack("attack2"));
-        yield return StartCoroutine(PlayAttack("attack3")); yield return StartCoroutine(PlayAttack("attack4"));
+        yield return StartCoroutine(PlayAttack("attack1"));
+        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        yield return StartCoroutine(PlayAttack("attack2"));
+        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        yield return StartCoroutine(PlayAttack("attack3"));
+        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        yield return StartCoroutine(PlayAttack("attack4"));
+        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
         yield return StartCoroutine(PlayAttack("attack5"));
     }
 }

@@ -73,7 +73,7 @@ public class BattleManager : MonoBehaviour
                         aiA.currentTarget = unitB.transform;
 
                         // Apply a tiny amount of damage over time
-                        unitA.TakeDamage(0.5f * Time.deltaTime, unitB.transform.position, Vector2.zero);
+                        unitA.TakeDamage(0.5f * Time.deltaTime, unitB.transform.position, Vector2.zero, null, null);
 
                         // Break so we don't fight EVERY single enemy in the cell at once
                         break;

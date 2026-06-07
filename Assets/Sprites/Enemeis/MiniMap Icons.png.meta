@@ -109,10 +109,10 @@ TextureImporter:
       name: MiniMap Icons_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 172
-        width: 19
-        height: 17
+        x: 0
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,9 +131,9 @@ TextureImporter:
       name: MiniMap Icons_1
       rect:
         serializedVersion: 2
-        x: 51
-        y: 172
-        width: 18
+        x: 48
+        y: 174
+        width: 17
         height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -150,35 +150,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MiniMap Icons_2
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 160
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f860a9ffa7d3acfc0800000000000000
-      internalID: -3473896564079327601
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: MiniMap Icons_3
       rect:
         serializedVersion: 2
-        x: 10
-        y: 132
-        width: 19
-        height: 17
+        x: 80
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,35 +172,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MiniMap Icons_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 80
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5fe5beb4376e5f34395f554496ab62bb
-      internalID: -481447780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: MiniMap Icons_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 40
-        width: 40
-        height: 40
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,10 +197,10 @@ TextureImporter:
       name: MiniMap Icons_6
       rect:
         serializedVersion: 2
-        x: 40
-        y: 80
-        width: 40
-        height: 40
+        x: 16
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,10 +219,10 @@ TextureImporter:
       name: MiniMap Icons_7
       rect:
         serializedVersion: 2
-        x: 80
-        y: 80
-        width: 40
-        height: 40
+        x: 32
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,6 +233,28 @@ TextureImporter:
       bones: []
       spriteID: 08019a85468c5734fbba4952b0fd828c
       internalID: 720339364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniMap Icons_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c37b4ab85ebf60d45a9c31212d73fe28
+      internalID: 798654178
       vertices: []
       indices: 
       edges: []
@@ -293,7 +271,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       MiniMap Icons_0: -6726668049695253114
       MiniMap Icons_1: -3738921858536076244
@@ -303,6 +283,7 @@ TextureImporter:
       MiniMap Icons_5: 1630505896
       MiniMap Icons_6: -1475156899
       MiniMap Icons_7: 720339364
+      MiniMap Icons_8: 798654178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

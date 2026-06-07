@@ -1,23 +1,25 @@
 using UnityEngine;
 
+
 public class MinimapFollow : MonoBehaviour
 {
+    [Header("Fixed Map Settings")]
+    [Tooltip("The static center point coordinates of your battlefield grid map")]
+    public Vector2 mapCenterPosition = Vector2.zero;
 
-    public Transform player; // Drag your Player object here in the Inspector
-    public float mapHeight = 50f; // Height above the player
+    [Tooltip("How high above the 2D grid the minimap camera sits")]
+    public float mapHeight = 50f;
 
-    void LateUpdate()
+    // Changed from LateUpdate to Start since a fixed map only needs to be positioned once!
+    void Start()
     {
-        if (player == null) return;
+        // Set the camera to the absolute center of your stage layout
+        Vector3 fixedPosition = new Vector3(mapCenterPosition.x, mapCenterPosition.y, -mapHeight);
+        transform.position = fixedPosition;
 
-        // Position the camera directly above the player
-        Vector3 newPosition = player.position;
-        newPosition.y += mapHeight;
-        transform.position = newPosition;
-
-        // Rotate the camera to match the player's Y-axis (Dynasty Warriors style)
-        // This keeps the direction the player is facing at the "top" of the map
-        transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
+        // Force a flat, straight top-down view (Zero rotation)
+        // In 2D top-down projects, looking down the Z-axis is typically Quaternion.identity
+        transform.rotation = Quaternion.identity;
     }
 }
 
