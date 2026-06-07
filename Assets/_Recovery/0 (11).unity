@@ -122365,14 +122365,6 @@ PrefabInstance:
       value: ShardFX
       objectReference: {fileID: 0}
     - target: {fileID: 3379166822992039364, guid: 1deebb668dc97c540b2054c1f8b5b673, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379166822992039364, guid: 1deebb668dc97c540b2054c1f8b5b673, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379166822992039364, guid: 1deebb668dc97c540b2054c1f8b5b673, type: 3}
       propertyPath: m_LocalPosition.x
       value: -68.6611
       objectReference: {fileID: 0}

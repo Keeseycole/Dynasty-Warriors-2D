@@ -207,6 +207,7 @@ public class PlayerCombo : MonoBehaviour
             }
         }
 
+        // Inside PlayerCombo.cs -> CheckForHit() at the very bottom
         if (victimsThisFrame.Count > 0 && HitLagManager.Instance != null)
         {
             float hitStopDuration = isFinisher ?
@@ -222,6 +223,16 @@ public class PlayerCombo : MonoBehaviour
                 hitStopDuration,
                 combinedStructuralKnockback
             );
+
+            // =========================================================================
+            // 🔥 ADD THIS COMBO COUNTER TRIGGER LINE RIGHT HERE:
+            // =========================================================================
+            if (ComboCounterHUD.Instance != null)
+            {
+                // Add a hit point score for EVERY single enemy caught in the sword slice!
+                ComboCounterHUD.Instance.AddHit(victimsThisFrame.Count);
+            }
+            // =========================================================================
 
             if (CameraShake.Instance != null)
             {
