@@ -1,31 +1,46 @@
 fileFormatVersion: 2
-guid: 8b3fd0b16ac56f848b786f4d88b8b821
+guid: f6cbf550cfbbfc845a2608020fab4d0e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1582849875862784068
-    second: YT_Sword_Strafe_0
+      213: 7601281716292875821
+    second: Soilder(Purple)_Idle_0
   - first:
-      213: -951028407104880099
-    second: YT_Sword_Strafe_1
+      213: 8250172758800923319
+    second: Soilder(Purple)_Idle_1
   - first:
-      213: 1266284376866548733
-    second: YT_Sword_Strafe_2
+      213: 5638036514555191915
+    second: Soilder(Purple)_Idle_2
   - first:
-      213: -2629713464633183522
-    second: YT_Sword_Strafe_3
+      213: 3969934330278406409
+    second: Soilder(Purple)_Idle_3
   - first:
-      213: 7823907563972840548
-    second: YT_Sword_Strafe_4
+      213: -55011242672235159
+    second: Soilder(Purple)_Idle_4
   - first:
-      213: 1610983849422923490
-    second: YT_Sword_Strafe_5
+      213: 709878988734290042
+    second: Soilder(Purple)_Idle_5
   - first:
-      213: -5560409059985112255
-    second: YT_Sword_Strafe_6
+      213: 1039286726808982219
+    second: Soilder(Purple)_Idle_6
   - first:
-      213: -7352360099078723901
-    second: YT_Sword_Strafe_7
+      213: -6059055309646254728
+    second: Soilder(Purple)_Idle_7
+  - first:
+      213: -2021069189740584059
+    second: Soilder(Purple)_Idle_8
+  - first:
+      213: -1114555394132977287
+    second: Soilder(Purple)_Idle_9
+  - first:
+      213: -8391534229258861395
+    second: Soilder(Purple)_Idle_10
+  - first:
+      213: -8896909537613983205
+    second: Soilder(Purple)_Idle_11
+  - first:
+      213: -1298327574005825638
+    second: Soilder(Purple)_Idle_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +73,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,353 +136,287 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: YT_Sword_Strafe_0
+      name: Soilder(Purple)_Idle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
-        width: 40
-        height: 40
+        x: 6
+        y: 159
+        width: 21
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4488297639967f510800000000000000
-      internalID: 1582849875862784068
+      spriteID: d26fe49927d2d7960800000000000000
+      internalID: 7601281716292875821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_1
+      name: Soilder(Purple)_Idle_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 160
-        width: 40
-        height: 40
+        x: 47
+        y: 159
+        width: 21
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d124537d3b44dc2f0800000000000000
-      internalID: -951028407104880099
+      spriteID: 7bafeefa9608e7270800000000000000
+      internalID: 8250172758800923319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_2
+      name: Soilder(Purple)_Idle_2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 160
-        width: 40
-        height: 40
+        x: 86
+        y: 159
+        width: 21
+        height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dfbe1c38eeeb29110800000000000000
-      internalID: 1266284376866548733
+      spriteID: b626eb0a6545e3e40800000000000000
+      internalID: 5638036514555191915
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_3
+      name: Soilder(Purple)_Idle_3
       rect:
         serializedVersion: 2
-        x: 120
-        y: 160
-        width: 40
-        height: 40
+        x: 126
+        y: 159
+        width: 21
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed23a776981618bd0800000000000000
-      internalID: -2629713464633183522
+      spriteID: 9096fd16d3a081730800000000000000
+      internalID: 3969934330278406409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_4
+      name: Soilder(Purple)_Idle_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 120
-        width: 40
-        height: 40
+        x: 6
+        y: 119
+        width: 19
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46cc7120a7a149c60800000000000000
-      internalID: 7823907563972840548
+      spriteID: 96d5ed5f09f8c3ff0800000000000000
+      internalID: -55011242672235159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_5
+      name: Soilder(Purple)_Idle_5
       rect:
         serializedVersion: 2
-        x: 40
-        y: 120
-        width: 40
-        height: 40
+        x: 45
+        y: 119
+        width: 19
+        height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2e6aeb3964d5b5610800000000000000
-      internalID: 1610983849422923490
+      spriteID: a78550ddd2ff9d900800000000000000
+      internalID: 709878988734290042
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_6
+      name: Soilder(Purple)_Idle_6
       rect:
         serializedVersion: 2
-        x: 80
-        y: 120
-        width: 40
-        height: 40
+        x: 85
+        y: 119
+        width: 19
+        height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14349b59b6575d2b0800000000000000
-      internalID: -5560409059985112255
+      spriteID: bc25a3b85c94c6e00800000000000000
+      internalID: 1039286726808982219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_7
+      name: Soilder(Purple)_Idle_7
       rect:
         serializedVersion: 2
-        x: 120
-        y: 120
-        width: 40
-        height: 40
+        x: 124
+        y: 119
+        width: 19
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c628a1c17b27f990800000000000000
-      internalID: -7352360099078723901
+      spriteID: 87d27125c49e9eba0800000000000000
+      internalID: -6059055309646254728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_8
+      name: Soilder(Purple)_Idle_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
-        width: 40
-        height: 40
+        x: 15
+        y: 79
+        width: 19
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3edc774621f0b0b459091a5c09318be3
-      internalID: 253771684
+      spriteID: 583a60fa748b3f3e0800000000000000
+      internalID: -2021069189740584059
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_9
+      name: Soilder(Purple)_Idle_9
       rect:
         serializedVersion: 2
-        x: 40
-        y: 80
-        width: 40
-        height: 40
+        x: 56
+        y: 79
+        width: 19
+        height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ece6769d35325ca418c0ec9e302744ea
-      internalID: 1365321827
+      spriteID: 979553236cd4880f0800000000000000
+      internalID: -1114555394132977287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_10
+      name: Soilder(Purple)_Idle_10
       rect:
         serializedVersion: 2
-        x: 80
-        y: 80
-        width: 40
-        height: 40
+        x: 96
+        y: 79
+        width: 19
+        height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8b5306290574d1e42b7622f055909b97
-      internalID: 1167362375
+      spriteID: da48e7824184b8b80800000000000000
+      internalID: -8391534229258861395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_11
+      name: Soilder(Purple)_Idle_11
       rect:
         serializedVersion: 2
-        x: 120
-        y: 80
-        width: 40
-        height: 40
+        x: 137
+        y: 79
+        width: 19
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 942c396435a6b4143924ba96f2c71918
-      internalID: 1572857398
+      spriteID: b12dbb3d9e3d78480800000000000000
+      internalID: -8896909537613983205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_12
+      name: Soilder(Purple)_Idle_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 40
-        width: 40
-        height: 40
+        x: 11
+        y: 0
+        width: 18
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 2bcc6b58703e59843989432bedd21bae
-      internalID: 837434028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YT_Sword_Strafe_13
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e8b1c572069efc44595738c3876924cc
-      internalID: 1034738359
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YT_Sword_Strafe_14
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 473f9ca2081e46c428b30b1368b24e37
-      internalID: 1089424920
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YT_Sword_Strafe_15
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a411432ffc701f45accc2d39c0e5107
-      internalID: -1955027948
+      spriteID: a9fb94543f96bfde0800000000000000
+      internalID: -1298327574005825638
       vertices: []
       indices: 
       edges: []
@@ -476,7 +425,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 081c9fd5395c587419af8459c0ee912b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -484,26 +433,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":40.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      YT_Sword_Strafe_0: 1582849875862784068
-      YT_Sword_Strafe_1: -951028407104880099
-      YT_Sword_Strafe_10: 1167362375
-      YT_Sword_Strafe_11: 1572857398
-      YT_Sword_Strafe_12: 837434028
-      YT_Sword_Strafe_13: 1034738359
-      YT_Sword_Strafe_14: 1089424920
-      YT_Sword_Strafe_15: -1955027948
-      YT_Sword_Strafe_2: 1266284376866548733
-      YT_Sword_Strafe_3: -2629713464633183522
-      YT_Sword_Strafe_4: 7823907563972840548
-      YT_Sword_Strafe_5: 1610983849422923490
-      YT_Sword_Strafe_6: -5560409059985112255
-      YT_Sword_Strafe_7: -7352360099078723901
-      YT_Sword_Strafe_8: 253771684
-      YT_Sword_Strafe_9: 1365321827
+      Soilder(Purple)_Idle_0: 7601281716292875821
+      Soilder(Purple)_Idle_1: 8250172758800923319
+      Soilder(Purple)_Idle_10: -8391534229258861395
+      Soilder(Purple)_Idle_11: -8896909537613983205
+      Soilder(Purple)_Idle_12: -1298327574005825638
+      Soilder(Purple)_Idle_2: 5638036514555191915
+      Soilder(Purple)_Idle_3: 3969934330278406409
+      Soilder(Purple)_Idle_4: -55011242672235159
+      Soilder(Purple)_Idle_5: 709878988734290042
+      Soilder(Purple)_Idle_6: 1039286726808982219
+      Soilder(Purple)_Idle_7: -6059055309646254728
+      Soilder(Purple)_Idle_8: -2021069189740584059
+      Soilder(Purple)_Idle_9: -1114555394132977287
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

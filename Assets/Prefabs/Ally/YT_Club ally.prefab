@@ -137,11 +137,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bb11b84de8ee7449dd75eb8d06ef74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  currentHealth: 100
   maxHealth: 100
   healthBar: {fileID: 7431791452010417485}
+  stats: {fileID: 0}
+  currentHealth: 100
   isSimulating: 0
   minimapIconRenderer: {fileID: 7300958081532137348}
+  flashOverlay: {fileID: 0}
+  isGate: 0
 --- !u!114 &1696086661183827450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +181,8 @@ MonoBehaviour:
   chaseRadius: 4
   attackRadius: 2
   animator: {fileID: 4994986863251929889}
+  currentMission: 0
+  missionTarget: {fileID: 0}
   unitTeam: 0
   followsPlayer: 0
   searchLayers:
@@ -191,6 +196,16 @@ MonoBehaviour:
   attackCooldown: 1.5
   separationRadius: 0.8
   separationStrength: 3
+  playerTransform: {fileID: 0}
+  attackStepForce: 4
+  hitForce: 4
+  enemyHitLagDuration: 0.06
+  myLeader: {fileID: 0}
+  squadIndex: 0
+  stoppingDistance: 0.2
+  personalSpaceRadius: 1.5
+  startingDirection: {x: 0, y: -1}
+  isOfficer: 0
 --- !u!1 &1374002979493986515
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,10 +819,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2.5, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7458607559327546021
 GameObject:

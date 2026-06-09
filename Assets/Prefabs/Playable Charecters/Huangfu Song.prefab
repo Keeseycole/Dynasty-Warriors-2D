@@ -447,6 +447,7 @@ MonoBehaviour:
   isSimulating: 0
   minimapIconRenderer: {fileID: 807605141792290225}
   flashOverlay: {fileID: 2025880748404533052}
+  isGate: 0
 --- !u!114 &6246354368433678170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +502,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   attackStepForce: 3
   hitForce: 2
+  enemyHitLagDuration: 0.06
   myLeader: {fileID: 0}
   squadIndex: 0
   stoppingDistance: 0.2
@@ -1298,10 +1300,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2.5, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &9087308482625395943
 GameObject:

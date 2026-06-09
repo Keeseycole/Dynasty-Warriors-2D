@@ -1,31 +1,10 @@
 fileFormatVersion: 2
-guid: 8b3fd0b16ac56f848b786f4d88b8b821
+guid: dcb38577cdc0a7e4b92c2b7ea6111039
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1582849875862784068
-    second: YT_Sword_Strafe_0
-  - first:
-      213: -951028407104880099
-    second: YT_Sword_Strafe_1
-  - first:
-      213: 1266284376866548733
-    second: YT_Sword_Strafe_2
-  - first:
-      213: -2629713464633183522
-    second: YT_Sword_Strafe_3
-  - first:
-      213: 7823907563972840548
-    second: YT_Sword_Strafe_4
-  - first:
-      213: 1610983849422923490
-    second: YT_Sword_Strafe_5
-  - first:
-      213: -5560409059985112255
-    second: YT_Sword_Strafe_6
-  - first:
-      213: -7352360099078723901
-    second: YT_Sword_Strafe_7
+      213: 7292159758475621846
+    second: MiniMap Icons.png _0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: YT_Sword_Strafe_0
+      name: MiniMap Icons.png _0
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
-        width: 40
-        height: 40
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,174 +115,284 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4488297639967f510800000000000000
-      internalID: 1582849875862784068
+      spriteID: 6d576513aa4f23560800000000000000
+      internalID: 7292159758475621846
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_1
+      name: MiniMap Icons.png _1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 160
-        width: 40
-        height: 40
+        x: 48
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d124537d3b44dc2f0800000000000000
-      internalID: -951028407104880099
+      spriteID: a9bb9bedf6da0284e8ef2341ad0e2e90
+      internalID: 932751857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_2
+      name: MiniMap Icons.png _2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a718e2d8f800bc4bb1261e2528d87ee
+      internalID: 1440019789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniMap Icons.png _3
       rect:
         serializedVersion: 2
         x: 80
-        y: 160
-        width: 40
-        height: 40
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dfbe1c38eeeb29110800000000000000
-      internalID: 1266284376866548733
+      spriteID: 5ab0bc25dfdf7464dab9782ef331cc7e
+      internalID: -1140694158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_3
+      name: MiniMap Icons.png _4
       rect:
         serializedVersion: 2
-        x: 120
-        y: 160
-        width: 40
-        height: 40
+        x: 96
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ed23a776981618bd0800000000000000
-      internalID: -2629713464633183522
+      spriteID: ba4c061ac085ce34aa17e919960be133
+      internalID: -1361629728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_4
+      name: MiniMap Icons.png _5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 733320c205d02b64c8b1438e5c459e2e
+      internalID: -1115587214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniMap Icons.png _6
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c2eb9a4b06123243870659dff108b8d
+      internalID: -1012166158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniMap Icons.png _7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38d70e6406f16b441b0d8a5a9b10f73e
+      internalID: 950214939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniMap Icons.png _8
       rect:
         serializedVersion: 2
         x: 0
-        y: 120
-        width: 40
-        height: 40
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 46cc7120a7a149c60800000000000000
-      internalID: 7823907563972840548
+      spriteID: 2e357d81b248a1d4f8a46e0032aa033e
+      internalID: -374718007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_5
+      name: MiniMap Icons.png _9
       rect:
         serializedVersion: 2
-        x: 40
-        y: 120
-        width: 40
-        height: 40
+        x: 16
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2e6aeb3964d5b5610800000000000000
-      internalID: 1610983849422923490
+      spriteID: ca0d7978f7d271e448a090dd5ebca84d
+      internalID: -2010579742
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_6
+      name: MiniMap Icons.png _10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e2f8d42e229bc44b9817e508fb326b3
+      internalID: 959245867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniMap Icons.png _11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2da0270c801a35249a841792284ef62e
+      internalID: 2035790965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniMap Icons.png _12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 039a2d9685ec03c428c06d48a565ad4b
+      internalID: 1832245080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniMap Icons.png _13
       rect:
         serializedVersion: 2
         x: 80
-        y: 120
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 14349b59b6575d2b0800000000000000
-      internalID: -5560409059985112255
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YT_Sword_Strafe_7
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 120
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3c628a1c17b27f990800000000000000
-      internalID: -7352360099078723901
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YT_Sword_Strafe_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 80
-        width: 40
-        height: 40
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,20 +401,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3edc774621f0b0b459091a5c09318be3
-      internalID: 253771684
+      spriteID: 497fa3a536d93984cbb0479092c68d1e
+      internalID: 1349749106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_9
+      name: MiniMap Icons.png _14
       rect:
         serializedVersion: 2
-        x: 40
-        y: 80
-        width: 40
-        height: 40
+        x: 96
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +423,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ece6769d35325ca418c0ec9e302744ea
-      internalID: 1365321827
+      spriteID: ac6e013a6c960104bb98fe00a322bc9d
+      internalID: -1505786759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YT_Sword_Strafe_10
+      name: MiniMap Icons.png _15
       rect:
         serializedVersion: 2
         x: 80
         y: 80
-        width: 40
-        height: 40
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -356,118 +445,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b5306290574d1e42b7622f055909b97
-      internalID: 1167362375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YT_Sword_Strafe_11
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 80
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 942c396435a6b4143924ba96f2c71918
-      internalID: 1572857398
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YT_Sword_Strafe_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bcc6b58703e59843989432bedd21bae
-      internalID: 837434028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YT_Sword_Strafe_13
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e8b1c572069efc44595738c3876924cc
-      internalID: 1034738359
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YT_Sword_Strafe_14
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 473f9ca2081e46c428b30b1368b24e37
-      internalID: 1089424920
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YT_Sword_Strafe_15
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 40
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a411432ffc701f45accc2d39c0e5107
-      internalID: -1955027948
+      spriteID: 859d03734ec10b844a4661dd15c1e16f
+      internalID: 1999212025
       vertices: []
       indices: 
       edges: []
@@ -476,7 +455,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 081c9fd5395c587419af8459c0ee912b
+    spriteID: 951b0a9710ea815489d3fcb1bea6560f
     internalID: 0
     vertices: []
     indices: 
@@ -486,24 +465,24 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":40.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      YT_Sword_Strafe_0: 1582849875862784068
-      YT_Sword_Strafe_1: -951028407104880099
-      YT_Sword_Strafe_10: 1167362375
-      YT_Sword_Strafe_11: 1572857398
-      YT_Sword_Strafe_12: 837434028
-      YT_Sword_Strafe_13: 1034738359
-      YT_Sword_Strafe_14: 1089424920
-      YT_Sword_Strafe_15: -1955027948
-      YT_Sword_Strafe_2: 1266284376866548733
-      YT_Sword_Strafe_3: -2629713464633183522
-      YT_Sword_Strafe_4: 7823907563972840548
-      YT_Sword_Strafe_5: 1610983849422923490
-      YT_Sword_Strafe_6: -5560409059985112255
-      YT_Sword_Strafe_7: -7352360099078723901
-      YT_Sword_Strafe_8: 253771684
-      YT_Sword_Strafe_9: 1365321827
+      MiniMap Icons.png _0: 7292159758475621846
+      MiniMap Icons.png _1: 932751857
+      MiniMap Icons.png _10: 959245867
+      MiniMap Icons.png _11: 2035790965
+      MiniMap Icons.png _12: 1832245080
+      MiniMap Icons.png _13: 1349749106
+      MiniMap Icons.png _14: -1505786759
+      MiniMap Icons.png _15: 1999212025
+      MiniMap Icons.png _2: 1440019789
+      MiniMap Icons.png _3: -1140694158
+      MiniMap Icons.png _4: -1361629728
+      MiniMap Icons.png _5: -1115587214
+      MiniMap Icons.png _6: -1012166158
+      MiniMap Icons.png _7: 950214939
+      MiniMap Icons.png _8: -374718007
+      MiniMap Icons.png _9: -2010579742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -180,7 +180,7 @@ public class Health : MonoBehaviour
     // Inside Health.cs -> DeathFadeRoutine()
     private IEnumerator DeathFadeRoutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(10f);
 
         SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
         if (sr != null)
