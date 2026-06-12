@@ -5,26 +5,63 @@ public class SquadLeader : MusouUnit
 {
     [Header("Squad Management")]
     public List<MusouUnit> squadMembers = new List<MusouUnit>();
-    public float rallyRange = 10f;
+   
 
     [Header("Combat Settings")]
     public float engageDistance = 8f;
     private bool squadEngaged = false;
 
-    // Stores the unique physical offset from the inspector for each soldier
     private Dictionary<MusouUnit, Vector2> memberOffsets = new Dictionary<MusouUnit, Vector2>();
 
     public override void Start()
     {
+        // 1. Run base startup
         base.Start();
 
-        // Link all soldiers set up near the leader in the scene view
-        LinkSquad();
+        // 2. STOP the leader from running the automatic grunt sensor loop.
+        // Leaders rely on player proximity and strategic missions, not grunt duels!
+        CancelInvoke("FindNearestTarget");
+
+    }
+
+    /// <summary>
+    /// 🔥 FIXED STRATEGIC OVERRIDE: 
+    /// Drives the leader using your working Rigidbody2D system instead of breaking physics!
+    /// </summary>
+    public override void CheckDistance()
+    {
+        // If busy or staggered by hit-lag, freeze strategic processing instantly
+        if (animator.GetBool("isHit")) return;
+
+        // 1. STRATEGIC MISSION MARCH: If moving the army, ignore local micro-combat scans
+        if (missionTarget != null && !squadEngaged)
+        {
+            float distToMission = Vector2.Distance(transform.position, missionTarget.position);
+
+            if (distToMission > 2.0f)
+            {
+                // FIXED: Uses your working parent physics movement method!
+                // False means it is marching strategies, not chasing a combat target.
+                MoveTowards(missionTarget.position, false);
+            }
+            else
+            {
+                // Do NOT set missionTarget to null here! Let BattleEventManager advance the path.
+                StopMoving();
+            }
+            return;
+        }
+
+        // 2. ENGAGED COMBAT: If the leader breaks formation to fight, run standard combat priorities
+        if (squadEngaged && playerTransform != null)
+        {
+            currentTarget = playerTransform;
+            base.CheckDistance(); // Safely runs your working combat/attack/strafe priorities!
+        }
     }
 
     private void Update()
     {
-        // 1. Fallback player tracking
         if (playerTransform == null)
         {
             GameObject p = GameObject.FindGameObjectWithTag("Player");
@@ -33,16 +70,9 @@ public class SquadLeader : MusouUnit
 
         if (playerTransform == null) return;
 
-        // 2. TACTICAL OVERRIDE: March the army toward strategic points before local fights
-        if (missionTarget != null && !squadEngaged)
-        {
-            return;
-        }
-
-        // 3. Simple Dynasty Warriors Distance Check
         float distToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
-        // 4. Trigger the Squad Aggression Rush State
+        // Dynamic State Switching Gate
         if (distToPlayer <= engageDistance && !squadEngaged)
         {
             SetSquadMode(true);
@@ -52,17 +82,15 @@ public class SquadLeader : MusouUnit
             SetSquadMode(false);
         }
 
-        // 5. If squad is actively engaged, continually lock down the target reference
+        // Continually feed player tracking down to active guards
         if (squadEngaged)
         {
-            currentTarget = playerTransform;
             BroadcastTarget(playerTransform);
         }
     }
 
     void SetSquadMode(bool attack)
     {
-        // Avoid cascading speed adjustments repeatedly over frames
         if (squadEngaged == attack) return;
         squadEngaged = attack;
 
@@ -73,31 +101,27 @@ public class SquadLeader : MusouUnit
             if (attack)
             {
                 member.currentTarget = playerTransform;
-                member.moveSpeed *= 1.2f; // Charge boost
+                member.moveSpeed *= 1.2f; // Basara charge speed boost
             }
             else
             {
                 member.currentTarget = null;
-                member.moveSpeed /= 1.2f; // Back to standard march speed
+                member.moveSpeed /= 1.2f; // Return to standard marching speed
             }
         }
     }
 
-    // This overrides the virtual/abstract base slot call perfectly
     public override Vector2 GetSlotPosition(int index)
     {
-        // Out of bounds safety fallback
         if (index < 0 || index >= squadMembers.Count) return transform.position;
 
         MusouUnit targetMember = squadMembers[index];
 
-        // If we have an Inspector-saved spot for this unit, use it!
         if (targetMember != null && memberOffsets.ContainsKey(targetMember))
         {
             return (Vector2)transform.position + memberOffsets[targetMember];
         }
 
-        // Fallback: If no dictionary entry exists, keep them at the leader's position
         return transform.position;
     }
 
@@ -112,81 +136,28 @@ public class SquadLeader : MusouUnit
         }
     }
 
-    [ContextMenu("Link Nearby Squad")]
-    public void LinkSquad()
-    {
-        squadMembers.Clear();
-        memberOffsets.Clear();
-
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, rallyRange);
-
-        int index = 0;
-        foreach (var hit in hitColliders)
-        {
-            MusouUnit unit = hit.GetComponent<MusouUnit>();
-
-            // Confirm unit is valid, is not the leader itself, and shares the exact same team faction
-            if (unit != null && unit != this && unit.unitTeam == this.unitTeam)
-            {
-                unit.myLeader = this;
-                unit.squadIndex = index;
-                squadMembers.Add(unit);
-
-                // KEY STEP: Lock down the exact vector difference from where they stand in the Inspector layout
-                Vector2 layoutOffset = (Vector2)unit.transform.position - (Vector2)transform.position;
-                memberOffsets.Add(unit, layoutOffset);
-
-                index++;
-            }
-        }
-        Debug.Log($"[Squad Master] {squadMembers.Count} guards locked into their layout offsets relative to {gameObject.name}.");
-    }
-
-    private void OnDestroy()
-    {
-        // Clean breakup when commander falls
-        foreach (MusouUnit member in squadMembers)
-        {
-            if (member != null)
-            {
-                member.myLeader = null;
-                member.followsPlayer = true;
-            }
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        // Draws cyan wire spheres in scene view mapping out where your layout tells grunts to go
-        Gizmos.color = Color.cyan;
-        for (int i = 0; i < squadMembers.Count; i++)
-        {
-            Gizmos.DrawWireSphere(GetSlotPosition(i), 0.25f);
-        }
-    }
-
-    // Keep empty hooks for legacy systems or animation configurations
-    public virtual void SpawnGuards() { }
-    public virtual void SpawnGaurds() { }
-
     public void AssignSquadMission(AIMission newMission, Transform newTarget)
     {
         currentMission = newMission;
         missionTarget = newTarget;
-        currentTarget = null;
+        currentTarget = null; // Clear combat target to force strategic redirection
 
+        // Cascade the new strategic mission rules down to every living squad member
         foreach (MusouUnit member in squadMembers)
         {
             if (member == null) continue;
 
             member.currentMission = newMission;
             member.missionTarget = newTarget;
-            member.currentTarget = null;
+            member.currentTarget = null; // Break out of old localized grunt fights
 
+            // If the new mission is to follow the leader again, reset their state
             if (newMission == AIMission.FollowLeader)
             {
                 member.missionTarget = null;
             }
         }
+
+        Debug.Log($"[Squad System] Strategic Mission '{newMission}' dispatched to {gameObject.name}'s division.");
     }
 }

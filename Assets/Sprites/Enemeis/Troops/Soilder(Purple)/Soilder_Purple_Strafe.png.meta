@@ -1,58 +1,55 @@
 fileFormatVersion: 2
-guid: 0da0786f8df0ffa44b2a7ac2e473e6f8
+guid: b8c3d4ba0e213044cb2dc4a83a44b722
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7601281716292875821
-    second: Soilder(Purple)_Idle_0
+      213: -7207288288457597792
+    second: Soilder_Purple_Strafe_0
   - first:
-      213: 8250172758800923319
-    second: Soilder(Purple)_Idle_1
+      213: -437743268538993443
+    second: Soilder_Purple_Strafe_1
   - first:
-      213: 5638036514555191915
-    second: Soilder(Purple)_Idle_2
+      213: 1261783950470129792
+    second: Soilder_Purple_Strafe_2
   - first:
-      213: 3969934330278406409
-    second: Soilder(Purple)_Idle_3
+      213: -5869164967752807076
+    second: Soilder_Purple_Strafe_3
   - first:
-      213: -55011242672235159
-    second: Soilder(Purple)_Idle_4
+      213: -2017086459025732607
+    second: Soilder_Purple_Strafe_4
   - first:
-      213: 709878988734290042
-    second: Soilder(Purple)_Idle_5
+      213: 7993740942308197901
+    second: Soilder_Purple_Strafe_5
   - first:
-      213: 1039286726808982219
-    second: Soilder(Purple)_Idle_6
+      213: 967230701445077525
+    second: Soilder_Purple_Strafe_6
   - first:
-      213: -6059055309646254728
-    second: Soilder(Purple)_Idle_7
+      213: 8905839407690957619
+    second: Soilder_Purple_Strafe_7
   - first:
-      213: -2021069189740584059
-    second: Soilder(Purple)_Idle_8
+      213: 2424523895214001353
+    second: Soilder_Purple_Strafe_8
   - first:
-      213: -1114555394132977287
-    second: Soilder(Purple)_Idle_9
+      213: -4439821496180741089
+    second: Soilder_Purple_Strafe_9
   - first:
-      213: -8391534229258861395
-    second: Soilder(Purple)_Idle_10
+      213: -3777413269449970202
+    second: Soilder_Purple_Strafe_10
   - first:
-      213: -8896909537613983205
-    second: Soilder(Purple)_Idle_11
+      213: -8997649136389624907
+    second: Soilder_Purple_Strafe_11
   - first:
-      213: -1298327574005825638
-    second: Soilder(Purple)_Idle_12
+      213: -5530864172639918576
+    second: Soilder_Purple_Strafe_12
   - first:
-      213: -5572493306121326342
-    second: Soilder(Purple)_Idle_13
+      213: -2233987420035669800
+    second: Soilder_Purple_Strafe_13
   - first:
-      213: -9166713293497932718
-    second: Soilder(Purple)_Idle_14
+      213: 2705785977460006256
+    second: Soilder_Purple_Strafe_14
   - first:
-      213: 6100698438325983127
-    second: Soilder(Purple)_Idle_15
-  - first:
-      213: -7713417880857365092
-    second: Soilder(Purple)_Idle_16
+      213: 8573005069242326711
+    second: Soilder_Purple_Strafe_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -85,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -99,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -148,375 +145,353 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Soilder(Purple)_Idle_0
+      name: Soilder_Purple_Strafe_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 159
-        width: 20
-        height: 32
+        y: 160
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d26fe49927d2d7960800000000000000
-      internalID: 7601281716292875821
+      spriteID: 0acd6accc719afb90800000000000000
+      internalID: -7207288288457597792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soilder(Purple)_Idle_1
+      name: Soilder_Purple_Strafe_1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 159
-        width: 21
-        height: 32
+        x: 40
+        y: 160
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7bafeefa9608e7270800000000000000
-      internalID: 8250172758800923319
+      spriteID: dd43ae701d2dce9f0800000000000000
+      internalID: -437743268538993443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soilder(Purple)_Idle_2
+      name: Soilder_Purple_Strafe_2
       rect:
         serializedVersion: 2
-        x: 79
-        y: 159
-        width: 21
-        height: 30
+        x: 80
+        y: 160
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b626eb0a6545e3e40800000000000000
-      internalID: 5638036514555191915
+      spriteID: 088af0751d1c28110800000000000000
+      internalID: 1261783950470129792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soilder(Purple)_Idle_3
+      name: Soilder_Purple_Strafe_3
       rect:
         serializedVersion: 2
-        x: 119
-        y: 159
-        width: 21
-        height: 31
+        x: 120
+        y: 160
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9096fd16d3a081730800000000000000
-      internalID: 3969934330278406409
+      spriteID: c5d4de8de898c8ea0800000000000000
+      internalID: -5869164967752807076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soilder(Purple)_Idle_4
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 119
-        width: 19
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 96d5ed5f09f8c3ff0800000000000000
-      internalID: -55011242672235159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soilder(Purple)_Idle_5
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 119
-        width: 19
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a78550ddd2ff9d900800000000000000
-      internalID: 709878988734290042
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soilder(Purple)_Idle_6
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 119
-        width: 19
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bc25a3b85c94c6e00800000000000000
-      internalID: 1039286726808982219
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soilder(Purple)_Idle_7
-      rect:
-        serializedVersion: 2
-        x: 124
-        y: 119
-        width: 19
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 87d27125c49e9eba0800000000000000
-      internalID: -6059055309646254728
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soilder(Purple)_Idle_8
-      rect:
-        serializedVersion: 2
-        x: 15
-        y: 79
-        width: 19
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 583a60fa748b3f3e0800000000000000
-      internalID: -2021069189740584059
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soilder(Purple)_Idle_9
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 79
-        width: 19
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 979553236cd4880f0800000000000000
-      internalID: -1114555394132977287
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soilder(Purple)_Idle_10
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 79
-        width: 19
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: da48e7824184b8b80800000000000000
-      internalID: -8391534229258861395
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soilder(Purple)_Idle_11
-      rect:
-        serializedVersion: 2
-        x: 137
-        y: 79
-        width: 19
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b12dbb3d9e3d78480800000000000000
-      internalID: -8896909537613983205
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soilder(Purple)_Idle_12
+      name: Soilder_Purple_Strafe_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 39
-        width: 20
-        height: 32
+        y: 120
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9fb94543f96bfde0800000000000000
-      internalID: -1298327574005825638
+      spriteID: 10c45807d8ed104e0800000000000000
+      internalID: -2017086459025732607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soilder(Purple)_Idle_13
+      name: Soilder_Purple_Strafe_5
       rect:
         serializedVersion: 2
-        x: 39
-        y: 39
-        width: 21
-        height: 32
+        x: 40
+        y: 120
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: af07567ccd68aa2b0800000000000000
-      internalID: -5572493306121326342
+      spriteID: d06c6ccc8097fee60800000000000000
+      internalID: 7993740942308197901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soilder(Purple)_Idle_14
+      name: Soilder_Purple_Strafe_6
       rect:
         serializedVersion: 2
-        x: 79
-        y: 39
-        width: 21
-        height: 31
+        x: 80
+        y: 120
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 254643fa3da49c080800000000000000
-      internalID: -9166713293497932718
+      spriteID: 51a5c77c23b4c6d00800000000000000
+      internalID: 967230701445077525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soilder(Purple)_Idle_15
+      name: Soilder_Purple_Strafe_7
       rect:
         serializedVersion: 2
-        x: 119
-        y: 39
-        width: 21
-        height: 30
+        x: 120
+        y: 120
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 797533228e80aa450800000000000000
-      internalID: 6100698438325983127
+      spriteID: 333481291c5e79b70800000000000000
+      internalID: 8905839407690957619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soilder(Purple)_Idle_16
+      name: Soilder_Purple_Strafe_8
       rect:
         serializedVersion: 2
-        x: 11
-        y: 0
-        width: 18
-        height: 31
+        x: 0
+        y: 80
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c95b9570e4f64f490800000000000000
-      internalID: -7713417880857365092
+      spriteID: 9cc4da313a3a5a120800000000000000
+      internalID: 2424523895214001353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soilder_Purple_Strafe_9
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 80
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1ce0065fd59262c0800000000000000
+      internalID: -4439821496180741089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soilder_Purple_Strafe_10
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ed669025aee39bc0800000000000000
+      internalID: -3777413269449970202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soilder_Purple_Strafe_11
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 80
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bb65e338cde12380800000000000000
+      internalID: -8997649136389624907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soilder_Purple_Strafe_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 016ecd8b65c6e33b0800000000000000
+      internalID: -5530864172639918576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soilder_Purple_Strafe_13
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d0251417484ff0e0800000000000000
+      internalID: -2233987420035669800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soilder_Purple_Strafe_14
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07d9cb8b202ec8520800000000000000
+      internalID: 2705785977460006256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soilder_Purple_Strafe_15
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bedfc150be69f670800000000000000
+      internalID: 8573005069242326711
       vertices: []
       indices: 
       edges: []
@@ -525,7 +500,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d392a7bee0bb1fd4f81e18705942766f
     internalID: 0
     vertices: []
     indices: 
@@ -533,25 +508,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":40.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Soilder(Purple)_Idle_0: 7601281716292875821
-      Soilder(Purple)_Idle_1: 8250172758800923319
-      Soilder(Purple)_Idle_10: -8391534229258861395
-      Soilder(Purple)_Idle_11: -8896909537613983205
-      Soilder(Purple)_Idle_12: -1298327574005825638
-      Soilder(Purple)_Idle_13: -5572493306121326342
-      Soilder(Purple)_Idle_14: -9166713293497932718
-      Soilder(Purple)_Idle_15: 6100698438325983127
-      Soilder(Purple)_Idle_16: -7713417880857365092
-      Soilder(Purple)_Idle_2: 5638036514555191915
-      Soilder(Purple)_Idle_3: 3969934330278406409
-      Soilder(Purple)_Idle_4: -55011242672235159
-      Soilder(Purple)_Idle_5: 709878988734290042
-      Soilder(Purple)_Idle_6: 1039286726808982219
-      Soilder(Purple)_Idle_7: -6059055309646254728
-      Soilder(Purple)_Idle_8: -2021069189740584059
-      Soilder(Purple)_Idle_9: -1114555394132977287
+      Soilder_Purple_Strafe_0: -7207288288457597792
+      Soilder_Purple_Strafe_1: -437743268538993443
+      Soilder_Purple_Strafe_10: -3777413269449970202
+      Soilder_Purple_Strafe_11: -8997649136389624907
+      Soilder_Purple_Strafe_12: -5530864172639918576
+      Soilder_Purple_Strafe_13: -2233987420035669800
+      Soilder_Purple_Strafe_14: 2705785977460006256
+      Soilder_Purple_Strafe_15: 8573005069242326711
+      Soilder_Purple_Strafe_2: 1261783950470129792
+      Soilder_Purple_Strafe_3: -5869164967752807076
+      Soilder_Purple_Strafe_4: -2017086459025732607
+      Soilder_Purple_Strafe_5: 7993740942308197901
+      Soilder_Purple_Strafe_6: 967230701445077525
+      Soilder_Purple_Strafe_7: 8905839407690957619
+      Soilder_Purple_Strafe_8: 2424523895214001353
+      Soilder_Purple_Strafe_9: -4439821496180741089
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

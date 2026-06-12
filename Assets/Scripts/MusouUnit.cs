@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -110,81 +110,60 @@ public class MusouUnit : sleepEnemy
         float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         attackOffset = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * personalSpaceRadius;
     }
-    void Update()
-    {
-        // If I'm an enemy leader and I don't have a target, 
-        // constantly look for the player specifically.
-        if (unitTeam == Team.EnemySide && currentTarget == null)
-        {
-            float d = Vector2.Distance(transform.position, playerTransform.position);
-            if (d < detectionRange)
-            {
-                currentTarget = playerTransform;
-            }
-        }
-    }
+ 
 
     public override void CheckDistance()
     {
-        // 0. STOP: If hurt or busy, don't do anything
         if (isBusy || currentState == EnemyState.Stagger || animator.GetBool("isHit")) return;
 
         // 1. PRIORITY: COMBAT (Stay and Fight)
-        // If we have a target, stay here until it's dead or we lose it
         if (currentTarget != null)
         {
-            Vector2 targetPosWithOffset = (Vector2)currentTarget.position + attackOffset;
-            float distToEnemy = Vector2.Distance(transform.position, targetPosWithOffset);
+            Health targetHealth = currentTarget.GetComponent<Health>();
+            PlayerHealth playerHealth = currentTarget.GetComponent<PlayerHealth>();
 
-            if (distToEnemy <= attackRadius)
+            bool isTargetDead = (targetHealth != null && targetHealth.currentHealth <= 0) ||
+                                (playerHealth != null && playerHealth.currentHealth <= 0);
+
+            if (isTargetDead)
             {
+                currentTarget = null;
                 StopMoving();
+                return;
+            }
+
+            float trueDistToEnemy = Vector2.Distance(transform.position, currentTarget.position);
+            Vector2 targetPosWithOffset = (Vector2)currentTarget.position + attackOffset;
+
+            // =========================================================================
+            // 🔥 THE ANTI-RUN FLUIDITY FIX:
+            // Add a clean 0.35f buffer room to 'attackRadius'. This stops them from 
+            // infinitely running into each other's colliders and forces the weapon swing!
+            // =========================================================================
+            float adjustedAttackRadius = attackRadius + 0.35f;
+
+            if (trueDistToEnemy <= adjustedAttackRadius)
+            {
+                StopMoving(); // This cuts their velocity to 0 and stops the run animation
+
                 if (!isBusy) StartCoroutine(BrainTick());
             }
-            else if (distToEnemy < detectionRange * 1.5f) // Chase range
+            else if (trueDistToEnemy < detectionRange * 2.0f)
             {
                 MoveTowards(targetPosWithOffset, true);
             }
             else
             {
-                // Enemy got too far away, give up and return to mission
                 currentTarget = null;
-            }
-
-            return; // Exit! Don't look at missions while fighting.
-        }
-
-        // 2. PRIORITY: MISSION (Advance when clear)
-        if (missionTarget != null)
-        {
-            Debug.DrawLine(transform.position, missionTarget.position, Color.green);
-            float distToMission = Vector2.Distance(transform.position, missionTarget.position);
-
-            if (distToMission > 1.5f)
-            {
-                MoveTowards(missionTarget.position, false);
-                return;
-            }
-            else
-            {
-                missionTarget = null;
                 StopMoving();
             }
-        }
 
-        // 3. PRIORITY: SQUAD (Follower logic)
-        if (myLeader != null)
-        {
-            Vector2 slotPos = myLeader.GetSlotPosition(squadIndex);
-            float distToSlot = Vector2.Distance(transform.position, slotPos);
-
-            if (distToSlot < 0.2f) StopMoving();
-            else MoveTowards(slotPos, false);
+            return;
         }
     }
 
     // --- MOVEMENT ---
-    void MoveTowards(Vector2 targetPos, bool isChasing)
+    public void MoveTowards(Vector2 targetPos, bool isChasing)
     {
         
         // FIX: Only check the tag if currentTarget is NOT null
@@ -214,7 +193,7 @@ public class MusouUnit : sleepEnemy
         animator.SetBool("isMoving", true);
     }
 
-    void StopMoving()
+   public void StopMoving()
     {
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("isMoving", false);

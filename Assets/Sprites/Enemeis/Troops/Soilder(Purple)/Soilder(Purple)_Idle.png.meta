@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0da0786f8df0ffa44b2a7ac2e473e6f8
+guid: f6cbf550cfbbfc845a2608020fab4d0e
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -41,18 +41,6 @@ TextureImporter:
   - first:
       213: -1298327574005825638
     second: Soilder(Purple)_Idle_12
-  - first:
-      213: -5572493306121326342
-    second: Soilder(Purple)_Idle_13
-  - first:
-      213: -9166713293497932718
-    second: Soilder(Purple)_Idle_14
-  - first:
-      213: 6100698438325983127
-    second: Soilder(Purple)_Idle_15
-  - first:
-      213: -7713417880857365092
-    second: Soilder(Purple)_Idle_16
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -85,7 +73,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -99,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -152,11 +140,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 159
-        width: 20
-        height: 32
+        y: 160
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -173,12 +161,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 159
-        width: 21
-        height: 32
+        x: 40
+        y: 160
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -195,12 +183,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_2
       rect:
         serializedVersion: 2
-        x: 79
-        y: 159
-        width: 21
-        height: 30
+        x: 80
+        y: 160
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -217,12 +205,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_3
       rect:
         serializedVersion: 2
-        x: 119
-        y: 159
-        width: 21
-        height: 31
+        x: 120
+        y: 160
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -239,12 +227,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_4
       rect:
         serializedVersion: 2
-        x: 6
-        y: 119
-        width: 19
-        height: 31
+        x: 0
+        y: 120
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -261,12 +249,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_5
       rect:
         serializedVersion: 2
-        x: 45
-        y: 119
-        width: 19
-        height: 30
+        x: 40
+        y: 120
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -283,12 +271,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_6
       rect:
         serializedVersion: 2
-        x: 85
-        y: 119
-        width: 19
-        height: 30
+        x: 80
+        y: 120
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -305,12 +293,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_7
       rect:
         serializedVersion: 2
-        x: 124
-        y: 119
-        width: 19
-        height: 29
+        x: 120
+        y: 120
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -327,12 +315,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_8
       rect:
         serializedVersion: 2
-        x: 15
-        y: 79
-        width: 19
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 80
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.97037685, y: 0.5131542}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -349,12 +337,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_9
       rect:
         serializedVersion: 2
-        x: 56
-        y: 79
-        width: 19
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 40
+        y: 80
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.9703768, y: 0.5131544}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -371,12 +359,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_10
       rect:
         serializedVersion: 2
-        x: 96
-        y: 79
-        width: 19
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 80
+        y: 80
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.9703768, y: 0.5131544}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -393,12 +381,12 @@ TextureImporter:
       name: Soilder(Purple)_Idle_11
       rect:
         serializedVersion: 2
-        x: 137
-        y: 79
-        width: 19
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 120
+        y: 80
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.9703768, y: 0.5131544}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -416,11 +404,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 39
-        width: 20
-        height: 32
+        y: 40
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -437,20 +425,20 @@ TextureImporter:
       name: Soilder(Purple)_Idle_13
       rect:
         serializedVersion: 2
-        x: 39
-        y: 39
-        width: 21
-        height: 32
+        x: 40
+        y: 40
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: af07567ccd68aa2b0800000000000000
-      internalID: -5572493306121326342
+      spriteID: 1628298890cbd56468c319a0a4616f78
+      internalID: 2004707104
       vertices: []
       indices: 
       edges: []
@@ -459,20 +447,20 @@ TextureImporter:
       name: Soilder(Purple)_Idle_14
       rect:
         serializedVersion: 2
-        x: 79
-        y: 39
-        width: 21
-        height: 31
+        x: 80
+        y: 40
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 254643fa3da49c080800000000000000
-      internalID: -9166713293497932718
+      spriteID: 51bb8a212ec1e0e4b94573a6ca129c54
+      internalID: -1302182672
       vertices: []
       indices: 
       edges: []
@@ -481,20 +469,20 @@ TextureImporter:
       name: Soilder(Purple)_Idle_15
       rect:
         serializedVersion: 2
-        x: 119
-        y: 39
-        width: 21
-        height: 30
+        x: 120
+        y: 40
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 797533228e80aa450800000000000000
-      internalID: 6100698438325983127
+      spriteID: a939d488309c27646923ba901c57f9a4
+      internalID: 1163170894
       vertices: []
       indices: 
       edges: []
@@ -503,20 +491,20 @@ TextureImporter:
       name: Soilder(Purple)_Idle_16
       rect:
         serializedVersion: 2
-        x: 11
+        x: 0
         y: 0
-        width: 18
-        height: 31
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c95b9570e4f64f490800000000000000
-      internalID: -7713417880857365092
+      spriteID: a2e64c2e3f9172c49ab75f829314a426
+      internalID: -1812585187
       vertices: []
       indices: 
       edges: []
@@ -525,7 +513,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 68f8ae6b000e3d94f9ad385a31896b03
     internalID: 0
     vertices: []
     indices: 
@@ -533,17 +521,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":40.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Soilder(Purple)_Idle_0: 7601281716292875821
       Soilder(Purple)_Idle_1: 8250172758800923319
       Soilder(Purple)_Idle_10: -8391534229258861395
       Soilder(Purple)_Idle_11: -8896909537613983205
       Soilder(Purple)_Idle_12: -1298327574005825638
-      Soilder(Purple)_Idle_13: -5572493306121326342
-      Soilder(Purple)_Idle_14: -9166713293497932718
-      Soilder(Purple)_Idle_15: 6100698438325983127
-      Soilder(Purple)_Idle_16: -7713417880857365092
+      Soilder(Purple)_Idle_13: 2004707104
+      Soilder(Purple)_Idle_14: -1302182672
+      Soilder(Purple)_Idle_15: 1163170894
+      Soilder(Purple)_Idle_16: -1812585187
       Soilder(Purple)_Idle_2: 5638036514555191915
       Soilder(Purple)_Idle_3: 3969934330278406409
       Soilder(Purple)_Idle_4: -55011242672235159
