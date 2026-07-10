@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class AttackDirector : MonoBehaviour
@@ -6,43 +6,111 @@ public class AttackDirector : MonoBehaviour
     public static AttackDirector instance;
 
     [Header("Settings")]
-    [Tooltip("How many enemies can attack the player at once")]
+    [Tooltip("How many enemies can attack a single target at once")]
     public int maxAttackerSlots = 3;
 
-    // Tracks: Who is being targeted -> How many people are currently swinging at them
-    private Dictionary<Transform, int> targetRegistry = new Dictionary<Transform, int>();
+    // 🔥 FIXED UNIVERSAL REGISTRY: Tracks the target Transform -> against a HashSet of the root MusouUnits
+    private Dictionary<Transform, HashSet<MusouUnit>> targetRegistry = new Dictionary<Transform, HashSet<MusouUnit>>();
 
     void Awake()
     {
-        // Singleton pattern: Let every enemy find this easily
         if (instance == null) instance = this;
+        else Destroy(gameObject);
     }
 
-    // Enemies call this before they start a combo
-    public bool RequestAttackToken(Transform target)
+    /// <summary>
+    /// 🔥 CHANGED PARAMETER TYPE to 'Component'. This allows 'this' from MeleeEnemy, 
+    /// SleepEnemy, SquadLeader, or MusouUnit to pass through completely error-free!
+    /// </summary>
+    public bool RequestAttackToken(Component attackerComponent, Transform target)
     {
-        if (target == null) return false;
+        if (attackerComponent == null || target == null) return false;
 
-        // Initialize target in list if they aren't there
+        // Automatically resolve and cast down to the valid MusouUnit base component internally
+        MusouUnit attacker = attackerComponent.GetComponent<MusouUnit>();
+        if (attacker == null) return false; // Safety fallback if script type doesn't contain a MusouUnit component
+
+        PruneDeadRegistryEntries();
+
         if (!targetRegistry.ContainsKey(target))
-            targetRegistry[target] = 0;
-
-        // If there is an open slot, take it!
-        if (targetRegistry[target] < maxAttackerSlots)
         {
-            targetRegistry[target]++;
+            targetRegistry[target] = new HashSet<MusouUnit>();
+        }
+
+        if (targetRegistry[target].Contains(attacker)) return true;
+
+        if (targetRegistry[target].Count < maxAttackerSlots)
+        {
+            targetRegistry[target].Add(attacker);
             return true;
         }
 
-        return false; // No slots left, you must wait/strafe
+        return false;
     }
 
-    // Enemies call this when their animation/combo is finished
-    public void ReturnAttackToken(Transform target)
+    /// <summary>
+    /// 🔥 CHANGED PARAMETER TYPE to 'Component' for seamless universal unlinking
+    /// </summary>
+    public void ReturnAttackToken(Component attackerComponent, Transform target)
     {
-        if (target != null && targetRegistry.ContainsKey(target))
+        if (attackerComponent == null || target == null) return;
+
+        MusouUnit attacker = attackerComponent.GetComponent<MusouUnit>();
+        if (attacker == null) return;
+
+        if (targetRegistry.ContainsKey(target))
         {
-            targetRegistry[target] = Mathf.Max(0, targetRegistry[target] - 1);
+            targetRegistry[target].Remove(attacker);
+
+            if (targetRegistry[target].Count == 0)
+            {
+                targetRegistry.Remove(target);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 🔥 CHANGED PARAMETER TYPE to 'Component' for absolute OnDisable crash prevention
+    /// </summary>
+    public void ForceReleaseAllTokensForAttacker(Component attackerComponent)
+    {
+        if (attackerComponent == null) return;
+
+        MusouUnit attacker = attackerComponent.GetComponent<MusouUnit>();
+        if (attacker == null) return;
+
+        List<Transform> keysToClean = new List<Transform>();
+
+        foreach (var pair in targetRegistry)
+        {
+            if (pair.Value.Contains(attacker))
+            {
+                pair.Value.Remove(attacker);
+                if (pair.Value.Count == 0) keysToClean.Add(pair.Key);
+            }
+        }
+
+        foreach (Transform key in keysToClean)
+        {
+            targetRegistry.Remove(key);
+        }
+    }
+
+    private void PruneDeadRegistryEntries()
+    {
+        List<Transform> deadKeys = new List<Transform>();
+
+        foreach (var key in targetRegistry.Keys)
+        {
+            if (key == null)
+            {
+                deadKeys.Add(key);
+            }
+        }
+
+        foreach (Transform deadKey in deadKeys)
+        {
+            targetRegistry.Remove(deadKey);
         }
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -76,7 +76,7 @@ public class BattleEventManager : MonoBehaviour
                 if (objectsDestroyedCount >= totalObjectsNeeded)
                 {
                     eventTriggered = true;
-                    CompleteSiegeMission();
+                   // CompleteSiegeMission();
                 }
             }
         }
@@ -96,10 +96,10 @@ public class BattleEventManager : MonoBehaviour
         Time.timeScale = 0f;
 
         // 2. CINEMATIC CUTSCENE BANNER (Text Display Log)
-        Debug.LogWarning("==================================================");
-        Debug.LogWarning("š CRITICAL STRATAGEM ACTIVATE: FIRE ATTACK SUCCESS š");
+     
+        Debug.LogWarning("â˜… CRITICAL STRATAGEM ACTIVATE: FIRE ATTACK SUCCESS â˜…");
         Debug.LogWarning("Commander: 'The trap is sprung! Burn them to ashes!'");
-        Debug.LogWarning("==================================================");
+   
 
         if (CameraShake.Instance != null) CameraShake.Instance.Shake(1.5f, 0.4f);
 
@@ -166,21 +166,38 @@ public class BattleEventManager : MonoBehaviour
 
     private IEnumerator DeployUnitOnPath(MusouUnit unit)
     {
-        // Force the soldier to navigate sequentially through your structural path node checkpoints
         foreach (Transform node in pathNodes)
         {
             if (unit == null || !unit.enabled) yield break;
 
             unit.missionTarget = node;
 
-            // Performance optimized loop check interval (Checks distance 5 times a second instead of every frame)
-            while (unit != null && Vector2.Distance(unit.transform.position, node.position) > 1.5f)
+            float checkTimer = 0f;
+            // Loop runs every single frame to ensure smooth physics and animation updates
+            while (unit != null && node != null)
             {
-                yield return new WaitForSeconds(0.2f);
+                // ðŸ”¥ THE FIX: Keep driving the Rigidbody physics every frame!
+                // If they are locked in a local skirmish duel, let their internal combat logic take over temporarily
+                if (unit.currentTarget == null)
+                {
+                    unit.MoveTowards(node.position, false);
+                }
+
+                // Only run the performance-heavy Distance calculation 5 times a second
+                checkTimer += Time.deltaTime;
+                if (checkTimer >= 0.2f)
+                {
+                    checkTimer = 0f;
+                    if (Vector2.Distance(unit.transform.position, node.position) <= 1.5f)
+                    {
+                        break; // Breakthrough to the next sequential node checkpoint!
+                    }
+                }
+
+                yield return null; // Wait for the next frame
             }
         }
 
-        // Final Node Reached: Release their steering weights directly onto your ultimate Objective target point
         if (unit != null)
         {
             unit.missionTarget = finalObjectiveTarget;
@@ -188,54 +205,78 @@ public class BattleEventManager : MonoBehaviour
         }
     }
 
-    private void CompleteSiegeMission()
-    {
-        Debug.Log("<color=green>MISSION COMPLETE: All target objects destroyed! Major victory conditions satisfied!</color>");
-    }
-
     private IEnumerator ExecuteGeneralRetreatPath(SquadLeader general)
     {
         if (general == null) yield break;
 
-      
-        general.moveSpeed *= 1.2f; // Give them a panicked speed boost
+        
 
-        // 2. Guide the squad leader through each structural retreat checkpoint node
         foreach (Transform node in retreatPathNodes)
         {
             if (general == null) yield break;
 
-            // Command the entire squad to update their pathfinding destination node
             general.AssignSquadMission(MusouUnit.AIMission.CaptureBase, node);
 
-            // Standard performance-optimized check interval (5 times a second)
-            while (general != null && Vector2.Distance(general.transform.position, node.position) > 1.8f)
+            float checkTimer = 0f;
+            while (general != null && node != null)
             {
-                yield return new WaitForSeconds(0.2f);
+                // ðŸ”¥ THE FIX: Constantly push the general along the escape route every frame
+                // Generals fleeing completely clear their target to ignore local grunt skirmishes
+                general.currentTarget = null;
+                general.MoveTowards(node.position, false);
+
+                checkTimer += Time.deltaTime;
+                if (checkTimer >= 0.2f)
+                {
+                    checkTimer = 0f;
+                    if (Vector2.Distance(general.transform.position, node.position) <= 1.8f)
+                    {
+                        break;
+                    }
+                }
+
+                yield return null;
             }
         }
 
-        // 3. Final Escape Node Reached: March them to the absolute boundary edge
         if (general != null && finalEscapePoint != null)
         {
             general.AssignSquadMission(MusouUnit.AIMission.CaptureBase, finalEscapePoint);
 
-            while (general != null && Vector2.Distance(general.transform.position, finalEscapePoint.position) > 1.5f)
+            float checkTimer = 0f;
+            while (general != null)
             {
-                yield return new WaitForSeconds(0.2f);
-            }
+                // Continue pushing towards the final map boundary despawn threshold
+                general.currentTarget = null;
+                general.MoveTowards(finalEscapePoint.position, false);
 
-            // 4. DESPAWN BOARDS: Clean up the escaped squad units to preserve memory
-            if (general != null)
-            {
-                foreach (MusouUnit member in general.squadMembers)
+                checkTimer += Time.deltaTime;
+                if (checkTimer >= 0.2f)
                 {
-                    if (member != null) Destroy(member.gameObject);
+                    checkTimer = 0f;
+                    if (Vector2.Distance(general.transform.position, finalEscapePoint.position) <= 1.5f)
+                    {
+                        break;
+                    }
                 }
 
-                Debug.LogWarning($"[RETREAT] {general.gameObject.name} has successfully escaped through the path!");
-                Destroy(general.gameObject);
+                yield return null;
             }
+            // Inside BattleEventManager.cs -> ExecuteGeneralRetreatPath:
+            if (general != null)
+            {
+                // Clean up all attached living squad grunts explicitly
+                foreach (MusouUnit member in general.squadMembers)
+                {
+                    if (member != null) Destroy(member.gameObject); // Removes the grunt, NOT the folder!
+                }
+
+                Debug.LogWarning($"[RETREAT] {general.gameObject.name} successfully escaped!");
+                Destroy(general.gameObject); // Removes the general, NOT the folder!
+            }
+
         }
     }
+
+
 }

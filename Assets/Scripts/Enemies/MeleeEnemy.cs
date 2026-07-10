@@ -169,7 +169,7 @@ public class MeleeEnemy : sleepEnemy
         if (readyToSwing && diceRoll < aggressionScore)
         {
             // TRY TO ATTACK
-            if (AttackDirector.instance != null && AttackDirector.instance.RequestAttackToken(currentTarget))
+            if (AttackDirector.instance != null && AttackDirector.instance.RequestAttackToken(this, currentTarget))
             {
                 int randomCombo = Random.Range(0, comboList.Count);
                 yield return StartCoroutine(comboList[randomCombo]());
@@ -306,7 +306,7 @@ public class MeleeEnemy : sleepEnemy
     {
         if (AttackDirector.instance != null && currentTarget != null)
         {
-            AttackDirector.instance.ReturnAttackToken(currentTarget);
+            AttackDirector.instance.ReturnAttackToken(this, currentTarget);
         }
     }
 

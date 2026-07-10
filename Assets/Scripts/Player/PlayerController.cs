@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using System;
@@ -45,7 +45,10 @@ public class PlayerController : MonoBehaviour
         if (currentState == PlayerState.walk || currentState == PlayerState.idle)
         {
             AnimateChar();
-        }     
+        }
+
+   
+
     }
 
     private void AnimateChar()
@@ -113,8 +116,6 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
         }
     }
-
     public Vector2 GetLastLookDir() => lastLookDir;
-
 
 }

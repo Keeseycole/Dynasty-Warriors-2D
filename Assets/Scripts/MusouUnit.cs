@@ -23,7 +23,8 @@ public class MusouUnit : sleepEnemy
     public float damageToGive = 10f;
 
     [Header("Aggression Settings")]
-    [Range(0f, 1f)] public float aggressionScore = 0.6f;
+    public float baseAggressionScore;
+    [Range(0f, 1f)] public float aggressionScore = 0.5f;
     public float attackCooldown = 1.5f;
     private float nextAttackTime;
 
@@ -33,7 +34,7 @@ public class MusouUnit : sleepEnemy
 
     // --- INTERNAL VARIABLES ---
     private List<System.Func<IEnumerator>> comboList;
-    private bool isBusy = false;
+    public bool isBusy = false;
     private Vector2 myFormationSpot;
     private Health health;
     public Transform playerTransform;
@@ -65,58 +66,96 @@ public class MusouUnit : sleepEnemy
 
     public bool isOfficer;
 
-    
-
-    public virtual void Start()
+    // Inside MusouUnit.cs
+    public override void Start()
     {
+        // Run sleepEnemy base setups first to cache core rigidbodies/animators safely
+        base.Start();
+
+        baseAggressionScore = aggressionScore;
         health = GetComponent<Health>();
+        if (health == null) health = GetComponentInChildren<Health>();
+
         if (playerTransform == null)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null) playerTransform = player.transform;
         }
 
-        // FORCE STARTING DIRECTION
         ChangeAnim(startingDirection.normalized);
 
-        // If you use a Blend Tree, also set the parameters directly
-        animator.SetFloat("moveX", startingDirection.x);
-        animator.SetFloat("moveY", startingDirection.y);
+        if (animator != null)
+        {
+            animator.SetFloat("moveX", startingDirection.x);
+            animator.SetFloat("moveY", startingDirection.y);
+        }
 
-        // Give each unit a unique offset so they surround targets/player
         float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         myFormationSpot = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 1.5f;
 
         if (isOfficer)
         {
-            // Officers get the full 5-hit chain
             comboList = new List<System.Func<IEnumerator>> { Combo1, Combo2, Combo3, Combo4, Combo5 };
-
-            // Pro Tip: You can also boost officer stats here
             damageToGive *= 2f;
-           // aggressionScore = 0.9f;
         }
         else
         {
-            // Regular grunts are limited to 3-hit combos
             comboList = new List<System.Func<IEnumerator>> { Combo1, Combo2, Combo3 };
         }
 
-        // Start the scanning loop (Don't run FindNearestTarget every single frame!)
-
-        // Give the engine 0.25 seconds to stabilize physics before grunts scan layers!
+        // Start the scanning loop for regular grunts
         InvokeRepeating("FindNearestTarget", 0.25f, 0.5f);
 
         float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         attackOffset = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * personalSpaceRadius;
-    }
- 
 
+        // 🔥 THE CRITICAL FIX: Delay the grunts' physics loop on startup 
+        // so they don't break the leader's movement matrix on frame one!
+        if (myLeader != null)
+        {
+            StartCoroutine(DelayPhysicsActivation());
+        }
+    }
+
+    // Add this supporting coroutine function directly under your Start method
+    private System.Collections.IEnumerator DelayPhysicsActivation()
+    {
+        Collider2D myCol = GetComponent<Collider2D>();
+        if (myCol == null) myCol = GetComponentInChildren<Collider2D>();
+
+        // Temporarily freeze their physical overlaps on frame one
+        if (myCol != null) myCol.enabled = false;
+
+        yield return new WaitForSeconds(0.1f);
+
+        if (myCol != null) myCol.enabled = true;
+    }
+    protected override void FixedUpdate()
+    {
+        // Execute standard distance tracking
+        CheckDistance();
+
+        // 🔥 THE DESTINATION ANCHOR PADLOCK:
+        // If the grunt is Idle and its leader has come to a halt, 
+        // freeze its velocity completely to stop ghost drift!
+        if (currentState == EnemyState.Idle && myLeader != null)
+        {
+            if (myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude <= 0.1f)
+            {
+                if (rb != null)
+                {
+                    rb.linearVelocity = Vector2.zero;
+                }
+            }
+        }
+    }
     public override void CheckDistance()
     {
         if (isBusy || currentState == EnemyState.Stagger || animator.GetBool("isHit")) return;
 
-        // 1. PRIORITY: COMBAT (Stay and Fight)
+        // 🔥 THE CRITICAL CORRECTION: Always read the physical position of the moving child sprite body!
+        Vector2 physicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
+
         if (currentTarget != null)
         {
             Health targetHealth = currentTarget.GetComponent<Health>();
@@ -132,24 +171,25 @@ public class MusouUnit : sleepEnemy
                 return;
             }
 
-            float trueDistToEnemy = Vector2.Distance(transform.position, currentTarget.position);
-            Vector2 targetPosWithOffset = (Vector2)currentTarget.position + attackOffset;
+            // Calculate distance from the physical body, NOT the unmoving parent pivot
+            Vector2 deltaToEnemy = (Vector2)currentTarget.position - physicalPos;
+            float sqrDistToEnemy = deltaToEnemy.sqrMagnitude;
 
-            // =========================================================================
-            // 🔥 THE ANTI-RUN FLUIDITY FIX:
-            // Add a clean 0.35f buffer room to 'attackRadius'. This stops them from 
-            // infinitely running into each other's colliders and forces the weapon swing!
-            // =========================================================================
             float adjustedAttackRadius = attackRadius + 0.35f;
+            float sqrAttackRadius = adjustedAttackRadius * adjustedAttackRadius;
 
-            if (trueDistToEnemy <= adjustedAttackRadius)
+            if (sqrDistToEnemy <= sqrAttackRadius)
             {
-                StopMoving(); // This cuts their velocity to 0 and stops the run animation
-
-                if (!isBusy) StartCoroutine(BrainTick());
+                StopMoving();
+                if (!isBusy)
+                {
+                    isBusy = true;
+                    StartCoroutine(BrainTick());
+                }
             }
-            else if (trueDistToEnemy < detectionRange * 2.0f)
+            else if (sqrDistToEnemy < (detectionRange * 2.0f) * (detectionRange * 2.0f))
             {
+                Vector2 targetPosWithOffset = (Vector2)currentTarget.position + attackOffset;
                 MoveTowards(targetPosWithOffset, true);
             }
             else
@@ -157,57 +197,75 @@ public class MusouUnit : sleepEnemy
                 currentTarget = null;
                 StopMoving();
             }
-
             return;
+        }
+
+        if (currentMission == AIMission.FollowLeader)
+        {
+            ExecuteMacroMission();
         }
     }
 
     // --- MOVEMENT ---
     public void MoveTowards(Vector2 targetPos, bool isChasing)
     {
-        
-        // FIX: Only check the tag if currentTarget is NOT null
-        if (isChasing && currentTarget != null && currentTarget.CompareTag("Player"))
+        if (rb == null) return;
+
+        Vector2 physicalPos = rb.position;
+        Vector2 targetDir = (targetPos - physicalPos).normalized;
+
+        // 1. Calculate and strictly clamp separation forces to prevent sudden spikes
+        Vector2 separationForce = ComputeSeparationForce();
+        separationForce = Vector2.ClampMagnitude(separationForce, 1.2f);
+
+        Vector2 desiredDirection = (targetDir + separationForce).normalized;
+
+        if (!isChasing)
         {
-            targetPos += attackOffset;
+            // Formation Marching: Assign direct velocity to eliminate acceleration drift
+            rb.linearVelocity = desiredDirection * moveSpeed;
+        }
+        else
+        {
+            // Combat Chasing: Use clean, direct interpolation instead of AddForce
+            Vector2 targetVelocity = desiredDirection * moveSpeed;
+
+            // 🔥 THE ACCELERATION LOCK: 
+            // Smoothly adjust velocity without letting physics forces multiply exponentially
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, Time.fixedDeltaTime * 12f);
         }
 
-        Vector2 dir = (targetPos - (Vector2)transform.position).normalized;
-        Vector2 separation = ComputeSeparationForce();
-
-        // DW3 Optimization: Reduce separation strength when marching to a mission
-        float sepWeight = isChasing ? 1.5f : 0.2f;
-
-        Vector2 finalVelocity = (dir + (separation * sepWeight)).normalized * moveSpeed;
-      
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, finalVelocity, Time.deltaTime * 10f);
-
-        if (rb.linearVelocity.magnitude < 0.1f)
+        // 2. HARD FRAME CAP: Clamp the velocity to ensure they never exceed their max speed
+        float currentMaxSpeed = isChasing ? (moveSpeed * 1.2f) : moveSpeed;
+        if (rb.linearVelocity.sqrMagnitude > currentMaxSpeed * currentMaxSpeed)
         {
-            Debug.LogWarning($"{gameObject.name} has almost zero velocity!");
+            rb.linearVelocity = rb.linearVelocity.normalized * currentMaxSpeed;
         }
 
-        // Standard animation updates
-        Vector2 faceDir = isChasing && currentTarget != null ? (Vector2)(currentTarget.position - transform.position) : dir;
+        // Animation updates
+        Vector2 faceDir = (isChasing && currentTarget != null) ? ((Vector2)currentTarget.position - physicalPos) : targetDir;
         ChangeAnim(faceDir.normalized);
         animator.SetBool("isMoving", true);
     }
 
-   public void StopMoving()
+    public void StopMoving()
     {
-        rb.linearVelocity = Vector2.zero;
-        animator.SetBool("isMoving", false);
+        if (rb != null)
+        {
+            // 🔥 THE COMPLETE PHYSICS RESET: 
+            // Kill both linear velocity and any active physical forces on the body
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
 
-        rb.linearVelocity = Vector2.zero;
         animator.SetBool("isMoving", false);
         animator.SetBool("isStrafing", false);
-
         ChangeState(EnemyState.Idle);
-
-
     }
 
     // --- BRAIN & COMBAT ---
+    // Inside MusouUnit.cs / MeleeEnemy.cs -> BrainTick()
+
     IEnumerator BrainTick()
     {
         isBusy = true;
@@ -216,14 +274,21 @@ public class MusouUnit : sleepEnemy
         bool readyToSwing = Time.time >= nextAttackTime;
         float diceRoll = Random.value;
 
-        if (readyToSwing && diceRoll < aggressionScore)
-        {
-            if (AttackDirector.instance != null && AttackDirector.instance.RequestAttackToken(currentTarget))
-            {
+        // 🔥 THE VISUAL INSPECTOR FIX:
+        // Instead of using a hidden local variable, overwrite the main class variable 
+        // directly so Unity can display the active, changing value right in your Inspector!
+     if (MoraleManager.Instance != null)
+{
+    // Pass the immutable base setting into the calculator, and store the output in our active tracker!
+    aggressionScore = MoraleManager.Instance.GetAdjustedAggression(this.unitTeam, baseAggressionScore);
+}
 
+        if (readyToSwing && diceRoll < aggressionScore) // Evaluates against the newly visible score
+        {
+            if (AttackDirector.instance != null && AttackDirector.instance.RequestAttackToken(this, currentTarget))
+            {
                 if (SoundManager.Instance != null)
                 {
-                    // Plays the slash sound with a subtle, natural pitch variation
                     SoundManager.Instance.PlaySFX("swordswing", 0.6f, 0.08f);
                 }
 
@@ -231,7 +296,7 @@ public class MusouUnit : sleepEnemy
                 activeAction = StartCoroutine(comboList[randomCombo]());
                 yield return activeAction;
                 nextAttackTime = Time.time + attackCooldown;
-                AttackDirector.instance.ReturnAttackToken(currentTarget);
+                AttackDirector.instance.ReturnAttackToken(this, currentTarget);
             }
             else yield return StartCoroutine(Block(Random.Range(0.5f, 1f)));
         }
@@ -240,7 +305,6 @@ public class MusouUnit : sleepEnemy
 
         isBusy = false;
     }
-
     IEnumerator PlayAttack(string animName)
     {
         if (currentTarget == null) yield break;
@@ -264,43 +328,51 @@ public class MusouUnit : sleepEnemy
         yield return new WaitForSeconds(0.1f);
     }
 
+  
     IEnumerator StrafeBehavior()
     {
         ChangeState(EnemyState.Strafe);
         float timer = 0;
-        float duration = Random.Range(1.5f, 2.5f); // Longer, slower strafe
+        float duration = Random.Range(1.5f, 2.5f);
         float strafeDir = Random.value > 0.5f ? 1f : -1f;
         animator.SetBool("isStrafing", true);
+
+        float attackRadiusSqr = attackRadius * attackRadius;
+        float backUpRadiusSqr = (attackRadius - 1f) * (attackRadius - 1f);
 
         while (timer < duration && currentTarget != null)
         {
             if (currentState == EnemyState.Stagger) break;
 
-            // 1. Calculate direction to target
-            Vector2 toTarget = (currentTarget.position - transform.position).normalized;
-
-            // 2. Calculate the "Side" vector
+            Vector2 myPos = transform.position;
+            Vector2 targetPos = currentTarget.position;
+            Vector2 toTarget = (targetPos - myPos).normalized;
             Vector2 sideDir = Vector2.Perpendicular(toTarget) * strafeDir;
 
-            Vector2 targetVelocity = sideDir * strafeSpeed;
-
-            // 3. Keep them at the "sweet spot" distance (don't drift)
-            float dist = Vector2.Distance(transform.position, currentTarget.position);
+            float sqrDist = (targetPos - myPos).sqrMagnitude;
             Vector2 correctionDir = Vector2.zero;
-            if (dist > attackRadius) correctionDir = toTarget; // Move closer
-            else if (dist < attackRadius - 1f) correctionDir = -toTarget; // Back up
+            if (sqrDist > attackRadiusSqr) correctionDir = toTarget;
+            else if (sqrDist < backUpRadiusSqr) correctionDir = -toTarget;
 
-            // 4. Combine movement (Mostly sideways, slightly forward/back)
-            rb.linearVelocity = (sideDir + (correctionDir * 0.5f)).normalized * strafeSpeed;
+            // FIX: Calculate target velocity purely from static direction values, 
+            // completely removing the broken double-assignment line!
+            Vector2 targetVelocity = (sideDir + (correctionDir * 0.5f)).normalized * strafeSpeed;
 
+            // Lerp smoothly from current physics velocity directly to the clean target velocity
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 5f);
 
-            ChangeAnim(toTarget); // Always keep eyes on the prize
+            // Safety fallback velocity hard cap inside the frame loop
+            if (rb.linearVelocity.sqrMagnitude > strafeSpeed * strafeSpeed)
+            {
+                rb.linearVelocity = rb.linearVelocity.normalized * strafeSpeed;
+            }
+
+            ChangeAnim(toTarget);
             timer += Time.deltaTime;
             yield return null;
         }
 
-        rb.linearVelocity = Vector2.zero; // Hard stop after strafe
+        rb.linearVelocity = Vector2.zero;
         animator.SetBool("isStrafing", false);
     }
 
@@ -314,8 +386,14 @@ public class MusouUnit : sleepEnemy
     }
 
     // --- SENSORS & CROWDS ---
-    private void FindNearestTarget()
+    public void FindNearestTarget()
     {
+        // Safety reset if the player somehow got assigned previously
+        if (this.unitTeam == Team.PlayerSide && currentTarget != null && (currentTarget.CompareTag("Player") || currentTarget.root.CompareTag("Player")))
+        {
+            currentTarget = null;
+        }
+
         Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(transform.position, detectionRange, searchLayers);
         float closestDist = Mathf.Infinity;
         Transform bestTarget = null;
@@ -323,50 +401,98 @@ public class MusouUnit : sleepEnemy
         foreach (var col in potentialTargets)
         {
             if (col.gameObject == this.gameObject) continue;
+
+            // 🔥 CRITICAL ALLY PROTECTION GATES:
+            // 1. If this unit is an Ally, completely ignore anything tagged "Player"
+            if (this.unitTeam == Team.PlayerSide && col.CompareTag("Player")) continue;
+            // 2. If the player's hurtbox is a child object, check its root parent tag too!
+            if (this.unitTeam == Team.PlayerSide && col.transform.root.CompareTag("Player")) continue;
+
             MusouUnit other = col.GetComponent<MusouUnit>();
 
-            if (other != null && other.unitTeam != this.unitTeam)
+            if (other != null)
             {
-                float d = Vector2.Distance(transform.position, col.transform.position);
-                if (d < closestDist) { closestDist = d; bestTarget = col.transform; }
+                // Fight units on an opposing faction (Allies vs Enemies)
+                if (other.unitTeam != this.unitTeam && other.unitTeam != Team.Neutral)
+                {
+                    Health h = col.GetComponent<Health>();
+                    if (h != null && h.currentHealth <= 0) continue;
+
+                    float d = Vector2.Distance(transform.position, col.transform.position);
+                    if (d < closestDist) { closestDist = d; bestTarget = col.transform; }
+                }
             }
-            else if (this.unitTeam == Team.EnemySide && col.CompareTag("Player"))
+            // STRICT ENEMY-ONLY TRACKING FOR THE PLAYER CHARACTER:
+            // Only allow actual EnemySide units to lock onto the Player or player hurtboxes
+            else if (this.unitTeam == Team.EnemySide && (col.CompareTag("Player") || col.transform.root.CompareTag("Player")))
             {
+                // Verify if it's a sub-hurtbox or the main player health component
+                PlayerHealth ph = col.GetComponentInParent<PlayerHealth>();
+                if (ph != null && ph.currentHealth <= 0) continue;
+
                 float d = Vector2.Distance(transform.position, col.transform.position);
                 if (d < closestDist) { closestDist = d; bestTarget = col.transform; }
             }
         }
+
         currentTarget = bestTarget;
     }
 
     private Vector2 ComputeSeparationForce()
     {
         Vector2 separation = Vector2.zero;
-        Collider2D[] nearby = Physics2D.OverlapCircleAll(transform.position, separationRadius, searchLayers);
+        Vector2 myPhysicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
+
+        // 🔥 SAFE FALLBACK: Uses standard OverlapCircleAll to remove the buffer dependency
+        Collider2D[] nearby = Physics2D.OverlapCircleAll(myPhysicalPos, separationRadius, searchLayers);
+        int neighborsCount = 0;
 
         foreach (var other in nearby)
         {
-            if (other.gameObject == this.gameObject) continue;
+            if (other == null || other.gameObject == this.gameObject) continue;
 
-            Vector2 diff = (Vector2)transform.position - (Vector2)other.transform.position;
+            // 🔥 THE INTERCEPTOR GATE:
+            // Ignore the collider if it belongs to a child weapon hitbox or trigger.
+            // It must have a MusouUnit component on its body to affect crowd spacing!
+            MusouUnit otherUnit = other.GetComponent<MusouUnit>();
+            if (otherUnit == null)
+            {
+                otherUnit = other.GetComponentInParent<MusouUnit>();
+                if (otherUnit == null) continue; // Not a character body, skip it!
+            }
+
+            // Use the actual physical position of the neighbor's character body
+            Rigidbody2D otherRb = otherUnit.rb;
+            Vector2 otherPos = (otherRb != null) ? otherRb.position : (Vector2)otherUnit.transform.position;
+
+            Vector2 diff = myPhysicalPos - otherPos;
             float distance = diff.magnitude;
 
-            // THE FIX: If distance is 0, they are "inside" each other.
-            // Give them a tiny random push so the math doesn't break.
-            if (distance < 0.01f)
+            // Prevent division-by-zero errors if they overlap exactly
+            if (distance < 0.2f)
             {
-                diff = Random.insideUnitCircle.normalized * 0.1f;
-                distance = 0.1f;
+                Vector2 randomPush = Random.insideUnitCircle.normalized;
+                if (randomPush == Vector2.zero) randomPush = Vector2.up;
+
+                separation += randomPush * (separationStrength * 2f);
+                neighborsCount++;
+                continue;
             }
 
             if (distance < separationRadius)
             {
-                // Use a clamped force so it never explodes to Infinity
-                float force = (separationRadius - distance) / separationRadius;
-                separation += diff.normalized * force;
+                float forceStrength = (separationRadius - distance) / distance;
+                separation += diff.normalized * forceStrength;
+                neighborsCount++;
             }
         }
-        return separation * separationStrength;
+
+        if (neighborsCount > 0)
+        {
+            return (separation / neighborsCount) * separationStrength;
+        }
+
+        return Vector2.zero;
     }
 
     // --- DAMAGE & STAGGER ---
@@ -438,6 +564,84 @@ public class MusouUnit : sleepEnemy
                 victims,
                 enemyHitLagDuration // Controlled in the Inspector per-grunt/per-officer
             );
+        }
+    }
+
+    // Inside MusouUnit.cs -> ExecuteMacroMission()
+    public void ExecuteMacroMission()
+    {
+        switch (currentMission)
+        {
+            case AIMission.FollowLeader:
+                // 🔥 THE INHERITANCE RESCUE GATE:
+                // If the leader assignment didn't link up on frame 1, find our sibling SquadLeader automatically!
+                if (myLeader == null)
+                {
+                    // Look at our parent folder container and grab the SquadLeader script sitting next to us
+                    myLeader = GetComponentInParent<SquadLeader>();
+                    if (myLeader == null && transform.parent != null)
+                    {
+                        myLeader = transform.parent.GetComponentInChildren<SquadLeader>();
+                    }
+                }
+
+                if (myLeader != null)
+                {
+                    // Fetch the active moving physical coordinate of our specific SquadLeader
+                    Vector2 leaderPos = (myLeader.rb != null) ? myLeader.rb.position : (Vector2)myLeader.transform.position;
+                    Vector2 gruntPhysicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
+
+                    Vector2 deltaToLeader = leaderPos - gruntPhysicalPos;
+                    float distToLeaderSqr = deltaToLeader.sqrMagnitude;
+
+                    float keepUpRadius = 2.0f;
+
+                    // 🔥 THE ARRIVAL LOCK: Check if the leader has actually stopped moving intentionally
+                    bool isLeaderMoving = myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude > 0.1f;
+
+                    if (distToLeaderSqr > keepUpRadius * keepUpRadius)
+                    {
+                        // If the leader is still marching down the road, run to keep up!
+                        if (isLeaderMoving)
+                        {
+                            MoveTowards(leaderPos, false);
+                        }
+                        else
+                        {
+                            // 🔥 THE FIX: If the leader has stopped at his destination, 
+                            // force a hard stop immediately instead of running toward his center point!
+                            StopMoving();
+                            if (rb != null)
+                            {
+                                rb.linearVelocity = Vector2.zero;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Match his exact physical velocity to stay cleanly grouped in the swarm
+                        if (isLeaderMoving)
+                        {
+                            rb.linearVelocity = myLeader.rb.linearVelocity;
+                            animator.SetBool("isMoving", true);
+                        }
+                        else
+                        {
+                            StopMoving();
+                            if (rb != null)
+                            {
+                                rb.linearVelocity = Vector2.zero;
+                            }
+                        }
+                    }
+                    return;
+                }
+                else
+                {
+                    // Absolute fallback holding lock if they are completely unassigned independent guards
+                    StopMoving();
+                }
+                break;
         }
     }
     public virtual Vector2 GetSlotPosition(int index)

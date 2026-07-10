@@ -1,63 +1,102 @@
-using UnityEngine;
+﻿using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class sleepEnemy : Enemy
 {
-
+    [Header("Base Core Components")]
     public Rigidbody2D rb;
-
     public Transform currentTarget;
-
-    public float chaseRadius;
-
-    public float attackRadius;
-
     public Animator animator;
+
+    [Header("Base Settings")]
+    public float chaseRadius;
+    public float attackRadius;
 
     private Vector2 lastFacingDir;
     public Vector2 GetFacingDirection() => lastFacingDir;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    // Cache animator performance hashes
+    private static readonly int MoveXHash = Animator.StringToHash("moveX");
+    private static readonly int MoveYHash = Animator.StringToHash("moveY");
+    private static readonly int WakeUpHash = Animator.StringToHash("wakeUp");
+
+    public virtual void Start()
     {
         currentState = EnemyState.Idle;
-        currentTarget = GameObject.FindWithTag("Player").transform;
+
+        // Try to find the Rigidbody on this object, if null check the children instantly!
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        if(currentTarget == null)
+        if (rb == null)
         {
-            return;
+            rb = GetComponentInChildren<Rigidbody2D>();
         }
-        // Safety: If Rigidbody is missing, add it or log an error
-        if (rb == null) Debug.LogError("Rigidbody2D is missing on " + gameObject.name);
+
+        // Try to find the Animator on this object, if null check the children instantly!
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+
+        // Safety verification logs
+        if (animator == null)
+        {
+            Debug.LogError($"[PREFAB ERROR] {gameObject.name} is completely missing an Animator component on its root or children!");
+        }
+        if (rb == null)
+        {
+            Debug.LogError($"[PREFAB ERROR] {gameObject.name} is completely missing a Rigidbody2D component on its root or children!");
+        }
+
+        // Default look-up fallback if not handled by a higher manager
+        currentTarget = null;
+       
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    // High frequency physics loop
+    protected virtual void FixedUpdate()
     {
         CheckDistance();
     }
+    
 
+    /// <summary>
+    /// Base idle/wake tracking. Overridden completely by MusouUnit for advanced combat/marching loops.
+    /// </summary>
     public virtual void CheckDistance()
     {
-
-
-        if (Vector3.Distance(currentTarget.position, transform.position) <= chaseRadius &&
-            Vector3.Distance(currentTarget.position, transform.position) > attackRadius)
+        // Safety gate to avoid game-breaking NullReference crashes
+        if (currentTarget == null)
         {
-            if (currentState == EnemyState.Idle || currentState == EnemyState.Walk &&
-                currentState != EnemyState.Stagger)
+            if (animator != null) animator.SetBool(WakeUpHash, false);
+            return;
+        }
+
+        // Use the physical Rigidbody position for accurate 2D grid spacing checks
+        Vector2 physicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
+        float distToTargetSqr = ((Vector2)currentTarget.position - physicalPos).sqrMagnitude;
+
+        float chaseRadiusSqr = chaseRadius * chaseRadius;
+        float attackRadiusSqr = attackRadius * attackRadius;
+
+        if (distToTargetSqr <= chaseRadiusSqr && distToTargetSqr > attackRadiusSqr)
+        {
+            if ((currentState == EnemyState.Idle || currentState == EnemyState.Walk) && currentState != EnemyState.Stagger)
             {
+                // Pure linear translation layout fallback for very basic sleep enemies
+                Vector2 targetStep = Vector2.MoveTowards(physicalPos, currentTarget.position, moveSpeed * Time.fixedDeltaTime);
 
-                Vector3 temp = Vector3.MoveTowards(transform.position, currentTarget.position, moveSpeed * Time.deltaTime);
+                ChangeAnim(targetStep - physicalPos);
 
-                ChangeAnim(temp - transform.position);
-                rb.MovePosition(temp);
+                if (rb != null) rb.MovePosition(targetStep);
+
                 ChangeState(EnemyState.Walk);
-                animator.SetBool("wakeUp", true);
-
+                if (animator != null) animator.SetBool(WakeUpHash, true);
             }
-        } else if (Vector3.Distance(currentTarget.position, transform.position) > chaseRadius)
+        }
+        else if (distToTargetSqr > chaseRadiusSqr)
         {
-            animator.SetBool("wakeUp", false);
+            if (animator != null) animator.SetBool(WakeUpHash, false);
         }
     }
 
@@ -65,45 +104,30 @@ public class sleepEnemy : Enemy
     {
         if (currentState != newState)
         {
-
             currentState = newState;
-
         }
     }
 
     public void ChangeAnim(Vector2 dir)
     {
-        if (dir != Vector2.zero) lastFacingDir = dir.normalized;
+        if (dir == Vector2.zero) return;
+
+        lastFacingDir = dir.normalized;
 
         if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
         {
-
-            if(dir.x > 0)
-            {
-                SetAnimFloat(Vector2.right);
-            } else if (dir.x < 0)
-            {
-                SetAnimFloat(Vector2.left);
-            }
-
-        } else if (Mathf.Abs(dir.x) < Mathf.Abs(dir.y))
-            
+            SetAnimFloat(dir.x > 0 ? Vector2.right : Vector2.left);
+        }
+        else
         {
-            if (dir.y > 0)
-            {
-                SetAnimFloat(Vector2.up);
-            }
-            else if (dir.y < 0)
-            {
-                SetAnimFloat(Vector2.down);
-            }
+            SetAnimFloat(dir.y > 0 ? Vector2.up : Vector2.down);
         }
     }
 
     private void SetAnimFloat(Vector2 setVec)
     {
-        animator.SetFloat("moveX", setVec.x);
-        animator.SetFloat("moveY", setVec.y);
+        if (animator == null) return;
+        animator.SetFloat(MoveXHash, setVec.x);
+        animator.SetFloat(MoveYHash, setVec.y);
     }
-
 }

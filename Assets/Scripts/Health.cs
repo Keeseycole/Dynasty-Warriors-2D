@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,6 +26,9 @@ public class Health : MonoBehaviour
     // FIX: Separated coroutine trackers so they don't cancel each other out!
     private Coroutine minimapFlashCoroutine;
     private Coroutine hitFlashCoroutine;
+
+    
+    [HideInInspector] public bool blockedOnThisFrame = false;
 
     private Collider2D myCollider;
     public GameObject flashOverlay;
@@ -69,19 +72,57 @@ public class Health : MonoBehaviour
             BattleManager.Instance.activeUnits.Add(this);
     }
 
-    // FIXED: Updated header to accept 5 arguments from your player's combat script!
+ 
+
     public void TakeDamage(float damage, Vector2 attackerPosition, Vector2 knockback, Animator attackerAnim, Rigidbody2D attackerRb)
     {
+       
+
         if (currentHealth <= 0) return;
+
+        // ========================================================
+        // 🔥 THE BLOCK INTERCEPTION SYSTEM:
+        // Intercepts and completely mitigates damage if unit is holding up a guard!
+        // ========================================================
+        if (unitAI != null && unitAI.currentState == EnemyState.Block)
+        {
+            // Set the shield flag to true so the HitParticleManager drops regular flesh splashes!
+            blockedOnThisFrame = true;
+
+            if (isSimulating && SoundManager.Instance != null)
+            {
+                // Plays a crisp metallic blade clash sound instead of standard flesh slice impact
+                SoundManager.Instance.PlaySFX("ShieldBlock", 0.8f, 0.05f);
+            }
+
+            if (HitParticleManager.Instance != null)
+            {
+                // Calculate point of contact slightly out in front of the defender's center pivot
+                Vector2 attackDirection = ((Vector2)transform.position - attackerPosition).normalized;
+                Vector2 blockImpactPoint = (Vector2)transform.position - (attackDirection * 0.4f);
+
+                // Calls the upgraded manager using the custom Block enum for custom metal sparks & reverse shard spray
+                HitParticleManager.Instance.SpawnHitSparkUniversal(blockImpactPoint, HitParticleManager.AttackType.Block, attackDirection);
+            }
+
+            // Perfect Block mitigation (Change to 'damage *= 0.1f;' if you want 10% chip damage instead)
+            damage = 0f;
+
+            // Safely exit the method right here! This prevents any health reductions, hit-lag, audio triggers, 
+            // hit flash coroutines, or knockback physical trajectory pushes from evaluating.
+            return;
+        }
+ 
+
+        // Standard raw damage calculations proceed cleanly if they were caught off-guard
         currentHealth -= damage;
 
         // ========================================================
-        // FIXED HIT-LAG NESTING: Only fire local hit-lag if this unit is attacking 
-        // another NPC off-screen (where attackerAnim != null and it's NOT the player)
+        // OPTIMIZED HIT-LAG GATE: Only freeze physics and animation timelines 
+        // if the battle is actively simulating on-screen near the player view!
         // ========================================================
-        if (HitLagManager.Instance != null && attackerAnim != null)
+        if (isSimulating && HitLagManager.Instance != null && attackerAnim != null)
         {
-            // If an external system called this without a group list, run a single freeze
             if (!attackerAnim.CompareTag("Player"))
             {
                 List<global::UnityEngine.MonoBehaviour> victimsList = new List<global::UnityEngine.MonoBehaviour> { this };
@@ -91,17 +132,26 @@ public class Health : MonoBehaviour
                 HitLagManager.Instance.TriggerBasaraHitLag(attackerAnim, attackerRb, victimsList, selectedDuration);
             }
         }
-        // ========================================================
+  
 
         Debug.Log($"{gameObject.name} took damage! Current health after hit: {currentHealth}");
 
         if (healthBar != null) healthBar.UpdateBar(currentHealth, maxHealth);
-        SoundManager.Instance.PlaySFX("HitImpact", 0.7f);
 
-        if (damage > 12f) // Tuned down to match your player's damage outputs
+        // ========================================================
+        // THE AUDIO CULLING GATE: Completely silences clashing impact 
+        // sounds when units take damage out of the camera view range.
+        // ========================================================
+        if (isSimulating && SoundManager.Instance != null)
         {
-            SoundManager.Instance.PlaySFX("HeavyImpact", 1f);
+            SoundManager.Instance.PlaySFX("HitImpact", 0.7f);
+
+            if (damage > 12f)
+            {
+                SoundManager.Instance.PlaySFX("HeavyImpact", 1f);
+            }
         }
+        // ========================================================
 
         // 4. COMBAT FEEDBACK & SIMULATION
         if (isSimulating)
@@ -128,6 +178,7 @@ public class Health : MonoBehaviour
         }
         else
         {
+            // Culled Units: Still blink on the minimap radar map layout when damaged!
             if (minimapFlashCoroutine == null)
             {
                 minimapFlashCoroutine = StartCoroutine(MinimapFlashTick());
@@ -148,67 +199,88 @@ public class Health : MonoBehaviour
             }
             Die();
         }
-
-
-    void Die()
-        {
-            if (BattleManager.Instance != null)
-                BattleManager.Instance.activeUnits.Remove(this);
-
-            if (unitAI != null)
-            {
-                unitAI.StopAllCoroutines();
-                unitAI.enabled = false;
-                unitAI.ChangeState(EnemyState.Death);
-            }
-
-            if (rb != null)
-            {
-                rb.linearVelocity = Vector2.zero;
-                rb.simulated = false;
-            }
-
-            if (KOCounter.instance != null)
-            {
-                KOCounter.instance.AddKO();
-            }
-
-            StartCoroutine(DeathFadeRoutine());
-        }
     }
 
     // Inside Health.cs -> DeathFadeRoutine()
+    // --- INSIDE HEALTH.CS ---
+
+    // Inside Health.cs -> Die()
+
+    void Die()
+    {
+        if (BattleManager.Instance != null)
+            BattleManager.Instance.activeUnits.Remove(this);
+
+        // 🔥 THE TUG-OF-WAR FEEDBACK:
+        // If an enemy dies, give the Player Side morale points. If an ally dies, give the Enemy Side points!
+        if (MoraleManager.Instance != null && unitAI != null)
+        {
+            // Grunts grant 0.25f points. If it's an Officer, give them a massive 8.0f swing boost!
+            float pointsGranted = unitAI.isOfficer ? 8f : 0.25f;
+
+            // The surviving opposing faction claims the tactical point boost
+            MusouUnit.Team victoriousTeam = (unitAI.unitTeam == MusouUnit.Team.PlayerSide) ? MusouUnit.Team.EnemySide : MusouUnit.Team.PlayerSide;
+
+            MoraleManager.Instance.ChangeMorale(victoriousTeam, pointsGranted);
+        }
+
+        if (unitAI != null)
+        {
+            unitAI.StopAllCoroutines();
+            unitAI.enabled = false;
+            unitAI.ChangeState(EnemyState.Death);
+        }
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.simulated = false;
+        }
+
+        if (KOCounter.instance != null) KOCounter.instance.AddKO();
+
+        StartCoroutine(DeathFadeRoutine());
+    }
+
     private IEnumerator DeathFadeRoutine()
     {
         yield return new WaitForSeconds(10f);
 
-        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
-        if (sr != null)
+        if (spriteRenderer != null)
         {
             float fadeTime = 1f;
-            float startAlpha = sr.color.a;
+            float startAlpha = spriteRenderer.color.a;
 
             for (float t = 0; t < fadeTime; t += Time.deltaTime)
             {
-                Color c = sr.color;
-                c.a = Mathf.Lerp(startAlpha, 0, t / fadeTime);
-                sr.color = c;
+                if (spriteRenderer == null) yield break;
+                Color c = spriteRenderer.color;
+                c.a = Mathf.Lerp(startAlpha, 0f, t / fadeTime);
+                spriteRenderer.color = c;
                 yield return null;
             }
         }
 
-        // FIX: Look explicitly for the Gate tag now!
+        // =========================================================================
+        // 🔥 THE COMPREHENSIVE SAFETIED DESTRUCTION BLOCK:
+        // This stops Unity from accidentally destroying your parent 'Unit Sword' 
+        // container asset while other living troops are still nesting inside it!
+        // =========================================================================
         if (gameObject.CompareTag("Gate"))
         {
-            gameObject.SetActive(false); // Safe disable for structures
+            gameObject.SetActive(false); // Safe disable for structural level assets
             Debug.Log($"[BATTLEFIELD] {gameObject.name} breached! Path cleared.");
         }
         else
         {
-            Destroy(gameObject); // Permanent removal for standard grunt units
+            // ⚠️ CRITICAL FIX: Only destroy THIS specific character's GameObject.
+            // DO NOT call Destroy(transform.parent.gameObject) here or in your BattleEventManager!
+            // This ensures the empty parent folder container stays intact for the survivors.
+            Destroy(gameObject);
         }
+        // =========================================================================
     }
-   
+
 
     private IEnumerator MinimapFlashTick()
     {
@@ -281,6 +353,22 @@ public class Health : MonoBehaviour
         if (rb != null && currentHealth > 0)
         {
             rb.AddForce(knockbackForce, ForceMode2D.Impulse);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // 🔥 THE CRITICAL UN-LINK: If this unit vanishes from the scene, 
+        // it must strip itself from the global lists instantly so other systems don't look for it!
+        if (BattleManager.Instance != null && BattleManager.Instance.activeUnits.Contains(this))
+        {
+            BattleManager.Instance.activeUnits.Remove(this);
+        }
+
+        // Forcefully drop any tokens this physical unit was holding
+        if (AttackDirector.instance != null)
+        {
+            AttackDirector.instance.ForceReleaseAllTokensForAttacker(GetComponent<MusouUnit>());
         }
     }
 }
