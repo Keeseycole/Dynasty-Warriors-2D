@@ -113,9 +113,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
+        y: 152
         width: 40
-        height: 40
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,9 +135,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 40
-        y: 160
+        y: 152
         width: 40
-        height: 40
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,9 +157,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 160
+        y: 152
         width: 40
-        height: 40
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,9 +179,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 120
-        y: 160
+        y: 152
         width: 40
-        height: 40
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,6 +192,94 @@ TextureImporter:
       bones: []
       spriteID: f0b727adec42548a0800000000000000
       internalID: -6321606031097824497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ram_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 110
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7313c583714b41f4e88cb75b49286d3b
+      internalID: 354032174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ram_5
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 110
+        width: 40
+        height: 32
+      alignment: 9
+      pivot: {x: 0.54711246, y: 0.5042062}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99255449bb7a1054dac1e55550864dec
+      internalID: -2043839158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ram_6
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 110
+        width: 40
+        height: 32
+      alignment: 9
+      pivot: {x: 0.6174984, y: 0.502965}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 052e93254fdb3904687fc95807040df5
+      internalID: 182679194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ram_7
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 110
+        width: 40
+        height: 32
+      alignment: 9
+      pivot: {x: 0.63333166, y: 0.51558423}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49451bcf4b1db4a459aea354035983c0
+      internalID: -288989679
       vertices: []
       indices: 
       edges: []
@@ -216,6 +304,10 @@ TextureImporter:
       Ram_1: 680254350390245423
       Ram_2: 7667583720392642141
       Ram_3: -6321606031097824497
+      Ram_4: 354032174
+      Ram_5: -2043839158
+      Ram_6: 182679194
+      Ram_7: -288989679
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
