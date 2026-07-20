@@ -134,7 +134,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 360
+        y: 240
         width: 40
         height: 40
       alignment: 0
@@ -155,8 +155,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 320
+        x: 80
+        y: 240
         width: 40
         height: 40
       alignment: 0
@@ -177,8 +177,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_2
       rect:
         serializedVersion: 2
-        x: 40
-        y: 320
+        x: 0
+        y: 200
         width: 40
         height: 40
       alignment: 0
@@ -199,8 +199,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 280
+        x: 40
+        y: 200
         width: 40
         height: 40
       alignment: 0
@@ -221,8 +221,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_4
       rect:
         serializedVersion: 2
-        x: 40
-        y: 280
+        x: 0
+        y: 160
         width: 40
         height: 40
       alignment: 0
@@ -243,8 +243,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_5
       rect:
         serializedVersion: 2
-        x: 80
-        y: 280
+        x: 40
+        y: 160
         width: 40
         height: 40
       alignment: 0
@@ -265,8 +265,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_6
       rect:
         serializedVersion: 2
-        x: 120
-        y: 280
+        x: 80
+        y: 160
         width: 40
         height: 40
       alignment: 0
@@ -287,8 +287,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 240
+        x: 120
+        y: 160
         width: 40
         height: 40
       alignment: 0
@@ -309,8 +309,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_8
       rect:
         serializedVersion: 2
-        x: 40
-        y: 240
+        x: 0
+        y: 120
         width: 40
         height: 40
       alignment: 0
@@ -331,8 +331,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_9
       rect:
         serializedVersion: 2
-        x: 80
-        y: 240
+        x: 40
+        y: 120
         width: 40
         height: 40
       alignment: 0
@@ -353,8 +353,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_10
       rect:
         serializedVersion: 2
-        x: 120
-        y: 240
+        x: 80
+        y: 120
         width: 40
         height: 40
       alignment: 0
@@ -375,8 +375,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_11
       rect:
         serializedVersion: 2
-        x: 0
-        y: 200
+        x: 120
+        y: 120
         width: 40
         height: 40
       alignment: 0
@@ -397,8 +397,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_12
       rect:
         serializedVersion: 2
-        x: 40
-        y: 200
+        x: 0
+        y: 80
         width: 40
         height: 40
       alignment: 0
@@ -419,8 +419,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_13
       rect:
         serializedVersion: 2
-        x: 80
-        y: 200
+        x: 40
+        y: 80
         width: 40
         height: 40
       alignment: 0
@@ -441,8 +441,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_14
       rect:
         serializedVersion: 2
-        x: 120
-        y: 200
+        x: 80
+        y: 80
         width: 40
         height: 40
       alignment: 0
@@ -463,8 +463,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
+        x: 120
+        y: 80
         width: 40
         height: 40
       alignment: 0
@@ -485,8 +485,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_16
       rect:
         serializedVersion: 2
-        x: 40
-        y: 160
+        x: 160
+        y: 80
         width: 40
         height: 40
       alignment: 0
@@ -507,8 +507,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_17
       rect:
         serializedVersion: 2
-        x: 80
-        y: 160
+        x: 200
+        y: 80
         width: 40
         height: 40
       alignment: 0
@@ -529,8 +529,8 @@ TextureImporter:
       name: Sun Shang  Xiang_ Run_18
       rect:
         serializedVersion: 2
-        x: 120
-        y: 160
+        x: 0
+        y: 40
         width: 40
         height: 40
       alignment: 0
@@ -543,6 +543,138 @@ TextureImporter:
       bones: []
       spriteID: 45f855d34d2b18b46b4d874006f4cf96
       internalID: 794215886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun Shang  Xiang_ Run_19
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56005f7e753d7da47a86641c4e0411b9
+      internalID: -909125535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun Shang  Xiang_ Run_20
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c41ec4d3e97902c459a230b849365a57
+      internalID: -809993833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun Shang  Xiang_ Run_21
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 315f6f8fa60e05e4daef68420043b54c
+      internalID: 225327684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun Shang  Xiang_ Run_22
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c76dc7838be288540a1e65bb6447a98d
+      internalID: 627493554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun Shang  Xiang_ Run_23
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e257256e609c54795ca4750971815b
+      internalID: 2135872446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun Shang  Xiang_ Run_24
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e531642133f77b2468a412b3c6686973
+      internalID: -1722281241
       vertices: []
       indices: 
       edges: []
@@ -561,7 +693,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":40.0,"y":40.0},"gridSpriteSize":{"x":40.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":40.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Sun Shang  Xiang_ Run_0: 3844586582690892884
       Sun Shang  Xiang_ Run_1: 5950531736871027384
@@ -574,7 +706,13 @@ TextureImporter:
       Sun Shang  Xiang_ Run_16: -595046816
       Sun Shang  Xiang_ Run_17: 658280897
       Sun Shang  Xiang_ Run_18: 794215886
+      Sun Shang  Xiang_ Run_19: -909125535
       Sun Shang  Xiang_ Run_2: 9175291560316594313
+      Sun Shang  Xiang_ Run_20: -809993833
+      Sun Shang  Xiang_ Run_21: 225327684
+      Sun Shang  Xiang_ Run_22: 627493554
+      Sun Shang  Xiang_ Run_23: 2135872446
+      Sun Shang  Xiang_ Run_24: -1722281241
       Sun Shang  Xiang_ Run_3: -1980704544450694396
       Sun Shang  Xiang_ Run_4: 1471950382345670541
       Sun Shang  Xiang_ Run_5: -7708367558162629821

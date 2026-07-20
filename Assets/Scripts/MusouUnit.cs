@@ -568,16 +568,15 @@ public class MusouUnit : sleepEnemy
     }
 
     // Inside MusouUnit.cs -> ExecuteMacroMission()
+    // --- MACRO MISSIONS CONT. ---
     public void ExecuteMacroMission()
     {
         switch (currentMission)
         {
             case AIMission.FollowLeader:
                 // 🔥 THE INHERITANCE RESCUE GATE:
-                // If the leader assignment didn't link up on frame 1, find our sibling SquadLeader automatically!
                 if (myLeader == null)
                 {
-                    // Look at our parent folder container and grab the SquadLeader script sitting next to us
                     myLeader = GetComponentInParent<SquadLeader>();
                     if (myLeader == null && transform.parent != null)
                     {
@@ -587,109 +586,114 @@ public class MusouUnit : sleepEnemy
 
                 if (myLeader != null)
                 {
-                    // Fetch the active moving physical coordinate of our specific SquadLeader
                     Vector2 leaderPos = (myLeader.rb != null) ? myLeader.rb.position : (Vector2)myLeader.transform.position;
                     Vector2 gruntPhysicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
 
-                    Vector2 deltaToLeader = leaderPos - gruntPhysicalPos;
-                    float distToLeaderSqr = deltaToLeader.sqrMagnitude;
+                    // Calculate target slot using our calculated offset instead of the leader's exact center point
+                    Vector2 exactSlotTarget = leaderPos + myFormationSpot;
+                    Vector2 deltaToSlot = exactSlotTarget - gruntPhysicalPos;
+                    float distToSlotSqr = deltaToSlot.sqrMagnitude;
 
-                    float keepUpRadius = 2.0f;
-
-                    // 🔥 THE ARRIVAL LOCK: Check if the leader has actually stopped moving intentionally
+                    // Lowered slightly to ensure tight, clean unit crowding
+                    float keepUpRadius = 1.2f;
                     bool isLeaderMoving = myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude > 0.1f;
 
-                    if (distToLeaderSqr > keepUpRadius * keepUpRadius)
+                    if (distToSlotSqr > keepUpRadius * keepUpRadius)
                     {
-                        // If the leader is still marching down the road, run to keep up!
                         if (isLeaderMoving)
                         {
-                            MoveTowards(leaderPos, false);
+                            // Pass our unique formation slot target, NOT the leader's literal center vector!
+                            MoveTowards(exactSlotTarget, false);
                         }
                         else
                         {
-                            // 🔥 THE FIX: If the leader has stopped at his destination, 
-                            // force a hard stop immediately instead of running toward his center point!
                             StopMoving();
-                            if (rb != null)
-                            {
-                                rb.linearVelocity = Vector2.zero;
-                            }
                         }
                     }
                     else
                     {
-                        // Match his exact physical velocity to stay cleanly grouped in the swarm
+                        // Match velocity to smoothly lock step with the moving commander
                         if (isLeaderMoving)
                         {
                             rb.linearVelocity = myLeader.rb.linearVelocity;
-                            animator.SetBool("isMoving", true);
+                            if (animator != null) animator.SetBool("isMoving", true);
                         }
                         else
                         {
                             StopMoving();
-                            if (rb != null)
-                            {
-                                rb.linearVelocity = Vector2.zero;
-                            }
                         }
                     }
                     return;
                 }
                 else
                 {
-                    // Absolute fallback holding lock if they are completely unassigned independent guards
                     StopMoving();
                 }
                 break;
         }
     }
+
+    // 🔥 FIXED FORMATION FEEDBACK LOOP: Returns the actual designated squad offset coordinates
     public virtual Vector2 GetSlotPosition(int index)
     {
-        return transform.position; // Default: just return my own position
+        Vector2 origin = (rb != null) ? rb.position : (Vector2)transform.position;
+        return origin + myFormationSpot;
     }
 
-    IEnumerator Combo1() 
-    { 
-        yield return StartCoroutine(PlayAttack("attack1")); 
+    // --- REFACTORED COMBO ENGINE (SQR MAGNITUDE OPTIMIZATION) ---
+    // Swapped all Vector2.Distance calls out for lightning-fast sqrMagnitude calculations!
+    private bool IsTargetInRangeForCombo()
+    {
+        if (currentTarget == null) return false;
+
+        Vector2 myPos = (rb != null) ? rb.position : (Vector2)transform.position;
+        float maxComboDist = attackRadius * 1.5f;
+
+        return ((Vector2)currentTarget.position - myPos).sqrMagnitude <= (maxComboDist * maxComboDist);
     }
+
+    IEnumerator Combo1()
+    {
+        yield return StartCoroutine(PlayAttack("attack1"));
+    }
+
     IEnumerator Combo2()
     {
         yield return StartCoroutine(PlayAttack("attack1"));
-        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        if (!IsTargetInRangeForCombo()) yield break;
         yield return StartCoroutine(PlayAttack("attack2"));
     }
 
     IEnumerator Combo3()
     {
         yield return StartCoroutine(PlayAttack("attack1"));
-        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        if (!IsTargetInRangeForCombo()) yield break;
         yield return StartCoroutine(PlayAttack("attack2"));
-        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        if (!IsTargetInRangeForCombo()) yield break;
         yield return StartCoroutine(PlayAttack("attack3"));
     }
 
     IEnumerator Combo4()
     {
         yield return StartCoroutine(PlayAttack("attack1"));
-        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        if (!IsTargetInRangeForCombo()) yield break;
         yield return StartCoroutine(PlayAttack("attack2"));
-        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        if (!IsTargetInRangeForCombo()) yield break;
         yield return StartCoroutine(PlayAttack("attack3"));
-        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        if (!IsTargetInRangeForCombo()) yield break;
         yield return StartCoroutine(PlayAttack("attack4"));
     }
 
     IEnumerator Combo5()
     {
         yield return StartCoroutine(PlayAttack("attack1"));
-        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        if (!IsTargetInRangeForCombo()) yield break;
         yield return StartCoroutine(PlayAttack("attack2"));
-        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        if (!IsTargetInRangeForCombo()) yield break;
         yield return StartCoroutine(PlayAttack("attack3"));
-        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        if (!IsTargetInRangeForCombo()) yield break;
         yield return StartCoroutine(PlayAttack("attack4"));
-        if (currentTarget == null || Vector2.Distance(transform.position, currentTarget.position) > attackRadius * 1.5f) yield break;
+        if (!IsTargetInRangeForCombo()) yield break;
         yield return StartCoroutine(PlayAttack("attack5"));
     }
 }

@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: f82c927357547fe4a89eb17d40829560
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7904825180578579185
+    second: Sun_Shang_Xiang_Combo_Left_0
+  - first:
+      213: -7822684872565794074
+    second: Sun_Shang_Xiang_Combo_Left_1
+  - first:
+      213: -3288281675824506310
+    second: Sun_Shang_Xiang_Combo_Left_2
+  - first:
+      213: 2982134577752235266
+    second: Sun_Shang_Xiang_Combo_Left_3
+  - first:
+      213: 433971624798508238
+    second: Sun_Shang_Xiang_Combo_Left_4
+  - first:
+      213: -5606401304148095638
+    second: Sun_Shang_Xiang_Combo_Left_5
+  - first:
+      213: 2875161589020524319
+    second: Sun_Shang_Xiang_Combo_Left_6
+  - first:
+      213: 7915704363198306858
+    second: Sun_Shang_Xiang_Combo_Left_7
+  - first:
+      213: 8224641906851508616
+    second: Sun_Shang_Xiang_Combo_Left_8
+  - first:
+      213: 1460119894489765107
+    second: Sun_Shang_Xiang_Combo_Left_9
+  - first:
+      213: -1637595924842747621
+    second: Sun_Shang_Xiang_Combo_Left_10
+  - first:
+      213: -3185581337997491422
+    second: Sun_Shang_Xiang_Combo_Left_11
+  - first:
+      213: 6026558366964813815
+    second: Sun_Shang_Xiang_Combo_Left_12
+  - first:
+      213: 4542500658694980723
+    second: Sun_Shang_Xiang_Combo_Left_13
+  - first:
+      213: 313437991371418506
+    second: Sun_Shang_Xiang_Combo_Left_14
+  - first:
+      213: -1058503617316265242
+    second: Sun_Shang_Xiang_Combo_Left_15
+  - first:
+      213: -9007064185932037744
+    second: Sun_Shang_Xiang_Combo_Left_16
+  - first:
+      213: -395905975174675901
+    second: Sun_Shang_Xiang_Combo_Left_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 199
+        width: 20
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f203f3ce9493bd60800000000000000
+      internalID: 7904825180578579185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_1
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 159
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ead4e40e8d307390800000000000000
+      internalID: -7822684872565794074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_2
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 159
+        width: 20
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3add07ec3dad52d0800000000000000
+      internalID: -3288281675824506310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_3
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 159
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20dd453399ba26920800000000000000
+      internalID: 2982134577752235266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec4d6bab4e6c50600800000000000000
+      internalID: 433971624798508238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_5
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 119
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6d47f5c7bf0232b0800000000000000
+      internalID: -5606401304148095638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_6
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 119
+        width: 20
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1f7a616b30a6e720800000000000000
+      internalID: 2875161589020524319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_7
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 119
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2ad17bdd2b3add60800000000000000
+      internalID: 7915704363198306858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_8
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 119
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 881fcaefc3cc32270800000000000000
+      internalID: 8224641906851508616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_9
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 79
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f41b88de43634410800000000000000
+      internalID: 1460119894489765107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_10
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 79
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b19ee16ce271649e0800000000000000
+      internalID: -1637595924842747621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_11
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 79
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 223cb89a6aa8ac3d0800000000000000
+      internalID: -3185581337997491422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_12
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 79
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ff881997e2a2a350800000000000000
+      internalID: 6026558366964813815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_13
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 39
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3740e7928443a0f30800000000000000
+      internalID: 4542500658694980723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_14
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 39
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8b2ec6413e895400800000000000000
+      internalID: 313437991371418506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_15
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 39
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e2e56871907f41f0800000000000000
+      internalID: -1058503617316265242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_16
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 39
+        width: 27
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 091c06828da700380800000000000000
+      internalID: -9007064185932037744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sun_Shang_Xiang_Combo_Left_17
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 39
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3424249fc95718af0800000000000000
+      internalID: -395905975174675901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Sun_Shang_Xiang_Combo_Left_0: 7904825180578579185
+      Sun_Shang_Xiang_Combo_Left_1: -7822684872565794074
+      Sun_Shang_Xiang_Combo_Left_10: -1637595924842747621
+      Sun_Shang_Xiang_Combo_Left_11: -3185581337997491422
+      Sun_Shang_Xiang_Combo_Left_12: 6026558366964813815
+      Sun_Shang_Xiang_Combo_Left_13: 4542500658694980723
+      Sun_Shang_Xiang_Combo_Left_14: 313437991371418506
+      Sun_Shang_Xiang_Combo_Left_15: -1058503617316265242
+      Sun_Shang_Xiang_Combo_Left_16: -9007064185932037744
+      Sun_Shang_Xiang_Combo_Left_17: -395905975174675901
+      Sun_Shang_Xiang_Combo_Left_2: -3288281675824506310
+      Sun_Shang_Xiang_Combo_Left_3: 2982134577752235266
+      Sun_Shang_Xiang_Combo_Left_4: 433971624798508238
+      Sun_Shang_Xiang_Combo_Left_5: -5606401304148095638
+      Sun_Shang_Xiang_Combo_Left_6: 2875161589020524319
+      Sun_Shang_Xiang_Combo_Left_7: 7915704363198306858
+      Sun_Shang_Xiang_Combo_Left_8: 8224641906851508616
+      Sun_Shang_Xiang_Combo_Left_9: 1460119894489765107
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed5f74376c0ca940a23a090d03c89e0, type: 3}
+  m_Name: Sun Shang Xiang
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterName: Sun Shang Xiang
+  characterTitle: Sun Shang Xiang
+  animatorController: {fileID: 9100000, guid: 4295bad01f8c9f54b8f7feea3f4b4111, type: 2}
+  gridIcon: {fileID: 3844586582690892884, guid: 0e0a4baa26eda944597cdc79f3c92cf9, type: 3}
+  massivePreview: {fileID: 9175291560316594313, guid: 0e0a4baa26eda944597cdc79f3c92cf9, type: 3}
+  attackPower: 50
+  defensePower: 50
+  maxHealth: 50
