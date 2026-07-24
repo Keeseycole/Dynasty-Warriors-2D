@@ -44,27 +44,34 @@ public class CharecterSelectUI : MonoBehaviour
 
     private void GenerateBasaraGrid()
     {
+        // Wipe out placeholder templates
         foreach (Transform child in gridContentContainer) Destroy(child.gameObject);
 
+        // 🔥 CRITICAL: Must use a standard 'for' loop so 'i' increases unique values (0, 1, 2...)
         for (int i = 0; i < dataCarrier.availableCharacters.Length; i++)
         {
             CharacterData character = dataCarrier.availableCharacters[i];
             if (character == null) continue;
 
+            // Spawn button instance
             GameObject buttonObj = Instantiate(portraitButtonPrefab, gridContentContainer);
             CharacterGridButton gridScript = buttonObj.GetComponent<CharacterGridButton>();
 
             if (gridScript != null)
             {
+                // 🔥 THE FIX: Make sure you pass 'i' explicitly into the setup!
                 gridScript.SetupButton(i, character.gridIcon, this);
             }
         }
     }
-
     public void SelectCharacterFromGrid(int index, RectTransform buttonRect)
     {
         activeGridIndex = index;
-        dataCarrier.UpdateIndex(index);
+
+        if (dataCarrier != null)
+        {
+            dataCarrier.UpdateIndex(index);
+        }
 
         CharacterData selected = dataCarrier.availableCharacters[activeGridIndex];
         if (selected != null)
@@ -73,17 +80,23 @@ public class CharecterSelectUI : MonoBehaviour
             if (nameText != null) nameText.text = selected.characterName;
             if (titleText != null) titleText.text = selected.characterTitle;
 
-            // 🔥 1. DEFINE YOUR INDIVIDUAL MAX CAPS HERE:
-            float maxHealthCap = 500f;
-            float maxAttackCap = 500f;
-            float maxDefenseCap = 500f;
+            // =========================================================================
+            // 🔥 THE UNIVERSAL SCALE CONSTANT CAPS:
+            // Change these numbers to whatever you want your true "Full Bar" value to be.
+            // Setting maxHealthCap to 500f means Ling Yin (64 HP) will correctly fill 
+            // only about 13% of her health bar!
+            // =========================================================================
+            float maxHealthCap = 250f;  // Set this to 500f, 1000f, or whatever you choose!
+            float maxAttackCap = 250f;  // Shared universal maximum for attack bar
+            float maxDefenseCap = 250f; // Shared universal maximum for defense bar
+            // =========================================================================
 
-            // 2. FORCE THE VISUAL TRACKS TO FILL BY PERCENTAGE (0.0 to 1.0)
+            // Calculate slider values relative to your absolute caps
             if (healthSlider != null) healthSlider.value = selected.maxHealth / maxHealthCap;
             if (attackSlider != null) attackSlider.value = selected.attackPower / maxAttackCap;
             if (defenseSlider != null) defenseSlider.value = selected.defensePower / maxDefenseCap;
 
-            // 3. DISPLAY THE LITERAL STAT NUMBERS UNTOUCHED
+            // The raw numerical strings remain untouched (displays literal 64, 100, etc.)
             if (healthValueText != null) healthValueText.text = selected.maxHealth.ToString("F0");
             if (attackValueText != null) attackValueText.text = selected.attackPower.ToString("F0");
             if (defenseValueText != null) defenseValueText.text = selected.defensePower.ToString("F0");
@@ -96,9 +109,22 @@ public class CharecterSelectUI : MonoBehaviour
             activeCursorHighlight.sizeDelta = buttonRect.sizeDelta;
         }
     }
-
     public void ConfirmOfficerChoice()
     {
-        dataCarrier.LoadGameScene(battleSceneName);
+        // 🔥 THE ABSOLUTE PHYSICS RESET:
+        // Force the engine's internal physics clocks back to 1 BEFORE loading the scene.
+        // If this is missed, Unity 6 will carry the frozen time properties over, locking your Rigidbody!
+        Time.timeScale = 1f;
+
+        if (CharacterSelectManager.Instance != null)
+        {
+            // Launch the level using your persistent loader thread
+            CharacterSelectManager.Instance.LoadGameScene(battleSceneName);
+        }
+        else
+        {
+            // Hard fallback if testing without the persistent object awake
+            UnityEngine.SceneManagement.SceneManager.LoadScene(battleSceneName);
+        }
     }
 }

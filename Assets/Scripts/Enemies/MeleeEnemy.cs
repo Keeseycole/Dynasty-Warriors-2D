@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -356,10 +356,15 @@ public class MeleeEnemy : sleepEnemy
         if (targetHealth != null)
         {
             // Calculate knockback direction (from the attacker to the target)
-            Vector2 knockbackDir = (currentTarget.position - transform.position).normalized;
+            Vector2 knockbackDir = ((Vector2)currentTarget.position - (Vector2)transform.position).normalized;
             float force = 5f; // Or add a 'knockbackForce' variable to your header
 
-            targetHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force, null, null);
+            // 🔥 THE FIX: Fetch this enemy's components to clear the null ambiguity!
+            Animator myAnim = GetComponentInChildren<Animator>();
+            Rigidbody2D myRb = GetComponent<Rigidbody2D>();
+
+            // Pass them directly into your existing health system parameters
+            targetHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force, myAnim, myRb);
         }
     }
 }

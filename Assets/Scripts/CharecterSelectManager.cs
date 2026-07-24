@@ -28,6 +28,7 @@ public class CharacterSelectManager : MonoBehaviour
         return availableCharacters[currentSelectionIndex];
     }
 
+
     public void UpdateIndex(int newIndex)
     {
         if (newIndex >= 0 && newIndex < availableCharacters.Length)
@@ -38,6 +39,9 @@ public class CharacterSelectManager : MonoBehaviour
 
     public void LoadGameScene(string sceneName)
     {
+        // Explicitly clear parent references if this object was holding anything
+        transform.DetachChildren();
+
         SceneManager.LoadScene(sceneName);
     }
 }

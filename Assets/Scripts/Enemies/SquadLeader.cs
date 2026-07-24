@@ -22,6 +22,9 @@ public class SquadLeader : MusouUnit
     protected int currentWaypointIndex = 0;
     protected bool isWaitingForSquad = false;
 
+    [Tooltip("The parent GameObject that physically holds all your waypoint transforms as children.")]
+    public GameObject PathContainer;
+
     private void Awake()
     {
         // Link references using the manual entries you dragged into the Inspector list
@@ -81,15 +84,12 @@ public class SquadLeader : MusouUnit
         }
     }
 
-    public override void CheckDistance()
+  public override void CheckDistance()
     {
         if (animator.GetBool("isHit") || currentState == EnemyState.Stagger || isBusy) return;
 
         // 1. COMBAT TRACKING (Highest Priority)
-        if (currentTarget == null)
-        {
-            FindNearestTarget();
-        }
+        if (currentTarget == null) FindNearestTarget();
 
         if (currentTarget != null)
         {
@@ -109,44 +109,44 @@ public class SquadLeader : MusouUnit
             return;
         }
 
-        // 🔥 THE SUBORDINATE FOLLOW LOCK (For your Squad Leaders inside the Officer's array)
-        // If this unit answers to a master Officer, completely ignore waypoint list calculations!
-        // Simply calculate a steering heading toward his physical position coordinate.
         if (myLeader != null)
         {
+            // Trailing sub-leaders follow their master Officer
             Vector2 leaderPos = (myLeader.rb != null) ? myLeader.rb.position : (Vector2)myLeader.transform.position;
             Vector2 myPhysicalPos = rb != null ? rb.position : (Vector2)transform.position;
-
-            Vector2 deltaToMaster = leaderPos - myPhysicalPos;
-            float distToMasterSqr = deltaToMaster.sqrMagnitude;
-
-            // Keep a clean 2.5-unit spacing gap behind the moving Officer
+            float distToMasterSqr = (leaderPos - myPhysicalPos).sqrMagnitude;
             float followSpacingRadius = 2.5f;
 
             if (distToMasterSqr > followSpacingRadius * followSpacingRadius)
             {
                 MoveTowards(leaderPos, false);
-                WakeUpSquadFormation(); // Keep our own grunts moving behind us!
+                WakeUpSquadFormation();
             }
             else
             {
-                // If safely grouped behind the Officer, match his velocity or stop smoothly
                 if (myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude > 0.1f)
                 {
                     rb.linearVelocity = myLeader.rb.linearVelocity;
                     animator.SetBool("isMoving", true);
                 }
-                else
-                {
-                    StopMoving();
-                }
+                else StopMoving();
             }
-            return; // 🔥 EXIT EARLY: Completely prevents trailing sub-leaders from running pathing updates!
+            return; 
         }
 
-        // =======================================================================
-        // 👑 INDEPENDENT WAYPOINT MARCHING (Only runs on your top-level Officer object)
-        // =======================================================================
+
+        // If the path container object is missing, or explicitly turned OFF in the hierarchy,
+        // force the Officer to stand fast and guard his position!
+        if (PathContainer == null || !PathContainer.activeInHierarchy)
+        {
+            missionTarget = null;
+            StopMoving();
+            WakeUpSquadFormation(); // Keep grunts standing neatly around him
+            FindNearestTarget();   // Keep scanning for incoming enemies
+            return; // Exit here! Blocks him from walking out on scene load
+        }
+
+        // 2. WAYPOINT ASSEMBLING CONTROL (Only runs if the master switch is ON)
         if (isWaitingForSquad)
         {
             StopMoving();
@@ -155,21 +155,17 @@ public class SquadLeader : MusouUnit
             {
                 isWaitingForSquad = false;
                 currentWaypointIndex++;
-                missionTarget = null; // Open slot for the next frame
+                missionTarget = null; 
 
                 if (currentWaypointIndex >= pathWaypoints.Count)
                 {
                     currentWaypointIndex = pathWaypoints.Count;
                 }
             }
-            else
-            {
-                FindNearestTarget();
-            }
+            else FindNearestTarget();
             return;
         }
 
-        // Load next node from the Officer's array list
         if (missionTarget == null && pathWaypoints.Count > 0 && currentWaypointIndex < pathWaypoints.Count)
         {
             missionTarget = pathWaypoints[currentWaypointIndex];
@@ -180,7 +176,6 @@ public class SquadLeader : MusouUnit
             Vector2 leaderPhysicalPos = rb != null ? rb.position : (Vector2)transform.position;
             Vector2 deltaMission = (Vector2)missionTarget.position - leaderPhysicalPos;
             float distToMissionSqr = deltaMission.sqrMagnitude;
-
             float targetBuffer = 1.5f;
 
             if (distToMissionSqr > targetBuffer * targetBuffer)
@@ -191,14 +186,13 @@ public class SquadLeader : MusouUnit
             else
             {
                 StopMoving();
-                isWaitingForSquad = true; // Turn on the assembly wait lock for the Officer
+                isWaitingForSquad = true; 
             }
             return;
         }
 
         StopMoving();
     }
-
     protected virtual bool IsEntireSquadAssembledAndIdle()
     {
         Vector2 leaderPhysicalPos = rb != null ? rb.position : (Vector2)transform.position;

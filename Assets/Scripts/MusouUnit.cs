@@ -66,10 +66,28 @@ public class MusouUnit : sleepEnemy
 
     public bool isOfficer;
 
+
+    // 🔥 THE MULTI-COMMANDER TOGGLE:
+    [Tooltip("Check this box in the Inspector if this unit is a main stage Commander. " +
+        "If there are multiple, the level ends when all of them are defeated!")]
+    public bool isStageCommander;
+
     // Inside MusouUnit.cs
     public override void Start()
     {
-        // Run sleepEnemy base setups first to cache core rigidbodies/animators safely
+        // 🔥 THE HERO ARCHITECTURE SAFETY PADLOCK:
+        // If this script is attached to your playable player character prefab,
+        // instantly disable the enemy AI processing thread so it never fights your physics updates!
+        if (GetComponent<PlayerController>() != null || GetComponentInParent<PlayerController>() != null)
+        {
+            isOfficer = true; // Forces the player to unlock their full 5-hit combos!
+            unitTeam = Team.PlayerSide;
+
+            // Bypass all downstream AI asset loops, base setups, and invoke cycles completely
+            return;
+        }
+
+        // --- Standard AI Soldier / Officer Startup Configurations (Untouched) ---
         base.Start();
 
         baseAggressionScore = aggressionScore;
@@ -96,7 +114,7 @@ public class MusouUnit : sleepEnemy
         if (isOfficer)
         {
             comboList = new List<System.Func<IEnumerator>> { Combo1, Combo2, Combo3, Combo4, Combo5 };
-            damageToGive *= 2f;
+            //damageToGive *= 2f;
         }
         else
         {
@@ -109,8 +127,6 @@ public class MusouUnit : sleepEnemy
         float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
         attackOffset = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * personalSpaceRadius;
 
-        // 🔥 THE CRITICAL FIX: Delay the grunts' physics loop on startup 
-        // so they don't break the leader's movement matrix on frame one!
         if (myLeader != null)
         {
             StartCoroutine(DelayPhysicsActivation());
@@ -151,6 +167,10 @@ public class MusouUnit : sleepEnemy
     }
     public override void CheckDistance()
     {
+        // 🔥 THE LOGICAL SAFETY GATE: 
+        // If the animator component is missing or unassigned yet, exit instantly to prevent null crashes!
+        if (animator == null) return;
+
         if (isBusy || currentState == EnemyState.Stagger || animator.GetBool("isHit")) return;
 
         // 🔥 THE CRITICAL CORRECTION: Always read the physical position of the moving child sprite body!
@@ -388,6 +408,13 @@ public class MusouUnit : sleepEnemy
     // --- SENSORS & CROWDS ---
     public void FindNearestTarget()
     {
+        // 🔥 THE HERO SAFETY GATE: If this script is attached to the player, 
+        // exit instantly to stop the AI brain from overriding your manual selections!
+        if (GetComponent<PlayerController>() != null || GetComponentInParent<PlayerController>() != null)
+        {
+            return;
+        }
+
         // Safety reset if the player somehow got assigned previously
         if (this.unitTeam == Team.PlayerSide && currentTarget != null && (currentTarget.CompareTag("Player") || currentTarget.root.CompareTag("Player")))
         {
@@ -528,53 +555,50 @@ public class MusouUnit : sleepEnemy
     }
 
     // Call this via Animation Event in your attack frames!
+    // Inside MusouUnit.cs
     public void ApplyDamageToTarget()
     {
         if (currentTarget == null) return;
 
-        Vector2 knockbackDir = (currentTarget.position - transform.position).normalized;
+        Vector2 myPos = (rb != null) ? rb.position : (Vector2)transform.position;
+        Vector2 knockbackDir = ((Vector2)currentTarget.position - myPos).normalized;
         float force = 5f;
 
-        // Create a unified list of scripts that inherit from MonoBehaviour
-        List<MonoBehaviour> victims = new List<MonoBehaviour>();
+        float activeStrikeDamage = (damageToGive > 0.1f) ? damageToGive : 15f;
 
-        // 1. Check for standard enemy units
-        Health targetHealth = currentTarget.GetComponent<Health>();
-        if (targetHealth != null && targetHealth.currentHealth > 0)
+        // 🟢 DUAL-FACTION ARCHITECTURE SETUP:
+        // First, check if the current target is an NPC/Enemy Unit (uses standard Health)
+        Health npcHealth = currentTarget.GetComponent<Health>();
+        if (npcHealth == null) npcHealth = currentTarget.GetComponentInChildren<Health>();
+
+        if (npcHealth != null && npcHealth.currentHealth > 0)
         {
-            targetHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force, null, null);
-            victims.Add(targetHealth);
+            Animator myAnim = animator != null ? animator : GetComponentInChildren<Animator>();
+            npcHealth.TakeDamage(activeStrikeDamage, myPos, knockbackDir * force, myAnim, rb);
+            return; // Target successfully damaged, exit early!
         }
 
-        // 2. Check for the Player unit
-        PlayerHealth playerHealth = currentTarget.GetComponent<PlayerHealth>();
-        if (playerHealth != null && playerHealth.currentHealth > 0)
-        {
-            playerHealth.TakeDamage(damageToGive, transform.position, knockbackDir * force);
-            victims.Add(playerHealth);
-        }
+        // 🟢 PLAYER HIT-DETECTION OVERRIDE:
+        // If it isn't an NPC, check if it's the playable player hero (uses unique PlayerHealth)
+        PlayerHealth playableHeroHealth = currentTarget.GetComponent<PlayerHealth>();
+        if (playableHeroHealth == null) playableHeroHealth = currentTarget.GetComponentInParent<PlayerHealth>();
 
-        // BASARA HIT-STOP: Freeze this attacking unit and the hit target
-        // BASARA HIT-STOP: Uses the exposed inspector variable now
-        if (victims.Count > 0 && HitLagManager.Instance != null)
+        if (playableHeroHealth != null && playableHeroHealth.currentHealth > 0)
         {
-            HitLagManager.Instance.TriggerBasaraHitLag(
-                GetComponentInChildren<Animator>(),
-                rb,
-                victims,
-                enemyHitLagDuration // Controlled in the Inspector per-grunt/per-officer
-            );
+            Vector2 targetKnockbackForce = knockbackDir * hitForce; // Use enemy's custom impact values
+
+            // Route the damage pass cleanly into your player's accurate tracking script parameters
+            playableHeroHealth.TakeDamage(activeStrikeDamage, myPos, targetKnockbackForce);
+
+            Debug.Log($"<color=red>[ENEMY ATTACK HIT]:</color> Unit <b>{gameObject.name}</b> successfully struck the player for {activeStrikeDamage} damage!");
         }
     }
 
-    // Inside MusouUnit.cs -> ExecuteMacroMission()
-    // --- MACRO MISSIONS CONT. ---
     public void ExecuteMacroMission()
     {
         switch (currentMission)
         {
             case AIMission.FollowLeader:
-                // 🔥 THE INHERITANCE RESCUE GATE:
                 if (myLeader == null)
                 {
                     myLeader = GetComponentInParent<SquadLeader>();
@@ -589,39 +613,40 @@ public class MusouUnit : sleepEnemy
                     Vector2 leaderPos = (myLeader.rb != null) ? myLeader.rb.position : (Vector2)myLeader.transform.position;
                     Vector2 gruntPhysicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
 
-                    // Calculate target slot using our calculated offset instead of the leader's exact center point
                     Vector2 exactSlotTarget = leaderPos + myFormationSpot;
                     Vector2 deltaToSlot = exactSlotTarget - gruntPhysicalPos;
                     float distToSlotSqr = deltaToSlot.sqrMagnitude;
 
-                    // Lowered slightly to ensure tight, clean unit crowding
                     float keepUpRadius = 1.2f;
                     bool isLeaderMoving = myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude > 0.1f;
 
+                    // 🔥 THE FRAME-ONE SQUAD ALIGNMENT SAVIOR:
+                    // If the leader is completely stationary (like right at the start of the level)
+                    // and the grunt is far away from its slot, do not let them run inward.
+                    // Instead, instantly snap them to their proper slot position or make them wait!
+                    if (!isLeaderMoving)
+                    {
+                        // If they are wildly far away (spawned wrong), snap them physically into formation
+                        if (distToSlotSqr > 5f * 5f)
+                        {
+                            if (rb != null) rb.position = exactSlotTarget;
+                            else transform.position = exactSlotTarget;
+                        }
+
+                        // Force them to stop ghost-marching on the spawn frame
+                        StopMoving();
+                        return;
+                    }
+
+                    // Standard marching logic resumes only once the leader begins moving
                     if (distToSlotSqr > keepUpRadius * keepUpRadius)
                     {
-                        if (isLeaderMoving)
-                        {
-                            // Pass our unique formation slot target, NOT the leader's literal center vector!
-                            MoveTowards(exactSlotTarget, false);
-                        }
-                        else
-                        {
-                            StopMoving();
-                        }
+                        MoveTowards(exactSlotTarget, false);
                     }
                     else
                     {
-                        // Match velocity to smoothly lock step with the moving commander
-                        if (isLeaderMoving)
-                        {
-                            rb.linearVelocity = myLeader.rb.linearVelocity;
-                            if (animator != null) animator.SetBool("isMoving", true);
-                        }
-                        else
-                        {
-                            StopMoving();
-                        }
+                        rb.linearVelocity = myLeader.rb.linearVelocity;
+                        if (animator != null) animator.SetBool("isMoving", true);
                     }
                     return;
                 }
@@ -651,6 +676,7 @@ public class MusouUnit : sleepEnemy
 
         return ((Vector2)currentTarget.position - myPos).sqrMagnitude <= (maxComboDist * maxComboDist);
     }
+
 
     IEnumerator Combo1()
     {

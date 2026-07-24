@@ -85,7 +85,7 @@ public class MusouRam : MonoBehaviour
     {
         if (targetGateHealth != null && targetGateHealth.currentHealth > 0)
         {
-            Debug.Log($"[RAM EVENT] Impact frame reached! Dealing {damagePerHit} damage.");
+            //Debug.Log($"[RAM EVENT] Impact frame reached! Dealing {damagePerHit} damage.");
 
             // FIXED LINE: Added 'ramAnimator' and 'rb' to satisfy the updated 5-argument method signature!
             // This means when the ram hits a massive wooden gate, the ram itself will freeze frame slightly on impact, selling the heavy weight!

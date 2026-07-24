@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static MusouUnit;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class Health : MonoBehaviour
@@ -22,6 +23,20 @@ public class Health : MonoBehaviour
     public SpriteRenderer minimapIconRenderer;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
+
+    [Tooltip("The pickable item prefab for the permanent Max Health upgrade (Dim Sum)")]
+    [SerializeField] private GameObject healthDropPrefab;
+
+    [Tooltip("The pickable item prefab for the permanent Attack upgrade (Sword)")]
+    [SerializeField] private GameObject attackDropPrefab;
+
+    [Tooltip("The pickable item prefab for the permanent Defense upgrade (Shield)")]
+    [SerializeField] private GameObject defenseDropPrefab;
+
+    [Range(0f, 100f)]
+    [Tooltip("The overall percentage chance that this unit drops ANY item when killed (e.g., 15% for regular grunts).")]
+    [SerializeField] private float baseDropChance = 15f;
+
 
     // FIX: Separated coroutine trackers so they don't cancel each other out!
     private Coroutine minimapFlashCoroutine;
@@ -80,10 +95,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0) return;
 
-        // ========================================================
-        // 🔥 THE BLOCK INTERCEPTION SYSTEM:
-        // Intercepts and completely mitigates damage if unit is holding up a guard!
-        // ========================================================
+
         if (unitAI != null && unitAI.currentState == EnemyState.Block)
         {
             // Set the shield flag to true so the HitParticleManager drops regular flesh splashes!
@@ -117,10 +129,7 @@ public class Health : MonoBehaviour
         // Standard raw damage calculations proceed cleanly if they were caught off-guard
         currentHealth -= damage;
 
-        // ========================================================
-        // OPTIMIZED HIT-LAG GATE: Only freeze physics and animation timelines 
-        // if the battle is actively simulating on-screen near the player view!
-        // ========================================================
+
         if (isSimulating && HitLagManager.Instance != null && attackerAnim != null)
         {
             if (!attackerAnim.CompareTag("Player"))
@@ -133,8 +142,6 @@ public class Health : MonoBehaviour
             }
         }
   
-
-        Debug.Log($"{gameObject.name} took damage! Current health after hit: {currentHealth}");
 
         if (healthBar != null) healthBar.UpdateBar(currentHealth, maxHealth);
 
@@ -201,26 +208,37 @@ public class Health : MonoBehaviour
         }
     }
 
-    // Inside Health.cs -> DeathFadeRoutine()
-    // --- INSIDE HEALTH.CS ---
+    public void TakeDamage(float damageAmount, Vector2 attackerPosition, Vector2 knockbackVelocity, GameObject visualEffect = null, string customParameter = null)
+    {
+        // 1. Convert the float stat cleanly to a whole number integer
+        int calculatedDamageValue = Mathf.RoundToInt(damageAmount);
 
-    // Inside Health.cs -> Die()
+        // 2. Pass it directly into your existing, working integer system!
+        // (Update these variable slots to match whatever your original Health.cs method fields are named)
+        TakeDamage(calculatedDamageValue, attackerPosition, knockbackVelocity); 
+        
+        // 3. HARD TRIGGER STAGGER: Force the enemy to break out of their AI pathfinding loops instantly!
+        MusouUnit myMusouComponent = GetComponent<MusouUnit>();
+        if (myMusouComponent == null) myMusouComponent = GetComponentInParent<MusouUnit>();
+        
+        if (myMusouComponent != null)
+        {
+            myMusouComponent.TriggerHit(attackerPosition);
+            Debug.Log($"<color=red>[COMBAT CONTACT]:</color> Enemy {gameObject.name} successfully staggered for {calculatedDamageValue} damage!");
+        }
+    }
 
     void Die()
     {
         if (BattleManager.Instance != null)
             BattleManager.Instance.activeUnits.Remove(this);
 
-        // 🔥 THE TUG-OF-WAR FEEDBACK:
-        // If an enemy dies, give the Player Side morale points. If an ally dies, give the Enemy Side points!
+        EvaluateItemDrop();
+
         if (MoraleManager.Instance != null && unitAI != null)
         {
-            // Grunts grant 0.25f points. If it's an Officer, give them a massive 8.0f swing boost!
             float pointsGranted = unitAI.isOfficer ? 8f : 0.25f;
-
-            // The surviving opposing faction claims the tactical point boost
             MusouUnit.Team victoriousTeam = (unitAI.unitTeam == MusouUnit.Team.PlayerSide) ? MusouUnit.Team.EnemySide : MusouUnit.Team.PlayerSide;
-
             MoraleManager.Instance.ChangeMorale(victoriousTeam, pointsGranted);
         }
 
@@ -237,7 +255,24 @@ public class Health : MonoBehaviour
             rb.simulated = false;
         }
 
-        if (KOCounter.instance != null) KOCounter.instance.AddKO();
+        if (KOCounter.instance != null && unitAI != null && unitAI.unitTeam == MusouUnit.Team.EnemySide)
+        {
+            KOCounter.instance.AddKO();
+        }
+
+        // =========================================================================
+        // 🔥 THE MULTI-COMMANDER DEFEAT INTERCEPTOR:
+        // Evaluates your new boolean checkbox flag directly on the frame of death!
+        // =========================================================================
+        if (unitAI != null && unitAI.isStageCommander && unitAI.unitTeam == MusouUnit.Team.EnemySide)
+        {
+            if (BattleEndManager.Instance != null)
+            {
+                // Send a message to the manager tracking active stage commanders
+                BattleEndManager.Instance.NotifyCommanderDefeated(this);
+            }
+        }
+        // =========================================================================
 
         StartCoroutine(DeathFadeRoutine());
     }
@@ -261,15 +296,11 @@ public class Health : MonoBehaviour
             }
         }
 
-        // =========================================================================
-        // 🔥 THE COMPREHENSIVE SAFETIED DESTRUCTION BLOCK:
-        // This stops Unity from accidentally destroying your parent 'Unit Sword' 
-        // container asset while other living troops are still nesting inside it!
-        // =========================================================================
+   
         if (gameObject.CompareTag("Gate"))
         {
             gameObject.SetActive(false); // Safe disable for structural level assets
-            Debug.Log($"[BATTLEFIELD] {gameObject.name} breached! Path cleared.");
+           // Debug.Log($"[BATTLEFIELD] {gameObject.name} breached! Path cleared.");
         }
         else
         {
@@ -278,7 +309,7 @@ public class Health : MonoBehaviour
             // This ensures the empty parent folder container stays intact for the survivors.
             Destroy(gameObject);
         }
-        // =========================================================================
+
     }
 
 
@@ -371,4 +402,47 @@ public class Health : MonoBehaviour
             AttackDirector.instance.ForceReleaseAllTokensForAttacker(GetComponent<MusouUnit>());
         }
     }
+
+    // --- THE BATTLEFIELD LOOT GENERATOR ---
+    private void EvaluateItemDrop()
+    {
+        if (healthDropPrefab == null && attackDropPrefab == null && defenseDropPrefab == null) return;
+
+        MusouUnit unitAI = GetComponent<MusouUnit>();
+        bool isOfficer = (unitAI != null && unitAI.isOfficer);
+
+        float diceRoll = Random.Range(0f, 100f);
+        float activeChance = isOfficer ? 100f : baseDropChance;
+
+        // 🟢 FIXED: Parentheses close cleanly with no text remnants
+        if (diceRoll <= activeChance)
+        {
+            float itemTypeRoll = Random.value;
+            GameObject selectedItemToSpawn = null;
+
+            if (itemTypeRoll <= 0.35f)
+            {
+                selectedItemToSpawn = healthDropPrefab;
+            }
+            else if (itemTypeRoll <= 0.70f)
+            {
+                selectedItemToSpawn = attackDropPrefab;
+            }
+            else
+            {
+                selectedItemToSpawn = defenseDropPrefab;
+            }
+
+            if (selectedItemToSpawn != null)
+            {
+                Vector3 spawnPos = transform.position;
+                Vector2 randomPopOffset = Random.insideUnitCircle * 0.3f;
+                Vector3 finalSpawnPos = spawnPos + new Vector3(randomPopOffset.x, randomPopOffset.y, 0f);
+
+                // Spawns the physical item container into the scene smoothly
+                Instantiate(selectedItemToSpawn, finalSpawnPos, Quaternion.identity);
+            }
+        }
+    }
+
 }

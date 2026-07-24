@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
@@ -69,13 +69,15 @@ public class BattleManager : MonoBehaviour
                     // 3. Team Check & Pulse Trigger
                     if (aiA != null && aiB != null && aiA.unitTeam != aiB.unitTeam)
                     {
+                  
                         // DW3 FEEL: Assign target so the Minimap Pulse starts!
                         aiA.currentTarget = unitB.transform;
 
                         // Apply a tiny amount of damage over time
-                        unitA.TakeDamage(0.5f * Time.deltaTime, unitB.transform.position, Vector2.zero, null, null);
+                        // 🟢 FIXED: Explicitly cast the null parameters to clarify the exact function signature!
+                        unitA.TakeDamage(0.5f * Time.deltaTime, unitB.transform.position, Vector2.zero, (Animator)null, (Rigidbody2D)null);
 
-                        // Break so we don't fight EVERY single enemy in the cell at once
+                        // Break so we don't calculate multiple combat loops per grid tick
                         break;
                     }
                 }

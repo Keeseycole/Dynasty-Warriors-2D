@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 1096086714959579074}
   - component: {fileID: 9176585271907380788}
   - component: {fileID: 6358820668073563047}
-  - component: {fileID: 3979502472762048503}
   - component: {fileID: 528944272819202469}
   - component: {fileID: 1748390047372491012}
   - component: {fileID: 2890964482448441542}
   - component: {fileID: 4530718594491808079}
   - component: {fileID: 5735086031365336344}
+  - component: {fileID: 8327733583963588785}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1560335712651223089, guid: faf9c3114a1279b4bbf2b5f4a1b38817, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -141,36 +141,12 @@ MonoBehaviour:
   snapToDirAnim: 1
   lastLookDir: {x: 0, y: 0}
   pickupRange: 1.5
---- !u!114 &3979502472762048503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393334081821395625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 2ba90d4340d43b94699dde62a1de4c70, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Gameplay
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  playerAttackRange: 1.8
+  playerAttackDamage: 10
+  playerKnockbackForce: 6
+  enemyFactionLayers:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &528944272819202469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db88c64a6c2093c4c85bcfc203206d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombo
-  myNativeAnimator: {fileID: 0}
+  myNativeAnimator: {fileID: 9176585271907380788}
   isAttacking: 0
   liveAnimatorSpeedTracker: 0
   basicStepForce: 3
@@ -192,6 +168,11 @@ MonoBehaviour:
   finisherRangeMultiplier: 0.94
   basicHitLagDuration: 0.08
   finisherHitLagDuration: 0.15
+  baseAttackRadius: 1.5
+  minimumTimeBetweenStrikes: 0.28
+  comboBufferWindow: 0.45
+  attackClipDuration: 0.35
+  postAttackPauseWindow: 0.15
 --- !u!114 &1748390047372491012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +225,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -294,6 +275,54 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7551269, y: 0.5832343}
   m_EdgeRadius: 0
+--- !u!114 &8327733583963588785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393334081821395625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1863452493a877a478e6b1b88a3b12fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusouUnit
+  currentState: 0
+  baseAttack: 0
+  enemyName: 
+  moveSpeed: 0
+  rb: {fileID: 0}
+  currentTarget: {fileID: 0}
+  animator: {fileID: 0}
+  chaseRadius: 0
+  attackRadius: 0
+  currentMission: 0
+  missionTarget: {fileID: 0}
+  unitTeam: 0
+  followsPlayer: 0
+  searchLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  detectionRange: 10
+  followDistance: 3
+  strafeSpeed: 3
+  damageToGive: 10
+  baseAggressionScore: 0
+  aggressionScore: 0.5
+  attackCooldown: 1.5
+  separationRadius: 0.8
+  separationStrength: 3
+  isBusy: 0
+  playerTransform: {fileID: 0}
+  attackStepForce: 4
+  hitForce: 4
+  enemyHitLagDuration: 0.06
+  myLeader: {fileID: 0}
+  squadIndex: 0
+  stoppingDistance: 0.2
+  personalSpaceRadius: 1.5
+  startingDirection: {x: 0, y: -1}
+  isOfficer: 0
 --- !u!1 &2303862948726828186
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +474,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1527
+    m_Bits: 13815
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -537,7 +566,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.09, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2226807015158001929}
@@ -591,15 +620,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 109
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3738921858536076244, guid: 782b41a3e86c98d4380ce9bf0bb7a48c, type: 3}
+  m_Sprite: {fileID: 932751857, guid: dcb38577cdc0a7e4b92c2b7ea6111039, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.5, y: 2.5}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!114 &3739742083136387448
 MonoBehaviour:

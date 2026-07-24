@@ -67,7 +67,7 @@ public class WeaponClashManager : MonoBehaviour
         float dynamicAiPower = aiPushStrength + ((maxClashDuration - clashTimer) * scaleDrainRate);
         clashBalance -= dynamicAiPower * Time.deltaTime;
 
-        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetButtonDown("Fire1"))
         {
             clashBalance += playerMashPower;
         }

@@ -446,6 +446,7 @@ MonoBehaviour:
   currentHealth: 70
   isSimulating: 0
   minimapIconRenderer: {fileID: 807605141792290225}
+  blockedOnThisFrame: 0
   flashOverlay: {fileID: 2025880748404533052}
   isGate: 0
 --- !u!114 &6246354368433678170
@@ -481,9 +482,9 @@ MonoBehaviour:
   moveSpeed: 4
   rb: {fileID: 751093766707570573}
   currentTarget: {fileID: 0}
+  animator: {fileID: 4396214231002858274}
   chaseRadius: 3
   attackRadius: 3
-  animator: {fileID: 4396214231002858274}
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -495,10 +496,12 @@ MonoBehaviour:
   followDistance: 3
   strafeSpeed: 0.5
   damageToGive: 5
+  baseAggressionScore: 0
   aggressionScore: 0.607
   attackCooldown: 1.5
   separationRadius: 1.21
   separationStrength: 4.49
+  isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 3
   hitForce: 2
@@ -1004,6 +1007,7 @@ GameObject:
   - component: {fileID: 364028276745021562}
   - component: {fileID: 4396214231002858274}
   - component: {fileID: 7231937144415953421}
+  - component: {fileID: 658206491950052838}
   m_Layer: 6
   m_Name: Visuals
   m_TagString: Untagged
@@ -1120,6 +1124,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e8689a9cf5b1488f382859d167b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationProxy
+--- !u!114 &658206491950052838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033685424005853077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
 --- !u!1 &8129501957828255337
 GameObject:
   m_ObjectHideFlags: 0

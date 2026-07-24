@@ -126,10 +126,9 @@ public class BattleEventManager : MonoBehaviour
                 // Calculate an explosive blow away vector outward from the epicenter
                 Vector2 blastDirection = ((Vector2)victim.transform.position - (Vector2)bombCenter).normalized;
                 float lethalBlastForce = 25f;
-
                 // Pass total lethal damage (9999) to activate their health death/fade coroutines
-                // Inside BattleEventManager.cs -> FireAttackCinematicRoutine loop:
-                victim.TakeDamage(9999f, bombCenter, blastDirection * lethalBlastForce, null, null);
+        
+                victim.TakeDamage(9999f, bombCenter, blastDirection * lethalBlastForce, (Animator)null, (Rigidbody2D)null); ;
             }
         }
 

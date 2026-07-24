@@ -312,37 +312,37 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 282301586814226176}
-    m_Position: {x: 320, y: 100, z: 0}
+    m_Position: {x: 360, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2879711069342152740}
-    m_Position: {x: -130, y: 260, z: 0}
+    m_Position: {x: -160, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5236207982597745047}
-    m_Position: {x: 110, y: 280, z: 0}
+    m_Position: {x: 40, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2845534186082256674}
-    m_Position: {x: 370, y: 270, z: 0}
+    m_Position: {x: 270, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9073537913463652878}
-    m_Position: {x: 850, y: 100, z: 0}
+    m_Position: {x: 720, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1560171975880191006}
     m_Position: {x: 320, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4486381316450506861}
-    m_Position: {x: 30, y: 100, z: 0}
+    m_Position: {x: 0, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8747904844656090638}
     m_Position: {x: 40, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7646468535262535953}
-    m_Position: {x: 50, y: -30, z: 0}
+    m_Position: {x: -50, y: -30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7909695635492184757}
-    m_Position: {x: 600, y: 250, z: 0}
+    m_Position: {x: 480, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4723877566197736142}
-    m_Position: {x: 830, y: 230, z: 0}
+    m_Position: {x: 700, y: 250, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 5482165732939029118}
@@ -351,7 +351,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -280, y: 100, z: 0}
+  m_AnyStatePosition: {x: -280, y: 80, z: 0}
   m_EntryPosition: {x: 610, y: 40, z: 0}
   m_ExitPosition: {x: 1130, y: 110, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

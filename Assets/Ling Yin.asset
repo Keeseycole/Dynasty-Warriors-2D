@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed5f74376c0ca940a23a090d03c89e0, type: 3}
   m_Name: Ling Yin
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  characterName: 
+  characterName: Ling Yin
+  characterTitle: 
+  animatorController: {fileID: 9100000, guid: c5be6e0ac19bc99438026f4dd4038a9b, type: 2}
+  gridIcon: {fileID: 1545868620, guid: faf9c3114a1279b4bbf2b5f4a1b38817, type: 3}
+  massivePreview: {fileID: 1545868620, guid: faf9c3114a1279b4bbf2b5f4a1b38817, type: 3}
+  attackPower: 100
+  defensePower: 100
   maxHealth: 250
-  attack: 250
-  defense: 250
+  moveSpeed: 5

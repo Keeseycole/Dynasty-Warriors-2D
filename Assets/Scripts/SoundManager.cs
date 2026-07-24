@@ -137,4 +137,14 @@ public class SoundManager : MonoBehaviour
         // FIXED LINE: Emergency fallback grabs index 0 if the pool is full
         return sfxPool[0];
     }
+
+    public void StopMusic()
+    {
+        // If the audio source component is found and actively playing a song track, silence it!
+        if (musicSource != null && musicSource.isPlaying)
+        {
+            musicSource.Stop();
+            Debug.Log("<color=#00FFFF>[SOUND MANAGER]:</color> Background battle music track forcefully silenced for cinematic event sequence.");
+        }
+    }
 }
