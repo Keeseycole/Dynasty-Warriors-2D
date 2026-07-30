@@ -173,6 +173,19 @@ MonoBehaviour:
   comboBufferWindow: 0.45
   attackClipDuration: 0.35
   postAttackPauseWindow: 0.15
+  musouBarSlider: {fileID: 0}
+  _currentMusouEnergy: 0
+  musouSpecialDuration: 2.5
+  musouFillImage: {fileID: 0}
+  selectedCharacterProfile: {fileID: 0}
+  maxFlashTargetColor: {r: 1, g: 1, b: 1, a: 1}
+  maxFlashTotalDuration: 0.24
+  musouGainPerHitTaken: 5
+  passiveRegenHealthThreshold: 0.2
+  passiveRegenEnergyPerSecond: 4
+  musouPixelsPerPoint: 1.5
+  bonusSecondsPerMusouUp: 0.05
+  universalMaxMusouCap: 200
 --- !u!114 &1748390047372491012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,11 +198,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88963f4ac609ace449467a21e476da18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 250
+  currentHealth: 250
   healthSlider: {fileID: 0}
   pixelsPerHealthPoint: 1.2
   invincibilityDuration: 0.5
+  healthyBarColor: {r: 0, g: 0.8878503, b: 1, a: 1}
+  criticalBarColor: {r: 0.9716981, g: 0.05958529, b: 0.05958529, a: 1}
+  criticalHealthThreshold: 0.2
 --- !u!114 &2890964482448441542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +339,7 @@ MonoBehaviour:
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
+  isStageCommander: 0
 --- !u!1 &2303862948726828186
 GameObject:
   m_ObjectHideFlags: 0

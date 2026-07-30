@@ -2,7 +2,7 @@
 
 public class PermanentStatItem : MonoBehaviour
 {
-    public enum BoostType { MaxHealth, AttackPower, DefensePower }
+    public enum BoostType { MaxHealth, AttackPower, DefensePower, MusouCapacity }
 
     [Header("Stat Boost Configurations")]
     [Tooltip("Select what stat this specific item asset will permanently upgrade!")]
@@ -15,6 +15,8 @@ public class PermanentStatItem : MonoBehaviour
     [SerializeField] private string pickupSFXName = "statBoost";
     [SerializeField] private GameObject pickupParticlePrefab;
 
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 🔥 THE HERO DETECTOR GATEWAY:
@@ -26,7 +28,7 @@ public class PermanentStatItem : MonoBehaviour
             if (activeHeroData == null) return;
 
             // 2. Dispatch the permanent upgrade based on the selected enum type
-            switch (itemType)
+           switch (itemType)
             {
                 case BoostType.MaxHealth:
                     PlayerHealth pHealth = collision.GetComponentInParent<PlayerHealth>();
@@ -34,41 +36,87 @@ public class PermanentStatItem : MonoBehaviour
 
                     if (pHealth != null)
                     {
-                        // 🟢 SAFEGUARD: Accumulate the health bonus in the ScriptableObject asset file too!
-                        activeHeroData.permanentHealthBonus += upgradeAmount;
+                        float maximumAllowedHealthCeiling = 150f;
 
-                        float universalMaxMenuCap = 500f;
-                        pHealth.PermanentHealthUpgrade(upgradeAmount, universalMaxMenuCap);
+                        // 🌟 VISUAL ONLY PICKUP: 
+                        // If already at or above 150, log it and let the item be consumed without adding points!
+                        if (activeHeroData.maxHealth >= maximumAllowedHealthCeiling)
+                        {
+                            Debug.Log("<color=yellow>[MAX CAPACITY PICKUP]:</color> Health is already maxed at 150. Item consumed visually only.");
+                        }
+                        else
+                        {
+                            float theoreticalNewHealth = activeHeroData.maxHealth + upgradeAmount;
+                            if (theoreticalNewHealth > maximumAllowedHealthCeiling)
+                            {
+                                theoreticalNewHealth = maximumAllowedHealthCeiling;
+                            }
+
+                            float actualAllowedHealthUpgrade = theoreticalNewHealth - activeHeroData.maxHealth;
+
+                            if (actualAllowedHealthUpgrade > 0)
+                            {
+                                activeHeroData.permanentHealthBonus += actualAllowedHealthUpgrade;
+                                pHealth.PermanentHealthUpgrade(actualAllowedHealthUpgrade, maximumAllowedHealthCeiling);
+                            }
+                        }
                     }
                     break;
 
                 case BoostType.AttackPower:
-                    // 🟢 FIXED: Add the upgrade points directly to the persistent bonus holder variable!
                     activeHeroData.permanentAttackBonus += upgradeAmount;
-
-                    // Sync up live stats with the controller on the active scene frame
                     PlayerController pControl = collision.GetComponentInParent<PlayerController>();
                     if (pControl == null) pControl = collision.GetComponent<PlayerController>();
-
-                    if (pControl != null)
-                    {
-                        // Force the live damage variable to update using the newly calculated property total
-                        pControl.playerAttackDamage = activeHeroData.attackPower;
-                    }
-
+                    if (pControl != null) pControl.playerAttackDamage = activeHeroData.attackPower;
                     Debug.Log($"<color=#00FF7F>[PERMANENT UPGRADE]:</color> Attack power permanently boosted! New Total: {activeHeroData.attackPower}");
                     break;
 
                 case BoostType.DefensePower:
-                    // 🟢 FIXED: Add the upgrade points directly to the persistent bonus holder variable!
                     activeHeroData.permanentDefenseBonus += upgradeAmount;
-
                     Debug.Log($"<color=#00FF7F>[PERMANENT UPGRADE]:</color> Defense power permanently boosted! New Total: {activeHeroData.defensePower}");
+                    break;
+
+                case BoostType.MusouCapacity:
+                    PlayerCombo pCombo = collision.GetComponentInParent<PlayerCombo>();
+                    if (pCombo == null) pCombo = collision.GetComponent<PlayerCombo>();
+
+                    if (pCombo != null)
+                    {
+                        float maximumAllowedMusouCeiling = 200f;
+
+                        // 🌟 VISUAL ONLY PICKUP: 
+                        // If already at or above 150, log it and let the item be consumed without adding points!
+                        if (activeHeroData.maxMusouCapacity >= maximumAllowedMusouCeiling)
+                        {
+                            Debug.Log("<color=yellow>[MAX CAPACITY PICKUP]:</color> Musou is already maxed at 150. Item consumed visually only.");
+                        }
+                        else
+                        {
+                            float theoreticalNewCapacity = activeHeroData.maxMusouCapacity + upgradeAmount;
+                            if (theoreticalNewCapacity > maximumAllowedMusouCeiling)
+                            {
+                                theoreticalNewCapacity = maximumAllowedMusouCeiling;
+                            }
+
+                            float actualAllowedUpgradeAmount = theoreticalNewCapacity - activeHeroData.maxMusouCapacity;
+
+                            if (actualAllowedUpgradeAmount > 0)
+                            {
+                                activeHeroData.permanentMusouBonus += actualAllowedUpgradeAmount;
+                                pCombo.maxMusouEnergy = activeHeroData.maxMusouCapacity;
+
+                                UnityEngine.UI.Slider mSlider = pCombo.GetComponentInChildren<UnityEngine.UI.Slider>();
+                                if (mSlider != null) mSlider.maxValue = pCombo.maxMusouEnergy;
+
+                                pCombo.currentMusouEnergy = pCombo.currentMusouEnergy;
+                            }
+                        }
+                    }
                     break;
             }
 
-            // 3. Audio-Visual Feedback Effects
-            if (SoundManager.Instance != null && !string.IsNullOrEmpty(pickupSFXName))
+                    // 3. Audio-Visual Feedback Effects
+                    if (SoundManager.Instance != null && !string.IsNullOrEmpty(pickupSFXName))
             {
                 SoundManager.Instance.PlaySFX(pickupSFXName, 0.9f);
             }
@@ -82,4 +130,6 @@ public class PermanentStatItem : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
 }

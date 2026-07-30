@@ -52,7 +52,6 @@ public class BattleEventManager : MonoBehaviour
             Debug.Log($"[MISSION START] Target Objective Initialized. Total items to destroy: {totalObjectsNeeded}");
         }
     }
-
     private void Update()
     {
         if (targetObjectsToDestroy == null || ambushSquadContainers == null || eventTriggered) return;
@@ -82,9 +81,6 @@ public class BattleEventManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Handles the classic Dynasty Warriors cinematic freeze frame and board wipe via a dynamic Trigger Zone.
-    /// </summary>
     public void ExecuteFireAttackCutscene(Vector3 bombCenter, List<Health> victimsToScorched)
     {
         StartCoroutine(FireAttackCinematicRoutine(bombCenter, victimsToScorched));
@@ -140,15 +136,14 @@ public class BattleEventManager : MonoBehaviour
 
     private IEnumerator DeployAmbushSequence(GameObject squadRoot)
     {
-        
-        //Debug.LogWarning("Commander: 'An enemy tactical asset has been dismantled! Ambush squads, advance!'");
-       
-
+        // 1. Wait out your core mechanical delay window
         yield return new WaitForSeconds(2.0f);
 
+        // 2. Wake up the physical folder container inside your castle room layout
         squadRoot.SetActive(true);
-      //  Debug.Log($"[EVENT] Activated hidden squad container: {squadRoot.name}");
+        Debug.Log($"[EVENT] Activated hidden squad container: {squadRoot.name}");
 
+        // 3. Gather all the child soldiers nested inside it
         MusouUnit[] soldiersInSquad = squadRoot.GetComponentsInChildren<MusouUnit>(true);
 
         foreach (MusouUnit soldier in soldiersInSquad)
@@ -158,13 +153,46 @@ public class BattleEventManager : MonoBehaviour
                 soldier.unitTeam = MusouUnit.Team.PlayerSide;
                 soldier.isOfficer = false;
 
-                StartCoroutine(DeployUnitOnPath(soldier));
+                // ========================================================================
+                // 🔥 FIXED: THE REINFORCEMENT SEPARATION BUFFER
+                // We pass the soldier to a routing method that applies a clean 0.1-second 
+                // physics delay. This ensures they register their true room positions 
+                // before calculating paths, preventing clipping or warping!
+                // ========================================================================
+                StartCoroutine(RouteUnitSafely(soldier));
             }
         }
     }
 
+    // Add this quick helper routing coroutine right below your sequence block:
+    private IEnumerator RouteUnitSafely(MusouUnit unit)
+    {
+        // Force the unit to stay put for a tiny split second to register its environment
+        yield return new WaitForSeconds(0.1f);
+
+        if (unit != null && unit.enabled)
+        {
+            // Now it's safe to start dragging them down your path node lines!
+            StartCoroutine(DeployUnitOnPath(unit));
+        }
+    }
     private IEnumerator DeployUnitOnPath(MusouUnit unit)
     {
+        // ========================================================================
+        // 🔥 FIXED: THE POSITION INITIALIZATION BUFFER
+        // Yields control back to Unity for one frame so the physics engine and Rigidbody
+        // can fully wake up, register, and lock into their true spawn positions!
+        // ========================================================================
+        yield return null;
+
+        // Safety check in case the unit was destroyed during the initialization frame buffer
+        if (unit == null) yield break;
+
+        if (unit != null)
+        {
+            unit.ChangeState(EnemyState.Walk);
+        }
+
         foreach (Transform node in pathNodes)
         {
             if (unit == null || !unit.enabled) yield break;
@@ -172,28 +200,24 @@ public class BattleEventManager : MonoBehaviour
             unit.missionTarget = node;
 
             float checkTimer = 0f;
-            // Loop runs every single frame to ensure smooth physics and animation updates
             while (unit != null && node != null)
             {
-                // 🔥 THE FIX: Keep driving the Rigidbody physics every frame!
-                // If they are locked in a local skirmish duel, let their internal combat logic take over temporarily
                 if (unit.currentTarget == null)
                 {
                     unit.MoveTowards(node.position, false);
                 }
 
-                // Only run the performance-heavy Distance calculation 5 times a second
                 checkTimer += Time.deltaTime;
                 if (checkTimer >= 0.2f)
                 {
                     checkTimer = 0f;
                     if (Vector2.Distance(unit.transform.position, node.position) <= 1.5f)
                     {
-                        break; // Breakthrough to the next sequential node checkpoint!
+                        break;
                     }
                 }
 
-                yield return null; // Wait for the next frame
+                yield return null;
             }
         }
 
@@ -261,7 +285,7 @@ public class BattleEventManager : MonoBehaviour
 
                 yield return null;
             }
-            // Inside BattleEventManager.cs -> ExecuteGeneralRetreatPath:
+
             if (general != null)
             {
                 // Clean up all attached living squad grunts explicitly
@@ -276,6 +300,4 @@ public class BattleEventManager : MonoBehaviour
 
         }
     }
-
-
 }

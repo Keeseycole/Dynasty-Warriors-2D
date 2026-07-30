@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static MusouUnit;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class Health : MonoBehaviour
 {
@@ -37,7 +36,9 @@ public class Health : MonoBehaviour
     [Tooltip("The overall percentage chance that this unit drops ANY item when killed (e.g., 15% for regular grunts).")]
     [SerializeField] private float baseDropChance = 15f;
 
-
+    [Header("Breach Dialog Configuration")]
+    [Tooltip("Assign a ScriptableObject conversation list asset here to play full dialogue sequences on breach!")]
+    public DialogConversation gateBreachedConversation;
     // FIX: Separated coroutine trackers so they don't cancel each other out!
     private Coroutine minimapFlashCoroutine;
     private Coroutine hitFlashCoroutine;
@@ -49,6 +50,9 @@ public class Health : MonoBehaviour
     public GameObject flashOverlay;
 
     public bool isGate;
+
+    // Static variables are shared by ALL instances of Health.cs across the scene
+    private static bool hasAnyGateBreachedConversationPlayed = false;
     private void Awake()
     {
         myCollider = GetComponent<Collider2D>();
@@ -82,12 +86,18 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth; // Ensure health is fully initialized
+        currentHealth = maxHealth;
         if (BattleManager.Instance != null)
             BattleManager.Instance.activeUnits.Add(this);
+
+        // BUG PREVENTER: Reset the global flag when the level initializes
+        if (isGate || gameObject.CompareTag("Gate"))
+        {
+            hasAnyGateBreachedConversationPlayed = false;
+        }
     }
 
- 
+
 
     public void TakeDamage(float damage, Vector2 attackerPosition, Vector2 knockback, Animator attackerAnim, Rigidbody2D attackerRb)
     {
@@ -230,10 +240,33 @@ public class Health : MonoBehaviour
 
     void Die()
     {
+       
         if (BattleManager.Instance != null)
             BattleManager.Instance.activeUnits.Remove(this);
 
         EvaluateItemDrop();
+
+        // ========================================================================
+        // 🔥 FIXED: INSTANT GATE BREACH DIALOGUE TRIGGER
+        // Fires the exact frame health drops to 0, before any delays or disable windows!
+        // ========================================================================
+        if (gameObject.CompareTag("Gate") || isGate)
+        {
+            if (!hasAnyGateBreachedConversationPlayed)
+            {
+                hasAnyGateBreachedConversationPlayed = true;
+
+                if (gateBreachedConversation != null && MusouDialogManager.Instance != null)
+                {
+                    MusouDialogManager.Instance.PlayConversation(gateBreachedConversation);
+                    Debug.Log($"[DIALOG SYSTEM]: Successfully sent '{gateBreachedConversation.name}' to the UI Manager!");
+                }
+                else
+                {
+                    Debug.LogWarning($"[DIALOG WARNING]: Missing asset link! Conversation is null or Manager Instance is missing.");
+                }
+            }
+        }
 
         if (MoraleManager.Instance != null && unitAI != null)
         {
@@ -258,28 +291,21 @@ public class Health : MonoBehaviour
         if (KOCounter.instance != null && unitAI != null && unitAI.unitTeam == MusouUnit.Team.EnemySide)
         {
             KOCounter.instance.AddKO();
-        }
 
-        // =========================================================================
-        // 🔥 THE MULTI-COMMANDER DEFEAT INTERCEPTOR:
-        // Evaluates your new boolean checkbox flag directly on the frame of death!
-        // =========================================================================
-        if (unitAI != null && unitAI.isStageCommander && unitAI.unitTeam == MusouUnit.Team.EnemySide)
-        {
-            if (BattleEndManager.Instance != null)
+            if (unitAI.isStageCommander && BattleEndManager.Instance != null)
             {
-                // Send a message to the manager tracking active stage commanders
                 BattleEndManager.Instance.NotifyCommanderDefeated(this);
             }
         }
-        // =========================================================================
 
         StartCoroutine(DeathFadeRoutine());
     }
 
+
     private IEnumerator DeathFadeRoutine()
     {
-        yield return new WaitForSeconds(10f);
+        // Keep this clean fallback delay intact to handle visual fading before turning off the collider meshes
+        yield return new WaitForSeconds(4f);
 
         if (spriteRenderer != null)
         {
@@ -288,7 +314,7 @@ public class Health : MonoBehaviour
 
             for (float t = 0; t < fadeTime; t += Time.deltaTime)
             {
-                if (spriteRenderer == null) yield break;
+                if (spriteRenderer == null) break;
                 Color c = spriteRenderer.color;
                 c.a = Mathf.Lerp(startAlpha, 0f, t / fadeTime);
                 spriteRenderer.color = c;
@@ -296,23 +322,15 @@ public class Health : MonoBehaviour
             }
         }
 
-   
-        if (gameObject.CompareTag("Gate"))
+        if (gameObject.CompareTag("Gate") || isGate)
         {
-            gameObject.SetActive(false); // Safe disable for structural level assets
-           // Debug.Log($"[BATTLEFIELD] {gameObject.name} breached! Path cleared.");
+            gameObject.SetActive(false);
         }
         else
         {
-            // ⚠️ CRITICAL FIX: Only destroy THIS specific character's GameObject.
-            // DO NOT call Destroy(transform.parent.gameObject) here or in your BattleEventManager!
-            // This ensures the empty parent folder container stays intact for the survivors.
             Destroy(gameObject);
         }
-
     }
-
-
     private IEnumerator MinimapFlashTick()
     {
         if (minimapIconRenderer == null) yield break;
@@ -406,7 +424,8 @@ public class Health : MonoBehaviour
     // --- THE BATTLEFIELD LOOT GENERATOR ---
     private void EvaluateItemDrop()
     {
-        if (healthDropPrefab == null && attackDropPrefab == null && defenseDropPrefab == null) return;
+        // 1. Safety check: Exit instantly if you haven't assigned the attack or defense assets yet
+        if (attackDropPrefab == null && defenseDropPrefab == null) return;
 
         MusouUnit unitAI = GetComponent<MusouUnit>();
         bool isOfficer = (unitAI != null && unitAI.isOfficer);
@@ -414,32 +433,31 @@ public class Health : MonoBehaviour
         float diceRoll = Random.Range(0f, 100f);
         float activeChance = isOfficer ? 100f : baseDropChance;
 
-        // 🟢 FIXED: Parentheses close cleanly with no text remnants
         if (diceRoll <= activeChance)
         {
-            float itemTypeRoll = Random.value;
+            // 🔥 THE ISOLATED 50/50 WEIGH-SCALE MATRIX:
+            // Random.value returns a float between 0.0 and 1.0. 
+            // Splitting it perfectly at 0.5 guarantees a crisp, fair half-and-half chance!
+            float coinFlip = Random.value;
             GameObject selectedItemToSpawn = null;
 
-            if (itemTypeRoll <= 0.35f)
+            if (coinFlip <= 0.5f)
             {
-                selectedItemToSpawn = healthDropPrefab;
-            }
-            else if (itemTypeRoll <= 0.70f)
-            {
-                selectedItemToSpawn = attackDropPrefab;
+                selectedItemToSpawn = attackDropPrefab;  // 🗡️ Permanent Attack Sword
             }
             else
             {
-                selectedItemToSpawn = defenseDropPrefab;
+                selectedItemToSpawn = defenseDropPrefab; // 🛡️ Permanent Defense Shield
             }
 
+            // 2. Instantiate the item cleanly into your scene coordinates
             if (selectedItemToSpawn != null)
             {
                 Vector3 spawnPos = transform.position;
                 Vector2 randomPopOffset = Random.insideUnitCircle * 0.3f;
                 Vector3 finalSpawnPos = spawnPos + new Vector3(randomPopOffset.x, randomPopOffset.y, 0f);
 
-                // Spawns the physical item container into the scene smoothly
+                // Spawns the physical sword or shield prop silently into the world map
                 Instantiate(selectedItemToSpawn, finalSpawnPos, Quaternion.identity);
             }
         }

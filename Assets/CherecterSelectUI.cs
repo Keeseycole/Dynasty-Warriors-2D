@@ -17,12 +17,16 @@ public class CharecterSelectUI : MonoBehaviour
     [SerializeField] private Slider attackSlider;
     [SerializeField] private Slider defenseSlider;
     [SerializeField] private Slider healthSlider;
+    // 🔥 NEW: Musou Visual Progress Bar Slider
+    [SerializeField] private Slider musouSlider;
 
     // 🔥 NEW: Text references to display the literal numerical stats!
     [Header(" Stat Numbers")]
     [SerializeField] private TextMeshProUGUI attackValueText;
     [SerializeField] private TextMeshProUGUI defenseValueText;
     [SerializeField] private TextMeshProUGUI healthValueText;
+    // 🔥 NEW: Text element to show the raw Musou numbers (e.g., 100, 110, 150)
+    [SerializeField] private TextMeshProUGUI musouValueText;
 
     [Header("The Selection Cursor")]
     [SerializeField] private RectTransform activeCursorHighlight;
@@ -47,7 +51,7 @@ public class CharecterSelectUI : MonoBehaviour
         // Wipe out placeholder templates
         foreach (Transform child in gridContentContainer) Destroy(child.gameObject);
 
-        // 🔥 CRITICAL: Must use a standard 'for' loop so 'i' increases unique values (0, 1, 2...)
+        // CRITICAL: Must use a standard 'for' loop so 'i' increases unique values (0, 1, 2...)
         for (int i = 0; i < dataCarrier.availableCharacters.Length; i++)
         {
             CharacterData character = dataCarrier.availableCharacters[i];
@@ -59,11 +63,12 @@ public class CharecterSelectUI : MonoBehaviour
 
             if (gridScript != null)
             {
-                // 🔥 THE FIX: Make sure you pass 'i' explicitly into the setup!
+                // THE FIX: Make sure you pass 'i' explicitly into the setup!
                 gridScript.SetupButton(i, character.gridIcon, this);
             }
         }
     }
+
     public void SelectCharacterFromGrid(int index, RectTransform buttonRect)
     {
         activeGridIndex = index;
@@ -82,24 +87,27 @@ public class CharecterSelectUI : MonoBehaviour
 
             // =========================================================================
             // 🔥 THE UNIVERSAL SCALE CONSTANT CAPS:
-            // Change these numbers to whatever you want your true "Full Bar" value to be.
-            // Setting maxHealthCap to 500f means Ling Yin (64 HP) will correctly fill 
-            // only about 13% of her health bar!
+            // Match maxMusouCap perfectly to your game logic ceiling constraints (150f).
+            // This ensures characters with upgraded gauges don't overflow the UI limits!
             // =========================================================================
-            float maxHealthCap = 250f;  // Set this to 500f, 1000f, or whatever you choose!
-            float maxAttackCap = 250f;  // Shared universal maximum for attack bar
-            float maxDefenseCap = 250f; // Shared universal maximum for defense bar
-            // =========================================================================
+            float maxHealthCap = 250f;
+            float maxAttackCap = 250f;
+            float maxDefenseCap = 250f;
+            float maxMusouCap = 200f;   
 
             // Calculate slider values relative to your absolute caps
             if (healthSlider != null) healthSlider.value = selected.maxHealth / maxHealthCap;
             if (attackSlider != null) attackSlider.value = selected.attackPower / maxAttackCap;
             if (defenseSlider != null) defenseSlider.value = selected.defensePower / maxDefenseCap;
+            // 🔥 NEW: Scales the filled progress indicator against the 150 max cap
+            if (musouSlider != null) musouSlider.value = selected.maxMusouCapacity / maxMusouCap;
 
             // The raw numerical strings remain untouched (displays literal 64, 100, etc.)
             if (healthValueText != null) healthValueText.text = selected.maxHealth.ToString("F0");
             if (attackValueText != null) attackValueText.text = selected.attackPower.ToString("F0");
             if (defenseValueText != null) defenseValueText.text = selected.defensePower.ToString("F0");
+            // 🔥 NEW: Displays the literal capacity value (e.g. 100 or 150) onto your left panel info layout
+            if (musouValueText != null) musouValueText.text = selected.maxMusouCapacity.ToString("F0");
         }
 
         if (activeCursorHighlight != null && buttonRect != null)
@@ -109,11 +117,10 @@ public class CharecterSelectUI : MonoBehaviour
             activeCursorHighlight.sizeDelta = buttonRect.sizeDelta;
         }
     }
+
     public void ConfirmOfficerChoice()
     {
-        // 🔥 THE ABSOLUTE PHYSICS RESET:
-        // Force the engine's internal physics clocks back to 1 BEFORE loading the scene.
-        // If this is missed, Unity 6 will carry the frozen time properties over, locking your Rigidbody!
+        // THE ABSOLUTE PHYSICS RESET:
         Time.timeScale = 1f;
 
         if (CharacterSelectManager.Instance != null)

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ram_Right_Hit
+  m_Name: YT_Spear_Idle_Right
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,17 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 354032174, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
-    - time: 0.2
-      value: {fileID: -2043839158, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
-    - time: 0.38333333
-      value: {fileID: 182679194, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
+      value: {fileID: -7098294687724541945, guid: 5a83b1f8b76aec049842136bba2bc9aa, type: 3}
+    - time: 0.28333333
+      value: {fileID: -5480391959464254227, guid: 5a83b1f8b76aec049842136bba2bc9aa, type: 3}
+    - time: 0.55
+      value: {fileID: 5046216114349703323, guid: 5a83b1f8b76aec049842136bba2bc9aa, type: 3}
     - time: 0.8333333
-      value: {fileID: -288989679, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
-    - time: 1.1833333
-      value: {fileID: -288989679, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
-    - time: 1.3333334
-      value: {fileID: -288989679, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
+      value: {fileID: -4478234812762952419, guid: 5a83b1f8b76aec049842136bba2bc9aa, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,18 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 354032174, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
-    - {fileID: -2043839158, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
-    - {fileID: 182679194, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
-    - {fileID: -288989679, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
-    - {fileID: -288989679, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
-    - {fileID: -288989679, guid: 8d67ac6bb5ccc9f42a4ec9ff420b06b8, type: 3}
+    - {fileID: -7098294687724541945, guid: 5a83b1f8b76aec049842136bba2bc9aa, type: 3}
+    - {fileID: -5480391959464254227, guid: 5a83b1f8b76aec049842136bba2bc9aa, type: 3}
+    - {fileID: 5046216114349703323, guid: 5a83b1f8b76aec049842136bba2bc9aa, type: 3}
+    - {fileID: -4478234812762952419, guid: 5a83b1f8b76aec049842136bba2bc9aa, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.35
+    m_StopTime: 0.84999996
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -84,11 +78,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: DealRamDamageEvent
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

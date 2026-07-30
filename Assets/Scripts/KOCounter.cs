@@ -25,6 +25,11 @@ public class KOCounter : MonoBehaviour
         }
     }
 
+    public int GetTotalKOs()
+    {
+        return totalKOs;
+    }
+
     void UpdateUI()
     {
         // Format it like the games: "1234 K.O."

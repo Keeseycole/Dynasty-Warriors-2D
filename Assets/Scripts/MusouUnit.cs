@@ -590,7 +590,7 @@ public class MusouUnit : sleepEnemy
             // Route the damage pass cleanly into your player's accurate tracking script parameters
             playableHeroHealth.TakeDamage(activeStrikeDamage, myPos, targetKnockbackForce);
 
-            Debug.Log($"<color=red>[ENEMY ATTACK HIT]:</color> Unit <b>{gameObject.name}</b> successfully struck the player for {activeStrikeDamage} damage!");
+           // Debug.Log($"<color=red>[ENEMY ATTACK HIT]:</color> Unit <b>{gameObject.name}</b> successfully struck the player for {activeStrikeDamage} damage!");
         }
     }
 

@@ -17,6 +17,7 @@ public class CharacterData : ScriptableObject
     [Range(0, 250)][SerializeField] private float baseAttackPower = 100f;
     [Range(0, 250)][SerializeField] private float baseDefensePower = 100f;
     [Range(0, 250)][SerializeField] private float baseMaxHealth = 100f;
+    [Range(0, 200)][SerializeField] private float baseMaxMusou = 100f;
 
     [Header("Combat Profile")]
     [Tooltip("The unique weapon reach for this character. Spear/Staff users should have higher values, while sword users have smaller values.")]
@@ -33,6 +34,8 @@ public class CharacterData : ScriptableObject
     public float permanentHealthBonus = 0f;
     public float permanentAttackBonus = 0f;
     public float permanentDefenseBonus = 0f;
+    public float permanentMusouBonus = 0f;
+
 
     // 🔥 THE COMPREHENSIVE MATHEMATICAL PROPERTY WRAPPERS:
     // These add your permanent bonuses straight to your base numbers.
@@ -41,11 +44,14 @@ public class CharacterData : ScriptableObject
     public float attackPower => baseAttackPower + permanentAttackBonus;
     public float defensePower => baseDefensePower + permanentDefenseBonus;
 
+    public float maxMusouCapacity => Mathf.Min(baseMaxMusou + permanentMusouBonus);
+
     // 🟢 DEVELOPMENT TOOL: Call this to completely wipe progress back to level 1 defaults
     public void ResetCharacterProgression()
     {
         permanentHealthBonus = 0f;
         permanentAttackBonus = 0f;
         permanentDefenseBonus = 0f;
+        permanentMusouBonus = 0f;
     }
 }

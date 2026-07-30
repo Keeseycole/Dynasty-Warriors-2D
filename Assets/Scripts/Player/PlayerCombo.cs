@@ -72,6 +72,68 @@ public class PlayerCombo : MonoBehaviour
 
     private float nextAllowedStrikeTime;
 
+    [Header("🔥 Musou Special Gauge Matrix")]
+    [SerializeField] private UnityEngine.UI.Slider musouBarSlider;
+
+    public float maxMusouEnergy { get; set; } = 100f;
+    public float _currentMusouEnergy = 0f;
+
+    [Tooltip("How long your special invincibility and damage-boost attack flurry lasts (in seconds).")]
+    public float musouSpecialDuration = 2.5f;
+    private bool isExecutingMusouSpecial = false;
+
+  
+    // 🟢 FIXED: Expose the Fill Image directly to the inspector!
+    [Tooltip("Drag and drop your slider's child 'Fill' Image component straight into this slot.")]
+    [SerializeField] private UnityEngine.UI.Image musouFillImage;
+
+    private bool alternateStrike = false;
+
+    private Color originalBarColor;
+
+    public CharacterData selectedCharacterProfile;
+
+    [Header("🔥 Musou Flash Customization")]
+    [Tooltip("The color the bar will vividly pop to the exact frame it hits maximum capacity.")]
+    public Color maxFlashTargetColor = Color.white;
+
+    [Tooltip("How long the complete flash cycle takes from start to finish (in seconds).")]
+    public float maxFlashTotalDuration = 0.24f;
+
+    private bool hasFlashedMax = false;
+    private bool isCurrentlyFlashingBar = false; // Blocks UpdateMusouUI from fighting the flash
+
+    // This securely buffers our custom flash intensity calculation apart from standard slider math
+    private float customFlashIntensity = 0f;
+
+    [Header("🔥 Musou Crisis Passive Fill Tuning")]
+    [Tooltip("Amount of energy gained when taking a physical hit from an enemy unit.")]
+    public float musouGainPerHitTaken = 5f;
+
+    [Tooltip("The health percentage threshold (0.0 to 1.0) where passive regeneration activates (e.g., 0.30 = 30% health).")]
+    [Range(0f, 1f)]
+    public float passiveRegenHealthThreshold = 0.30f;
+
+    [Tooltip("How much energy fills per second when sitting below the health threshold margin.")]
+    public float passiveRegenEnergyPerSecond = 5f;
+
+    // Cache reference to optimize health parameter checking frame-by-frame
+    private PlayerHealth cachedPlayerHealth;
+
+    public float musouPixelsPerPoint = 1.2f; // Match or adjust relative to your health bar scaling!
+
+    private RectTransform musouSliderRect;
+
+    [Header("🔥 Musou Time Scaling")]
+    [Tooltip("How many additional seconds are added to the ultimate special duration for EVERY SINGLE individual unit of Max Musou Capacity gained over 100 (e.g., 0.05 means +0.5 seconds per +10 item upgrade).")]
+    public float bonusSecondsPerMusouUp = 0.05f;
+
+    // The absolute hard ceiling limit your capacity can ever reach
+    [Tooltip("The absolute maximum limit your Max Musou Capacity can reach via permanent upgrades.")]
+    public float universalMaxMusouCap = 200f;
+
+
+
     void Awake()
     {
         attackAnim = GetComponent<CharecterAnimations>();
@@ -90,14 +152,64 @@ public class PlayerCombo : MonoBehaviour
         currentComboTimer = defultComboTimer;
         currentComboState = ComboState.None;
 
-        // 🔥 THE INITIALIZATION CLEANUP OVERRIDE:
-        // Forcefully push the allowed strike checkpoint into the future on boot frame,
-        // preventing the first manual key click from triggering a ghost double-input!
         nextAllowedStrikeTime = Time.time;
         inputQueuedForNextAttack = false;
+
+        // 🟢 THE HARD ORIENTATION FIX:
+        // Forcefully wipe any cached editor/inspector references and query the Selection Manager directly
+        // to guarantee your clone tracks the absolute active profile at runtime!
+        if (CharacterSelectManager.Instance != null)
+        {
+            selectedCharacterProfile = CharacterSelectManager.Instance.GetSelectedCharacter();
+        }
+
+        // 2. 🔥 THE REINFORCED CAPACITY FAILURE GUARD:
+        if (selectedCharacterProfile != null)
+        {
+            // Debug confirmation to ensure your console prints the correct active warrior's name
+            Debug.Log($"<color=#00FF00>[COMBAT PROFILE SECURED]:</color> Combo engine locked onto active data profile: <b>{selectedCharacterProfile.characterName}</b>");
+
+            maxMusouEnergy = Mathf.Max(selectedCharacterProfile.maxMusouCapacity, 100f);
+
+            float calculatedReach = Mathf.Max(selectedCharacterProfile.uniqueAttackRadius, 1.6f);
+            InitializeCharacterRange(calculatedReach);
+            attackRange = calculatedReach;
+
+            if (myNativeAnimator != null && selectedCharacterProfile.animatorController != null)
+            {
+                myNativeAnimator.runtimeAnimatorController = selectedCharacterProfile.animatorController;
+            }
+
+            if (playerController == null) playerController = GetComponent<PlayerController>();
+            if (playerController != null)
+            {
+                playerController.moveSpeed = selectedCharacterProfile.moveSpeed;
+            }
+        }
+        else
+        {
+            maxMusouEnergy = 100f;
+            attackRange = baseAttackRadius;
+            Debug.LogWarning("<color=red>[PROFILE WARNING]:</color> Could not find any active character select data! Reverting to 100 max fallback limits.");
+        }
+
+        // 3. Initialize the slider visuals AFTER character data capacity metrics are verified
+        InitMusouGauge();
+
+        if (CharacterSelectManager.Instance != null)
+        {
+            CharacterSelectManager.Instance.BindActivePlayerToUI(this);
+        }
     }
-    void Update()
+   void Update()
     {
+        TrackMusouSpecialInput();
+
+        // 🔥 THE PASSIVE EMERGENCY CRITICAL REGEN FILL:
+        ProcessLowHealthPassiveGain();
+
+        if (isExecutingMusouSpecial) return;
+
         if (myNativeAnimator != null)
         {
             liveAnimatorSpeedTracker = myNativeAnimator.speed;
@@ -138,43 +250,53 @@ public class PlayerCombo : MonoBehaviour
     }
     public void ComboAttacks()
     {
+        if (isExecutingMusouSpecial) return;
+
         // 🟢 1. STANDARD NORMAL ATTACK SCANNER (Z KEY)
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             if (currentComboState == ComboState.Attack5) return;
 
+            // 🟢 THE ADVANCEMENT FIX:
+            // If we are already mid-attack, advance your combo tracking counter state 
+            // IMMEDIATELY before hitting your early return shields! 
+            // This guarantees Attack 2, 3, 4, and 5 successfully lock into system memory.
             if (isAttacking)
             {
                 inputQueuedForNextAttack = true;
+
+                if (currentComboState >= ComboState.Attack1 && currentComboState < ComboState.Attack5)
+                {
+                    currentComboState++;
+                    Debug.Log($"<color=yellow>[INPUT PRE-ADVANCED]:</color> Buffered upcoming strike state to: <b>{currentComboState}</b>");
+                }
                 return;
             }
 
             inputQueuedForNextAttack = false;
-            ExecuteNextComboStrike(false); // Processes normal branch
+            ExecuteNextComboStrike(false); // Fires standard Attack 1 from neutral idle
         }
 
         // 🔥 2. THE MUSOU CHARGE ATTACK INTERCEPTOR (X KEY)
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2"))
         {
-            if (isAttacking && inputQueuedForNextAttack) return; // Prevent double-triggering inputs
+            if (isAttacking && inputQueuedForNextAttack) return;
 
-            // Forcefully branch straight out of your active normal sequence into the heavy finisher!
             ExecuteNextComboStrike(true);
         }
     }
 
-   private void ExecuteNextComboStrike(bool triggerChargeAttack)
+    private void ExecuteNextComboStrike(bool triggerChargeAttack)
     {
-        CharecterAnimations animScript = GetComponent<CharecterAnimations>();
-        if (animScript == null) animScript = GetComponentInChildren<CharecterAnimations>();
+        // 🔥 THE INPUT DOUBLE-TRIGGER SHIELD:
+        inputQueuedForNextAttack = false;
 
-        // 1. Calculate what our upcoming target combo state WOULD be
         ComboState prospectiveState = currentComboState;
         if (triggerChargeAttack)
         {
             switch (currentComboState)
             {
-                case ComboState.None:    prospectiveState = ComboState.Charge1; break;
+                case ComboState.None: prospectiveState = ComboState.Charge1; break;
                 case ComboState.Attack1: prospectiveState = ComboState.Charge2; break;
                 case ComboState.Attack2: prospectiveState = ComboState.Charge3; break;
                 case ComboState.Attack3: prospectiveState = ComboState.Charge4; break;
@@ -184,43 +306,63 @@ public class PlayerCombo : MonoBehaviour
         }
         else
         {
-            prospectiveState++;
+            // 🟢 FIX: If we are not attacking yet, start at Attack1. 
+            // If we are mid-combo, currentComboState was already advanced cleanly by your ComboAttacks() buffer loop!
+            if (prospectiveState == ComboState.None)
+            {
+                prospectiveState = ComboState.Attack1;
+            }
         }
 
-        // 🔥 THE INSPECTOR/ANIMATOR SAFETY GATES:
-        // Converts the upcoming enum state directly to its exact string name parameter (e.g., "attack4" or "charge3")
-        // and checks if that parameter actually exists in the active character's Animator component!
-        string requiredParameterName = prospectiveState.ToString().ToLower();
+        // =========================================================================
+        // 🟢 IMMUTABLE LOCAL SNAPSHOT LOGIC
+        // This freezes the exact attack index step into an unchangeable local variable!
+        // No matter how fast the player mashes keys, this specific instance cannot change.
+        // =========================================================================
+        ComboState absoluteStrikeSnapshot = prospectiveState;
 
+        string requiredParameterName = absoluteStrikeSnapshot.ToString().ToLower(); // e.g. "attack1"
+
+        // 🔥 THE VALIDATION GATE: Keep spelling checks independent of case-sensitivity
         if (myNativeAnimator != null && !HasAnimatorParameter(myNativeAnimator, requiredParameterName))
         {
-            // 🛑 CRITICAL RESCUE: If the character asset doesn't have this attack built yet,
-            // gracefully break the combo chain, return to idle, and stop execution before a freeze happens!
             Debug.LogWarning($"<color=orange>[COMBO CAP OVERRIDE]:</color> Selected character does not have <b>{requiredParameterName}</b> configured yet! Safety reset triggered.");
-            
-            // If they pressed a normal attack button but hit a cap, loop back to the first attack
+
             if (!triggerChargeAttack && currentComboState != ComboState.None)
             {
                 currentComboState = ComboState.None;
-                ExecuteNextComboStrike(false); // Loops back to Attack1 cleanly
+                ExecuteNextComboStrike(false);
             }
             else
             {
-                FinishAttack(); // Hard stop and return to run/idle
+                FinishAttack();
             }
             return;
         }
 
-        // 2. STANDARD ATTACK EXECUTION (Only runs if the state successfully passes the animator check!)
-        SoundManager.Instance.PlaySFX("swordswing", 0.8f, 0.05f);
-        inputQueuedForNextAttack = false;
+        // Standard audio feedback
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySFX("swordswing", 0.8f, 0.05f);
+        }
 
-        if (animScript != null) animScript.ResetAllAttackStates();
-
-        // Commit to our verified state
-        currentComboState = prospectiveState;
+        // Sync your global structural tracking state
+        currentComboState = absoluteStrikeSnapshot;
 
         bool isHeavyStrike = currentComboState >= ComboState.Charge1 || currentComboState == ComboState.Attack5;
+        float totalLockDuration = attackClipDuration + postAttackPauseWindow;
+        nextAllowedStrikeTime = Time.time + totalLockDuration;
+        lastStrikeTime = Time.time;
+
+        ActivateResetTimer = true;
+        currentComboTimer = defultComboTimer;
+        isAttacking = true;
+
+        if (playerController != null)
+        {
+            playerController.currentState = PlayerState.attack;
+        }
+
         float force = isHeavyStrike ? finisherStepForce : basicStepForce;
         Vector2 stepDir = playerController != null ? playerController.lastLookDir : Vector2.down;
 
@@ -230,29 +372,53 @@ public class PlayerCombo : MonoBehaviour
             rb.AddForce(stepDir * force, ForceMode2D.Impulse);
         }
 
-        ActivateResetTimer = true;
-        currentComboTimer = defultComboTimer;
-        isAttacking = true;
-
-        if (playerController != null) playerController.currentState = PlayerState.attack;
-
-        // Fire your character's adaptive animation controller layers safely
-        switch (currentComboState)
+        // Value routers matching parameters dynamically based on your configuration parameters setup
+        if (myNativeAnimator != null)
         {
-            case ComboState.Attack1: attackAnim.Attack1(); break;
-            case ComboState.Attack2: attackAnim.Attack2(); break;
-            case ComboState.Attack3: attackAnim.Attack3(); break;
-            case ComboState.Attack4: attackAnim.Attack4(); break;
-            case ComboState.Attack5: attackAnim.Attack5(); break;
-            
-            case ComboState.Charge1: attackAnim.Charge1(); break; 
-            case ComboState.Charge2: attackAnim.Charge2(); break; 
-            case ComboState.Charge3: attackAnim.Charge3(); break; 
-            case ComboState.Charge4: attackAnim.Charge4(); break; 
-            case ComboState.Charge5: attackAnim.Charge5(); break; 
-        }
-    }
+            string[] allComboParams = new string[]
+            {
+            "attack1", "attack2", "attack3", "attack4", "attack5",
+            "charge1", "charge2", "charge3", "charge4", "charge5"
+            };
 
+            foreach (string paramName in allComboParams)
+            {
+                foreach (AnimatorControllerParameter parameterObject in myNativeAnimator.parameters)
+                {
+                    if (parameterObject.name.ToLower() == paramName)
+                    {
+                        if (parameterObject.type == AnimatorControllerParameterType.Bool)
+                        {
+                            myNativeAnimator.SetBool(parameterObject.name, false);
+                        }
+                        else if (parameterObject.type == AnimatorControllerParameterType.Trigger)
+                        {
+                            myNativeAnimator.ResetTrigger(parameterObject.name);
+                        }
+                    }
+                }
+            }
+
+            foreach (AnimatorControllerParameter parameterObject in myNativeAnimator.parameters)
+            {
+                if (parameterObject.name.ToLower() == requiredParameterName)
+                {
+                    if (parameterObject.type == AnimatorControllerParameterType.Bool)
+                    {
+                        myNativeAnimator.SetBool(parameterObject.name, true);
+                    }
+                    else if (parameterObject.type == AnimatorControllerParameterType.Trigger)
+                    {
+                        myNativeAnimator.SetTrigger(parameterObject.name);
+                    }
+                    break;
+                }
+            }
+        }
+
+        // 🟢 PASS SNAPSHOT: Feed your frozen local variable directly down into the timing routine!
+        StartCoroutine(DelayedHitScanRoutine(absoluteStrikeSnapshot, isHeavyStrike));
+    }
     private void ExecuteNextComboStrike()
     {
         // 🔥 THE INPUT DOUBLE-TRIGGER SHIELD:
@@ -301,63 +467,47 @@ public class PlayerCombo : MonoBehaviour
             case ComboState.Attack5: attackAnim.Attack5(); break;
         }
     }
-    public void ResetComboState()
+   public void ResetComboState()
+{
+    if (isAttacking)
     {
-        if (isAttacking)
-        {
-            currentComboTimer -= Time.deltaTime;
+        currentComboTimer -= Time.deltaTime;
 
-            // If an input is waiting in our queue, and real-time has safely crossed 
-            // our future allowed strike checkpoint, launch the next hit automatically!
-            if (inputQueuedForNextAttack && Time.time >= nextAllowedStrikeTime)
+        // 🟢 THE BUFFER UNLOADER FIX:
+        // Unleash the pre-advanced combo strike step the exact millisecond the pacing clock clears!
+        if (inputQueuedForNextAttack && Time.time >= nextAllowedStrikeTime)
+        {
+            inputQueuedForNextAttack = false;
+            
+            // Fires your pre-calculated Attack 2, 3, or 4 string cleanly!
+            ExecuteNextComboStrike(false); 
+            return;
+        }
+
+        // Only clear out tracking variables back to None if the player has completely stopped pressing keys
+        if (currentComboTimer <= 0)
+        {
+            inputQueuedForNextAttack = false;
+            currentComboState = ComboState.None;
+            isAttacking = false;
+            currentComboTimer = defultComboTimer;
+
+            CharecterAnimations animScript = GetComponent<CharecterAnimations>();
+            if (animScript == null) animScript = GetComponentInChildren<CharecterAnimations>();
+
+            if (animScript != null)
             {
-                ExecuteNextComboStrike();
-                return;
+                animScript.ResetAllAttackStates();
+                animScript.AnimationFinished();
             }
 
-            // 🔥 THE AUTOMATED ANIMATION CLEAN-UP SAFETY NET:
-            // If the 0.6s combo cooldown window completely expires with no more inputs,
-            // we forcefully clear out all visual locks and parameter flags!
-            if (currentComboTimer <= 0)
+            if (playerController != null)
             {
-                inputQueuedForNextAttack = false;
-                currentComboState = ComboState.None;
-                isAttacking = false;
-                currentComboTimer = defultComboTimer; // Reset clock baseline
-
-                // 1. Forcefully turn OFF your character's adaptive animation states (Bools/Triggers)
-                CharecterAnimations animScript = GetComponent<CharecterAnimations>();
-                if (animScript == null) animScript = GetComponentInChildren<CharecterAnimations>();
-
-                if (animScript != null)
-                {
-                    // This flips Sun Shang Xiang's active attack bool checkboxes back to FALSE!
-                    animScript.ResetAllAttackStates();
-                    animScript.AnimationFinished(); // Releases internal state references
-                }
-                else if (myNativeAnimator != null)
-                {
-                    // Local fallback if the script component wasn't found
-                    myNativeAnimator.SetBool("isMoving", false);
-                    myNativeAnimator.ResetTrigger("attack");
-                }
-
-                // 2. Restore manual running controls to your main player controller script
-                if (playerController == null)
-                {
-                    playerController = GetComponent<PlayerController>();
-                    if (playerController == null) playerController = GetComponentInParent<PlayerController>();
-                }
-
-                if (playerController != null)
-                {
-                    playerController.currentState = PlayerState.idle;
-                }
-
-                Debug.Log("<color=orange>[COMBO CLEANUP]:</color> Character attack frame cleared. Visuals successfully reset back to idle.");
+                playerController.currentState = PlayerState.idle;
             }
         }
     }
+}
    private bool HasAnimatorParameter(Animator animatorComponent, string paramName)
     {
         foreach (AnimatorControllerParameter param in animatorComponent.parameters)
@@ -390,12 +540,319 @@ public class PlayerCombo : MonoBehaviour
             }
         }
     }
-   
+
+
+    private void InitMusouGauge()
+    {
+        if (selectedCharacterProfile == null && CharacterSelectManager.Instance != null)
+        {
+            selectedCharacterProfile = CharacterSelectManager.Instance.GetSelectedCharacter();
+        }
+
+        if (musouBarSlider == null)
+        {
+            GameObject musouGo = GameObject.Find("Musou Slider");
+            if (musouGo != null) musouBarSlider = musouGo.GetComponent<UnityEngine.UI.Slider>();
+
+            if (musouBarSlider == null)
+            {
+                GameObject taggedGo = GameObject.FindWithTag("MusouBar");
+                if (taggedGo != null) musouBarSlider = taggedGo.GetComponent<UnityEngine.UI.Slider>();
+            }
+        }
+
+        if (musouFillImage == null && musouBarSlider != null)
+        {
+            Transform explicitFillTransform = musouBarSlider.transform.Find("Fill Area/Fill");
+            if (explicitFillTransform != null) musouFillImage = explicitFillTransform.GetComponent<UnityEngine.UI.Image>();
+        }
+
+        if (selectedCharacterProfile != null)
+        {
+            maxMusouEnergy = Mathf.Max(selectedCharacterProfile.maxMusouCapacity, 100f);
+        }
+        else
+        {
+            maxMusouEnergy = 100f;
+        }
+
+        _currentMusouEnergy = 0f;
+
+        if (musouFillImage != null)
+        {
+            // Lock down a pristine full-opacity baseline color channel 
+            Color solidAlphaColor = musouFillImage.color;
+            solidAlphaColor.a = 1f;
+            originalBarColor = solidAlphaColor;
+        }
+
+        // 🔥 THE RACE CONDITION BYPASS:
+        // Instead of forcing value metrics onto the canvas this exact frame, 
+        // start a short routine that waits for Unity's rendering loops to settle!
+        StartCoroutine(DelayedUIRefreshRoutineCo());
+    }
+
+    // 🔥 THE INITIALIZATION REFRESH TIMELINE:
+    private System.Collections.IEnumerator DelayedUIRefreshRoutineCo()
+    {
+        // Wait until all layout loops, Canvas builders, and parents are fully drawn
+        yield return new WaitForEndOfFrame();
+
+        if (maxMusouEnergy <= 0) maxMusouEnergy = 100f;
+
+        // Forcefully push metrics once layout calculations are established [1]
+        UpdateMusouUI();
+
+        Debug.Log($"<color=cyan>[UI REFRESH COMPLETE]:</color> Slider scales hard-locked at runtime. Max: <b>{maxMusouEnergy}</b>");
+    }
+    public void TrackMusouSpecialInput()
+  {
+      // 🔥 Only pulse back and forth if it's already full AND the entry flash routine is done
+      if (musouFillImage != null && currentMusouEnergy >= maxMusouEnergy && !isExecutingMusouSpecial && hasFlashedMax)
+      {
+          // Your existing pulse line
+          float pulseWave = 0.3f + Mathf.PingPong(Time.unscaledTime * 4.5f, 0.7f);
+          musouFillImage.color = Color.Lerp(Color.yellow, Color.white, pulseWave);
+      }
+
+      // Input listeners
+      if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonDown("Submit"))
+      {
+          if (currentMusouEnergy >= maxMusouEnergy && !isExecutingMusouSpecial)
+          {
+              StartCoroutine(ExecuteMusouSpecialAttackCo());
+          }
+      }
+  }
+
+    private void TriggerMusouFlurryStrike()
+    {
+        // 1. Process area damage via your existing hit scanner
+        CheckForHit();
+
+        // 2. Fetch your clean character animation abstraction layer
+        CharecterAnimations animScript = GetComponent<CharecterAnimations>();
+        if (animScript == null) animScript = GetComponentInChildren<CharecterAnimations>();
+
+        if (animScript != null)
+        {
+            // Reset standard combo string checkmarks to clear structural locks
+            animScript.ResetAllAttackStates();
+
+            // 🟢 FIXED: Alternates perfectly between Attack1 and Attack2 instead of picking at random!
+            if (alternateStrike)
+            {
+                animScript.Attack1();
+            }
+            else
+            {
+                animScript.Attack2();
+            }
+
+            // Flip the checkbox flag so the very next tick plays the opposite animation strike
+            alternateStrike = !alternateStrike;
+        }
+        else if (myNativeAnimator != null)
+        {
+            // Fallback emergency safety net: Use your parameter panel settings directly if script is missing
+            string fallbackParam = alternateStrike ? "attack1" : "attack2";
+            myNativeAnimator.SetTrigger(fallbackParam);
+            alternateStrike = !alternateStrike;
+        }
+
+        // 3. Keep applying forward lunges so your character cuts through dense groups of grunts
+        float force = basicStepForce * 1.2f;
+        Vector2 stepDir = playerController != null ? playerController.lastLookDir : Vector2.down;
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(stepDir * force, ForceMode2D.Impulse);
+        }
+    }
+
+    private IEnumerator ExecuteMusouSpecialAttackCo()
+    {
+        isExecutingMusouSpecial = true;
+
+        // 🔥 STEP 1: CALCULATE THE DURATION PER INDIVIDUAL POINT EXTENSION
+        // 100f remains our standard baseline starting capacity.
+        // We isolate the exact amount of single raw capacity points gained over that limit.
+        float singlePointsEarnedOverBaseline = maxMusouEnergy - 100f;
+
+        // Safeguard to ensure it doesn't subtract time if max capacity is somehow under 100
+        if (singlePointsEarnedOverBaseline < 0) singlePointsEarnedOverBaseline = 0f;
+
+        // Total Dynamic Duration = Baseline Duration + (Raw Single Points * Your Inspector Setting)
+        float calculatedDynamicDuration = musouSpecialDuration + (singlePointsEarnedOverBaseline * bonusSecondsPerMusouUp);
+
+        Debug.Log($"<color=#FFD700>[MUSOU TIERS]:</color> Extra Capacity Points: {singlePointsEarnedOverBaseline} | Total Calculated Special Duration: <b>{calculatedDynamicDuration:F2}s</b>");
+
+        // Grant the player absolute combat invincibility using the new calculated length
+        PlayerHealth health = GetComponent<PlayerHealth>();
+        if (health == null) health = GetComponentInChildren<PlayerHealth>();
+        if (health != null) health.invincibilityDuration = calculatedDynamicDuration + 0.5f;
+
+        // 2. Heavy cinematic freeze-frame presentation
+        if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX("MusouActivateScream", 1f);
+        Time.timeScale = 0.4f;
+        yield return new WaitForSecondsRealtime(0.4f);
+        Time.timeScale = 1f; // Restore normal speed
+
+        // 3. THE FRAME-BY-FRAME DRAIN AND BUTTON-HOLD LOOP:
+        float continuousAttackTimer = 0f;
+        float musouHeldAttackRate = 0.28f;
+
+        while (currentMusouEnergy > 0f)
+        {
+            bool isHoldingAttack = Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Submit") || Input.GetButton("Fire1");
+
+            if (!isHoldingAttack)
+            {
+                Debug.Log("<color=#FF4500>[MUSOU CANCELED]:</color> Player released the input button. Terminating special early.");
+                break;
+            }
+
+            // Uses your customized dynamic duration bounds so the slider gauge drains flawlessly
+            float burnAmountPerFrame = (maxMusouEnergy / calculatedDynamicDuration) * Time.deltaTime;
+            currentMusouEnergy -= burnAmountPerFrame;
+
+            if (continuousAttackTimer > 0f) continuousAttackTimer -= Time.deltaTime;
+
+            if (continuousAttackTimer <= 0f)
+            {
+                TriggerMusouFlurryStrike();
+                continuousAttackTimer = musouHeldAttackRate;
+            }
+
+            yield return null; // Wait for the very next frame
+        }
+
+        // =========================================================================
+        // 4. Safe recovery cleanup
+        // =========================================================================
+        isExecutingMusouSpecial = false;
+        isAttacking = false;
+        currentComboState = ComboState.None;
+        inputQueuedForNextAttack = false;
+
+        if (health != null) health.invincibilityDuration = 0.5f;
+
+        if (playerController != null)
+        {
+            playerController.currentState = PlayerState.idle;
+        }
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+
+        if (myNativeAnimator != null)
+        {
+            myNativeAnimator.Rebind();
+            myNativeAnimator.Update(0f);
+        }
+
+        UpdateMusouUI();
+
+        Debug.Log($"<color=#FFD700>[MUSOU COMPLETE]:</color> Controls returned. Remaining Energy Saved: <b>{currentMusouEnergy}</b>");
+    }
+    public float currentMusouEnergy
+    {
+       get => _currentMusouEnergy;
+        set
+        {
+            // 🌟 CHANGED: Lowers the absolute minimum filter down to 10f 
+            // so base stats like 50 don't get forced back to 100!
+            if (maxMusouEnergy <= 0) maxMusouEnergy = 10f; 
+
+            float safeMax = Mathf.Max(maxMusouEnergy, 10f);
+            _currentMusouEnergy = Mathf.Clamp(value, 0f, safeMax);
+
+            if (_currentMusouEnergy >= safeMax)
+            {
+                if (!hasFlashedMax && !isExecutingMusouSpecial)
+                {
+                    hasFlashedMax = true;
+
+                    // 🌟 THE INSTANT INTERCEPT PLUG:
+                    // We lock down control here to stop UpdateMusouUI from fighting the coroutine!
+                    isCurrentlyFlashingBar = true;
+
+                    StopCoroutine("FlashBarRoutineCo");
+                    StartCoroutine("FlashBarRoutineCo");
+                }
+            }
+            else
+            {
+                hasFlashedMax = false;
+            }
+
+            // Standard sliders updates can still scale the fill area width handle,
+            // but the color channel values are protected by our intercept flag!
+            UpdateMusouUI();
+        }
+    }
+
+    private void UpdateMusouUI()
+    {
+        if (maxMusouEnergy > universalMaxMusouCap) maxMusouEnergy = universalMaxMusouCap;
+
+        // 🌟 CHANGED: Lowers layout fallback safety down to match your minimum base
+        if (maxMusouEnergy <= 0) maxMusouEnergy = 10f;
+
+        if (musouBarSlider != null)
+        {
+            if (musouSliderRect == null)
+            {
+                musouSliderRect = musouBarSlider.GetComponent<RectTransform>();
+            }
+
+            // 🌟 MATCHES HEALTH BAR DIMENSIONS PERFECTLY:
+            if (musouSliderRect != null)
+            {
+                float calculatedWidth = maxMusouEnergy * musouPixelsPerPoint;
+                musouSliderRect.sizeDelta = new Vector2(calculatedWidth, musouSliderRect.sizeDelta.y);
+            }
+
+            musouBarSlider.maxValue = maxMusouEnergy;
+            musouBarSlider.value = currentMusouEnergy;
+
+            if (musouBarSlider.fillRect != null)
+            {
+                UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(musouBarSlider.fillRect);
+            }
+        }
+
+        if (musouFillImage != null && !isCurrentlyFlashingBar)
+        {
+            musouFillImage.color = (currentMusouEnergy >= maxMusouEnergy) ? Color.yellow : originalBarColor;
+        }
+    }
+    public void GainMusouEnergy(float energyAmount)
+    {
+        // 🟢 LIGHTWEIGHT DEBUG LOG: 
+        // This will print to your console the exact frame the function executes!
+        Debug.Log("GainMusouEnergy was called! Earned Amount: " + energyAmount + " | Current Total: " + currentMusouEnergy);
+
+        if (isExecutingMusouSpecial) return;
+
+        currentMusouEnergy += energyAmount;
+
+        if (musouBarSlider != null)
+        {
+            musouBarSlider.value = currentMusouEnergy;
+            musouBarSlider.Select();
+            if (UnityEngine.EventSystems.EventSystem.current != null)
+            {
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            }
+        }
+    }
     public void CheckForHit()
     {
         // 🔥 THE EMERGENCY RUNTIME REFERENCE GATE:
-        // If the character select manager instantiated this script and playerController 
-        // hasn't bound yet, forcefully cache it right now to prevent a fatal Null crash!
         if (playerController == null)
         {
             playerController = GetComponent<PlayerController>();
@@ -417,19 +874,15 @@ public class PlayerCombo : MonoBehaviour
 
         LayerMask enemyLayer = LayerMask.GetMask("Enemy");
 
-        // Safe ternary operator fallback to ensure attackDir never fails if the controller is missing
         Vector2 attackDir = (playerController != null) ? playerController.lastLookDir : Vector2.down;
         Vector2 attackPos = (Vector2)transform.position + attackDir * 1.0f;
 
-        // 🟢 LIVE FEEDBACK DEBUG ROW:
-        Debug.Log($"<color=#00FFFF>[COMBO SCANNER]:</color> Checking circle sweep at {attackPos} with range {currentRange} on Enemy mask.");
-
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPos, currentRange, enemyLayer);
 
-        // 🟢 CRITICAL LIVE NUMBERS VISUALLY DISPATCHED TO CONSOLE:
-        Debug.Log($"<color=#FFFF00>[OVERLAP COLLISION RESULT]:</color> Physics sweep returned <b>{hits.Length}</b> target bodies on layer '{LayerMask.LayerToName(hits.Length > 0 ? hits[0].gameObject.layer : 0)}'.");
-
         List<MonoBehaviour> victimsThisFrame = new List<MonoBehaviour>();
+
+        // 🟢 TRACKER: Counts exactly how many individual enemy units were struck this swing
+        int hitSuccessCount = 0;
 
         foreach (Collider2D enemy in hits)
         {
@@ -451,6 +904,10 @@ public class PlayerCombo : MonoBehaviour
             }
 
             enemyHealth.TakeDamage(damage, transform.position, resultingForce, myNativeAnimator, rb);
+
+            // 🟢 FIXED: Increments our hit counter instead of trying to write to the bar inside the freeze block!
+            hitSuccessCount++;
+
             victimsThisFrame.Add(enemyHealth);
 
             if (HitParticleManager.Instance != null)
@@ -488,7 +945,95 @@ public class PlayerCombo : MonoBehaviour
                 else CameraShake.Instance.HitPunch(attackDir, 0.2f, hitStopDuration + 0.04f);
             }
         }
+
+ 
+        if (hitSuccessCount > 0)
+        {
+            // Multiply your baseline energy (1.5f) by the total number of enemies struck!
+            // Swinging into a dense crowd will now fill up your special meter massively.
+            float totalEnergyEarned = hitSuccessCount * 1.5f;
+            GainMusouEnergy(totalEnergyEarned);
+        }
+
     }
+
+    private System.Collections.IEnumerator DelayedHitScanRoutine(ComboState attackSnapshot, bool isHeavyAttack)
+    {
+        // Wait for weapon swing frames to travel outwards cleanly
+        yield return new WaitForSeconds(0.05f);
+
+        if (isHeavyAttack)
+        {
+            yield return new WaitForSeconds(0.04f);
+        }
+
+        // 🟢 PASS SNAPSHOT: Forward the locked attack state step down to the area scan math!
+        CheckForHitWithSnapshot(attackSnapshot);
+    }
+
+    public void CheckForHitWithSnapshot(ComboState attackSnapshot)
+    {
+        if (playerController == null)
+        {
+            playerController = GetComponent<PlayerController>();
+            if (playerController == null) playerController = GetComponentInParent<PlayerController>();
+        }
+
+        // 1. Establish weapon reach parameters dynamically based on the current attack state
+        float currentRange = attackRange;
+        bool isFinisher = (attackSnapshot == ComboState.Attack5 || (attackSnapshot >= ComboState.Charge1 && attackSnapshot <= ComboState.Charge5));
+
+        if (isFinisher)
+        {
+            currentRange = attackRange * finisherRangeMultiplier;
+        }
+
+        LayerMask enemyLayer = LayerMask.GetMask("Enemy");
+
+        // 2. Calculate the directional vector based on the player's last look direction
+        Vector2 attackDir = Vector2.right;
+        if (playerController != null && playerController.lastLookDir != Vector2.zero)
+        {
+            attackDir = playerController.lastLookDir;
+        }
+        else
+        {
+            attackDir = (transform.localScale.x > 0) ? Vector2.right : Vector2.left;
+        }
+
+        Vector2 attackPos = (Vector2)transform.position + attackDir * 1.0f;
+
+        // 3. Sweep the localized combat area for targets on the Enemy layer
+        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPos, currentRange, enemyLayer);
+        int hitSuccessCount = 0;
+
+        foreach (Collider2D enemy in hits)
+        {
+            if (enemy == null || enemy.gameObject == this.gameObject) continue;
+
+            Health enemyHealth = enemy.GetComponent<Health>();
+            if (enemyHealth == null) enemyHealth = enemy.GetComponentInChildren<Health>();
+
+            // 🟢 FILTER: Ensure the unit is a valid, living target
+            if (enemyHealth == null || enemyHealth.currentHealth <= 0) continue;
+
+            // Increment our success counter for this specific frame event pass
+            hitSuccessCount++;
+        }
+
+        // 4. 🔥 THE FUEL INJECTION GATE:
+        // All damage physics, screen shakes, and hitlags are stripped away. 
+        // This now ONLY rewards energy points based on the exact amount of enemies caught!
+        if (hitSuccessCount > 0)
+        {
+            float totalEnergyEarned = hitSuccessCount * 1.5f;
+
+            Debug.Log($"<color=#00FFFF>[MUSOU FUEL INJECTED]:</color> <b>{attackSnapshot}</b> frame event caught <b>{hitSuccessCount}</b> enemies! Awarding <b>{totalEnergyEarned}</b> energy to the bar.");
+
+            GainMusouEnergy(totalEnergyEarned);
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (playerController == null) return;
@@ -498,4 +1043,94 @@ public class PlayerCombo : MonoBehaviour
         float finalRange = (currentComboState == ComboState.Attack5) ? (attackRange * finisherRangeMultiplier) : attackRange;
         Gizmos.DrawWireSphere(attackPos, finalRange);
     }
+
+    // 🔥 RE-ALIGN FLUID FLASH COROUTINE:
+    private System.Collections.IEnumerator FlashBarRoutineCo()
+    {
+        if (musouFillImage == null) yield break;
+
+        // (Flag is already forced to true from the property block override above)
+        float halfDuration = maxFlashTotalDuration * 0.5f;
+        float elapsed = 0f;
+
+        // 1. Smoothly transition up to your custom color choice
+        while (elapsed < halfDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            musouFillImage.color = Color.Lerp(Color.yellow, maxFlashTargetColor, elapsed / halfDuration);
+            yield return null;
+        }
+
+        elapsed = 0f;
+
+        // 2. Smoothly scale back down to standard yellow
+        while (elapsed < halfDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            musouFillImage.color = Color.Lerp(maxFlashTargetColor, Color.yellow, elapsed / halfDuration);
+            yield return null;
+        }
+
+        // Release the hard-lock state
+        isCurrentlyFlashingBar = false;
+        UpdateMusouUI(); // Safely return the baseline color mix
+    }
+
+    private void ProcessLowHealthPassiveGain()
+    {
+        // Don't add juice if the ultimate is currently executing or if maximum cap is cleared
+        if (isExecutingMusouSpecial || currentMusouEnergy >= maxMusouEnergy) return;
+
+        // Lazy-load reference to your player's separate health matrix file component
+        if (cachedPlayerHealth == null)
+        {
+            cachedPlayerHealth = GetComponent<PlayerHealth>();
+            if (cachedPlayerHealth == null) cachedPlayerHealth = GetComponentInChildren<PlayerHealth>();
+        }
+
+        if (cachedPlayerHealth != null)
+        {
+            // Assuming your PlayerHealth script exposes currentHealth and maxHealth values:
+            float maxHealthValue = Mathf.Max(cachedPlayerHealth.maxHealth, 1f);
+            float currentHealthPct = (float)cachedPlayerHealth.currentHealth / maxHealthValue;
+
+            // Check if the current safety margins have dipped below your slider cap threshold
+            if (currentHealthPct <= passiveRegenHealthThreshold && cachedPlayerHealth.currentHealth > 0)
+            {
+                // Multiply our parameter by DeltaTime to maintain consistent growth across framerates
+                float frameEnergyRegen = passiveRegenEnergyPerSecond * Time.deltaTime;
+                GainMusouEnergy(frameEnergyRegen);
+            }
+        }
+    }
+
+    // 🔥 THE DAMAGE INJECTION RECEIVER INTERFACE:
+    // Call this public method directly from your PlayerHealth script inside its TakeDamage routines!
+    public void NotifyPlayerTookDamage()
+    {
+        // Block energy generation from getting hit if the player is currently executing their ultimate fury
+        if (isExecutingMusouSpecial) return;
+
+        Debug.Log($"<color=#FF4500>[MUSOU HIT REWARD]:</color> Player took a strike! Injecting <b>{musouGainPerHitTaken}</b> energy fuel points.");
+        GainMusouEnergy(musouGainPerHitTaken);
+    }
+
+    // 🔥 THE EDITOR HOT-RELOAD LINK:
+    // This special Unity hook triggers automatically the exact millisecond you change any 
+    // variables inside your Inspector panel, ensuring real-time UI stretching updates!
+    private void OnValidate()
+    {
+        // Safety lock to prevent executing editor checks when the application isn't physically running
+        if (!Application.isPlaying) return;
+
+        // Forcefully re-pull profile stats in case you modified the ScriptableObject values directly
+        if (selectedCharacterProfile != null)
+        {
+            maxMusouEnergy = selectedCharacterProfile.maxMusouCapacity;
+        }
+
+        // Instantly force your canvas elements to re-evaluate their width dimensions
+        UpdateMusouUI();
+    }
+
 }

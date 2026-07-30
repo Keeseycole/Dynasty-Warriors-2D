@@ -9,47 +9,58 @@ public class MusouRam : MonoBehaviour
     public float damagePerHit = 50f;
     public float attackCooldown = 2.0f;
 
-    private Health targetGateHealth;
-    private Coroutine rammingCoroutine;
-    private bool reportedDestruction = false; // Prevents double-reporting bugs on death frames
+    // --- TRACKING QUEUE ---
+    // Dynamic buffer list to track multiple active gate collisions simultaneously without events
+    private List<Health> nearbyGates = new List<Health>();
+    private Health currentTargetGate;
 
-    // Cached references for hit-lag support
+    private Health myHealth;
+    private Coroutine rammingCoroutine;
+    private bool reportedDestruction = false;
+
     private Animator ramAnimator;
     private Rigidbody2D rb;
 
+    [Header("Breach Dialog Configuration")]
+    [Tooltip("Assign a ScriptableObject line asset here to play dialogue when this gate goes down!")]
+    public DialogData gateBreachedDialog;
+
     private void Awake()
     {
-        // Cache these components on startup so we can cleanly feed them to the damage system
         ramAnimator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        myHealth = GetComponent<Health>();
     }
 
     private void Update()
     {
-        // --- HEALTH CHECK FOR ENEMY RAM DESTRUCTION ---
-        Health myHealth = GetComponent<Health>();
+        // Continuous health evaluation check for the ram itself
         if (myHealth != null && myHealth.currentHealth <= 0 && !reportedDestruction)
         {
-            reportedDestruction = true;
-            StopRamming();
-
-            this.enabled = false; // Gracefully shut down this script component
+            HandleRamDestroyed();
         }
+
+        // Clean up broken gates and check targets on every frame
+        EvaluateTargetQueue();
+    }
+
+    private void HandleRamDestroyed()
+    {
+        reportedDestruction = true;
+        StopRamming();
+        this.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (reportedDestruction) return;
+
         if (other.CompareTag("Gate"))
         {
             Health gate = other.GetComponent<Health>();
-            if (gate != null)
+            if (gate != null && !nearbyGates.Contains(gate))
             {
-                targetGateHealth = gate;
-
-                if (rammingCoroutine == null)
-                {
-                    rammingCoroutine = StartCoroutine(RepeatedRammingRoutine());
-                }
+                nearbyGates.Add(gate);
             }
         }
     }
@@ -58,38 +69,70 @@ public class MusouRam : MonoBehaviour
     {
         if (other.CompareTag("Gate"))
         {
-            StopRamming();
+            Health gate = other.GetComponent<Health>();
+            if (gate != null && nearbyGates.Contains(gate))
+            {
+                nearbyGates.Remove(gate);
+                if (currentTargetGate == gate)
+                {
+                    currentTargetGate = null;
+                }
+            }
+        }
+    }
+
+    private void EvaluateTargetQueue()
+    {
+        if (reportedDestruction) return;
+
+        // Clean up empty objects or shattered gates from the master list tracking slot
+        nearbyGates.RemoveAll(g => g == null || g.currentHealth <= 0 || !g.gameObject.activeInHierarchy);
+
+        // If our current target died or left the trigger area, pick the next gate in line
+        if (currentTargetGate == null || currentTargetGate.currentHealth <= 0 || !currentTargetGate.gameObject.activeInHierarchy)
+        {
+            currentTargetGate = null;
+
+            if (nearbyGates.Count > 0)
+            {
+                currentTargetGate = nearbyGates[0];
+
+                // Kick off the loop sequence if it's currently dormant
+                if (rammingCoroutine == null)
+                {
+                    rammingCoroutine = StartCoroutine(RepeatedRammingRoutine());
+                }
+            }
+            else
+            {
+                StopRamming();
+            }
         }
     }
 
     private IEnumerator RepeatedRammingRoutine()
     {
-        while (targetGateHealth != null && targetGateHealth.currentHealth > 0)
+        while (currentTargetGate != null && currentTargetGate.currentHealth > 0 && currentTargetGate.gameObject.activeInHierarchy)
         {
             if (ramAnimator != null)
             {
-                // 1. Tell the animator to play the slam sequence
                 ramAnimator.SetTrigger("SlamRam");
             }
 
-            // 2. Simply wait out the cooldown block before prompting the next slam animation frame
             yield return new WaitForSeconds(attackCooldown);
         }
 
-        StopRamming();
+        rammingCoroutine = null;
     }
 
-    // --- ANIMATION EVENT TARGET METHOD ---
-    // Make this public so the Unity Animation timeline can see it!
+    // --- ANIMATION TIMELINE EVENT TARGET METHOD ---
     public void DealRamDamageEvent()
     {
-        if (targetGateHealth != null && targetGateHealth.currentHealth > 0)
-        {
-            //Debug.Log($"[RAM EVENT] Impact frame reached! Dealing {damagePerHit} damage.");
+        if (reportedDestruction) return;
 
-            // FIXED LINE: Added 'ramAnimator' and 'rb' to satisfy the updated 5-argument method signature!
-            // This means when the ram hits a massive wooden gate, the ram itself will freeze frame slightly on impact, selling the heavy weight!
-            targetGateHealth.TakeDamage(damagePerHit, transform.position, Vector2.zero, ramAnimator, rb);
+        if (currentTargetGate != null && currentTargetGate.currentHealth > 0)
+        {
+            currentTargetGate.TakeDamage(damagePerHit, transform.position, Vector2.zero, ramAnimator, rb);
         }
     }
 
@@ -100,6 +143,13 @@ public class MusouRam : MonoBehaviour
             StopCoroutine(rammingCoroutine);
             rammingCoroutine = null;
         }
-        targetGateHealth = null;
+
+        if (ramAnimator != null)
+        {
+            ramAnimator.ResetTrigger("SlamRam");
+        }
+
+        nearbyGates.Clear();
+        currentTargetGate = null;
     }
 }
