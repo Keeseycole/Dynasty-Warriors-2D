@@ -7,6 +7,8 @@ public class FireAttack : MonoBehaviour
     private PolygonCollider2D polygonCollider;
     private bool zoneActivated = false;
 
+    public GameObject objtoActivate;
+
     private void Awake()
     {
         polygonCollider = GetComponent<PolygonCollider2D>();

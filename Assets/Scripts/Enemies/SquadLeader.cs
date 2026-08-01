@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class SquadLeader : MusouUnit
 {
@@ -19,7 +21,7 @@ public class SquadLeader : MusouUnit
 
     [Header("Tactical Waypoint Pathing Queue")]
     public List<Transform> pathWaypoints = new List<Transform>();
-    protected int currentWaypointIndex = 0;
+    public int currentWaypointIndex = 0;
     protected bool isWaitingForSquad = false;
 
     [Tooltip("The parent GameObject that physically holds all your waypoint transforms as children.")]
@@ -27,7 +29,6 @@ public class SquadLeader : MusouUnit
 
     private void Awake()
     {
-        // Link references using the manual entries you dragged into the Inspector list
         InitializeSquad();
     }
 
@@ -36,17 +37,55 @@ public class SquadLeader : MusouUnit
         base.Start();
         engageDistanceSqr = engageDistance * engageDistance;
 
-        CancelInvoke("FindNearestTarget");
+        // ========================================================================
+        // 🔥 THE COMBAT ACTUATION RESURRECTION:
+        // Do NOT cancel the baseline target acquisition routine! Leaders must actively 
+        // run target scanning cycles so they can populate currentTarget and fight.
+        // ========================================================================
+        InvokeRepeating("FindNearestTarget", 0.25f, 0.5f);
     }
 
     private void FixedUpdate()
     {
+
         CheckDistance();
     }
 
-    /// <summary>
-    /// REVERTED: Uses your manual Inspector list elements instead of scanning child hierarchies!
-    /// </summary>
+    private void Update()
+    {
+        // 🔥 THE COMPREHENSIVE UPDATE GUEST GATE:
+        // If the generic path follower has claimed authority over this unit,
+        // exit Update immediately! This stops any faction or mission logic 
+        // from overriding animator parameters or forcing idle states.
+        if (isBusy) return;
+
+        if (playerTransform == null) return;
+
+        if (this.unitTeam == Team.PlayerSide || currentMission == AIMission.CaptureBase || currentMission == AIMission.AttackCommander)
+        {
+            if (squadEngaged) SetSquadMode(false);
+            return;
+        }
+
+        Vector2 leaderPos = (rb != null) ? rb.position : (Vector2)transform.position;
+        Vector2 deltaPlayer = (Vector2)playerTransform.position - leaderPos;
+        float distToPlayerSqr = deltaPlayer.sqrMagnitude;
+
+        if (distToPlayerSqr <= engageDistanceSqr && !squadEngaged)
+        {
+            SetSquadMode(true);
+        }
+        else if (distToPlayerSqr > (engageDistance + 4f) * (engageDistance + 4f) && squadEngaged)
+        {
+            SetSquadMode(false);
+        }
+
+        if (squadEngaged)
+        {
+            BroadcastTarget(playerTransform);
+        }
+    }
+
     public void InitializeSquad()
     {
         memberOffsets.Clear();
@@ -61,7 +100,6 @@ public class SquadLeader : MusouUnit
             MusouUnit member = squadMembers[i];
             if (member == null) continue;
 
-            // Link references back to this leader explicitly
             member.myLeader = this;
             member.squadIndex = i;
 
@@ -84,13 +122,12 @@ public class SquadLeader : MusouUnit
         }
     }
 
-  public override void CheckDistance()
+    public override void CheckDistance()
     {
-        if (animator.GetBool("isHit") || currentState == EnemyState.Stagger || isBusy) return;
+        // 🔥 THE COMPLETE INTERCEPT INTERLOCK:
+        if (animator == null || animator.GetBool("isHit") || currentState == EnemyState.Stagger || isBusy) return;
 
-        // 1. COMBAT TRACKING (Highest Priority)
-        if (currentTarget == null) FindNearestTarget();
-
+        // 1. COMBAT TRACKING
         if (currentTarget != null)
         {
             Health targetHealth = currentTarget.GetComponent<Health>();
@@ -111,7 +148,6 @@ public class SquadLeader : MusouUnit
 
         if (myLeader != null)
         {
-            // Trailing sub-leaders follow their master Officer
             Vector2 leaderPos = (myLeader.rb != null) ? myLeader.rb.position : (Vector2)myLeader.transform.position;
             Vector2 myPhysicalPos = rb != null ? rb.position : (Vector2)transform.position;
             float distToMasterSqr = (leaderPos - myPhysicalPos).sqrMagnitude;
@@ -131,22 +167,18 @@ public class SquadLeader : MusouUnit
                 }
                 else StopMoving();
             }
-            return; 
+            return;
         }
 
-
-        // If the path container object is missing, or explicitly turned OFF in the hierarchy,
-        // force the Officer to stand fast and guard his position!
         if (PathContainer == null || !PathContainer.activeInHierarchy)
         {
             missionTarget = null;
             StopMoving();
-            WakeUpSquadFormation(); // Keep grunts standing neatly around him
-            FindNearestTarget();   // Keep scanning for incoming enemies
-            return; // Exit here! Blocks him from walking out on scene load
+            WakeUpSquadFormation();
+            return;
         }
 
-        // 2. WAYPOINT ASSEMBLING CONTROL (Only runs if the master switch is ON)
+        // 2. WAYPOINT ASSEMBLING CONTROL
         if (isWaitingForSquad)
         {
             StopMoving();
@@ -155,14 +187,13 @@ public class SquadLeader : MusouUnit
             {
                 isWaitingForSquad = false;
                 currentWaypointIndex++;
-                missionTarget = null; 
+                missionTarget = null;
 
                 if (currentWaypointIndex >= pathWaypoints.Count)
                 {
                     currentWaypointIndex = pathWaypoints.Count;
                 }
             }
-            else FindNearestTarget();
             return;
         }
 
@@ -186,13 +217,14 @@ public class SquadLeader : MusouUnit
             else
             {
                 StopMoving();
-                isWaitingForSquad = true; 
+                isWaitingForSquad = true;
             }
             return;
         }
 
         StopMoving();
     }
+
     protected virtual bool IsEntireSquadAssembledAndIdle()
     {
         Vector2 leaderPhysicalPos = rb != null ? rb.position : (Vector2)transform.position;
@@ -228,34 +260,6 @@ public class SquadLeader : MusouUnit
         }
     }
 
-    private void Update()
-    {
-        if (playerTransform == null) return;
-
-        if (this.unitTeam == Team.PlayerSide || currentMission == AIMission.CaptureBase || currentMission == AIMission.AttackCommander)
-        {
-            if (squadEngaged) SetSquadMode(false);
-            return;
-        }
-
-        Vector2 deltaPlayer = (Vector2)playerTransform.position - rb.position;
-        float distToPlayerSqr = deltaPlayer.sqrMagnitude;
-
-        if (distToPlayerSqr <= engageDistanceSqr && !squadEngaged)
-        {
-            SetSquadMode(true);
-        }
-        else if (distToPlayerSqr > (engageDistance + 4f) * (engageDistance + 4f) && squadEngaged)
-        {
-            SetSquadMode(false);
-        }
-
-        if (squadEngaged)
-        {
-            BroadcastTarget(playerTransform);
-        }
-    }
-
     private void SetSquadMode(bool attack)
     {
         if (squadEngaged == attack) return;
@@ -281,16 +285,16 @@ public class SquadLeader : MusouUnit
 
     public Vector2 GetSquadPosition(int index)
     {
-        if (index < 0 || index >= squadMembers.Count) return rb.position;
+        if (index < 0 || index >= squadMembers.Count) return (rb != null) ? rb.position : (Vector2)transform.position;
 
         MusouUnit targetMember = squadMembers[index];
 
         if (targetMember != null && memberOffsets.ContainsKey(targetMember))
         {
             Vector2 localOffset = memberOffsets[targetMember];
-            Vector2 leaderPhysicalPos = rb.position;
+            Vector2 leaderPhysicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
 
-            Vector2 heading = rb.linearVelocity.sqrMagnitude > 0.1f
+            Vector2 heading = (rb != null && rb.linearVelocity.sqrMagnitude > 0.1f)
                 ? rb.linearVelocity.normalized
                 : startingDirection.normalized;
 
@@ -299,37 +303,19 @@ public class SquadLeader : MusouUnit
 
             float rotatedX = localOffset.x * rightX + localOffset.y * heading.x;
             float rotatedY = localOffset.x * rightY + localOffset.y * heading.y;
-
             return leaderPhysicalPos + new Vector2(rotatedX, rotatedY);
         }
-
-        return rb.position;
+        return (rb != null) ? rb.position : (Vector2)transform.position;
     }
-
-    public void BroadcastTarget(Transform target)
-    {
-        for (int i = 0; i < squadMembers.Count; i++)
-        {
-            MusouUnit member = squadMembers[i];
-            if (member != null && member.currentTarget == null)
-            {
-                member.currentTarget = target;
-            }
-        }
-    }
-
+    public void BroadcastTarget(Transform target) { for (int i = 0; i < squadMembers.Count; i++) { MusouUnit member = squadMembers[i]; if (member != null && member.currentTarget == null) { member.currentTarget = target; } } }
     public void AssignSquadMission(AIMission newMission, Transform targetNode)
     {
-        currentMission = newMission;
-        missionTarget = targetNode;
+        currentMission = newMission; missionTarget = targetNode; 
 
         for (int i = 0; i < squadMembers.Count; i++)
         {
-            MusouUnit member = squadMembers[i];
-            if (member == null) continue;
-
-            member.currentMission = newMission;
-            member.missionTarget = targetNode;
+            MusouUnit member = squadMembers[i]; if (member == null) continue;
+            member.currentMission = newMission; member.missionTarget = targetNode;
         }
     }
 }

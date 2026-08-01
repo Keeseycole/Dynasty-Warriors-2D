@@ -1,29 +1,50 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MusouUnit))]
+
 public class MusouPathFollower : MonoBehaviour
 {
     private MusouUnit unit;
-    private List<Transform> activePath;
-    private Transform finalTarget;
     private Coroutine followCoroutine;
     private float nodeThreshold = 1.5f;
+
+    // --- 🔥 NEW VISUAL INSPECTOR SLOTS ---
+    [Header("Active Route Debugger (Read Only)")]
+    [Tooltip("The actual path this specific unit is currently processing in real-time.")]
+    public List<Transform> pathNodesToFollow = new List<Transform>();
+
+    [Tooltip("The ultimate end objective target for this unit.")]
+    public Transform finalObjective;
 
     private void Awake()
     {
         unit = GetComponent<MusouUnit>();
     }
 
+
+
     // --- PUBLIC ENTRY POINT ---
-    // Anyone (BattleEventManager, Spawners, etc.) can call this to make a unit walk a path!
-    public void InitiatePathFollow(List<Transform> nodes, Transform finalObjective)
+    public void InitiatePathFollow(List<Transform> nodes, Transform finalObjectiveTarget)
     {
         if (nodes == null || nodes.Count == 0) return;
 
-        activePath = new List<Transform>(nodes);
-        finalTarget = finalObjective;
+        pathNodesToFollow = new List<Transform>(nodes);
+        finalObjective = finalObjectiveTarget;
+
+        // ========================================================================
+        // 🔥 FIXED: UNLOCK AI DIRECTIVES
+        // Force your unit to snap out of 'FollowLeader' or 'Idle' and allow pathing!
+        // (Ensure 'EnemyState.Move' matches your moving state name from earlier)
+        // ========================================================================
+        if (unit != null)
+        {
+            unit.ChangeState(EnemyState.Walk); // Breaks the unit out of the Idle loop block
+
+            // Forcefully change their active AIMission variable so they trace waypoints!
+            // If your AI mission enum is slightly different, replace 'CaptureBase' with any generic target mission name.
+            unit.currentMission = MusouUnit.AIMission.CaptureBase;
+        }
 
         if (followCoroutine != null) StopCoroutine(followCoroutine);
         followCoroutine = StartCoroutine(FollowPathRoutine());
@@ -31,22 +52,43 @@ public class MusouPathFollower : MonoBehaviour
 
     private IEnumerator FollowPathRoutine()
     {
-        // One-frame physics stabilization buffer to prevent spawning teleport glitches
-        yield return null;
-
-        foreach (Transform node in activePath)
+        // ========================================================================
+        // 🔥 FIXED: THE DATA VALIDATION FLUID BUFFER
+        // Stalls loop execution until our path lists are populated with data by the spawners.
+        // This stops the coroutine from aborting on frame 1!
+        // ========================================================================
+        float safetyTimeout = 2.0f;
+        while ((pathNodesToFollow == null || pathNodesToFollow.Count == 0) && safetyTimeout > 0f)
         {
-            if (unit == null || !unit.enabled || node == null) yield break;
+            safetyTimeout -= Time.deltaTime;
+            yield return null;
+        }
 
-            unit.missionTarget = node;
+        // Safety backup if no path data ever arrives
+        if (pathNodesToFollow == null || pathNodesToFollow.Count == 0)
+        {
+            Debug.LogError($"[PATH ERROR] {gameObject.name} sat waiting but never received any path nodes! Aborting.");
+            yield break;
+        }
+
+        Debug.Log($"[PATH START] {gameObject.name} successfully validated path. Beginning march across {pathNodesToFollow.Count} nodes!");
+
+        // Loop through our public path nodes list sequentially
+        for (int i = 0; i < pathNodesToFollow.Count; i++)
+        {
+            Transform currentNode = pathNodesToFollow[i];
+            if (unit == null || !unit.enabled || currentNode == null) yield break;
+
+            // Inform your existing MusouUnit target slot where it needs to head
+            unit.missionTarget = currentNode;
             float checkTimer = 0f;
 
-            while (unit != null)
+            while (unit != null && currentNode != null)
             {
-                // Drive your existing MusouUnit movement methods cleanly
+                // If they aren't currently locked in a skirmish duel with a player/enemy, push them forward
                 if (unit.currentTarget == null)
                 {
-                    unit.MoveTowards(node.position, false);
+                    unit.MoveTowards(currentNode.position, false);
                 }
 
                 // Low-overhead proximity check (5 times a second)
@@ -54,9 +96,10 @@ public class MusouPathFollower : MonoBehaviour
                 if (checkTimer >= 0.2f)
                 {
                     checkTimer = 0f;
-                    if (Vector2.Distance(transform.position, node.position) <= nodeThreshold)
+                    if (Vector2.Distance(transform.position, currentNode.position) <= nodeThreshold)
                     {
-                        break; // Step to the next node container link
+                        Debug.Log($"[PATH PROGRESS] {gameObject.name} reached Node index {i}: {currentNode.name}. Advancing!");
+                        break; // Breakthrough this local while loop to advance the main index counter
                     }
                 }
 
@@ -64,16 +107,50 @@ public class MusouPathFollower : MonoBehaviour
             }
         }
 
-        // Final drop-off assignment logic once the node track completely runs out
+        // Final handoff to charge your core objective gate location
         if (unit != null)
         {
-            unit.missionTarget = finalTarget;
-            Debug.Log($"[PATH COMPLETE] {gameObject.name} has finished its assigned path route!");
+            unit.missionTarget = finalObjective;
+            Debug.Log($"[PATH COMPLETE] {gameObject.name} has finished its node sequence track and is charging final target: {finalObjective.name}!");
         }
     }
 
     private void OnDisable()
     {
         if (followCoroutine != null) StopCoroutine(followCoroutine);
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        // Only draw lines if we have active nodes assigned and we select this unit in the hierarchy
+        if (pathNodesToFollow == null || pathNodesToFollow.Count == 0) return;
+
+        Gizmos.color = Color.cyan; // Bright neon blue lines for active pathways
+
+        // 1. Draw a line from the unit's current position to its very next node target
+        if (pathNodesToFollow[0] != null)
+        {
+            Gizmos.DrawLine(transform.position, pathNodesToFollow[0].position);
+            Gizmos.DrawWireSphere(pathNodesToFollow[0].position, 0.4f);
+        }
+
+        // 2. Chaining line links connecting node to node down the sequence list length
+        for (int i = 0; i < pathNodesToFollow.Count - 1; i++)
+        {
+            if (pathNodesToFollow[i] != null && pathNodesToFollow[i + 1] != null)
+            {
+                Gizmos.DrawLine(pathNodesToFollow[i].position, pathNodesToFollow[i + 1].position);
+                Gizmos.DrawWireSphere(pathNodesToFollow[i + 1].position, 0.4f);
+            }
+        }
+
+        // 3. Draw a final red line connecting the last path node straight to the end objective core gate
+        if (pathNodesToFollow[pathNodesToFollow.Count - 1] != null && finalObjective != null)
+        {
+            Gizmos.color = Color.red; // Red for the ultimate final objective target point!
+            Gizmos.DrawLine(pathNodesToFollow[pathNodesToFollow.Count - 1].position, finalObjective.position);
+            Gizmos.DrawFrustum(finalObjective.position, 1f, 0.5f, 0f, 1f);
+        }
     }
 }

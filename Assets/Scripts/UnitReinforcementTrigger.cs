@@ -1,54 +1,53 @@
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitReinforcementTrigger : MonoBehaviour
 {
     [Header("Trigger Settings")]
-    [Tooltip("Which dialogue asset must finish before these units activate?")]
+    [Tooltip("Which dialogue conversation must finish to unlock this object?")]
     [SerializeField] private DialogConversation targetedConversation;
 
-    [Header("Target Units to Activate")]
-    [Tooltip("Drag the game objects (or parent folders of units) here that start deactivated.")]
-    [SerializeField] private GameObject[] unitsToActivate;
+    [Header("Simple Activation Target")]
+    [Tooltip("Drag the game object (or parent folder container) from your Hierarchy that should turn true.")]
+    [SerializeField] private GameObject objectToActivate;
+
+    [Header("Timing")]
+    [Tooltip("How many seconds to wait after the conversation ends before turning the object on.")]
+    [SerializeField] private float activationDelay = 0.5f;
 
     private void OnEnable()
     {
-        // Subscribe to the global dialogue manager completion signal
         MusouDialogManager.OnConversationEnded += CheckDialogueTrigger;
     }
 
     private void OnDisable()
     {
-        // Always unsubscribe to prevent memory leaks and dangling pointer crashes
         MusouDialogManager.OnConversationEnded -= CheckDialogueTrigger;
     }
 
     private void CheckDialogueTrigger(DialogConversation completedConversation)
     {
-        // If the conversation that just ended matches our targeted script asset...
+        // Only fire if the conversation that just ended matches our targeted slot
         if (completedConversation == targetedConversation)
         {
-            ActivateReinforcements();
+            StartCoroutine(ExecuteActivationSequence());
         }
     }
-
-    private void ActivateReinforcements()
+    private IEnumerator ExecuteActivationSequence()
     {
-        if (unitsToActivate == null || unitsToActivate.Length == 0) return;
+        if (objectToActivate == null) yield break;
 
-        foreach (GameObject unit in unitsToActivate)
-        {
-            if (unit != null)
-            {
-                unit.SetActive(true); // Wake them up physically on the map layout!
+        // Wait out your preferred breathing room delay window
+        yield return new WaitForSeconds(activationDelay);
 
-                // Optional: Play a spawn particle effect, sound effect, or command 
-                // their MusouUnit AI component to instantly march to a new position.
-            }
-        }
+        // 🔥 THE SINGLE POINT OF ACTION:
+        // Turns your hierarchy asset on cleanly with no extra overhead or tracking attachments!
+        objectToActivate.SetActive(true);
 
-        Debug.Log($"<color=cyan>[REINFORCEMENTS]:</color> Successfully activated {unitsToActivate.Length} units following conversation completion!");
+        Debug.Log($"[ACTIVATOR] Successfully set {objectToActivate.name} to true following dialogue completion!");
 
-        // Disable this trigger object since its ambush sequence is complete
+        // Safely turn off this trigger object since its single hand-off task is finished
         gameObject.SetActive(false);
     }
-}
+} // Final closing class bracket

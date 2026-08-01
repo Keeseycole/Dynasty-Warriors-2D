@@ -240,7 +240,6 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-       
         if (BattleManager.Instance != null)
             BattleManager.Instance.activeUnits.Remove(this);
 
@@ -248,7 +247,6 @@ public class Health : MonoBehaviour
 
         // ========================================================================
         // 🔥 FIXED: INSTANT GATE BREACH DIALOGUE TRIGGER
-        // Fires the exact frame health drops to 0, before any delays or disable windows!
         // ========================================================================
         if (gameObject.CompareTag("Gate") || isGate)
         {
@@ -277,6 +275,14 @@ public class Health : MonoBehaviour
 
         if (unitAI != null)
         {
+            // 🔥 NEW MAP-WIDE SYSTEM UNREGISTRATION:
+            // Remove this specific unit from the map-wide tracking lists the exact frame it dies
+            // so that neighboring orphaned grunts can instantly find a new closest target!
+            if (BattlefieldManager.Instance != null)
+            {
+                BattlefieldManager.Instance.UnregisterUnit(unitAI);
+            }
+
             unitAI.StopAllCoroutines();
             unitAI.enabled = false;
             unitAI.ChangeState(EnemyState.Death);

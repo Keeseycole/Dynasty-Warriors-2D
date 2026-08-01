@@ -75,9 +75,7 @@ public class MusouUnit : sleepEnemy
     // Inside MusouUnit.cs
     public override void Start()
     {
-        // 🔥 THE HERO ARCHITECTURE SAFETY PADLOCK:
-        // If this script is attached to your playable player character prefab,
-        // instantly disable the enemy AI processing thread so it never fights your physics updates!
+
         if (GetComponent<PlayerController>() != null || GetComponentInParent<PlayerController>() != null)
         {
             isOfficer = true; // Forces the player to unlock their full 5-hit combos!
@@ -89,6 +87,11 @@ public class MusouUnit : sleepEnemy
 
         // --- Standard AI Soldier / Officer Startup Configurations (Untouched) ---
         base.Start();
+
+        if (BattlefieldManager.Instance != null)
+        {
+            BattlefieldManager.Instance.RegisterUnit(this);
+        }
 
         baseAggressionScore = aggressionScore;
         health = GetComponent<Health>();
@@ -608,6 +611,37 @@ public class MusouUnit : sleepEnemy
                     }
                 }
 
+                // ========================================================================
+                // 🔥 THE PATH INHERITANCE MOTOR:
+                // If our leader dies or becomes disabled, inherit their macro blueprint route!
+                // This transitions the grunt from a "Follower" into a "Pathfinder".
+                // ========================================================================
+                bool isLeaderDead = myLeader == null || !myLeader.enabled || myLeader.currentState == EnemyState.Death;
+
+                if (isLeaderDead)
+                {
+                    // 1. Try to extract the path points straight from the leader component before losing it
+                    if (myLeader != null && myLeader.pathWaypoints != null && myLeader.pathWaypoints.Count > 0)
+                    {
+                        // Convert our macro thinking type to point-to-point objective pathing
+                        currentMission = AIMission.CaptureBase;
+                        missionTarget = myLeader.pathWaypoints[Mathf.Clamp(myLeader.currentWaypointIndex, 0, myLeader.pathWaypoints.Count - 1)];
+
+                        // Sever the connection so we don't query a dead object frame loop again
+                        myLeader = null;
+                    }
+                    else
+                    {
+                        // 2. Fallback: If we can't find a path list, stand fast and hold our position!
+                        myLeader = null;
+                        StopMoving();
+                        return;
+                    }
+                }
+
+                // ========================================================================
+                // STANDARD LEADER-FOLLOWING FORMATION OPERATIONS
+                // ========================================================================
                 if (myLeader != null)
                 {
                     Vector2 leaderPos = (myLeader.rb != null) ? myLeader.rb.position : (Vector2)myLeader.transform.position;
@@ -620,45 +654,53 @@ public class MusouUnit : sleepEnemy
                     float keepUpRadius = 1.2f;
                     bool isLeaderMoving = myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude > 0.1f;
 
-                    // 🔥 THE FRAME-ONE SQUAD ALIGNMENT SAVIOR:
-                    // If the leader is completely stationary (like right at the start of the level)
-                    // and the grunt is far away from its slot, do not let them run inward.
-                    // Instead, instantly snap them to their proper slot position or make them wait!
                     if (!isLeaderMoving)
                     {
-                        // If they are wildly far away (spawned wrong), snap them physically into formation
                         if (distToSlotSqr > 5f * 5f)
                         {
                             if (rb != null) rb.position = exactSlotTarget;
                             else transform.position = exactSlotTarget;
                         }
 
-                        // Force them to stop ghost-marching on the spawn frame
                         StopMoving();
                         return;
                     }
 
-                    // Standard marching logic resumes only once the leader begins moving
                     if (distToSlotSqr > keepUpRadius * keepUpRadius)
                     {
                         MoveTowards(exactSlotTarget, false);
                     }
                     else
                     {
-                        rb.linearVelocity = myLeader.rb.linearVelocity;
+                        if (rb != null && myLeader.rb != null) rb.linearVelocity = myLeader.rb.linearVelocity;
                         if (animator != null) animator.SetBool("isMoving", true);
                     }
                     return;
                 }
-                else
+                break;
+
+            // ========================================================================
+            // 🔥 NEW: INHERITED OBJECTIVE TRACKER
+            // Handles guiding the remaining grunts down the inherited waypoint trail!
+            // ========================================================================
+            case AIMission.CaptureBase:
+            case AIMission.AttackCommander:
+                if (missionTarget != null)
                 {
-                    StopMoving();
+                    Vector2 physicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
+                    MoveTowards(missionTarget.position, false);
+
+                    // Check if the individual grunt reached this point
+                    float distToNodeSqr = ((Vector2)missionTarget.position - physicalPos).sqrMagnitude;
+                    if (distToNodeSqr <= stoppingDistance * stoppingDistance)
+                    {
+                        // Stand fast at the objective spot! 
+                        StopMoving();
+                    }
                 }
                 break;
         }
     }
-
-    // 🔥 FIXED FORMATION FEEDBACK LOOP: Returns the actual designated squad offset coordinates
     public virtual Vector2 GetSlotPosition(int index)
     {
         Vector2 origin = (rb != null) ? rb.position : (Vector2)transform.position;
