@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 46025391654502591}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: -0.4, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -0.58, y: -0.31, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3612431930713112278}
@@ -502,8 +502,14 @@ MonoBehaviour:
   currentHealth: 20
   isSimulating: 0
   minimapIconRenderer: {fileID: 8722888825733855309}
+  healthDropPrefab: {fileID: 0}
+  attackDropPrefab: {fileID: 0}
+  defenseDropPrefab: {fileID: 0}
+  baseDropChance: 15
+  blockedOnThisFrame: 0
   flashOverlay: {fileID: 802206339904575283}
   isGate: 0
+  gateBreachedConversationObject: {fileID: 0}
 --- !u!114 &1841996363212724958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,9 +543,9 @@ MonoBehaviour:
   moveSpeed: 2
   rb: {fileID: 275021468259536502}
   currentTarget: {fileID: 0}
+  animator: {fileID: 357600757256609650}
   chaseRadius: 2
   attackRadius: 2
-  animator: {fileID: 357600757256609650}
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -551,10 +557,11 @@ MonoBehaviour:
   followDistance: 4
   strafeSpeed: 0.5
   damageToGive: 5
+  baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
   separationRadius: 2
-  separationStrength: 6
+  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -564,8 +571,9 @@ MonoBehaviour:
   squadIndex: 1
   stoppingDistance: 1
   personalSpaceRadius: 1.5
-  startingDirection: {x: 0, y: 1}
+  startingDirection: {x: 0, y: -1}
   isOfficer: 0
+  isStageCommander: 0
 --- !u!70 &4466764002490503866
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1107,7 +1115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.258, y: -0.257}
+  m_AnchoredPosition: {x: -0.62, y: -0.36}
   m_SizeDelta: {x: 710, y: 579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2213828722279476578

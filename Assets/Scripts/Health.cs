@@ -36,9 +36,6 @@ public class Health : MonoBehaviour
     [Tooltip("The overall percentage chance that this unit drops ANY item when killed (e.g., 15% for regular grunts).")]
     [SerializeField] private float baseDropChance = 15f;
 
-    [Header("Breach Dialog Configuration")]
-    [Tooltip("Assign a ScriptableObject conversation list asset here to play full dialogue sequences on breach!")]
-    public DialogConversation gateBreachedConversation;
     // FIX: Separated coroutine trackers so they don't cancel each other out!
     private Coroutine minimapFlashCoroutine;
     private Coroutine hitFlashCoroutine;
@@ -53,6 +50,10 @@ public class Health : MonoBehaviour
 
     // Static variables are shared by ALL instances of Health.cs across the scene
     private static bool hasAnyGateBreachedConversationPlayed = false;
+
+    [Header("Dialogue Object Settings")]
+    [Tooltip("Drag and drop your active Conversation GameObject here from the hierarchy window!")]
+    public GameObject gateBreachedConversationObject;
     private void Awake()
     {
         myCollider = GetComponent<Collider2D>();
@@ -246,26 +247,43 @@ public class Health : MonoBehaviour
         EvaluateItemDrop();
 
         // ========================================================================
-        // 🔥 FIXED: INSTANT GATE BREACH DIALOGUE TRIGGER
+        // 🔥 FIXED PART A: DECOUPLED INDEPENDENT GATE DIALOGUE TRIGGER
+        // This block now stands entirely on its own. It runs, fires its activations, 
+        // and exits immediately without trapping the rest of your game loop!
         // ========================================================================
         if (gameObject.CompareTag("Gate") || isGate)
         {
-            if (!hasAnyGateBreachedConversationPlayed)
+            // 1. DYNAMIC SEARCH FALLBACK ACCELERATOR
+            // If an inspector reference slot drops, automatically sweep the hierarchy to find it!
+            if (gateBreachedConversationObject == null)
             {
-                hasAnyGateBreachedConversationPlayed = true;
+                Debug.LogWarning($"[HEALTH WARNING]: Variable link empty on '{gameObject.name}'! Initiating manual hierarchy query sweep...");
+                GameObject dialogueFolder = GameObject.Find("Battle Dialogue");
+                if (dialogueFolder != null)
+                {
+                    Transform childNode = dialogueFolder.transform.Find("Gate Breached");
+                    if (childNode != null)
+                    {
+                        gateBreachedConversationObject = childNode.gameObject;
+                    }
+                }
+            }
 
-                if (gateBreachedConversation != null && MusouDialogManager.Instance != null)
-                {
-                    MusouDialogManager.Instance.PlayConversation(gateBreachedConversation);
-                    Debug.Log($"[DIALOG SYSTEM]: Successfully sent '{gateBreachedConversation.name}' to the UI Manager!");
-                }
-                else
-                {
-                    Debug.LogWarning($"[DIALOG WARNING]: Missing asset link! Conversation is null or Manager Instance is missing.");
-                }
+            // 2. ACTIVE TRIGGER STATE RUNNER
+            if (gateBreachedConversationObject != null)
+            {
+                gateBreachedConversationObject.SetActive(true);
+                Debug.Log($"[HEALTH SUCCESS]: Successfully activated node: '{gateBreachedConversationObject.name}'!");
+            }
+            else
+            {
+                Debug.LogError($"[CRITICAL HEALTH BREAK]: Could not locate the 'Gate Breached' object inside your hierarchy workspace!");
             }
         }
 
+        // ========================================================================
+        // 🔥 FIXED PART B: CORE GLOBAL DEATH LIFECYCLE (Runs for ALL units smoothly!)
+        // ========================================================================
         if (MoraleManager.Instance != null && unitAI != null)
         {
             float pointsGranted = unitAI.isOfficer ? 8f : 0.25f;
@@ -275,9 +293,7 @@ public class Health : MonoBehaviour
 
         if (unitAI != null)
         {
-            // 🔥 NEW MAP-WIDE SYSTEM UNREGISTRATION:
             // Remove this specific unit from the map-wide tracking lists the exact frame it dies
-            // so that neighboring orphaned grunts can instantly find a new closest target!
             if (BattlefieldManager.Instance != null)
             {
                 BattlefieldManager.Instance.UnregisterUnit(unitAI);
@@ -304,6 +320,7 @@ public class Health : MonoBehaviour
             }
         }
 
+        // Smoothly fade out the mesh layers and clear the object memory cleanly
         StartCoroutine(DeathFadeRoutine());
     }
 

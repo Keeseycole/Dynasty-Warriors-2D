@@ -1,32 +1,38 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UnitCuller : MonoBehaviour
 {
     private Health health;
-    private Animator anim;
     private Rigidbody2D rb;
-    private SpriteRenderer[] renderers;
+    private MusouUnit musouUnitComponent;
 
+    [Header("Hierarchy Targets")]
+    [Tooltip("The sub-child container holding the SpriteRenderers and Animator components.")]
     public GameObject visualsChild;
+
+    [Header("Culling Bounds Matrix")]
     public float cullDistance = 20f;
-    public float wakeBuffer = 2f; // Extra distance to prevent flickering
+    [Tooltip("Extra padding distance when waking units up to prevent rapid on/off asset flickering.")]
+    public float wakeBuffer = 2f;
 
     private Transform player;
 
     void Awake()
     {
         health = GetComponent<Health>();
-        anim = GetComponentInChildren<Animator>(); // Look in children if needed
         rb = GetComponent<Rigidbody2D>();
-        renderers = visualsChild.GetComponentsInChildren<SpriteRenderer>();
+        musouUnitComponent = GetComponent<MusouUnit>() ?? GetComponentInChildren<MusouUnit>();
     }
 
     void Start()
     {
-        FindPlayer();
+        FindPlayerWithTag();
     }
 
-    void FindPlayer()
+    /// <summary>
+    /// Uses standard Unity tags to find the player character transform.
+    /// </summary>
+    void FindPlayerWithTag()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -35,48 +41,85 @@ public class UnitCuller : MonoBehaviour
         }
     }
 
-
-
     void Update()
     {
-        if (player == null) { FindPlayer(); return; }
+        // 1. SAFETY LIFE CHECK: If this unit is dead, it must NEVER process culling cycles!
+        if (health != null && health.currentHealth <= 0)
+        {
+            if (visualsChild != null && !visualsChild.activeSelf)
+            {
+                visualsChild.SetActive(true);
+            }
+            return;
+        }
+
+        // 2. RETRY LOOKUP: If player is lost, find them again using the tag
+        if (player == null)
+        {
+            FindPlayerWithTag();
+            if (player == null) return;
+        }
 
         float sqrDist = (transform.position - player.position).sqrMagnitude;
 
-        // Use a larger distance to "wake up" and a smaller one to "cull"
         float currentThreshold = health.isSimulating ? (cullDistance + wakeBuffer) : cullDistance;
         bool shouldBeActive = sqrDist <= (currentThreshold * currentThreshold);
 
+        // ========================================================================
+        // 🔥 THE STRATEGIC OVERRIDE LOCK:
+        // Officers, Stage Commanders, and Squad Leaders must ALWAYS process their
+        // AI positioning logic so they can march toward objective bases completely
+        // independently without freezing up when the player walks away!
+        // ========================================================================
+        bool isStrategicUnit = false;
+        if (musouUnitComponent != null)
+        {
+            if (musouUnitComponent.isOfficer || musouUnitComponent.isStageCommander || musouUnitComponent is SquadLeader)
+            {
+                isStrategicUnit = true;
+            }
+        }
+
         if (shouldBeActive != health.isSimulating)
         {
-            SetSimulationMode(shouldBeActive);
+            SetSimulationMode(shouldBeActive, isStrategicUnit);
         }
     }
 
-    void SetSimulationMode(bool isActive)
+    void SetSimulationMode(bool isActive, bool bypassAIAndPhysics)
     {
         health.isSimulating = isActive;
 
-        // This one line handles the Animator and all SpriteRenderers 
-        // sitting inside that child object.
+        // 🟩 VISUAL CULLING (Always happens for everyone based on distance):
+        // Turns off expensive animators and sprite renderers to protect framerate!
         if (visualsChild != null)
             visualsChild.SetActive(isActive);
 
-        if (rb != null)
+        // 🟩 PROCESSOR CULLING (Bypassed entirely for important leaders):
+        if (bypassAIAndPhysics)
         {
-            if (isActive)
+            // For Squad Leaders, force their AI thoughts and physics engines to stay 
+            // 100% active so they can continue to calculate marching vectors!
+            if (musouUnitComponent != null) musouUnitComponent.enabled = true;
+            if (rb != null) rb.simulated = true;
+        }
+        else
+        {
+            // For standard grunt soldiers, safely put their brains and physics to sleep
+            if (musouUnitComponent != null) musouUnitComponent.enabled = isActive;
+
+            if (rb != null)
             {
-                rb.simulated = true;
-            }
-            else
-            {
-                rb.linearVelocity = Vector2.zero;
-                rb.simulated = false;
+                if (isActive)
+                {
+                    rb.simulated = true;
+                }
+                else
+                {
+                    rb.linearVelocity = Vector2.zero;
+                    rb.simulated = false;
+                }
             }
         }
-
-        // Note: If you SetActive(false) the visualsChild, 
-        // you don't need 'if (anim != null) anim.enabled = false' 
-        // because the object is gone!
     }
 }

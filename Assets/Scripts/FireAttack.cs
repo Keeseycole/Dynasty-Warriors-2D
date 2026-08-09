@@ -7,14 +7,16 @@ public class FireAttack : MonoBehaviour
     private PolygonCollider2D polygonCollider;
     private bool zoneActivated = false;
 
-    public GameObject objtoActivate;
+    [Header("Dynamic Sensor Settings")]
+    [TagProperty]
+    public string targetTag = "Player";
 
     private void Awake()
     {
         polygonCollider = GetComponent<PolygonCollider2D>();
         if (polygonCollider == null)
         {
-            Debug.LogError($"[TACTICAL] {gameObject.name} must have a PolygonCollider2D attached!");
+            Debug.LogError($"{gameObject.name} must have a PolygonCollider2D attached!");
         }
     }
 
@@ -27,7 +29,7 @@ public class FireAttack : MonoBehaviour
         if (soldier != null && soldier.unitTeam == MusouUnit.Team.PlayerSide)
         {
             zoneActivated = true;
-            Debug.Log($"[TACTICAL] Fire Captain {other.gameObject.name} infiltrated the polygon zone! Running mathematical coordinate sweep...");
+            Debug.Log($"Fire Captain {other.gameObject.name} infiltrated the trigger zone!");
 
             // LIVE GEOMETRY SWEEP: Pull absolute frame-perfect targets caught inside our polygon bounds right now
             List<Health> caughtEnemies = GatherEnemiesByMathematicalContains();
@@ -74,7 +76,7 @@ public class FireAttack : MonoBehaviour
             if (unit == null || unit.currentHealth <= 0) continue;
 
             // Ensure we are only targeting the enemy army faction
-            if (unit.gameObject.CompareTag("Enemy"))
+            if (unit.gameObject.CompareTag(targetTag))
             {
                 Vector2 unitPos = unit.transform.position;
 

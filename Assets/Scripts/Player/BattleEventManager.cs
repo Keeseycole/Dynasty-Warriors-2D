@@ -36,8 +36,11 @@ public class BattleEventManager : MonoBehaviour
 
     private HashSet<int> activatedIndexes = new HashSet<int>();
 
+    private MusouUnit musouunit;
+
     private void Awake()
     {
+        musouunit = GetComponent<MusouUnit>();
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
@@ -87,7 +90,7 @@ public class BattleEventManager : MonoBehaviour
 
         // 2. CINEMATIC CUTSCENE BANNER DIALOGUE HANDOFF
         // ========================================================================
-        // 🔥 FIXED: Directs the conversation text straight onto the player UI view layer!
+        // 🔥 DIRECT TEXT PLACEMENT: Directs the conversation text straight onto the player UI view layer!
         // ========================================================================
         if (fireAttackConversation != null && MusouDialogManager.Instance != null)
         {
@@ -114,12 +117,33 @@ public class BattleEventManager : MonoBehaviour
         }
 
         // 5. THE TRIGGER BOARD WIPE: Wipe out exactly who was caught in your custom Trigger zone boundaries
-        Debug.Log($"[STRATAGEM] Detonating! Eliminating {victimsToScorched.Count} enemies caught inside the trigger volume zone.");
+        Debug.Log($"[STRATAGEM] Detonating! Eliminating enemies caught inside the trigger volume zone.");
 
         foreach (Health victim in victimsToScorched)
         {
             if (victim != null && victim.currentHealth > 0)
             {
+                // ========================================================================
+                // 🔥 THE GENERAL'S SHIELD GUARD (FIXED):
+                // Check if this specific victim possesses an officer or leader script component.
+                // If true, we completely skip the kill operation, keeping them 100% safe!
+                // ========================================================================
+                MusouUnit unitData = victim.GetComponent<MusouUnit>() ?? victim.GetComponentInChildren<MusouUnit>();
+                if (unitData != null)
+                {
+                    if (unitData.isOfficer || unitData.isStageCommander)
+                    {
+                        Debug.Log($"[FIRE TRAP SHIELD]: Safeguarding officer '{victim.name}' from instant cinematic death!");
+
+                        // OPTIONAL: If you want officers to take a tiny bit of non-lethal chip damage, uncomment below:
+                        // Vector2 minorDirection = ((Vector2)victim.transform.position - (Vector2)bombCenter).normalized;
+                        // victim.TakeDamage(15f, bombCenter, minorDirection * 5f, (Animator)null, (Rigidbody2D)null);
+
+                        continue; 
+                    }
+                }
+
+                // Deliver terminal damage values to vaporize standard fodder grunts immediately
                 Vector2 blastDirection = ((Vector2)victim.transform.position - (Vector2)bombCenter).normalized;
                 float lethalBlastForce = 25f;
                 victim.TakeDamage(9999f, bombCenter, blastDirection * lethalBlastForce, (Animator)null, (Rigidbody2D)null);

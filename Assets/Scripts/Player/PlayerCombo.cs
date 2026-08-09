@@ -1028,8 +1028,6 @@ public class PlayerCombo : MonoBehaviour
         {
             float totalEnergyEarned = hitSuccessCount * 1.5f;
 
-            Debug.Log($"<color=#00FFFF>[MUSOU FUEL INJECTED]:</color> <b>{attackSnapshot}</b> frame event caught <b>{hitSuccessCount}</b> enemies! Awarding <b>{totalEnergyEarned}</b> energy to the bar.");
-
             GainMusouEnergy(totalEnergyEarned);
         }
     }

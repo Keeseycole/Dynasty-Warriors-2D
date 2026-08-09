@@ -142,30 +142,136 @@ public class SquadLeader : MusouUnit
                 return;
             }
 
+            if (myLeader != null && combatOffset != Vector2.zero)
+            {
+                Vector2 targetPhysicalPos = currentTarget.position;
+                Vector2 myPhysicalPos = rb != null ? rb.position : (Vector2)transform.position;
+
+                // Base destination from our circular flanking ring matrix
+                Vector2 baseCombatDestination = targetPhysicalPos + combatOffset;
+
+                // ========================================================================
+                // 🔥 THE LOCAL NEIGHBOR SEPARATION RADAR:
+                // Sweeps a small local ring to find nearby troops. If someone is crowding 
+                // our personal space, calculate a gentle push vector to push us outward!
+                // ========================================================================
+                Vector2 separationForce = Vector2.zero;
+                float personalSpaceRadius = 1.0f; // ◄── Adjust this to make units stand farther apart!
+                int neighborCount = 0;
+
+                // Fast circle overlap sweep to find neighboring bodies
+                Collider2D[] closeColliders = Physics2D.OverlapCircleAll(myPhysicalPos, personalSpaceRadius);
+                for (int i = 0; i < closeColliders.Length; i++)
+                {
+                    // Ensure we are only calculating pushback against OTHER units, not ourselves or walls
+                    if (closeColliders[i].gameObject != gameObject && closeColliders[i].GetComponent<MusouUnit>() != null)
+                    {
+                        Vector2 neighborPos = closeColliders[i].transform.position;
+                        Vector2 pushDir = myPhysicalPos - neighborPos;
+                        float distance = pushDir.magnitude;
+
+                        if (distance > 0.001f)
+                        {
+                            // The closer they are, the harder they push away to establish padding
+                            separationForce += (pushDir.normalized / distance);
+                            neighborCount++;
+                        }
+                    }
+                }
+
+                // If crowded, blend our separation push forces directly into our target direction vector
+                if (neighborCount > 0)
+                {
+                    baseCombatDestination += separationForce.normalized * 1.5f;
+                }
+
+                // Move to our beautifully adjusted, crowd-free combat position coordinate
+                float distToTargetCoordinateSqr = (baseCombatDestination - myPhysicalPos).sqrMagnitude;
+                float arrivalPadding = 0.2f;
+
+                if (distToTargetCoordinateSqr > arrivalPadding * arrivalPadding)
+                {
+                    MoveTowards(baseCombatDestination, false);
+                    animator.SetBool("isMoving", true);
+                }
+                else
+                {
+                    if (myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude > 0.1f)
+                    {
+                        rb.linearVelocity = myLeader.rb.linearVelocity;
+                        animator.SetBool("isMoving", true);
+                    }
+                    else
+                    {
+                        // Stop moving but preserve ground stabilization to eliminate jitter
+                        rb.linearVelocity = Vector2.zero;
+                        animator.SetBool("isMoving", false);
+                    }
+                }
+                return;
+            }
+
             base.CheckDistance();
             return;
         }
-
+        // ========================================================================
+        // 🟩 ANTI-CORNER STICKING GRUNT PLATOON ROUTING (UPDATED):
+        // Uses a fast local raycast check. If a wall tile blocks a grunt's assigned 
+        // formation slot, it temporarily drops into a single-file path line behind 
+        // the leader to cleanly dodge corners without getting stuck!
+        // ========================================================================
         if (myLeader != null)
         {
-            Vector2 leaderPos = (myLeader.rb != null) ? myLeader.rb.position : (Vector2)myLeader.transform.position;
             Vector2 myPhysicalPos = rb != null ? rb.position : (Vector2)transform.position;
-            float distToMasterSqr = (leaderPos - myPhysicalPos).sqrMagnitude;
-            float followSpacingRadius = 2.5f;
+            Vector2 leaderPos = (myLeader.rb != null) ? myLeader.rb.position : (Vector2)myLeader.transform.position;
 
-            if (distToMasterSqr > followSpacingRadius * followSpacingRadius)
+            SquadLeader masterLeader = myLeader as SquadLeader;
+            if (masterLeader != null)
             {
-                MoveTowards(leaderPos, false);
-                WakeUpSquadFormation();
-            }
-            else
-            {
-                if (myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude > 0.1f)
+                // 1. Calculate our ideal structured formation target position
+                Vector2 idealTargetSlot = masterLeader.GetSquadPosition(squadIndex);
+                Vector2 trackingDestination = idealTargetSlot;
+
+                // 2. 🔥 THE WALL EVASION SHIELD:
+                // Cast a thin ray from the grunt's current body space straight toward its ideal slot.
+                // Note: Change "Default" to your explicit wall layer mask if you use a custom setup!
+                Vector2 dirToSlot = (idealTargetSlot - myPhysicalPos);
+                float distToSlot = dirToSlot.magnitude;
+
+                if (distToSlot > 0.01f)
                 {
-                    rb.linearVelocity = myLeader.rb.linearVelocity;
-                    animator.SetBool("isMoving", true);
+                    int wallLayerMask = LayerMask.GetMask("Default", "Obstacles");
+                    RaycastHit2D wallCheck = Physics2D.Raycast(myPhysicalPos, dirToSlot.normalized, distToSlot, wallLayerMask);
+
+                    if (wallCheck.collider != null)
+                    {
+                        // A corner tile blocks our slot! Override our targets and force this grunt
+                        // to march straight down the leader's safe, open center path vector instead!
+                        trackingDestination = leaderPos;
+                    }
                 }
-                else StopMoving();
+
+                // 3. Process movement vectors smoothly using our dynamic fallback destination
+                float distToTargetCoordinateSqr = (trackingDestination - myPhysicalPos).sqrMagnitude;
+                float arrivalPadding = 0.2f;
+
+                if (distToTargetCoordinateSqr > arrivalPadding * arrivalPadding)
+                {
+                    MoveTowards(trackingDestination, false);
+                    WakeUpSquadFormation();
+                }
+                else
+                {
+                    if (myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude > 0.1f)
+                    {
+                        rb.linearVelocity = myLeader.rb.linearVelocity;
+                        animator.SetBool("isMoving", true);
+                    }
+                    else
+                    {
+                        StopMoving();
+                    }
+                }
             }
             return;
         }
@@ -225,27 +331,39 @@ public class SquadLeader : MusouUnit
         StopMoving();
     }
 
-    protected virtual bool IsEntireSquadAssembledAndIdle()
+    // ========================================================================
+    // 🟩 TACTICAL POSITION MATRIX ENFORCER (FIXED):
+    // Properly transforms grid coordinates using the leader's heading, 
+    // keeping grunt offsets locked in place even when stopped!
+    // ========================================================================
+    public Vector2 GetSquadPosition(int index)
     {
-        Vector2 leaderPhysicalPos = rb != null ? rb.position : (Vector2)transform.position;
-        float assembleRadiusSqr = 3.5f * 3.5f;
+        Vector2 leaderPhysicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
 
-        for (int i = 0; i < squadMembers.Count; i++)
+        if (index < 0 || index >= squadMembers.Count) return leaderPhysicalPos;
+
+        MusouUnit targetMember = squadMembers[index];
+
+        if (targetMember != null && memberOffsets.ContainsKey(targetMember))
         {
-            MusouUnit member = squadMembers[i];
-            if (member == null) continue;
+            Vector2 localOffset = memberOffsets[targetMember];
 
-            Rigidbody2D memberRb = member.rb != null ? member.rb : member.GetComponentInChildren<Rigidbody2D>();
-            Vector2 gruntPhysicalPos = memberRb != null ? memberRb.position : (Vector2)member.transform.position;
+            // Extract heading direction safely from velocity or fallback starting direction
+            Vector2 heading = (rb != null && rb.linearVelocity.sqrMagnitude > 0.01f)
+                ? rb.linearVelocity.normalized
+                : startingDirection.normalized;
 
-            float distToLeaderSqr = (leaderPhysicalPos - gruntPhysicalPos).sqrMagnitude;
+            // Generate a true perpendicular right-hand vector for row layout splits
+            Vector2 right = new Vector2(-heading.y, heading.x);
 
-            if (distToLeaderSqr > assembleRadiusSqr) return false;
-            if (member.currentState != EnemyState.Idle) return false;
-            if (memberRb != null && memberRb.linearVelocity.sqrMagnitude > 0.05f) return false;
+            // 🔥 MATRIX TRANSFORM: Projects offsets along the true forward/right axes!
+            float worldX = (localOffset.x * right.x) + (localOffset.y * heading.x);
+            float worldY = (localOffset.x * right.y) + (localOffset.y * heading.y);
+
+            return leaderPhysicalPos + new Vector2(worldX, worldY);
         }
 
-        return true;
+        return leaderPhysicalPos;
     }
 
     private void WakeUpSquadFormation()
@@ -265,7 +383,9 @@ public class SquadLeader : MusouUnit
         if (squadEngaged == attack) return;
         squadEngaged = attack;
 
-        for (int i = 0; i < squadMembers.Count; i++)
+        int totalMembers = squadMembers.Count;
+
+        for (int i = 0; i < totalMembers; i++)
         {
             MusouUnit member = squadMembers[i];
             if (member == null) continue;
@@ -273,39 +393,52 @@ public class SquadLeader : MusouUnit
             if (attack)
             {
                 member.currentTarget = playerTransform;
-                member.moveSpeed = member.moveSpeed * 1.2f;
+                if (member.moveSpeed == moveSpeed) member.moveSpeed *= 1.2f;
+
+                // ========================================================================
+                // 🔥 THE COMBAT SPACING LAYER MATRIX:
+                // Distributes grunts evenly in a radial circle surrounding the player!
+                // This keeps them spread out perfectly instead of collapsing into a pile.
+                // ========================================================================
+                float angle = (i * (360f / Mathf.Max(1, totalMembers))) * Mathf.Deg2Rad;
+
+                // Establish a comfortable combat ring radius (e.g., 2.5 world units out)
+                float combatRingRadius = 2.5f;
+
+                // Save a custom offset vector inside your grunt script properties
+                member.combatOffset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * combatRingRadius;
             }
             else
             {
                 member.currentTarget = null;
-                member.moveSpeed = member.moveSpeed / 1.2f;
+                if (member.moveSpeed != moveSpeed) member.moveSpeed /= 1.2f;
+                member.combatOffset = Vector2.zero;
             }
         }
     }
 
-    public Vector2 GetSquadPosition(int index)
+    protected virtual bool IsEntireSquadAssembledAndIdle()
     {
-        if (index < 0 || index >= squadMembers.Count) return (rb != null) ? rb.position : (Vector2)transform.position;
+        Vector2 leaderPhysicalPos = rb != null ? rb.position : (Vector2)transform.position;
+        float assembleRadiusSqr = 3.5f * 3.5f;
 
-        MusouUnit targetMember = squadMembers[index];
-
-        if (targetMember != null && memberOffsets.ContainsKey(targetMember))
+        for (int i = 0; i < squadMembers.Count; i++)
         {
-            Vector2 localOffset = memberOffsets[targetMember];
-            Vector2 leaderPhysicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
+            MusouUnit member = squadMembers[i];
+            if (member == null) continue;
 
-            Vector2 heading = (rb != null && rb.linearVelocity.sqrMagnitude > 0.1f)
-                ? rb.linearVelocity.normalized
-                : startingDirection.normalized;
+            Rigidbody2D memberRb = member.rb != null ? member.rb : member.GetComponentInChildren<Rigidbody2D>();
+            Vector2 gruntPhysicalPos = memberRb != null ? memberRb.position : (Vector2)member.transform.position;
 
-            float rightX = heading.y;
-            float rightY = -heading.x;
+            float distToLeaderSqr = (leaderPhysicalPos - gruntPhysicalPos).sqrMagnitude;
 
-            float rotatedX = localOffset.x * rightX + localOffset.y * heading.x;
-            float rotatedY = localOffset.x * rightY + localOffset.y * heading.y;
-            return leaderPhysicalPos + new Vector2(rotatedX, rotatedY);
+            // Strict checklist controls: hold waypoints if any grunt is still traveling
+            if (distToLeaderSqr > assembleRadiusSqr) return false;
+            if (member.currentState != EnemyState.Idle) return false;
+            if (memberRb != null && memberRb.linearVelocity.sqrMagnitude > 0.05f) return false;
         }
-        return (rb != null) ? rb.position : (Vector2)transform.position;
+
+        return true;
     }
     public void BroadcastTarget(Transform target) { for (int i = 0; i < squadMembers.Count; i++) { MusouUnit member = squadMembers[i]; if (member != null && member.currentTarget == null) { member.currentTarget = target; } } }
     public void AssignSquadMission(AIMission newMission, Transform targetNode)

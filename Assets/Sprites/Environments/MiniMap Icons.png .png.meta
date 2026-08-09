@@ -473,6 +473,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: MiniMap Icons.png _17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 465d7906188238b4e8aa58da786b2368
+      internalID: 2087552276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniMap Icons.png _18
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b5415a9c0aaf62428dea105238c2148
+      internalID: 2016645486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -498,6 +542,8 @@ TextureImporter:
       MiniMap Icons.png _14: -1505786759
       MiniMap Icons.png _15: 1999212025
       MiniMap Icons.png _16: -421388671
+      MiniMap Icons.png _17: 2087552276
+      MiniMap Icons.png _18: 2016645486
       MiniMap Icons.png _2: 1440019789
       MiniMap Icons.png _3: -1140694158
       MiniMap Icons.png _4: -1361629728

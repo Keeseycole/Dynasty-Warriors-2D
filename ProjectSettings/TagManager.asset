@@ -8,6 +8,7 @@ TagManager:
   - Ally
   - Gate
   - TaskUnit
+  - Officer
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: Solid Objects
     uniqueID: 2516819603
+    locked: 0
+  - name: charecters
+    uniqueID: 3731808357
     locked: 0
   m_RenderingLayers:
   - Default

@@ -27,6 +27,11 @@ public class GenericTransformFollower : MonoBehaviour
     [Tooltip("ForcedMarch = ignore all threats.\nEngageOnSight = break path if an enemy is detected nearby.")]
     public PathPriority pathPriority = PathPriority.EngageOnSight;
 
+    [Header("Formations Grid Matrix")]
+    [Tooltip("The side-to-side and row spacing gap between marching soldiers.")]
+    public float platoonSpacing = 1.3f;
+    [Tooltip("How many columns wide the marching platoon should be.")]
+    public int platoonColumns = 3;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -174,5 +179,34 @@ public class GenericTransformFollower : MonoBehaviour
                 Gizmos.DrawWireSphere(pathPoints[i + 1].position, 0.3f);
             }
         }
+    }
+
+    public Vector2 CalculateFormedWaypointTarget(Vector2 rawWaypointPosition, int unitIndex)
+    {
+        // 1. If this unit has no index or is a standalone leader, go straight to the center pivot
+        if (unitIndex < 0) return rawWaypointPosition;
+
+        // 2. Calculate its exact Row and Column index based on its position in the group array list
+        int row = unitIndex / platoonColumns;
+        int col = unitIndex % platoonColumns;
+
+        // 3. Center the columns so the platoon is distributed evenly left and right
+        float centeredColOffset = (col - (platoonColumns - 1) / 2f) * platoonSpacing;
+
+        // 4. Push subsequent rows backward behind the front line
+        float rowOffset = -row * platoonSpacing;
+
+        // 5. Apply the directional heading so the formation rotates dynamically as they turn corners!
+        Vector2 myPosition = transform.position;
+        Vector2 movementHeading = (rawWaypointPosition - myPosition).normalized;
+
+        // Generate a true perpendicular 90-degree right vector for column spacing splits
+        Vector2 rightVector = new Vector2(-movementHeading.y, movementHeading.x);
+
+        // Transform the grid offsets into the world space along their current travel path!
+        float worldOffsetX = (centeredColOffset * rightVector.x) + (rowOffset * movementHeading.x);
+        float worldOffsetY = (centeredColOffset * rightVector.y) + (rowOffset * movementHeading.y);
+
+        return rawWaypointPosition + new Vector2(worldOffsetX, worldOffsetY);
     }
 }

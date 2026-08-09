@@ -1,4 +1,4 @@
-﻿using System; // REQUIRED: Adds Action event support to communicate with reinforcement triggers
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,135 +6,176 @@ using UnityEngine.UI;
 
 public class MusouDialogManager : MonoBehaviour
 {
-    public static MusouDialogManager Instance { get; private set; }
+    public static MusouDialogManager Instance;
 
-    // --- GLOBAL DIALOGUE COMPLETION BROADCASTER ---
-    // Broadcasts the specific conversation asset that finished so unit spawners can listen for it!
-    public static event Action<DialogConversation> OnConversationEnded;
+    [Header("UI Canvas Component Anchors")]
+    public GameObject dialogueUIPanel; // Main graphic panel background
+    public UnityEngine.UI.Text speakerNameText;
+    public UnityEngine.UI.Text dialogueBodyText;
+    public UnityEngine.UI.Image portraitImage;
 
-    [Header("UI Elements")]
-    public GameObject dialogPanel;
-    public Text nameText;
-    public Text messageText;
-    public Image portraitImage;
-    public Image borderHighlight;
+    private Coroutine activeDialogueThread;
 
-    [Header("Settings")]
-    public float displayDurationPerLine = 4.0f;
-    public float textSpeedMultiplier = 0.02f;
-
-    [Header("Faction Themes")]
-    public Color playerSideColor = Color.blue;
-    public Color enemySideColor = Color.red;
-    public Color neutralColor = Color.gray;
-
-    private Queue<DialogConversation.DialogLine> dialogQueue = new Queue<DialogConversation.DialogLine>();
-    private bool isDisplayingLine = false;
-    private Coroutine activeTypingCoroutine;
-
-    // Track the active script asset currently running through the canvas queue layers
-    private DialogConversation currentActiveConversationAsset;
+    public static System.Action<DialogConversation> OnConversationEnded;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-
-        if (dialogPanel != null) dialogPanel.SetActive(false);
-    }
-
-    // --- PUBLIC CALL TRIGGER FOR A WHOLE CONVERSATION ---
-    public void PlayConversation(DialogConversation conversation)
-    {
-        if (conversation == null || conversation.lines.Count == 0) return;
-
-        // Cache the reference before running line separation breakdowns
-        currentActiveConversationAsset = conversation;
-
-        // Load every line from the list into our execution queue buffer
-        foreach (var line in conversation.lines)
+        // ========================================================================
+        // 🔥 THE DOMINANT SINGLETON SHIELD (FIXED):
+        // Prevents your Dialogue Manager from accidentally killing itself on start!
+        // It overrides any old data links to stay active in the scene hierarchy.
+        // ========================================================================
+        if (Instance == null)
         {
-            dialogQueue.Enqueue(line);
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Debug.LogWarning($"[DIALOG WARNING]: Detected a duplicate or ghost instance on object '{Instance.gameObject.name}'. Forcibly re-assigning instance authority to '{gameObject.name}'!");
+
+            // Overwrite the bad reference link with this true child object component
+            Instance = this;
         }
 
-        if (!isDisplayingLine)
+        // Safely hide the master UI backdrop graphic so it doesn't block the screen on load
+        if (dialogueUIPanel != null)
         {
-            StartCoroutine(ProcessDialogQueueRoutine());
+            dialogueUIPanel.SetActive(false);
         }
     }
-
-    private IEnumerator ProcessDialogQueueRoutine()
+    // ========================================================================
+    // 🟩 CHANNEL A: THE MODERN NODE SYSTEM (Used by Gate Breached GameObject)
+    // ========================================================================
+    public void StartActiveNodeConversation(MusouConversationNode conversationNode)
     {
-        isDisplayingLine = true;
-        if (dialogPanel != null) dialogPanel.SetActive(true);
+        if (activeDialogueThread != null) StopCoroutine(activeDialogueThread);
+        activeDialogueThread = StartCoroutine(ProcessNodeSequence(conversationNode));
+    }
 
-        while (dialogQueue.Count > 0)
+    private IEnumerator ProcessNodeSequence(MusouConversationNode node)
+    {
+        if (dialogueUIPanel != null)
         {
-            DialogConversation.DialogLine currentLine = dialogQueue.Dequeue();
-            SetupUIForSpeaker(currentLine);
+            dialogueUIPanel.SetActive(true);
+        }
 
-            if (!string.IsNullOrEmpty(currentLine.voiceSFXName) && SoundManager.Instance != null)
-            {
-                SoundManager.Instance.PlaySFX(currentLine.voiceSFXName, 1.0f);
-            }
-            if (activeTypingCoroutine != null) StopCoroutine(activeTypingCoroutine);
-            activeTypingCoroutine = StartCoroutine(TypeTextRoutine(currentLine.dialogText));
+        // Loop through each text line stored on the active game object container
+        for (int i = 0; i < node.conversationScript.Count; i++)
+        {
+            MusouConversationNode.DialogueLine currentLine = node.conversationScript[i];
 
             // ========================================================================
-            // 🔥 FIXED DELAY CONTROLLER & PACE TRACKER: 
-            // Evaluates custom read durations, falling back to global base timing if left at 0
+            // 🔥 FIXED STRING PATHWAYS:
+            // Ensure these properties match the variable names declared inside your
+            // MusouConversationNode.cs DialogueLine struct exactly!
             // ========================================================================
-            float finalWaitTime = currentLine.customDuration > 0 ? currentLine.customDuration : displayDurationPerLine;
-            yield return new WaitForSeconds(finalWaitTime); // BUG FIX: Removed second duplicate line wait statement right beneath this!
-        }
+            if (speakerNameText != null)
+                speakerNameText.text = currentLine.speakerName;
 
-        if (dialogPanel != null) dialogPanel.SetActive(false);
-        isDisplayingLine = false;
+            if (dialogueBodyText != null)
+                dialogueBodyText.text = currentLine.dialogueText; // ◄── Verify this name matches your Node script!
 
-        // ========================================================================
-        // 🔥 BROADCAST END SIGNAL FRAME: 
-        // Notifies all listening systems (like UnitReinforcementTrigger) instantly!
-        // ========================================================================
-        if (currentActiveConversationAsset != null)
-        {
-            OnConversationEnded?.Invoke(currentActiveConversationAsset);
-            currentActiveConversationAsset = null; // Flush reference clear tracker
-        }
-    }
-
-    private void SetupUIForSpeaker(DialogConversation.DialogLine data)
-    {
-        if (nameText != null) nameText.text = data.speakerName;
-        if (portraitImage != null && data.characterPortrait != null)
-        {
-            portraitImage.sprite = data.characterPortrait;
-            portraitImage.enabled = true;
-        }
-        else if (portraitImage != null)
-        {
-            portraitImage.enabled = false;
-        }
-
-        if (borderHighlight != null)
-        {
-            switch (data.alignment)
+            if (portraitImage != null && currentLine.speakerPortrait != null)
             {
-                case DialogConversation.DialogLine.SpeakerSide.PlayerSide: borderHighlight.color = playerSideColor; break;
-                case DialogConversation.DialogLine.SpeakerSide.EnemySide: borderHighlight.color = enemySideColor; break;
-                default: borderHighlight.color = neutralColor; break;
+                portraitImage.sprite = currentLine.speakerPortrait;
+                portraitImage.enabled = true;
             }
+            else if (portraitImage != null)
+            {
+                portraitImage.enabled = false;
+            }
+
+            float waitTime = currentLine.displayDuration > 0.5f ? currentLine.displayDuration : 3.5f;
+            yield return new WaitForSeconds(waitTime);
         }
+
+        if (dialogueUIPanel != null)
+        {
+            dialogueUIPanel.SetActive(false);
+        }
+
+        DialogConversation completedAsset = node.legacyDialogueAsset;
+        InvokeLegacyEndEvent(completedAsset);
+
+        node.CompleteConversation();
+        yield return null;
     }
 
-    private IEnumerator TypeTextRoutine(string textToType)
+    public void PlayConversation(DialogConversation oldConversationData)
     {
-        if (messageText == null) yield break;
+        if (oldConversationData == null) return;
 
-        messageText.text = "";
-        foreach (char letter in textToType.ToCharArray())
+        Debug.Log($"[DIALOG SYSTEM]: Initiating Direct ScriptableObject Stream for '{oldConversationData.name}'...");
+
+        // 1. Kill any background threads to prevent overlap text conflicts
+        if (activeDialogueThread != null) StopCoroutine(activeDialogueThread);
+
+        // 2. Launch our safe, rock-solid asset stream coroutine
+        activeDialogueThread = StartCoroutine(ProcessDirectAssetSequence(oldConversationData));
+    }
+
+    private IEnumerator ProcessDirectAssetSequence(DialogConversation assetData)
+    {
+        // Safety verification check to protect from empty assets crashing the build
+        if (assetData == null || assetData.lines == null || assetData.lines.Count == 0)
         {
-            messageText.text += letter;
-            yield return new WaitForSeconds(textSpeedMultiplier);
+            Debug.LogError($"[DIALOG CRITICAL ERROR]: '{assetData.name}' contains 0 active text lines inside its script file!");
+            yield break;
+        }
+
+        // Force the UI backdrop container to snap open on screen instantly!
+        if (dialogueUIPanel != null)
+        {
+            dialogueUIPanel.SetActive(true);
+        }
+
+        // Loop directly through your pre-saved ScriptableObject line structures
+        for (int i = 0; i < assetData.lines.Count; i++)
+        {
+            DialogConversation.DialogLine currentLine = assetData.lines[i];
+
+            // Assign characters directly to UI text meshes safely
+            if (speakerNameText != null) speakerNameText.text = currentLine.speakerName;
+            if (dialogueBodyText != null) dialogueBodyText.text = currentLine.dialogText; // Maps to dialogText
+
+            // Handle portrait assignments cleanly
+            if (portraitImage != null && currentLine.characterPortrait != null)
+            {
+                portraitImage.sprite = currentLine.characterPortrait;
+                portraitImage.enabled = true;
+            }
+            else if (portraitImage != null)
+            {
+                portraitImage.enabled = false;
+            }
+
+            // 🔥 THE SOLID VISIBILITY LOCK:
+            // Evaluate custom duration data. If left at 0, hold on screen for 4.0 seconds!
+            float waitTime = currentLine.customDuration > 0.1f ? currentLine.customDuration : 4.0f;
+
+            Debug.Log($"[DIALOGUE TIMING]: Displaying line {i + 1}/{assetData.lines.Count}. Waiting for {waitTime} seconds...");
+
+            // Forcibly freeze this coroutine thread right here on screen!
+            yield return new WaitForSeconds(waitTime);
+        }
+
+        // Close the panel frame graphics now that all rows finished displaying cleanly
+        if (dialogueUIPanel != null)
+        {
+            dialogueUIPanel.SetActive(false);
+        }
+
+        // Wake up your older legacy listeners passing this asset payload
+        InvokeLegacyEndEvent(assetData);
+
+        yield return null;
+    }
+
+    public void InvokeLegacyEndEvent(DialogConversation assetPayload)
+    {
+        if (OnConversationEnded != null)
+        {
+            OnConversationEnded.Invoke(assetPayload);
         }
     }
 }

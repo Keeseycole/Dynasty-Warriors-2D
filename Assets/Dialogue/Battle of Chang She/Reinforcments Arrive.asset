@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283e0fc76bae4ce43bdc77078ae055f2, type: 3}
+  m_Name: Reinforcments Arrive
+  m_EditorClassIdentifier: Assembly-CSharp::DialogConversation
+  lines:
+  - speakerName: Cao Cao
+    dialogText: 'Cao Cao: Sorry Im late Xiahou Dun.'
+    characterPortrait: {fileID: -882913721, guid: 7f7d7276e52e65f4690fdced0bacae71, type: 3}
+    alignment: 0
+    voiceSFXName: 
+    customDuration: 5
+  - speakerName: Huangfu Song
+    dialogText: 'Huangfu Song: So you are Cao Cao. If a man like Xiahou Dun is witihin
+      your ranks, you must be a great man indeed. '
+    characterPortrait: {fileID: -882913721, guid: 7f7d7276e52e65f4690fdced0bacae71, type: 3}
+    alignment: 0
+    voiceSFXName: 
+    customDuration: 7
+  - speakerName: Huangfu Song
+    dialogText: 'Huangfu Song: Men, now is the time! let us finish this! '
+    characterPortrait: {fileID: -882913721, guid: 7f7d7276e52e65f4690fdced0bacae71, type: 3}
+    alignment: 0
+    voiceSFXName: 
+    customDuration: 7

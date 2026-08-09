@@ -55,6 +55,7 @@ public class MusouUnit : sleepEnemy
     public SquadLeader myLeader;
     public int squadIndex; // Assigned by the leader (0, 1, 2, etc.)
     public float stoppingDistance = 0.2f;
+    [HideInInspector] public Vector2 combatOffset = Vector2.zero;
 
 
     [Header("Spacing Settings")]
@@ -151,19 +152,35 @@ public class MusouUnit : sleepEnemy
     }
     protected override void FixedUpdate()
     {
-        // Execute standard distance tracking
+        // 1. Execute standard distance tracking and path calculations first
         CheckDistance();
 
-        // 🔥 THE DESTINATION ANCHOR PADLOCK:
-        // If the grunt is Idle and its leader has come to a halt, 
-        // freeze its velocity completely to stop ghost drift!
+        // ========================================================================
+        // 🔥 THE COMPREHENSIVE COMBAT & TRANSITION PADLOCK:
+        // If the unit is playing an attack windup, hit-stunned, staggered, or
+        // exiting a strafe/movement state, forcibly wipe out all physics drift!
+        // ========================================================================
+        if (currentState == EnemyState.Death || currentState == EnemyState.Stagger)
+        {
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
+            return; // Exit early; do not let background pathfinding push a stunned unit!
+        }
+
+        // 2. THE EXPANDED DESTINATION ANCHOR:
+        // If the grunt is Idle or has finished its tactical moves and its leader 
+        // has come to a halt, completely freeze its physics body to stop ice-skating!
         if (currentState == EnemyState.Idle && myLeader != null)
         {
-            if (myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude <= 0.1f)
+            if (myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude <= 0.01f)
             {
                 if (rb != null)
                 {
                     rb.linearVelocity = Vector2.zero;
+                    rb.angularVelocity = 0f;
                 }
             }
         }
@@ -351,7 +368,7 @@ public class MusouUnit : sleepEnemy
         yield return new WaitForSeconds(0.1f);
     }
 
-  
+
     IEnumerator StrafeBehavior()
     {
         ChangeState(EnemyState.Strafe);
@@ -377,12 +394,10 @@ public class MusouUnit : sleepEnemy
             if (sqrDist > attackRadiusSqr) correctionDir = toTarget;
             else if (sqrDist < backUpRadiusSqr) correctionDir = -toTarget;
 
-            // FIX: Calculate target velocity purely from static direction values, 
-            // completely removing the broken double-assignment line!
             Vector2 targetVelocity = (sideDir + (correctionDir * 0.5f)).normalized * strafeSpeed;
 
-            // Lerp smoothly from current physics velocity directly to the clean target velocity
-            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 5f);
+      
+            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, targetVelocity, strafeSpeed * Time.deltaTime * 8f);
 
             // Safety fallback velocity hard cap inside the frame loop
             if (rb.linearVelocity.sqrMagnitude > strafeSpeed * strafeSpeed)
@@ -395,10 +410,15 @@ public class MusouUnit : sleepEnemy
             yield return null;
         }
 
-        rb.linearVelocity = Vector2.zero;
+        // 🔥 HARD FORCED HALT: Force physics to absolute zero before switching states!
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+
         animator.SetBool("isStrafing", false);
     }
-
     private IEnumerator Block(float blockTime)
     {
         ChangeState(EnemyState.Block);
