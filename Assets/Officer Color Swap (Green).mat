@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Officer Color Swap (Green)
+  m_Shader: {fileID: 4800000, guid: fad7ff84b3fac404ea4fd79b49761e66, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    - _HueTolerance: 0.0101
+    - _RGBTolerance: 0.009
+    - _SatTolerance: 0.3
+    - _ZWrite: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OriginalColor1: {r: 0.6039216, g: 0.5882353, b: 0.18039216, a: 1}
+    - _OriginalColor10: {r: 1, g: 1, b: 1, a: 1}
+    - _OriginalColor2: {r: 0.4784314, g: 0.4666667, b: 0.14509805, a: 1}
+    - _OriginalColor3: {r: 0.43921572, g: 0.427451, b: 0.14117648, a: 1}
+    - _OriginalColor4: {r: 0.5137255, g: 0.4901961, b: 0.15294118, a: 1}
+    - _OriginalColor5: {r: 0.7019608, g: 0.6862745, b: 0.21568629, a: 1}
+    - _OriginalColor6: {r: 0.48235297, g: 0.16862746, b: 0.16862746, a: 1}
+    - _OriginalColor7: {r: 0.3372549, g: 0.1137255, b: 0.1137255, a: 1}
+    - _OriginalColor8: {r: 0.61960787, g: 0.21568629, b: 0.21568629, a: 1}
+    - _OriginalColor9: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TargetColor1: {r: 0.14901961, g: 0.31764707, b: 0.1254902, a: 1}
+    - _TargetColor10: {r: 1, g: 1, b: 1, a: 1}
+    - _TargetColor2: {r: 0.078431375, g: 0.18431373, b: 0.0627451, a: 1}
+    - _TargetColor3: {r: 0.063521355, g: 0.16037738, b: 0.049172312, a: 1}
+    - _TargetColor4: {r: 0.078431375, g: 0.18039216, b: 0.0627451, a: 1}
+    - _TargetColor5: {r: 0.14509805, g: 0.31764707, b: 0.121568635, a: 1}
+    - _TargetColor6: {r: 0.24528301, g: 0.15431425, b: 0.11685653, a: 1}
+    - _TargetColor7: {r: 0.1792453, g: 0.115283914, b: 0.083704166, a: 1}
+    - _TargetColor8: {r: 0.33962262, g: 0.21961875, b: 0.17461729, a: 1}
+    - _TargetColor9: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
