@@ -57,7 +57,7 @@ public class BattleManager : MonoBehaviour
             {
                 // NOTE: Change this to !isSimulating because you want to 
                 // simulate the ones the player CANNOT see.
-                if (unitA.isSimulating) continue;
+                if (!unitA.isSimulating) continue;
 
                 MusouUnit aiA = unitA.GetComponent<MusouUnit>();
 

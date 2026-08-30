@@ -17,7 +17,8 @@ GameObject:
   - component: {fileID: 2890964482448441542}
   - component: {fileID: 4530718594491808079}
   - component: {fileID: 5735086031365336344}
-  - component: {fileID: 8327733583963588785}
+  - component: {fileID: 3452759217847206136}
+  - component: {fileID: 5600000998223918329}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -35,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -71.6, y: 36.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6462548614244197038}
@@ -88,9 +89,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingLayerID: -563158939
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1560335712651223089, guid: faf9c3114a1279b4bbf2b5f4a1b38817, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -160,10 +161,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombo
   myNativeAnimator: {fileID: 9176585271907380788}
+  currentComboState: 0
   isAttacking: 0
-  liveAnimatorSpeedTracker: 0
-  basicStepForce: 3
-  finisherStepForce: 7
+  basicStepForce: 4
+  finisherStepForce: 4
   attackRange: 1.03
   finisherRangeMultiplier: 0.94
   basicHitLagDuration: 0.08
@@ -230,8 +231,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
-  m_LinearDamping: 10
+  m_Mass: 1
+  m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 9b2aeb09626578e4b8db14e79e49c974, type: 2}
@@ -291,7 +292,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7551269, y: 0.5832343}
   m_EdgeRadius: 0
---- !u!114 &8327733583963588785
+--- !u!114 &3452759217847206136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,6 +300,18 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393334081821395625}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
+--- !u!114 &5600000998223918329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393334081821395625}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1863452493a877a478e6b1b88a3b12fc, type: 3}
   m_Name: 
@@ -330,16 +343,20 @@ MonoBehaviour:
   separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
-  attackStepForce: 4
+  attackStepForce: 12.66
   hitForce: 4
   enemyHitLagDuration: 0.06
   myLeader: {fileID: 0}
   squadIndex: 0
   stoppingDistance: 0.2
+  combatOffset: {x: 0, y: 0}
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 17.32
+  lungeDuration: 0.15
 --- !u!1 &2303862948726828186
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +504,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5.4
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -583,7 +600,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.09, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 12, y: 12, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2226807015158001929}

@@ -1,14 +1,13 @@
-using UnityEngine;
-using TMPro; // Requires Unity TextMeshPro
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class ComboCounterHUD : MonoBehaviour
+public class ComboCounter : MonoBehaviour
 {
-    public static ComboCounterHUD Instance { get; private set; }
+    public static ComboCounter Instance { get; private set; }
 
     [Header("UI Components")]
-    [Tooltip("Drag your TextMeshProUGUI component here")]
+    [Tooltip("Drag your legacy UI Text component here")]
     public Text comboText;
 
     [Header("Combo Rules")]
@@ -40,7 +39,7 @@ public class ComboCounterHUD : MonoBehaviour
         if (comboText != null)
         {
             originalTextScale = comboText.transform.localScale;
-            comboText.enabled = false; // Keep it hidden until the first hit connects
+            comboText.enabled = false; // Hide until first hit connects
         }
     }
 
@@ -48,7 +47,6 @@ public class ComboCounterHUD : MonoBehaviour
     {
         if (!isComboActive) return;
 
-        // Count down the decay timer
         currentExpiryTimer -= Time.deltaTime;
 
         if (currentExpiryTimer <= 0f)
@@ -57,9 +55,6 @@ public class ComboCounterHUD : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Increments the combo counter, pulses the UI text scale, and resets the decay timer.
-    /// </summary>
     public void AddHit(int hitsToAdd = 1)
     {
         currentComboCount += hitsToAdd;
@@ -70,11 +65,10 @@ public class ComboCounterHUD : MonoBehaviour
         {
             if (!comboText.enabled) comboText.enabled = true;
 
-            // Update Text and Style Layout
-            comboText.text = $"{currentComboCount} <size=40%>Combo</size>"; 
+            comboText.text = $"{currentComboCount} <size=40%>Combo</size>";
             UpdateComboTierColor();
 
-            // Trigger explosive size pulse
+            // Trigger a perfectly clean scale pop forward with ZERO position shifts!
             if (activePulseRoutine != null) StopCoroutine(activePulseRoutine);
             activePulseRoutine = StartCoroutine(PulseTextRoutine());
         }
@@ -91,13 +85,11 @@ public class ComboCounterHUD : MonoBehaviour
     private IEnumerator PulseTextRoutine()
     {
         Transform textTransform = comboText.transform;
-
-        // Instant massive scale pop forward on impact frame (Uses unscaled time to pop during hit-lag!)
-        Vector3 targetPopScale = originalTextScale * 1.4f;
+        Vector3 targetPopScale = originalTextScale * 1.35f;
         textTransform.localScale = targetPopScale;
 
         float elapsed = 0f;
-        float duration = 0.15f; // Fast snap back to base sizing
+        float duration = 0.15f;
 
         while (elapsed < duration)
         {
@@ -116,7 +108,6 @@ public class ComboCounterHUD : MonoBehaviour
 
         if (comboText != null)
         {
-            // Simple instant drop out. You can add a fade animation here later if desired!
             comboText.enabled = false;
         }
     }

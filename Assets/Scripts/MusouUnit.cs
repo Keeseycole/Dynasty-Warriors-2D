@@ -7,6 +7,32 @@ public class MusouUnit : sleepEnemy
     public enum Team { PlayerSide, EnemySide, Neutral }
 
     public enum AIMission { FollowLeader, CaptureBase, AttackCommander }
+
+    // ========================================================================
+    // 🟩 THE MASTER NPC STATS SYSTEM (NEW)
+    // Bundles all core numerical properties into a highly optimized, single struct.
+    // [System.Serializable] allows you to tune these numbers right inside the Inspector!
+    // ========================================================================
+    [System.Serializable]
+    public struct NPCStats
+    {
+    
+        [Header("Combat Attributes")]
+        public float maxHealth;
+        public int attackPower;
+        public int defensePower;
+
+        [Header("Tactical Mechanics")]
+        [Range(0, 100)]
+        [Tooltip("Higher morale increases attack speed and helps win off-screen background battles!")]
+        public int morale;
+
+    }
+
+    [Header("Unit Stat Assignment Block")]
+    public NPCStats stats; // Exposes your custom data struct to the editor window!
+
+
    
     public AIMission currentMission = AIMission.FollowLeader;
     public Transform missionTarget; // This could be a Base or the Commander
@@ -20,7 +46,7 @@ public class MusouUnit : sleepEnemy
     public float detectionRange = 10f;
     public float followDistance = 3f;
     public float strafeSpeed = 3f;
-    public float damageToGive = 10f;
+  
 
     [Header("Aggression Settings")]
     public float baseAggressionScore;
@@ -36,7 +62,6 @@ public class MusouUnit : sleepEnemy
     private List<System.Func<IEnumerator>> comboList;
     public bool isBusy = false;
     private Vector2 myFormationSpot;
-    private Health health;
     public Transform playerTransform;
 
     private Coroutine recoveryCoroutine;
@@ -73,9 +98,16 @@ public class MusouUnit : sleepEnemy
         "If there are multiple, the level ends when all of them are defeated!")]
     public bool isStageCommander;
 
-    // Inside MusouUnit.cs
+    public bool isLunging = false;
+
+    [Header("Combat Lunge Juice Settings")]
+    public float lungeForce = 8f;
+    public float lungeDuration = 0.15f; // Short, snappy burst of forward speed
+
     public override void Start()
     {
+
+        SafeSceneInitializationRoutine();
 
         if (GetComponent<PlayerController>() != null || GetComponentInParent<PlayerController>() != null)
         {
@@ -86,7 +118,6 @@ public class MusouUnit : sleepEnemy
             return;
         }
 
-        // --- Standard AI Soldier / Officer Startup Configurations (Untouched) ---
         base.Start();
 
         if (BattlefieldManager.Instance != null)
@@ -95,9 +126,7 @@ public class MusouUnit : sleepEnemy
         }
 
         baseAggressionScore = aggressionScore;
-        health = GetComponent<Health>();
-        if (health == null) health = GetComponentInChildren<Health>();
-
+   
         if (playerTransform == null)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -152,14 +181,15 @@ public class MusouUnit : sleepEnemy
     }
     protected override void FixedUpdate()
     {
-        // 1. Execute standard distance tracking and path calculations first
+        // 1. Execute standard distance tracking and path calculations safely out of combat frames
         CheckDistance();
 
-        // ========================================================================
-        // 🔥 THE COMPREHENSIVE COMBAT & TRANSITION PADLOCK:
-        // If the unit is playing an attack windup, hit-stunned, staggered, or
-        // exiting a strafe/movement state, forcibly wipe out all physics drift!
-        // ========================================================================
+     
+        if (currentState == EnemyState.Strafe || currentState == EnemyState.Block)
+        {
+            return; // Let StrafeBehavior() or Block() drive the physical Rigidbody channels completely!
+        }
+
         if (currentState == EnemyState.Death || currentState == EnemyState.Stagger)
         {
             if (rb != null)
@@ -167,12 +197,26 @@ public class MusouUnit : sleepEnemy
                 rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
             }
-            return; // Exit early; do not let background pathfinding push a stunned unit!
+            return;
+        }
+
+        if (currentState == EnemyState.Attack)
+        {
+            if (rb != null)
+            {
+                float speedSqr = rb.linearVelocity.sqrMagnitude;
+
+                // The explosive lunge frame step has completed and slowed back down!
+                if (speedSqr < 1.5f)
+                {
+                    rb.linearVelocity = Vector2.zero;
+                    rb.angularVelocity = 0f;
+                }
+            }
+            return; // Exit early safely out of standard pathfinding movement loops!
         }
 
         // 2. THE EXPANDED DESTINATION ANCHOR:
-        // If the grunt is Idle or has finished its tactical moves and its leader 
-        // has come to a halt, completely freeze its physics body to stop ice-skating!
         if (currentState == EnemyState.Idle && myLeader != null)
         {
             if (myLeader.rb != null && myLeader.rb.linearVelocity.sqrMagnitude <= 0.01f)
@@ -192,6 +236,40 @@ public class MusouUnit : sleepEnemy
         if (animator == null) return;
 
         if (isBusy || currentState == EnemyState.Stagger || animator.GetBool("isHit")) return;
+
+        // ========================================================================
+        // 🟩 THE MACRO MISSION INJECTOR (FIXED PLACEMENT):
+        // We process your squad leader follows and macro point calculations BEFORE 
+        // the follower protection layer checks for early returns! This ensures 
+        // your path variable chains update perfectly on schedule.
+        // ========================================================================
+        if (currentTarget == null && currentMission == AIMission.FollowLeader)
+        {
+            ExecuteMacroMission();
+        }
+
+        // ========================================================================
+        // 🟩 THE PATH OVERRIDE PROTECTION LAYER:
+        // ========================================================================
+        var pathFollower = GetComponent<GenericTransformFollower>() ?? GetComponentInParent<GenericTransformFollower>();
+        if (pathFollower != null && pathFollower.enabled && pathFollower.isMoving)
+        {
+            // Forcefully keep your animator boolean parameter set to true!
+            animator.SetBool("isMoving", true);
+
+            // Optional Blend Tree support: If your script uses directional vectors on the march,
+            // we can dynamically pass its current checkpoint direction headings straight to your hashes!
+            Vector2 myPos = transform.position;
+            if (pathFollower.pathPoints != null && pathFollower.currentPointIndex < pathFollower.pathPoints.Count)
+            {
+                Vector2 nextHeading = ((Vector2)pathFollower.pathPoints[pathFollower.currentPointIndex].position - myPos).normalized;
+                animator.SetFloat("moveX", nextHeading.x);
+                animator.SetFloat("moveY", nextHeading.y);
+            }
+
+            // If they are just marching and have no active combat target yet, exit safely now!
+            if (currentTarget == null) return;
+        }
 
         // 🔥 THE CRITICAL CORRECTION: Always read the physical position of the moving child sprite body!
         Vector2 physicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
@@ -239,13 +317,7 @@ public class MusouUnit : sleepEnemy
             }
             return;
         }
-
-        if (currentMission == AIMission.FollowLeader)
-        {
-            ExecuteMacroMission();
-        }
     }
-
     // --- MOVEMENT ---
     public void MoveTowards(Vector2 targetPos, bool isChasing)
     {
@@ -314,37 +386,67 @@ public class MusouUnit : sleepEnemy
         bool readyToSwing = Time.time >= nextAttackTime;
         float diceRoll = Random.value;
 
-        // 🔥 THE VISUAL INSPECTOR FIX:
-        // Instead of using a hidden local variable, overwrite the main class variable 
-        // directly so Unity can display the active, changing value right in your Inspector!
-     if (MoraleManager.Instance != null)
-{
-    // Pass the immutable base setting into the calculator, and store the output in our active tracker!
-    aggressionScore = MoraleManager.Instance.GetAdjustedAggression(this.unitTeam, baseAggressionScore);
-}
-
-        if (readyToSwing && diceRoll < aggressionScore) // Evaluates against the newly visible score
+        if (MoraleManager.Instance != null)
         {
-            if (AttackDirector.instance != null && AttackDirector.instance.RequestAttackToken(this, currentTarget))
+            aggressionScore = MoraleManager.Instance.GetAdjustedAggression(this.unitTeam, baseAggressionScore);
+        }
+
+        if (readyToSwing && diceRoll < aggressionScore)
+        {
+            bool directorIsPresent = AttackDirector.instance != null;
+            bool tokenAcquired = directorIsPresent && AttackDirector.instance.RequestAttackToken(this, currentTarget);
+
+            if (!directorIsPresent || tokenAcquired)
             {
                 if (SoundManager.Instance != null)
                 {
                     SoundManager.Instance.PlaySFX("swordswing", 0.6f, 0.08f);
                 }
 
+                currentState = EnemyState.Attack;
+
+             
                 int randomCombo = Random.Range(0, comboList.Count);
                 activeAction = StartCoroutine(comboList[randomCombo]());
                 yield return activeAction;
-                nextAttackTime = Time.time + attackCooldown;
-                AttackDirector.instance.ReturnAttackToken(this, currentTarget);
-            }
-            else yield return StartCoroutine(Block(Random.Range(0.5f, 1f)));
-        }
-        else if (diceRoll > 0.8f) yield return StartCoroutine(Block(Random.Range(1f, 1.5f)));
-        else yield return StartCoroutine(StrafeBehavior());
 
-        isBusy = false;
+                // 🔥 THE TACTICAL BREAK: Enforce a solid internal cooldown window after swinging!
+                // Change 1.5f and 3.0f to adjust how long they wait before attacking again.
+                attackCooldown = Random.Range(1.5f, 3.0f);
+                nextAttackTime = Time.time + attackCooldown;
+
+                if (directorIsPresent && tokenAcquired)
+                {
+                    AttackDirector.instance.ReturnAttackToken(this, currentTarget);
+                }
+
+                currentState = EnemyState.Idle;
+            }
+            else
+            {
+                // Attack director token queue was completely full, drop into a brief defensive block
+                yield return StartCoroutine(Block(Random.Range(0.5f, 1f)));
+            }
+        }
+        else
+        {
+  
+            float tacticalDiceRoll = Random.value;
+
+            if (tacticalDiceRoll > 0.8f)
+            {
+                yield return StartCoroutine(Block(Random.Range(0.8f, 1.5f)));
+            }
+            else
+            {
+                // This block will now execute perfectly during their cooldown windows!
+                yield return StartCoroutine(StrafeBehavior());
+            }
+        }
+
+        isBusy = false; // Release brain gate cleanly for the next evaluation pass
     }
+
     IEnumerator PlayAttack(string animName)
     {
         if (currentTarget == null) yield break;
@@ -396,7 +498,7 @@ public class MusouUnit : sleepEnemy
 
             Vector2 targetVelocity = (sideDir + (correctionDir * 0.5f)).normalized * strafeSpeed;
 
-      
+
             rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, targetVelocity, strafeSpeed * Time.deltaTime * 8f);
 
             // Safety fallback velocity hard cap inside the frame loop
@@ -419,6 +521,7 @@ public class MusouUnit : sleepEnemy
 
         animator.SetBool("isStrafing", false);
     }
+
     private IEnumerator Block(float blockTime)
     {
         ChangeState(EnemyState.Block);
@@ -581,13 +684,22 @@ public class MusouUnit : sleepEnemy
     // Inside MusouUnit.cs
     public void ApplyDamageToTarget()
     {
+
         if (currentTarget == null) return;
 
         Vector2 myPos = (rb != null) ? rb.position : (Vector2)transform.position;
         Vector2 knockbackDir = ((Vector2)currentTarget.position - myPos).normalized;
         float force = 5f;
 
-        float activeStrikeDamage = (damageToGive > 0.1f) ? damageToGive : 15f;
+        float baseDamage = (stats.attackPower > 0) ? stats.attackPower : 15f;
+
+        // ========================================================================
+        // 🔥 THE MORALE ATTACK POWER BOOST (NEW):
+        // Turns your 0-100 morale number into a raw damage multiplier dynamically!
+        // Highly motivated troops deal significantly heavier strikes.
+        // ========================================================================
+        float moraleMultiplier = 1.0f + ((stats.morale - 50f) / 100f);
+        float activeStrikeDamage = baseDamage * moraleMultiplier;
 
         // 🟢 DUAL-FACTION ARCHITECTURE SETUP:
         // First, check if the current target is an NPC/Enemy Unit (uses standard Health)
@@ -608,12 +720,11 @@ public class MusouUnit : sleepEnemy
 
         if (playableHeroHealth != null && playableHeroHealth.currentHealth > 0)
         {
-            Vector2 targetKnockbackForce = knockbackDir * hitForce; // Use enemy's custom impact values
+            // Fallback guard: Uses 'force' multiplier if your script lacks an explicit 'hitForce' property
+            Vector2 targetKnockbackForce = knockbackDir * (hitForce > 0.1f ? hitForce : force);
 
             // Route the damage pass cleanly into your player's accurate tracking script parameters
             playableHeroHealth.TakeDamage(activeStrikeDamage, myPos, targetKnockbackForce);
-
-           // Debug.Log($"<color=red>[ENEMY ATTACK HIT]:</color> Unit <b>{gameObject.name}</b> successfully struck the player for {activeStrikeDamage} damage!");
         }
     }
 
@@ -737,6 +848,115 @@ public class MusouUnit : sleepEnemy
         float maxComboDist = attackRadius * 1.5f;
 
         return ((Vector2)currentTarget.position - myPos).sqrMagnitude <= (maxComboDist * maxComboDist);
+    }
+
+    public void TriggerLungeFromAnimationEvent()
+    {
+        // 1. Ensure our Rigidbody cache guard is completely populated on this frame
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        if (rb == null) return;
+
+        Vector2 stepDir = Vector2.down;
+        float force = 6f; // Standard default fallback step speed
+
+        // 🔹 TRACK THE DIRECTION VECTOR
+        // Check if this object is the player controller script layer
+        var playerCtrl = GetComponent<PlayerController>() ?? GetComponentInChildren<PlayerController>();
+        if (playerCtrl != null)
+        {
+            // Use the player's last recorded look/aim direction vector!
+            stepDir = playerCtrl.lastLookDir != Vector2.zero ? playerCtrl.lastLookDir : Vector2.down;
+        }
+        else if (currentTarget != null)
+        {
+            // If it's an AI unit with an active combat target, step straight toward them!
+            stepDir = ((Vector2)currentTarget.position - (Vector2)transform.position).normalized;
+        }
+        else
+        {
+            // Fallback: March in the direction they are currently moving
+            stepDir = rb.linearVelocity.sqrMagnitude > 0.01f ? rb.linearVelocity.normalized : Vector2.down;
+        }
+
+        // 🔹 TRACK THE LUNGE FORCE VALUE
+        var playerCombo = GetComponent<PlayerCombo>() ?? GetComponentInChildren<PlayerCombo>();
+        if (playerCombo != null)
+        {
+            // Player reads their explicit 5-stage combo tree parameters
+            int numericComboState = (int)playerCombo.currentComboState;
+            force = (numericComboState == 5) ? playerCombo.finisherStepForce : playerCombo.basicStepForce;
+        }
+        else
+        {
+            // AI units cleanly scale their lunge speed based on their baseline movement speed property
+            force = moveSpeed * 2.0f;
+        }
+
+        // 2. 🔥 EXPLOSIVE PHYSICAL IMPULSE SNAP: Launch the unit forward!
+        rb.linearVelocity = stepDir * force;
+
+        // 3. 🔥 SNAP-BRAKE SAFETY BUFFER:
+        // Run a short time-delayed routine to bring them to a dead stop so they don't slide!
+        StopCoroutine("ExecuteLungeBrakeRoutine");
+        StartCoroutine(ExecuteLungeBrakeRoutine());
+
+
+    }
+
+    private IEnumerator ExecuteLungeBrakeRoutine()
+    {
+        // Keep the lunge travel window short and crisp (0.06 seconds)
+        yield return new WaitForSeconds(0.06f);
+
+        if (rb != null)
+        {
+            // Slam the hard arcade brakes instantly!
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.Sleep(); // Instantly clears all cached momentum calculations
+        }
+    }
+
+    public void SyncIndividualWithGlobalMorale()
+    {
+        if (MoraleManager.Instance == null) return;
+
+        // 1. Fetch the correct faction score from the global manager instance
+        float globalFactionScore = (unitTeam == Team.PlayerSide) ? MoraleManager.Instance.playerFactionMorale : MoraleManager.Instance.enemyFactionMorale;
+
+        // 2. Map the 0-100 global rating directly into this individual unit's local data struct!
+        // We cast it to a whole number integer to match your NPCStats system requirements.
+        stats.morale = Mathf.RoundToInt(globalFactionScore);
+
+        // 3. Optional: Automatically adjust their animator speed based on confidence shifts!
+        //ApplyMoraleSpeedModifiers();
+    }
+
+    private IEnumerator SafeSceneInitializationRoutine()
+    {
+        yield return null; // Wait for Awake passes to clear
+
+        if (MoraleManager.Instance != null)
+        {
+            if (!MoraleManager.Instance.activeBattlefieldUnits.Contains(this))
+            {
+                MoraleManager.Instance.activeBattlefieldUnits.Add(this);
+            }
+            SyncIndividualWithGlobalMorale();
+        }
+
+        // ========================================================================
+        // 🟩 TIMING CLOCK INITIALIZATION (FIXED):
+        // Explicitly sets your next attack allowance frame directly to the current time,
+        // completely destroying any unassigned frame-one timing blocks!
+        // ========================================================================
+        nextAttackTime = Time.time;
+        if (attackCooldown <= 0.05f) attackCooldown = 2.0f; // Safe default pacing floor
+
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        if (animator == null) animator = GetComponent<Animator>() ?? GetComponentInChildren<Animator>();
+
+        isBusy = false; // Release the brain gate!
     }
 
 

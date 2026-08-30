@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 2212902687019643548}
   - component: {fileID: 357600757256609650}
   - component: {fileID: 5462849510595952536}
+  - component: {fileID: 7876300812437564133}
   m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
@@ -404,6 +405,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e8689a9cf5b1488f382859d167b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationProxy
+--- !u!114 &7876300812437564133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184337770769947645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
 --- !u!1 &1715940991600306269
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,10 +583,14 @@ MonoBehaviour:
   myLeader: {fileID: 0}
   squadIndex: 1
   stoppingDistance: 1
+  combatOffset: {x: 0, y: 0}
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!70 &4466764002490503866
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

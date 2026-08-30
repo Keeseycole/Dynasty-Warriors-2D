@@ -816,6 +816,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8575124810695305364, guid: fce2d7a9375dd6e4abe71dfbd539a3af, type: 3}
       insertIndex: -1
       addedObject: {fileID: 639685105582159465}
+    - targetCorrespondingSourceObject: {fileID: 8613588162633364175, guid: fce2d7a9375dd6e4abe71dfbd539a3af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4535523082537019325}
   m_SourcePrefab: {fileID: 100100000, guid: fce2d7a9375dd6e4abe71dfbd539a3af, type: 3}
 --- !u!50 &2995750931535635443 stripped
 Rigidbody2D:
@@ -882,10 +885,14 @@ MonoBehaviour:
   myLeader: {fileID: 0}
   squadIndex: 0
   stoppingDistance: 0.2
+  combatOffset: {x: 0, y: 0}
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 4668718545536071583}
   - {fileID: 6661077208924768782}
@@ -897,6 +904,23 @@ MonoBehaviour:
   pathWaypoints: []
   currentWaypointIndex: 0
   PathContainer: {fileID: 0}
+--- !u!1 &4525251727742802903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8613588162633364175, guid: fce2d7a9375dd6e4abe71dfbd539a3af, type: 3}
+  m_PrefabInstance: {fileID: 5279750058236995864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4535523082537019325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4525251727742802903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
 --- !u!1001 &5923300291491893317
 PrefabInstance:
   m_ObjectHideFlags: 0

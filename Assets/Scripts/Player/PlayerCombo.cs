@@ -11,12 +11,12 @@ public enum ComboState
     Attack3,
     Attack4,
     Attack5,
-    // 🔥 THE MAPPED CHARGE ATTACK VARIATIONS:
-    Charge1, // C1: Pure heavy opener from idle
-    Charge2, // C2: Launcher branching off Attack1
-    Charge3, // C3: Stun combo branching off Attack2
-    Charge4, // C4: Crowd sweeper branching off Attack3
-    Charge5  // C5: Mid-air bounce branching off Attack4
+   
+    Charge1, 
+    Charge2, 
+    Charge3, 
+    Charge4, 
+    Charge5  
 }
 public class PlayerCombo : MonoBehaviour
 {
@@ -29,13 +29,10 @@ public class PlayerCombo : MonoBehaviour
     private bool ActivateResetTimer;
     private float defultComboTimer = .6f;
     private float currentComboTimer;
-    private ComboState currentComboState;
+    public ComboState currentComboState;
 
     public bool isAttacking;
 
-    [Header("Debug Live Feeds")]
-    [Tooltip("Watch this value live while hitting enemies. It will snap to 0 on impact!")]
-    public float liveAnimatorSpeedTracker;
 
     [Header("Attack Movement")]
     public float basicStepForce = 3f;
@@ -166,9 +163,7 @@ public class PlayerCombo : MonoBehaviour
         // 2. 🔥 THE REINFORCED CAPACITY FAILURE GUARD:
         if (selectedCharacterProfile != null)
         {
-            // Debug confirmation to ensure your console prints the correct active warrior's name
-            Debug.Log($"<color=#00FF00>[COMBAT PROFILE SECURED]:</color> Combo engine locked onto active data profile: <b>{selectedCharacterProfile.characterName}</b>");
-
+          
             maxMusouEnergy = Mathf.Max(selectedCharacterProfile.maxMusouCapacity, 100f);
 
             float calculatedReach = Mathf.Max(selectedCharacterProfile.uniqueAttackRadius, 1.6f);
@@ -190,7 +185,7 @@ public class PlayerCombo : MonoBehaviour
         {
             maxMusouEnergy = 100f;
             attackRange = baseAttackRadius;
-            Debug.LogWarning("<color=red>[PROFILE WARNING]:</color> Could not find any active character select data! Reverting to 100 max fallback limits.");
+          
         }
 
         // 3. Initialize the slider visuals AFTER character data capacity metrics are verified
@@ -203,6 +198,8 @@ public class PlayerCombo : MonoBehaviour
     }
    void Update()
     {
+
+
         TrackMusouSpecialInput();
 
         // 🔥 THE PASSIVE EMERGENCY CRITICAL REGEN FILL:
@@ -210,11 +207,7 @@ public class PlayerCombo : MonoBehaviour
 
         if (isExecutingMusouSpecial) return;
 
-        if (myNativeAnimator != null)
-        {
-            liveAnimatorSpeedTracker = myNativeAnimator.speed;
-        }
-
+    
         if (myNativeAnimator != null && myNativeAnimator.speed == 0f)
         {
             if (rb != null) rb.linearVelocity = Vector2.zero;
@@ -228,7 +221,7 @@ public class PlayerCombo : MonoBehaviour
     public void InitializeCharacterRange(float customRangeData)
     {
         baseAttackRadius = customRangeData;
-        Debug.Log($"<color=#00FFFF>[WEAPON INITIALIZED]:</color> Character weapon reach dynamically set to <b>{baseAttackRadius}</b> units based on character select profile choice.");
+       
     }
     public void ProcessHeroAttackInput(InputAction.CallbackContext context)
     {
@@ -241,7 +234,7 @@ public class PlayerCombo : MonoBehaviour
         if (Time.time < nextAllowedStrikeTime)
         {
             inputQueuedForNextAttack = true;
-            Debug.Log("<color=yellow>[PACE GATE]:</color> Input successfully queued into the combo buffer layout.");
+           
             return;
         }
 
@@ -268,7 +261,7 @@ public class PlayerCombo : MonoBehaviour
                 if (currentComboState >= ComboState.Attack1 && currentComboState < ComboState.Attack5)
                 {
                     currentComboState++;
-                    Debug.Log($"<color=yellow>[INPUT PRE-ADVANCED]:</color> Buffered upcoming strike state to: <b>{currentComboState}</b>");
+                   
                 }
                 return;
             }
@@ -326,7 +319,7 @@ public class PlayerCombo : MonoBehaviour
         // 🔥 THE VALIDATION GATE: Keep spelling checks independent of case-sensitivity
         if (myNativeAnimator != null && !HasAnimatorParameter(myNativeAnimator, requiredParameterName))
         {
-            Debug.LogWarning($"<color=orange>[COMBO CAP OVERRIDE]:</color> Selected character does not have <b>{requiredParameterName}</b> configured yet! Safety reset triggered.");
+           
 
             if (!triggerChargeAttack && currentComboState != ComboState.None)
             {
@@ -341,10 +334,10 @@ public class PlayerCombo : MonoBehaviour
         }
 
         // Standard audio feedback
-        if (SoundManager.Instance != null)
-        {
-            SoundManager.Instance.PlaySFX("swordswing", 0.8f, 0.05f);
-        }
+      //  if (SoundManager.Instance != null)
+       // {
+        //    SoundManager.Instance.PlaySFX("swordswing", 0.8f, 0.05f);
+       // }
 
         // Sync your global structural tracking state
         currentComboState = absoluteStrikeSnapshot;
@@ -363,14 +356,6 @@ public class PlayerCombo : MonoBehaviour
             playerController.currentState = PlayerState.attack;
         }
 
-        float force = isHeavyStrike ? finisherStepForce : basicStepForce;
-        Vector2 stepDir = playerController != null ? playerController.lastLookDir : Vector2.down;
-
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-            rb.AddForce(stepDir * force, ForceMode2D.Impulse);
-        }
 
         // Value routers matching parameters dynamically based on your configuration parameters setup
         if (myNativeAnimator != null)
@@ -447,15 +432,6 @@ public class PlayerCombo : MonoBehaviour
         if (playerController != null)
         {
             playerController.currentState = PlayerState.attack;
-        }
-
-        float force = (currentComboState == ComboState.Attack5) ? finisherStepForce : basicStepForce;
-        Vector2 stepDir = playerController != null ? playerController.lastLookDir : Vector2.down;
-
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-            rb.AddForce(stepDir * force, ForceMode2D.Impulse);
         }
 
         switch (currentComboState)
@@ -603,7 +579,7 @@ public class PlayerCombo : MonoBehaviour
         // Forcefully push metrics once layout calculations are established [1]
         UpdateMusouUI();
 
-        Debug.Log($"<color=cyan>[UI REFRESH COMPLETE]:</color> Slider scales hard-locked at runtime. Max: <b>{maxMusouEnergy}</b>");
+      
     }
     public void TrackMusouSpecialInput()
   {
@@ -686,7 +662,7 @@ public class PlayerCombo : MonoBehaviour
         // Total Dynamic Duration = Baseline Duration + (Raw Single Points * Your Inspector Setting)
         float calculatedDynamicDuration = musouSpecialDuration + (singlePointsEarnedOverBaseline * bonusSecondsPerMusouUp);
 
-        Debug.Log($"<color=#FFD700>[MUSOU TIERS]:</color> Extra Capacity Points: {singlePointsEarnedOverBaseline} | Total Calculated Special Duration: <b>{calculatedDynamicDuration:F2}s</b>");
+       
 
         // Grant the player absolute combat invincibility using the new calculated length
         PlayerHealth health = GetComponent<PlayerHealth>();
@@ -709,7 +685,7 @@ public class PlayerCombo : MonoBehaviour
 
             if (!isHoldingAttack)
             {
-                Debug.Log("<color=#FF4500>[MUSOU CANCELED]:</color> Player released the input button. Terminating special early.");
+               
                 break;
             }
 
@@ -756,7 +732,7 @@ public class PlayerCombo : MonoBehaviour
 
         UpdateMusouUI();
 
-        Debug.Log($"<color=#FFD700>[MUSOU COMPLETE]:</color> Controls returned. Remaining Energy Saved: <b>{currentMusouEnergy}</b>");
+       
     }
     public float currentMusouEnergy
     {
@@ -832,9 +808,8 @@ public class PlayerCombo : MonoBehaviour
     }
     public void GainMusouEnergy(float energyAmount)
     {
-        // 🟢 LIGHTWEIGHT DEBUG LOG: 
-        // This will print to your console the exact frame the function executes!
-        Debug.Log("GainMusouEnergy was called! Earned Amount: " + energyAmount + " | Current Total: " + currentMusouEnergy);
+       
+
 
         if (isExecutingMusouSpecial) return;
 
@@ -934,9 +909,9 @@ public class PlayerCombo : MonoBehaviour
                 combinedStructuralKnockback
             );
 
-            if (ComboCounterHUD.Instance != null)
+            if (ComboCounter.Instance != null)
             {
-                ComboCounterHUD.Instance.AddHit(victimsThisFrame.Count);
+                ComboCounter.Instance.AddHit(victimsThisFrame.Count);
             }
 
             if (CameraShake.Instance != null)
@@ -1109,7 +1084,6 @@ public class PlayerCombo : MonoBehaviour
         // Block energy generation from getting hit if the player is currently executing their ultimate fury
         if (isExecutingMusouSpecial) return;
 
-        Debug.Log($"<color=#FF4500>[MUSOU HIT REWARD]:</color> Player took a strike! Injecting <b>{musouGainPerHitTaken}</b> energy fuel points.");
         GainMusouEnergy(musouGainPerHitTaken);
     }
 

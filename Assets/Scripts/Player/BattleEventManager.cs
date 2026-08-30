@@ -123,11 +123,7 @@ public class BattleEventManager : MonoBehaviour
         {
             if (victim != null && victim.currentHealth > 0)
             {
-                // ========================================================================
-                // 🔥 THE GENERAL'S SHIELD GUARD (FIXED):
-                // Check if this specific victim possesses an officer or leader script component.
-                // If true, we completely skip the kill operation, keeping them 100% safe!
-                // ========================================================================
+
                 MusouUnit unitData = victim.GetComponent<MusouUnit>() ?? victim.GetComponentInChildren<MusouUnit>();
                 if (unitData != null)
                 {
@@ -230,8 +226,6 @@ public class BattleEventManager : MonoBehaviour
                         }
                     }
                 }
-
-                Debug.LogWarning($"[RETREAT] {general.gameObject.name} successfully escaped!");
                 Destroy(general.gameObject);
             }
         }

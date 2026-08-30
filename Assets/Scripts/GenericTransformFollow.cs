@@ -15,9 +15,9 @@ public class GenericTransformFollower : MonoBehaviour
     [Header("Visual Blueprint Route")]
     public List<Transform> pathPoints = new List<Transform>();
 
-    private int currentPointIndex = 0;
+    public int currentPointIndex = 0;
     private Rigidbody2D rb;
-    private bool isMoving = false;
+    public bool isMoving = false;
 
     // --- AI SYSTEM CONNECTIONS ---
     private MonoBehaviour musouAIComponent;
@@ -86,19 +86,131 @@ public class GenericTransformFollower : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isMoving || pathPoints == null || currentPointIndex >= pathPoints.Count) return;
+        // 1. Check your C# script variable first. If the script pathing is off, stop!
+        if (!isMoving || pathPoints == null || currentPointIndex >= pathPoints.Count)
+        {
+            Animator unitAnim = GetComponent<Animator>() ?? GetComponentInChildren<Animator>();
+            if (unitAnim != null) unitAnim.SetBool("isMoving", false);
+            return;
+        }
 
-        // Safety retry: If player reference is lost, look it up again via tag
         if (playerTransform == null) FindPlayerTarget();
 
         Vector2 myPos = transform.position;
+
+        // ========================================================================
+        // 🟩 THE STRATEGIC COMBAT ENGAGEMENT BRAKE (FULL OFF-SCREEN + DIRECT MEMORY SQUAD FLASH):
+        // 1. Scenario A: Unit is close by and has acquired a live combat target.
+        // 2. Scenario B: Unit is far away / off-screen (currentTarget is null). 
+        //    Runs a wide, lightweight background grid lookup using activeUnits to 
+        //    intercept opposing columns out of view!
+        // ========================================================================
+        if (pathPriority == PathPriority.EngageOnSight)
+        {
+            MusouUnit baseUnit = GetComponent<MusouUnit>() ?? GetComponentInParent<MusouUnit>();
+            if (baseUnit != null)
+            {
+                bool shouldHaltForCombat = false;
+
+                if (baseUnit.currentTarget != null)
+                {
+                    shouldHaltForCombat = true;
+                }
+                else
+                {
+                    // Swaps team parameters cleanly: Enemies seek AllySide; Allies seek EnemySide
+                    MusouUnit.Team rivalTeam = (baseUnit.unitTeam == MusouUnit.Team.EnemySide) ?
+                                               MusouUnit.Team.PlayerSide : MusouUnit.Team.EnemySide;
+
+                    if (BattlefieldManager.Instance != null && BattlefieldManager.Instance.activeUnits != null)
+                    {
+                        var rivalUnitsList = BattlefieldManager.Instance.activeUnits;
+
+                        // Widen our off-screen scanning buffer by 1.5x so they don't miss long-distance lane cross-cuts!
+                        float offScreenRadius = baseUnit.detectionRange * 1.5f;
+                        float tacticalBrakeRadiusSqr = offScreenRadius * offScreenRadius;
+
+                        for (int i = 0; i < rivalUnitsList.Count; i++)
+                        {
+                            if (rivalUnitsList[i] != null && rivalUnitsList[i].currentState != EnemyState.Death)
+                            {
+                                // Safe from team validation bugs: Checks if the unit is actually on the rival team
+                                if (rivalUnitsList[i].unitTeam == rivalTeam)
+                                {
+                                    float distanceSqr = ((Vector2)rivalUnitsList[i].transform.position - myPos).sqrMagnitude;
+                                    if (distanceSqr <= tacticalBrakeRadiusSqr)
+                                    {
+                                        // Assign direct component transform reference and shake them into a Walk state!
+                                        baseUnit.currentTarget = rivalUnitsList[i].transform;
+                                        baseUnit.ChangeState(EnemyState.Walk);
+
+                                        shouldHaltForCombat = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // If combat is detected anywhere in range, lock down movement physics instantly
+                if (shouldHaltForCombat)
+                {
+                    if (rb != null)
+                    {
+                        rb.linearVelocity = Vector2.zero;
+                        rb.angularVelocity = 0f;
+                    }
+
+                    Animator enemyAnim = GetComponent<Animator>() ?? GetComponentInChildren<Animator>();
+                    if (enemyAnim != null)
+                    {
+                        enemyAnim.SetBool("isMoving", false);
+                    }
+
+                    // ========================================================================
+                    // 🟩 THE RE-ENGINEERED PERSISTENT LIST BROADCASTER (FIXED FOR ENEMIES):
+                    // Bypasses the dynamic combined activeUnits list entirely! By reading your 
+                    // manager's native, unchanging 'playerSideUnits' and 'enemySideUnits' arrays
+                    // directly, we guarantee references sync up flawlessly for off-screen enemies!
+                    // ========================================================================
+                    if (BattlefieldManager.Instance != null)
+                    {
+                        // 1. Select the specific data column based on this unit's true faction alignment
+                        var myFactionTargetList = (baseUnit.unitTeam == MusouUnit.Team.EnemySide) ?
+                                                   BattlefieldManager.Instance.enemySideUnits :
+                                                   BattlefieldManager.Instance.playerSideUnits;
+
+                        // 2. Identify the master commanding reference object
+                        MusouUnit trueCommanderRef = (baseUnit.myLeader != null) ? baseUnit.myLeader : baseUnit;
+
+                        // 3. Loop straight through the native list buffer cleanly with zero scope desyncs!
+                        for (int i = 0; i < myFactionTargetList.Count; i++)
+                        {
+                            MusouUnit platoonCandidate = myFactionTargetList[i];
+                            if (platoonCandidate != null && platoonCandidate.currentState != EnemyState.Death)
+                            {
+                                // Flash the unit if they are the commander, OR if their leader reference matches
+                                if (platoonCandidate == trueCommanderRef || platoonCandidate.myLeader == trueCommanderRef)
+                                {
+                                    Health teammateHealth = platoonCandidate.GetComponent<Health>() ?? platoonCandidate.GetComponentInParent<Health>();
+                                    if (teammateHealth != null)
+                                    {
+                                        teammateHealth.ForceMinimapFlash(); // ◄── FORCES OFF-SCREEN ENEMIES ON LIVE!
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    return; // EXIT EARLY! Stand ground and halt pathing to fight background battles!
+                }
+            }
+        }
+
         Vector2 targetWaypointPos = pathPoints[currentPointIndex].position;
         Vector2 rawMoveDirection = (targetWaypointPos - myPos).normalized;
 
-        // ========================================================================
-        // 🔥 THE AUTOMATED MUSOU PROXIMITY MODE SWITCH (FIXED):
-        // Calculates how far away the player is to dynamically swap physics styles!
-        // ========================================================================
         bool playerIsClose = false;
         if (playerTransform != null)
         {
@@ -108,23 +220,29 @@ public class GenericTransformFollower : MonoBehaviour
 
         if (playerIsClose)
         {
-            // ⚔️ ACTION MODE ENGAGED: Clear collider exclusions so he has physical presence,
-            // then run the active continuous physics snowplow to throw fodder aside!
             if (generalCollider != null) generalCollider.excludeLayers = 0;
-
             SnowplowObstacleTroops(rawMoveDirection);
         }
         else
         {
-            // 🏃‍♂️ STRATEGIC GHOST MODE: Exclude the army layers entirely.
-            // The general glides straight through grunts, leaving them standing perfectly still!
             if (generalCollider != null) generalCollider.excludeLayers = armyLayersMask;
         }
 
-        // Smoothly drive straight down its travel lines
+        // Smoothly drive straight down its travel lines if no enemy is blockading us
         if (rb != null)
         {
             rb.linearVelocity = rawMoveDirection * movementSpeed;
+
+            // ========================================================================
+            // 🟩 THE ANIMATOR FORCE SYNC (FIXED):
+            // We use explicit string queries to set the parameter to true, ensuring
+            // it passes directly down to whichever child object holds your animations!
+            // ========================================================================
+            Animator unitAnim = GetComponent<Animator>() ?? GetComponentInChildren<Animator>();
+            if (unitAnim != null)
+            {
+                unitAnim.SetBool("isMoving", true); // ◄── FORCIBLY SET ANIMATOR PARAMETER
+            }
         }
 
         float distanceToPointSqr = (targetWaypointPos - myPos).sqrMagnitude;
@@ -133,6 +251,7 @@ public class GenericTransformFollower : MonoBehaviour
             AdvanceToNextPoint();
         }
     }
+
 
     /// <summary>
     /// Forcefully displaces any standard grunt soldiers blockading our travel path,

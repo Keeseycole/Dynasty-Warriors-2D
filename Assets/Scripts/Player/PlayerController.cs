@@ -34,9 +34,8 @@ public class PlayerController : MonoBehaviour
     public float playerKnockbackForce = 6f;
     [SerializeField] private LayerMask enemyFactionLayers;
 
-    // 🔥 THE MULTI-TARGET ANIMATION EVENT RECEIVER:
-    // This safely overrides the AI single-target restriction for the playable hero!
-    // 🔥 THE MULTI-TARGET ANIMATION EVENT RECEIVER:
+
+    [HideInInspector] PlayerCombo playerCombo;
     public void ApplyDamageToTarget()
     {
         
@@ -102,6 +101,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        playerCombo = GetComponent<PlayerCombo>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
@@ -166,24 +166,22 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        // 🟢 FIXED: Target your script's main class-level cached 'rb' variable directly!
         if (rb != null)
         {
+     
+            if (currentState == PlayerState.attack || (playerCombo != null && playerCombo.isAttacking))
+            {
+                return;
+            }
+
             if (currentState == PlayerState.walk)
             {
-                
-                // Pull your non-zero movement speed variables directly
                 rb.linearVelocity = moveInput * moveSpeed;
             }
             else if (currentState == PlayerState.idle)
             {
-                rb.linearVelocity = Vector2.zero; // Stop instantly when keys are released
+                rb.linearVelocity = Vector2.zero;
             }
-        }
-        else
-        {
-            // Emergency fallback if rb somehow cleared during the scene transition
-            rb = GetComponent<Rigidbody2D>();
         }
     }
     private void AnimateChar()
@@ -219,7 +217,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-  
     private void OnDrawGizmos()
     {
         // THE ANIMATION GATE: Only render the attack circle if the player is actively swinging!
@@ -241,6 +238,8 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawWireSphere(attackCenterPoint, playerAttackRange * 0.75f);
         }
     }
+
+
 
     public void Knock(Rigidbody2D targetRb, float knockbackTime)
     {

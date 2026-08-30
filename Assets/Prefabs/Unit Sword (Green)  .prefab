@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9221408490340958671}
   - component: {fileID: 5213403615157214053}
   - component: {fileID: 8057307090613305104}
+  - component: {fileID: 1237729107610344980}
   m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
@@ -128,6 +129,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e8689a9cf5b1488f382859d167b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationProxy
+--- !u!114 &1237729107610344980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266320199715194620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
 --- !u!1 &267527818503353794
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,6 +894,11 @@ MonoBehaviour:
   animator: {fileID: 2675742236345740568}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 40
+    attackPower: 7
+    defensePower: 3
+    morale: 1
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -891,7 +909,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -905,10 +922,14 @@ MonoBehaviour:
   myLeader: {fileID: 0}
   squadIndex: 1
   stoppingDistance: 1
+  combatOffset: {x: 0, y: 0}
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!70 &5548280234137287897
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1471,6 +1492,11 @@ MonoBehaviour:
   animator: {fileID: 1029169268767300862}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 40
+    attackPower: 7
+    defensePower: 3
+    morale: 1
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -1481,7 +1507,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -1489,16 +1514,20 @@ MonoBehaviour:
   separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
-  attackStepForce: 1
+  attackStepForce: 3
   hitForce: 2
   enemyHitLagDuration: 0
   myLeader: {fileID: 0}
   squadIndex: 1
   stoppingDistance: 1
+  combatOffset: {x: 0, y: 0}
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!70 &7822697435210611880
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2589,6 +2618,11 @@ MonoBehaviour:
   animator: {fileID: 7744698961744318721}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 50
+    attackPower: 7
+    defensePower: 5
+    morale: 1
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -2599,7 +2633,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -2613,10 +2646,14 @@ MonoBehaviour:
   myLeader: {fileID: 0}
   squadIndex: 0
   stoppingDistance: 0.2
+  combatOffset: {x: 0, y: 0}
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 172329426963819938}
   - {fileID: 775832101087752888}
@@ -2734,6 +2771,7 @@ GameObject:
   - component: {fileID: 2229136537947735850}
   - component: {fileID: 1029169268767300862}
   - component: {fileID: 2579206304797457532}
+  - component: {fileID: 417160331450881423}
   m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
@@ -2850,6 +2888,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e8689a9cf5b1488f382859d167b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationProxy
+--- !u!114 &417160331450881423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354261870389674611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
 --- !u!1 &3480478061259409677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3446,6 +3496,7 @@ GameObject:
   - component: {fileID: 2273696262054298978}
   - component: {fileID: 7744698961744318721}
   - component: {fileID: 6535539706448868061}
+  - component: {fileID: 4257911257175559123}
   m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
@@ -3562,6 +3613,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e8689a9cf5b1488f382859d167b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationProxy
+--- !u!114 &4257911257175559123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167371585209386482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
 --- !u!1 &4396744701809030680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4192,6 +4255,7 @@ GameObject:
   - component: {fileID: 5482649718868635478}
   - component: {fileID: 2245407725304738144}
   - component: {fileID: 908046315289427018}
+  - component: {fileID: 6856244403409552143}
   m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
@@ -4308,6 +4372,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e8689a9cf5b1488f382859d167b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationProxy
+--- !u!114 &6856244403409552143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686493133821497880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
 --- !u!1 &4854077552846649641
 GameObject:
   m_ObjectHideFlags: 0
@@ -6500,6 +6576,11 @@ MonoBehaviour:
   animator: {fileID: 7227899867804262971}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 40
+    attackPower: 7
+    defensePower: 3
+    morale: 1
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -6510,7 +6591,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -6518,16 +6598,20 @@ MonoBehaviour:
   separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
-  attackStepForce: 1
-  hitForce: 2
+  attackStepForce: 3
+  hitForce: 3
   enemyHitLagDuration: 0
   myLeader: {fileID: 0}
   squadIndex: 1
   stoppingDistance: 1
+  combatOffset: {x: 0, y: 0}
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!70 &8592982723905236640
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -6801,6 +6885,11 @@ MonoBehaviour:
   animator: {fileID: 2245407725304738144}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -6811,7 +6900,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -6819,16 +6907,20 @@ MonoBehaviour:
   separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
-  attackStepForce: 1
+  attackStepForce: 3
   hitForce: 2
   enemyHitLagDuration: 0
   myLeader: {fileID: 0}
   squadIndex: 1
   stoppingDistance: 1
+  combatOffset: {x: 0, y: 0}
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!70 &369097538745577411
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -7160,6 +7252,11 @@ MonoBehaviour:
   animator: {fileID: 5213403615157214053}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 40
+    attackPower: 7
+    defensePower: 3
+    morale: 1
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -7170,7 +7267,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -7184,10 +7280,14 @@ MonoBehaviour:
   myLeader: {fileID: 0}
   squadIndex: 1
   stoppingDistance: 1
+  combatOffset: {x: 0, y: 0}
   personalSpaceRadius: 1.5
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!70 &3800553574497006131
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -7779,6 +7879,7 @@ GameObject:
   - component: {fileID: 2521682478232272162}
   - component: {fileID: 7227899867804262971}
   - component: {fileID: 2899356582147348539}
+  - component: {fileID: 6297752764072030672}
   m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
@@ -7895,6 +7996,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e8689a9cf5b1488f382859d167b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationProxy
+--- !u!114 &6297752764072030672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8748927912314986225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
 --- !u!1 &8876571549703143190
 GameObject:
   m_ObjectHideFlags: 0
@@ -8155,6 +8268,7 @@ GameObject:
   - component: {fileID: 7503430218276054293}
   - component: {fileID: 2675742236345740568}
   - component: {fileID: 5147731822775243047}
+  - component: {fileID: 4469064241865483832}
   m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
@@ -8271,6 +8385,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e8689a9cf5b1488f382859d167b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationProxy
+--- !u!114 &4469064241865483832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9087074884686518526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
 --- !u!1 &9175958839516759840
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,8 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class FireAttack : MonoBehaviour
 {
-
     private PolygonCollider2D polygonCollider;
     private bool zoneActivated = false;
 
@@ -61,21 +60,29 @@ public class FireAttack : MonoBehaviour
             worldPoints[i] = polygonCollider.transform.TransformPoint(localPoints[i]);
         }
 
-        // 2. Query ALL registered combat units currently alive in your game via the BattleManager tracking registry
-        if (BattleManager.Instance == null || BattleManager.Instance.activeUnits == null)
+        // ========================================================================
+        // 🟩 BATTLEFIELD MANAGER INTEGRATION (FIXED):
+        // Pulls the active units directly out of your optimized BattlefieldManager
+        // property hook, completely killing the NullReferenceException crash!
+        // ========================================================================
+        if (BattlefieldManager.Instance == null)
         {
-            Debug.LogError("[TACTICAL] BattleManager.Instance.activeUnits is null or missing from your scene!");
+            Debug.LogError("[TACTICAL] BattlefieldManager.Instance is missing from your scene!");
             return victims;
         }
 
-        // Copy the list to avoid collection modification errors mid-frame
-        List<Health> allCurrentUnits = new List<Health>(BattleManager.Instance.activeUnits);
+        // Copy the list using our newly written activeUnits helper property to avoid collection errors mid-frame
+        List<MusouUnit> allCurrentUnits = new List<MusouUnit>(BattlefieldManager.Instance.activeUnits);
 
-        foreach (Health unit in allCurrentUnits)
+        foreach (MusouUnit unit in allCurrentUnits)
         {
-            if (unit == null || unit.currentHealth <= 0) continue;
+            if (unit == null) continue;
 
-            // Ensure we are only targeting the enemy army faction
+            // Fetch the primary Health component from the root or child layers safely
+            Health unitHealth = unit.GetComponent<Health>() ?? unit.GetComponentInChildren<Health>();
+            if (unitHealth == null || unitHealth.currentHealth <= 0) continue;
+
+            // Ensure we are only targeting the opposing enemy army faction
             if (unit.gameObject.CompareTag(targetTag))
             {
                 Vector2 unitPos = unit.transform.position;
@@ -83,9 +90,9 @@ public class FireAttack : MonoBehaviour
                 // 3. THE MATH CHECK: Use the Ray-Casting algorithm to test if the point is inside the shape
                 if (IsPointInPolygon(unitPos, worldPoints))
                 {
-                    if (!victims.Contains(unit))
+                    if (!victims.Contains(unitHealth))
                     {
-                        victims.Add(unit);
+                        victims.Add(unitHealth);
                     }
                 }
             }

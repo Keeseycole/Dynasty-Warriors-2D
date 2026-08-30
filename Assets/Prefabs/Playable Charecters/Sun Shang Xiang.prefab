@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1678298454639869850}
   - component: {fileID: 6354388681205620438}
   - component: {fileID: 8003941282916212199}
+  - component: {fileID: -6719827608536286427}
   m_Layer: 0
   m_Name: Sun Shang Xiang
   m_TagString: Untagged
@@ -127,3 +128,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e8689a9cf5b1488f382859d167b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationProxy
+--- !u!114 &-6719827608536286427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4270095478422082007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge

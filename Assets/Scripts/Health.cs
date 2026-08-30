@@ -6,6 +6,9 @@ using static MusouUnit;
 
 public class Health : MonoBehaviour
 {
+
+    private MusouUnit myUnitComponent;
+
     public float maxHealth;
     public FloatingHealthBar healthBar;
     public CharacterData stats;
@@ -56,6 +59,8 @@ public class Health : MonoBehaviour
     public GameObject gateBreachedConversationObject;
     private void Awake()
     {
+        myUnitComponent = GetComponent<MusouUnit>() ?? GetComponentInChildren<MusouUnit>();
+
         myCollider = GetComponent<Collider2D>();
         unitAI = GetComponent<MusouUnit>();
         rb = GetComponent<Rigidbody2D>();
@@ -102,74 +107,77 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage, Vector2 attackerPosition, Vector2 knockback, Animator attackerAnim, Rigidbody2D attackerRb)
     {
-       
+        float finalMitigatedDamage = damage;
+        int roundedTextValue = Mathf.RoundToInt(finalMitigatedDamage);
+        Vector2 textPopupSpawn = (Vector2)transform.position + Vector2.up * 1.2f;
+        Color textOutputColor = Color.white;
+
 
         if (currentHealth <= 0) return;
 
-
-        if (unitAI != null && unitAI.currentState == EnemyState.Block)
+        if (unitAI != null)
         {
-            // Set the shield flag to true so the HitParticleManager drops regular flesh splashes!
-            blockedOnThisFrame = true;
+            int defenseBuffer = unitAI.stats.defensePower;
 
-            if (isSimulating && SoundManager.Instance != null)
-            {
-                // Plays a crisp metallic blade clash sound instead of standard flesh slice impact
-                SoundManager.Instance.PlaySFX("ShieldBlock", 0.8f, 0.05f);
-            }
+            // 50 Morale = 1.0x baseline. 100 Morale = 1.5x defense power. 0 Morale = 0.5x defense power.
+            float moraleMultiplier = 1.0f + ((unitAI.stats.morale - 50f) / 100f);
+            float effectiveDefense = defenseBuffer * moraleMultiplier;
 
-            if (HitParticleManager.Instance != null)
-            {
-                // Calculate point of contact slightly out in front of the defender's center pivot
-                Vector2 attackDirection = ((Vector2)transform.position - attackerPosition).normalized;
-                Vector2 blockImpactPoint = (Vector2)transform.position - (attackDirection * 0.4f);
-
-                // Calls the upgraded manager using the custom Block enum for custom metal sparks & reverse shard spray
-                HitParticleManager.Instance.SpawnHitSparkUniversal(blockImpactPoint, HitParticleManager.AttackType.Block, attackDirection);
-            }
-
-            // Perfect Block mitigation (Change to 'damage *= 0.1f;' if you want 10% chip damage instead)
-            damage = 0f;
-
-            // Safely exit the method right here! This prevents any health reductions, hit-lag, audio triggers, 
-            // hit flash coroutines, or knockback physical trajectory pushes from evaluating.
-            return;
+            // Arcade formula: Final Damage = Raw Attack - (Defense / 2)
+            finalMitigatedDamage = Mathf.Max(1f, damage - (effectiveDefense * 0.5f));
         }
- 
 
-        // Standard raw damage calculations proceed cleanly if they were caught off-guard
-        currentHealth -= damage;
+        // REDUCE HEALTH: Subtracted exactly ONCE per combat impact frame!
+        currentHealth -= finalMitigatedDamage;
 
+        // ========================================================================
+        // 🟩 THE FLOATING DAMAGE TEXT VARIABLE DECLARATIONS (FIXED):
+        // This block provides the exact local declarations that your factory lines 
+        // need to clear error CS0103 and compile flawlessly!
+        // ========================================================================
+        if (isSimulating && DamageNumberFactory.Instance != null)
+        {
+
+            if (gameObject.CompareTag("Player"))
+            {
+                textOutputColor = new Color(1f, 0.25f, 0.25f); // Red alert color for player damage
+            }
+            else if (roundedTextValue > 12)
+            {
+                textOutputColor = new Color(1f, 0.85f, 0f); // Critical gold text for heavy hits!
+            }
+
+            // Calls your factory method pass safely now that variables exist!
+            DamageNumberFactory.Instance.BurstDamageNumber(roundedTextValue, textPopupSpawn, textOutputColor);
+        }
 
         if (isSimulating && HitLagManager.Instance != null && attackerAnim != null)
         {
             if (!attackerAnim.CompareTag("Player"))
             {
                 List<global::UnityEngine.MonoBehaviour> victimsList = new List<global::UnityEngine.MonoBehaviour> { this };
-                bool isHeavy = (damage > 12f || knockback.magnitude > 1.2f);
+                bool isHeavy = (finalMitigatedDamage > 12f || knockback.magnitude > 1.2f);
                 float selectedDuration = isHeavy ? HitLagManager.Instance.heavyHitLagDuration : HitLagManager.Instance.standardHitLagDuration;
 
                 HitLagManager.Instance.TriggerBasaraHitLag(attackerAnim, attackerRb, victimsList, selectedDuration);
             }
         }
-  
 
-        if (healthBar != null) healthBar.UpdateBar(currentHealth, maxHealth);
+        if (healthBar != null)
+        {
+            healthBar.UpdateBar(currentHealth, maxHealth);
+        }
 
-        // ========================================================
-        // THE AUDIO CULLING GATE: Completely silences clashing impact 
-        // sounds when units take damage out of the camera view range.
-        // ========================================================
+        // THE AUDIO CULLING GATE
         if (isSimulating && SoundManager.Instance != null)
         {
             SoundManager.Instance.PlaySFX("HitImpact", 0.7f);
 
-            if (damage > 12f)
+            if (finalMitigatedDamage > 12f)
             {
                 SoundManager.Instance.PlaySFX("HeavyImpact", 1f);
             }
         }
-        // ========================================================
 
         // 4. COMBAT FEEDBACK & SIMULATION
         if (isSimulating)
@@ -179,13 +187,11 @@ public class Health : MonoBehaviour
                 unitAI.TriggerHit(attackerPosition);
             }
 
-            // Delayed knockback so the unit flies backward AFTER the hit-lag freeze frame ends
             if (rb != null)
             {
                 StartCoroutine(DelayedKnockbackRoutine(knockback));
             }
 
-            // Visual Flash Trackers
             if (minimapFlashCoroutine == null)
             {
                 minimapFlashCoroutine = StartCoroutine(MinimapFlashTick());
@@ -196,14 +202,13 @@ public class Health : MonoBehaviour
         }
         else
         {
-            // Culled Units: Still blink on the minimap radar map layout when damaged!
             if (minimapFlashCoroutine == null)
             {
                 minimapFlashCoroutine = StartCoroutine(MinimapFlashTick());
             }
         }
 
-        // 5. DEATH CHECK & CLEANUP
+    // 5. DEATH CHECK & CLEANUP
         if (currentHealth <= 0)
         {
             if (hitFlashCoroutine != null) StopCoroutine(hitFlashCoroutine);
@@ -215,31 +220,78 @@ public class Health : MonoBehaviour
                 anim.SetBool("isBlocking", false);
                 anim.SetBool("isDead", true);
             }
+
+            // Standard enemy verification lines
+            bool isEnemyByTag = gameObject.CompareTag("Enemy") || gameObject.name.Contains("Grunt") || gameObject.name.Contains("Soldier");
+            bool isEnemyByAI = (unitAI != null && (unitAI.unitTeam == MusouUnit.Team.EnemySide || unitAI.unitTeam == Team.EnemySide));
+            bool isAnEnemyUnit = isEnemyByTag || isEnemyByAI;
+
+            if (isAnEnemyUnit)
+            {
+                // ========================================================================
+                // 🟩 THE RE-ENGINEERED RADAR MATRIX (DIAGNOSTIC FIXED):
+                // We check if the attackerAnim exists, then climb up its transform hierarchy
+                // to pull the true root GameObject name and script properties.
+                // ========================================================================
+                bool killedByPlayerDirectly = false;
+
+                if (attackerAnim != null)
+                {
+                    GameObject rootAttacker = attackerAnim.gameObject;
+                    
+                    // Trace up to find the true root object if the animator is nested inside a child layer
+                    if (attackerAnim.transform.parent != null)
+                    {
+                        // Check if the parent or root carries a custom AI movement component
+                        var isAIComponent = attackerAnim.GetComponentInParent<GenericTransformFollower>() ?? attackerAnim.GetComponent<GenericTransformFollower>();
+                        
+                        // 🔥 THE ULTIMATE AI ALLY EXCLUSION FILTER:
+                        // Even if their tag says "Player" by mistake, if they have a path follower script,
+                        // they are mathematically PROVEN to be an automated ally, not the real player!
+                        if (isAIComponent == null && (rootAttacker.CompareTag("Player") || attackerAnim.transform.parent.CompareTag("Player")))
+                        {
+                            killedByPlayerDirectly = true;
+                        }
+                    }
+                    else if (rootAttacker.CompareTag("Player") && rootAttacker.GetComponent<GenericTransformFollower>() == null)
+                    {
+                        killedByPlayerDirectly = true;
+                    }
+
+    
+                }
+
+                // Increments your text strings ONLY if the true player struck the blow!
+                if (killedByPlayerDirectly && KOCounter.instance != null)
+                {
+                    KOCounter.instance.AddKO();
+                }
+            }
+
             Die();
         }
     }
 
-    public void TakeDamage(float damageAmount, Vector2 attackerPosition, Vector2 knockbackVelocity, GameObject visualEffect = null, string customParameter = null)
+public void TakeDamage(float damageAmount, Vector2 attackerPosition, Vector2 knockbackVelocity, GameObject visualEffect = null, string customParameter = null)
+{
+    // 1. Convert the float stat cleanly to a whole number integer
+    int calculatedDamageValue = Mathf.RoundToInt(damageAmount);
+
+    // ========================================================================
+    // 🟩 REDIRECT SIGNATURE ALIGNMENT (FIXED SYNTAX):
+    // Explicitly passes component type definitions to the primary method instead of
+    // naked null fields, eliminating signature compilation crashes!
+    // ========================================================================
+    TakeDamage(calculatedDamageValue, attackerPosition, knockbackVelocity, (Animator)null, (Rigidbody2D)null);
+
+    // 3. HARD TRIGGER STAGGER: Force the enemy to break out of their AI pathfinding loops instantly!
+    if (unitAI != null)
     {
-        // 1. Convert the float stat cleanly to a whole number integer
-        int calculatedDamageValue = Mathf.RoundToInt(damageAmount);
-
-        // 2. Pass it directly into your existing, working integer system!
-        // (Update these variable slots to match whatever your original Health.cs method fields are named)
-        TakeDamage(calculatedDamageValue, attackerPosition, knockbackVelocity); 
+        unitAI.TriggerHit(attackerPosition);
         
-        // 3. HARD TRIGGER STAGGER: Force the enemy to break out of their AI pathfinding loops instantly!
-        MusouUnit myMusouComponent = GetComponent<MusouUnit>();
-        if (myMusouComponent == null) myMusouComponent = GetComponentInParent<MusouUnit>();
-        
-        if (myMusouComponent != null)
-        {
-            myMusouComponent.TriggerHit(attackerPosition);
-            Debug.Log($"<color=red>[COMBAT CONTACT]:</color> Enemy {gameObject.name} successfully staggered for {calculatedDamageValue} damage!");
-        }
     }
-
-    void Die()
+}
+public void Die()
     {
         if (BattleManager.Instance != null)
             BattleManager.Instance.activeUnits.Remove(this);
@@ -312,7 +364,7 @@ public class Health : MonoBehaviour
 
         if (KOCounter.instance != null && unitAI != null && unitAI.unitTeam == MusouUnit.Team.EnemySide)
         {
-            KOCounter.instance.AddKO();
+            
 
             if (unitAI.isStageCommander && BattleEndManager.Instance != null)
             {
@@ -354,26 +406,65 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // ========================================================================
+    // 🟩 THE MINIMAP ALARM BRIDGE (NEW):
+    // Public method that lets your squad leaders safely kick off this unit's 
+    // radar flash routine from anywhere on the map—even if they are off-screen!
+    // ========================================================================
+    public void ForceMinimapFlash()
+    {
+        if (minimapIconRenderer == null) return;
+
+        // If the coroutine isn't already active, spin up a fresh pulse track!
+        if (minimapFlashCoroutine == null)
+        {
+            minimapFlashCoroutine = StartCoroutine(MinimapFlashTick());
+        }
+    }
+
     private IEnumerator MinimapFlashTick()
     {
         if (minimapIconRenderer == null) yield break;
 
         Color teamColor = minimapIconRenderer.color;
         float timer = Random.Range(0f, 2f);
-        float pulseDuration = 1.2f;
+        float pulseDuration = 2f;
 
-        while (unitAI != null && unitAI.currentTarget != null && currentHealth > 0)
+        while (unitAI != null && currentHealth > 0)
         {
+            // ========================================================================
+            // 🟩 THE PLATOON RADAR INTERLOCK (FIXED CONDITION):
+            // We check if THIS grunt has a target, OR if their commanding squad leader
+            // has acquired a combat target! If either is true, the icon keeps pulsing.
+            // ========================================================================
+            bool iHaveTarget = unitAI.currentTarget != null;
+            bool leaderHasTarget = unitAI.myLeader != null && unitAI.myLeader.currentTarget != null;
+
+            // If the whole squad has completely dropped out of combat, break the loop cleanly!
+            if (!iHaveTarget && !leaderHasTarget)
+            {
+                break;
+            }
+
             timer += Time.deltaTime;
             float t = (Mathf.Sin(timer * (Mathf.PI * 2) / pulseDuration) + 1f) / 2f;
-            minimapIconRenderer.color = teamColor + (Color.yellow * t * 0.5f);
+
+            // ========================================================================
+            // 🟩 THE RETRO LERP OVERLAY (FIXED MATH):
+            // Swapped your addition math over to a clean Color.Lerp pass.
+            // This cleanly interpolates between your baseline teamColor and a solid,
+            // radiant bright yellow without creating muddy or greenish tints!
+            // ========================================================================
+            minimapIconRenderer.color = Color.Lerp(teamColor, Color.lightGoldenRodYellow, t);
+
             yield return null;
         }
 
+        // Restore their clean team identity colors when the battle field clears out
         minimapIconRenderer.color = teamColor;
         minimapFlashCoroutine = null;
     }
-
     public void SetCulling(bool isVisible)
     {
         isSimulating = isVisible;

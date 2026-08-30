@@ -127,6 +127,28 @@ public class SquadLeader : MusouUnit
         // 🔥 THE COMPLETE INTERCEPT INTERLOCK:
         if (animator == null || animator.GetBool("isHit") || currentState == EnemyState.Stagger || isBusy) return;
 
+        // ========================================================================
+        // 🟩 THE MASTER PATHING GUARD (FIXED SYSTEM INTEGRATION):
+        // If our companion GenericTransformFollower script is actively driving this unit 
+        // toward a map waypoint node, force 'isMoving' to stay true and exit early!
+        // This completely kills the frame-by-frame fallback resets that were locking you in Idle.
+        // ========================================================================
+        var pathFollower = GetComponent<GenericTransformFollower>() ?? GetComponentInParent<GenericTransformFollower>();
+        if (pathFollower != null && pathFollower.enabled && pathFollower.isMoving && currentTarget == null)
+        {
+            animator.SetBool("isMoving", true);
+
+            // Sync directional blend tree arrows seamlessly on the march
+            Vector2 myPos = transform.position;
+            if (pathFollower.pathPoints != null && pathFollower.currentPointIndex < pathFollower.pathPoints.Count)
+            {
+                Vector2 nextHeading = ((Vector2)pathFollower.pathPoints[pathFollower.currentPointIndex].position - myPos).normalized;
+                animator.SetFloat("moveX", nextHeading.x);
+                animator.SetFloat("moveY", nextHeading.y);
+            }
+            return; // ◄── EXIT SAFELY! Let the pathfollower handle the movement frames uninterrupted.
+        }
+
         // 1. COMBAT TRACKING
         if (currentTarget != null)
         {
@@ -214,8 +236,9 @@ public class SquadLeader : MusouUnit
             base.CheckDistance();
             return;
         }
+
         // ========================================================================
-        // 🟩 ANTI-CORNER STICKING GRUNT PLATOON ROUTING (UPDATED):
+        // 🟩 ANTI-CORNER STICKING GRUNT PLATOON ROUTING
         // Uses a fast local raycast check. If a wall tile blocks a grunt's assigned 
         // formation slot, it temporarily drops into a single-file path line behind 
         // the leader to cleanly dodge corners without getting stuck!
@@ -233,8 +256,6 @@ public class SquadLeader : MusouUnit
                 Vector2 trackingDestination = idealTargetSlot;
 
                 // 2. 🔥 THE WALL EVASION SHIELD:
-                // Cast a thin ray from the grunt's current body space straight toward its ideal slot.
-                // Note: Change "Default" to your explicit wall layer mask if you use a custom setup!
                 Vector2 dirToSlot = (idealTargetSlot - myPhysicalPos);
                 float distToSlot = dirToSlot.magnitude;
 
@@ -330,7 +351,6 @@ public class SquadLeader : MusouUnit
 
         StopMoving();
     }
-
     // ========================================================================
     // 🟩 TACTICAL POSITION MATRIX ENFORCER (FIXED):
     // Properly transforms grid coordinates using the leader's heading, 

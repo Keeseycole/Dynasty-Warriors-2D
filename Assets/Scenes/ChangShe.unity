@@ -55955,6 +55955,11 @@ MonoBehaviour:
   animator: {fileID: 2072596997}
   chaseRadius: 2
   attackRadius: 3
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -55965,7 +55970,6 @@ MonoBehaviour:
   detectionRange: 10
   followDistance: 3
   strafeSpeed: 3
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.5
   attackCooldown: 1.5
@@ -55984,6 +55988,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 1
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 936964812}
   - {fileID: 2064380919}
@@ -56022,9 +56029,14 @@ MonoBehaviour:
   - {fileID: 661201621}
   - {fileID: 1937659377}
   - {fileID: 285202477}
+  currentPointIndex: 0
+  isMoving: 0
   pathPriority: 1
   platoonSpacing: 1.3
   platoonColumns: 3
+  playerPlowRange: 8
+  plowRadius: 1.5
+  plowPushForce: 12
 --- !u!4 &192426815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7213968392692583084, guid: fce2d7a9375dd6e4abe71dfbd539a3af, type: 3}
@@ -56140,6 +56152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51eda7854b5ef64795eecb20b4591da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FireAttack
+  targetTag: Player
 --- !u!1 &202549042
 GameObject:
   m_ObjectHideFlags: 0
@@ -57385,6 +57398,11 @@ MonoBehaviour:
   animator: {fileID: 471465274}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -57395,7 +57413,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -57414,6 +57431,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &254998135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58056,6 +58076,11 @@ MonoBehaviour:
   animator: {fileID: 269206048}
   chaseRadius: 3
   attackRadius: 1
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -58066,7 +58091,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -58085,6 +58109,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 1025999090}
   - {fileID: 1537003698}
@@ -58117,9 +58144,14 @@ MonoBehaviour:
   - {fileID: 1654343789}
   - {fileID: 1367126701}
   - {fileID: 764240520}
+  currentPointIndex: 0
+  isMoving: 0
   pathPriority: 1
   platoonSpacing: 1.3
   platoonColumns: 3
+  playerPlowRange: 8
+  plowRadius: 1.5
+  plowPushForce: 12
 --- !u!1 &272907405
 GameObject:
   m_ObjectHideFlags: 0
@@ -59057,6 +59089,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1633909440}
     m_Modifications:
+    - target: {fileID: 2690227536645778262, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008426873459646153, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6726668049695253114, guid: 782b41a3e86c98d4380ce9bf0bb7a48c, type: 3}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.r
+      value: 0.061918736
+      objectReference: {fileID: 0}
     - target: {fileID: 1715940991600306269, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
       propertyPath: m_Name
       value: Task Manager (1)
@@ -59124,30 +59180,6 @@ PrefabInstance:
     - target: {fileID: 6368447286953641740, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
       propertyPath: m_LocalScale.y
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2690227536645778262, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5008426873459646153, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -6726668049695253114, guid: 782b41a3e86c98d4380ce9bf0bb7a48c, type: 3}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.r
-      value: 0.061918736
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7277015394334506033, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
@@ -59651,6 +59683,11 @@ MonoBehaviour:
   animator: {fileID: 1919263602}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -59661,7 +59698,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -59680,6 +59716,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &331153025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60476,6 +60515,11 @@ MonoBehaviour:
   animator: {fileID: 54755347}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -60486,7 +60530,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -60505,6 +60548,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &381293734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62302,6 +62348,11 @@ MonoBehaviour:
   animator: {fileID: 1023032357}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -62312,7 +62363,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -62331,6 +62381,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &444085599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63751,6 +63804,11 @@ MonoBehaviour:
   animator: {fileID: 1057628006}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -63761,7 +63819,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -63780,6 +63837,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &531664950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64599,6 +64659,11 @@ MonoBehaviour:
   animator: {fileID: 565950628}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -64609,7 +64674,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -64628,6 +64692,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 1334805946}
   - {fileID: 452703629}
@@ -65658,6 +65725,11 @@ MonoBehaviour:
   animator: {fileID: 166160699}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -65668,7 +65740,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -65687,6 +65758,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &596533108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83740,6 +83814,11 @@ MonoBehaviour:
   animator: {fileID: 1486540482}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -83750,7 +83829,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -83769,6 +83847,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &627165464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87152,6 +87233,11 @@ MonoBehaviour:
   animator: {fileID: 716518224}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -87162,7 +87248,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -87181,6 +87266,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 1414562013}
   - {fileID: 1476560032}
@@ -87958,6 +88046,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3612431930713112278, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
   m_PrefabInstance: {fileID: 723669446}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &727920361
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 393334081821395625, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -36.25371
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.75115
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
 --- !u!1 &731624725
 GameObject:
   m_ObjectHideFlags: 0
@@ -88750,6 +88895,11 @@ MonoBehaviour:
   animator: {fileID: 633931554}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -88760,7 +88910,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -88779,6 +88928,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &755174792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90490,6 +90642,11 @@ MonoBehaviour:
   animator: {fileID: 801239780}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -90500,7 +90657,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -90519,6 +90675,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 401777394}
   - {fileID: 1184335525}
@@ -92241,6 +92400,11 @@ MonoBehaviour:
   animator: {fileID: 1543890372}
   chaseRadius: 4
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -92251,7 +92415,6 @@ MonoBehaviour:
   detectionRange: 10
   followDistance: 3
   strafeSpeed: 3
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 1
   attackCooldown: 1.5
@@ -92270,6 +92433,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 1
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 7122391426147314403}
   spacing: 1.2
@@ -92494,6 +92660,11 @@ MonoBehaviour:
   animator: {fileID: 335424107}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -92504,7 +92675,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -92523,6 +92693,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &888205646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93379,6 +93552,11 @@ MonoBehaviour:
   animator: {fileID: 1271114459}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -93389,7 +93567,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -93408,6 +93585,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &911746210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94362,6 +94542,11 @@ MonoBehaviour:
   animator: {fileID: 936964809}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -94372,7 +94557,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -94391,6 +94575,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 203747607}
   - {fileID: 1268930853}
@@ -96088,6 +96275,11 @@ MonoBehaviour:
   animator: {fileID: 975062917}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -96098,7 +96290,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -96117,6 +96308,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 437975416}
   - {fileID: 1505341676}
@@ -97963,6 +98157,11 @@ MonoBehaviour:
   animator: {fileID: 2139291477}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -97973,7 +98172,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -97992,6 +98190,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &1070320906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98535,6 +98736,11 @@ MonoBehaviour:
   animator: {fileID: 8754101556311793142}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -98545,7 +98751,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -98564,6 +98769,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 1348485301}
   - {fileID: 1987103583}
@@ -98941,6 +99149,11 @@ MonoBehaviour:
   animator: {fileID: 1092051144}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -98951,7 +99164,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -98970,6 +99182,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 1953819554}
   - {fileID: 1888183793}
@@ -101602,6 +101817,11 @@ MonoBehaviour:
   animator: {fileID: 1174161704}
   chaseRadius: 2
   attackRadius: 3
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -101612,7 +101832,6 @@ MonoBehaviour:
   detectionRange: 10
   followDistance: 3
   strafeSpeed: 3
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.5
   attackCooldown: 1.5
@@ -101631,6 +101850,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 1
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 1092051147}
   spacing: 1.2
@@ -104576,6 +104798,11 @@ MonoBehaviour:
   animator: {fileID: 234811005}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -104586,7 +104813,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -104605,6 +104831,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &1278799521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107310,6 +107539,11 @@ MonoBehaviour:
   animator: {fileID: 353753672}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -107320,7 +107554,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -107339,6 +107572,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &1330297864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107593,6 +107829,11 @@ MonoBehaviour:
   animator: {fileID: 1314693616}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -107603,7 +107844,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -107622,6 +107862,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &1334646284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108514,6 +108757,11 @@ MonoBehaviour:
   animator: {fileID: 214552046}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -108524,7 +108772,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -108543,6 +108790,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &1352117012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110728,6 +110978,11 @@ MonoBehaviour:
   animator: {fileID: 1431257202}
   chaseRadius: 3
   attackRadius: 3
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -110738,7 +110993,6 @@ MonoBehaviour:
   detectionRange: 10
   followDistance: 3
   strafeSpeed: 3
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.277
   attackCooldown: 1.5
@@ -110757,6 +111011,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers: []
   spacing: 1.2
   engageDistance: 8
@@ -110786,9 +111043,14 @@ MonoBehaviour:
   - {fileID: 1363038334}
   - {fileID: 2084643917}
   - {fileID: 1863310602}
+  currentPointIndex: 0
+  isMoving: 0
   pathPriority: 1
   platoonSpacing: 1.3
   platoonColumns: 3
+  playerPlowRange: 8
+  plowRadius: 1.5
+  plowPushForce: 12
 --- !u!1001 &1440416585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115705,6 +115967,11 @@ MonoBehaviour:
   animator: {fileID: 1612227378}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -115715,7 +115982,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -115734,6 +116000,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &1465749624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116597,67 +116866,6 @@ Transform:
   - {fileID: 678490804}
   m_Father: {fileID: 2139039941}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1498720463
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 393334081821395625, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 528944272819202469, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: basicHitLagDuration
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -32.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 33.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
 --- !u!1001 &1500454906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117794,6 +118002,11 @@ MonoBehaviour:
   animator: {fileID: 1880846973}
   chaseRadius: 0
   attackRadius: 0
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -117804,7 +118017,6 @@ MonoBehaviour:
   detectionRange: 10
   followDistance: 3
   strafeSpeed: 3
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.6
   attackCooldown: 1.5
@@ -117823,6 +118035,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers: []
   spacing: 1.2
   engageDistance: 8
@@ -118737,6 +118952,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1633909440}
     m_Modifications:
+    - target: {fileID: 2690227536645778262, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008426873459646153, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6726668049695253114, guid: 782b41a3e86c98d4380ce9bf0bb7a48c, type: 3}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.r
+      value: 0.061918736
+      objectReference: {fileID: 0}
     - target: {fileID: 1715940991600306269, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
       propertyPath: m_Name
       value: Task Manager
@@ -118804,30 +119043,6 @@ PrefabInstance:
     - target: {fileID: 6368447286953641740, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
       propertyPath: m_LocalScale.y
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2690227536645778262, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5008426873459646153, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -6726668049695253114, guid: 782b41a3e86c98d4380ce9bf0bb7a48c, type: 3}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.r
-      value: 0.061918736
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7277015394334506033, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
@@ -119637,6 +119852,11 @@ MonoBehaviour:
   animator: {fileID: 1183863473}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -119647,7 +119867,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -119666,6 +119885,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &1589450222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120481,6 +120703,11 @@ MonoBehaviour:
   animator: {fileID: 863163649}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -120491,7 +120718,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -120510,6 +120736,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &1593054745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121182,9 +121411,14 @@ MonoBehaviour:
   - {fileID: 1363038334}
   - {fileID: 2084643917}
   - {fileID: 1863310602}
+  currentPointIndex: 0
+  isMoving: 0
   pathPriority: 1
   platoonSpacing: 1.3
   platoonColumns: 3
+  playerPlowRange: 8
+  plowRadius: 1.5
+  plowPushForce: 12
 --- !u!114 &1622597705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121206,6 +121440,11 @@ MonoBehaviour:
   animator: {fileID: 621461134}
   chaseRadius: 3
   attackRadius: 3
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -121216,7 +121455,6 @@ MonoBehaviour:
   detectionRange: 10
   followDistance: 3
   strafeSpeed: 3
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.277
   attackCooldown: 1.5
@@ -121235,6 +121473,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers: []
   spacing: 1.2
   engageDistance: 8
@@ -122624,6 +122865,11 @@ MonoBehaviour:
   animator: {fileID: 1638550603}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -122634,7 +122880,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -122653,6 +122898,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 735209930}
   - {fileID: 2089076761}
@@ -123386,6 +123634,11 @@ MonoBehaviour:
   animator: {fileID: 1655389437}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -123396,7 +123649,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -123415,6 +123667,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 1618850550}
   - {fileID: 1532923143}
@@ -125725,6 +125980,11 @@ MonoBehaviour:
   animator: {fileID: 1720240085}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -125735,7 +125995,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -125754,6 +126013,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 1315205589}
   - {fileID: 1233268129}
@@ -128771,6 +129033,11 @@ MonoBehaviour:
   animator: {fileID: 1356541691}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -128781,7 +129048,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -128800,6 +129066,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &1844379199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130677,6 +130946,11 @@ MonoBehaviour:
   animator: {fileID: 1898071956}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -130687,7 +130961,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -130706,6 +130979,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 400021491}
   - {fileID: 1865492888}
@@ -132428,6 +132704,11 @@ MonoBehaviour:
   animator: {fileID: 2010827104}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -132438,7 +132719,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -132457,6 +132737,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &1980703454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134215,6 +134498,11 @@ MonoBehaviour:
   animator: {fileID: 2064380916}
   chaseRadius: 2
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 0
@@ -134225,7 +134513,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
@@ -134244,6 +134531,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: -1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 733117296}
   - {fileID: 968583376}
@@ -135143,6 +135433,11 @@ MonoBehaviour:
   animator: {fileID: 769578860}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -135153,7 +135448,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -135172,6 +135466,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &2083950080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136688,6 +136985,11 @@ MonoBehaviour:
   animator: {fileID: 898789614}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -136698,7 +137000,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -136717,6 +137018,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &2112903461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166307,6 +166611,11 @@ MonoBehaviour:
   animator: {fileID: 1753743443}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -166317,7 +166626,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -166336,6 +166644,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &2139039944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169236,6 +169547,11 @@ MonoBehaviour:
   animator: {fileID: 102712008090535685}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -169246,7 +169562,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -169265,6 +169580,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &3104756932560984120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169301,6 +169619,11 @@ MonoBehaviour:
   animator: {fileID: 8964210072226107748}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -169311,7 +169634,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -169330,6 +169652,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!70 &3222371759399262335
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -169645,8 +169970,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4270095478422082007, guid: ccae59cdfa80eab4f91d73d06da417a2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3522055952264891871}
   m_SourcePrefab: {fileID: 100100000, guid: ccae59cdfa80eab4f91d73d06da417a2, type: 3}
+--- !u!1 &3522055952264891870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4270095478422082007, guid: ccae59cdfa80eab4f91d73d06da417a2, type: 3}
+  m_PrefabInstance: {fileID: 3522055952264891869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3522055952264891871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522055952264891870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
 --- !u!4 &3532967751542692683
 Transform:
   m_ObjectHideFlags: 0
@@ -171908,6 +172253,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1669240908843881640, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1927965037312569406, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -172076,6 +172425,11 @@ MonoBehaviour:
   animator: {fileID: 588666385564170834}
   chaseRadius: 3
   attackRadius: 2
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -172086,7 +172440,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -172105,6 +172458,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!331 &6613287977091982678
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -172696,6 +173052,11 @@ MonoBehaviour:
   animator: {fileID: 8680549222920359360}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -172706,7 +173067,6 @@ MonoBehaviour:
   detectionRange: 5
   followDistance: 4
   strafeSpeed: 0.5
-  damageToGive: 10
   baseAggressionScore: 0
   aggressionScore: 0.346
   attackCooldown: 1.5
@@ -172725,6 +173085,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
   squadMembers:
   - {fileID: 3205471578960383822}
   - {fileID: 6603027640118770692}
@@ -173367,6 +173730,11 @@ MonoBehaviour:
   animator: {fileID: 8571281542435801793}
   chaseRadius: 3
   attackRadius: 1.5
+  stats:
+    maxHealth: 0
+    attackPower: 0
+    defensePower: 0
+    morale: 0
   currentMission: 0
   missionTarget: {fileID: 0}
   unitTeam: 1
@@ -173377,7 +173745,6 @@ MonoBehaviour:
   detectionRange: 3
   followDistance: 3
   strafeSpeed: 0.5
-  damageToGive: 5
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
@@ -173396,6 +173763,9 @@ MonoBehaviour:
   startingDirection: {x: 0, y: 1}
   isOfficer: 0
   isStageCommander: 0
+  isLunging: 0
+  lungeForce: 8
+  lungeDuration: 0.15
 --- !u!114 &7862555521442546780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174486,7 +174856,7 @@ SceneRoots:
   - {fileID: 1651712594}
   - {fileID: 4194132472817343183}
   - {fileID: 4967674160582979512}
-  - {fileID: 1498720463}
   - {fileID: 7079152254634893648}
   - {fileID: 558749450}
   - {fileID: 377914323}
+  - {fileID: 727920361}
