@@ -20,7 +20,8 @@ MonoBehaviour:
     voiceSFXName: 
     customDuration: 5
   - speakerName: Huangfu Song
-    dialogText: 'Zhuge Liang: It is ready.'
+    dialogText: 'Zhuge Liang: Now, all remaining forces , make your way to the enemy
+      main camp.'
     characterPortrait: {fileID: -882913721, guid: 7f7d7276e52e65f4690fdced0bacae71, type: 3}
     alignment: 1
     voiceSFXName: 

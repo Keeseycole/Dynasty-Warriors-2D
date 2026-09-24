@@ -9480,7 +9480,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1661728495}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &205700438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14790,7 +14789,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1879246579}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &340057498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15746,7 +15744,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 909258448}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &363450503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19026,7 +19023,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 143181167}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &415963097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23939,7 +23935,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1317446916}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &516142807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31665,7 +31660,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 931307830}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &706241772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32797,7 +32791,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2065925722}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &734115208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38685,7 +38678,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 619460833}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &821563010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176446,7 +176438,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1769750413}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &886043720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176539,7 +176530,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886043715}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01ea052e63e575a4db2684f1bedb1664, type: 3}
   m_Name: 
@@ -176777,7 +176768,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1669510136}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &888519175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179890,7 +179880,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 467854902}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &940509078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181947,7 +181936,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1209113299}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1000210717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183131,7 +183119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicTimerSpawner
   prefabToSpawn: {fileID: 102639348}
-  delayTime: 20
+  delayTime: 300
 --- !u!4 &1036504299
 Transform:
   m_ObjectHideFlags: 0
@@ -187411,7 +187399,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1272446074}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1098866458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191262,7 +191249,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1249208240}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1199783682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203597,7 +203583,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1868693548}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1241624864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209575,7 +209560,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1482146398}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1370355545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211210,7 +211194,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1295744637}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1420773358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211467,7 +211450,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1167936887}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1425472116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224570,7 +224552,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1395219004}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1677373037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226241,10 +226222,6 @@ PrefabInstance:
       propertyPath: playerMoraleFillImage
       value: 
       objectReference: {fileID: 892605079}
-    - target: {fileID: 5426101404513080101, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
-      propertyPath: maxAttackerSlots
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 5471754867377923313, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: heavyHitLagDuration
       value: 0.2
@@ -226263,11 +226240,7 @@ PrefabInstance:
       objectReference: {fileID: 1535807170}
     - target: {fileID: 6575492326485452994, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: simulationTickRate
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6575492326485452994, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
-      propertyPath: offScreenDistanceThreshold
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7102659490823129912, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: defeatScreenPanel
@@ -228008,7 +227981,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 770676672}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1726400265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230126,7 +230098,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 339043631}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1750977549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231245,7 +231216,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1097099099}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1792478093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234687,7 +234657,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1727130769}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1897626311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247333,7 +247302,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7590912399216061522}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &1989393861075706
 Transform:
   m_ObjectHideFlags: 0
@@ -247663,7 +247631,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8117361146231793369}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &14979679838610347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248732,7 +248699,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7897559458110317449}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &60011476807237810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -250087,7 +250053,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8146858932873248910}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &118627317327068340
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -251215,7 +251180,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5841680482951675774}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &169983674719266641
 GameObject:
   m_ObjectHideFlags: 0
@@ -251808,7 +251772,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8066699006641374988}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &191694752762774947
 GameObject:
   m_ObjectHideFlags: 0
@@ -252932,7 +252895,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7930141899639298670}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &244270318707718051
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -253017,7 +252979,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7651833484131366022}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &249291083383521072
 Transform:
   m_ObjectHideFlags: 0
@@ -253851,7 +253812,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5816412730126391593}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!70 &285195368959072997
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -256605,7 +256565,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8439165774580523133}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &400389475867940359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259050,7 +259009,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7763921890357329686}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &498544060019321214
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -259916,7 +259874,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7940461217554576703}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &535077967616098937
 Transform:
   m_ObjectHideFlags: 0
@@ -260270,7 +260227,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5182131274177614221}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &564990642544088864
 Transform:
   m_ObjectHideFlags: 0
@@ -260419,7 +260375,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6100839319618927066}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &568608133514592514
 GameObject:
   m_ObjectHideFlags: 0
@@ -262268,7 +262223,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6938997409882790287}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &655164640281283525
 Transform:
   m_ObjectHideFlags: 0
@@ -262695,7 +262649,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5286254107070163535}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &677556676297414079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263073,7 +263026,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6544747158740926994}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!223 &693702741281769516
 Canvas:
   m_ObjectHideFlags: 0
@@ -263340,7 +263292,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7245684326576936532}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &710115709907384763
 Transform:
   m_ObjectHideFlags: 0
@@ -264558,7 +264509,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7194508171873575016}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &759671010889395045
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -264864,7 +264814,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7486468130727562880}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &771635592951492497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266115,7 +266064,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7072671335079574794}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &830055670540660496
 Transform:
   m_ObjectHideFlags: 0
@@ -266749,7 +266697,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8891483744056023989}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &862547117487791544
 Transform:
   m_ObjectHideFlags: 0
@@ -269299,7 +269246,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6828730600480700015}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &976828844365036234
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -271184,7 +271130,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7198914336662835001}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &1059653240119477459
 GameObject:
   m_ObjectHideFlags: 0
@@ -272018,7 +271963,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7380129620042630416}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &1095011956042169612
 Transform:
   m_ObjectHideFlags: 0
@@ -272389,7 +272333,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5719487927684140110}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1109875214326073433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273172,7 +273115,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 9183965315223220168}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &1144031092247639340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -274101,7 +274043,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4839288132117961824}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &1180638059190931653
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -274515,7 +274456,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 9069994246350803806}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &1192561902579062125
 GameObject:
   m_ObjectHideFlags: 0
@@ -276963,7 +276903,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7106648790273689031}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!331 &1303686260483864588
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -278082,7 +278021,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 9191876750054599788}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &1354805707983013487
 Transform:
   m_ObjectHideFlags: 0
@@ -280963,7 +280901,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6087365683832127626}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1462208829809420508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290605,7 +290542,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8073430951734667608}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &1825206551801605578
 SpriteRenderer:
   serializedVersion: 2
@@ -290754,7 +290690,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6441163696308130650}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &1826634198990039677
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -290901,7 +290836,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5343253453768691576}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &1833620264283971414
 Transform:
   m_ObjectHideFlags: 0
@@ -292364,7 +292298,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 267527818866138283}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1896743167882281535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293420,7 +293353,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7750823818324448991}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &1946724571960779816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -293621,7 +293553,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8234157019137267306}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &1955990471764022883
 Transform:
   m_ObjectHideFlags: 0
@@ -294260,7 +294191,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3892275081122119299}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &1985076613035528774
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -296818,7 +296748,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6698833846585849883}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &2076545420993513583
 GameObject:
   m_ObjectHideFlags: 0
@@ -298876,7 +298805,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6763375071941697853}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &2155832173061605621
 Transform:
   m_ObjectHideFlags: 0
@@ -305615,7 +305543,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7035365614195318064}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &2420930379394020899
 Transform:
   m_ObjectHideFlags: 0
@@ -307045,7 +306972,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5700264942730312191}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &2473191656752397557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308573,7 +308499,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7118558616770790884}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &2518039390693337308
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -311696,7 +311621,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5267055620563869694}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &2615929992490363344
 GameObject:
   m_ObjectHideFlags: 0
@@ -313078,7 +313002,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5510370968629311547}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &2676845483157622653
 Transform:
   m_ObjectHideFlags: 0
@@ -313757,7 +313680,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7322935093546310793}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!95 &2711022594930611655
 Animator:
   serializedVersion: 7
@@ -317430,7 +317352,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3012774769723497619}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &2859912680451526308
 Transform:
   m_ObjectHideFlags: 0
@@ -319058,7 +318979,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7514927587053898206}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &2914036277960141693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319209,7 +319129,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2670614391343627114}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &2922914365284755224
 Transform:
   m_ObjectHideFlags: 0
@@ -321068,7 +320987,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7617074438282646716}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!50 &2994827669032513569
 Rigidbody2D:
   serializedVersion: 5
@@ -321458,7 +321376,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6440044850271504100}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &3012013422064838521
 GameObject:
   m_ObjectHideFlags: 0
@@ -324677,7 +324594,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4814042170750600185}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &3141793687694935951
 Transform:
   m_ObjectHideFlags: 0
@@ -324858,7 +324774,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8712454465620991811}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3144360079347542873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -325322,7 +325237,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7772685887923662905}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &3163429354550231806
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -327080,7 +326994,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4732513729703051837}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3241673710654326037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -327263,7 +327176,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3112534208336804668}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3251517315086866156
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -328170,7 +328082,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4957854287518852600}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3287278875135780573
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -328422,7 +328333,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7924392553765416102}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3298360940137954586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -328854,7 +328764,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 9080936691984473401}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &3310122347462315809
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -332016,7 +331925,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4648657511144328993}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &3464935629110314884
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -335556,7 +335464,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7111495402174073630}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &3601274686684901894
 GameObject:
   m_ObjectHideFlags: 0
@@ -336434,7 +336341,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6855737129474326762}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &3634943233127777323
 RectTransform:
   m_ObjectHideFlags: 0
@@ -336542,7 +336448,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7004259496393119366}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &3637919888711164042
 Transform:
   m_ObjectHideFlags: 0
@@ -338511,7 +338416,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4829656388159820473}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &3718104113728085437
 GameObject:
   m_ObjectHideFlags: 0
@@ -339881,7 +339785,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4969517646807580147}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!223 &3778349635864402970
 Canvas:
   m_ObjectHideFlags: 0
@@ -342086,7 +341989,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5000153394427680840}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3888913156466883136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -342272,7 +342174,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7295897912299398228}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3894828363759688873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -343487,7 +343388,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6911001317968013628}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &3943212758274782680
 RectTransform:
   m_ObjectHideFlags: 0
@@ -343625,7 +343525,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6601064372334867085}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &3950268010198328327
 GameObject:
   m_ObjectHideFlags: 0
@@ -344813,7 +344712,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7265261140338131439}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4007631508744173879
 GameObject:
   m_ObjectHideFlags: 0
@@ -345424,7 +345322,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6534983909360036779}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4027619924449859403
 GameObject:
   m_ObjectHideFlags: 0
@@ -348925,7 +348822,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8779767395234201564}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &4174498481676028889
 SpriteRenderer:
   serializedVersion: 2
@@ -351670,7 +351566,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8906135923503333614}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4297058637380116591
 GameObject:
   m_ObjectHideFlags: 0
@@ -351797,7 +351692,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5976832518305643244}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &4300326682710484238
 RectTransform:
   m_ObjectHideFlags: 0
@@ -354520,7 +354414,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5550847349795728824}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &4440199009591155579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -355566,7 +355459,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6297558570017100205}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &4486952004268605938
 Transform:
   m_ObjectHideFlags: 0
@@ -356919,7 +356811,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6218960947182815371}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &4546181437673846684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357548,7 +357439,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5925978513368093498}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4570411473525729693
 GameObject:
   m_ObjectHideFlags: 0
@@ -358660,7 +358550,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7836241120502789151}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4610238138385624566
 GameObject:
   m_ObjectHideFlags: 0
@@ -358926,7 +358815,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1424036429425588978}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &4623709321834945113
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -360675,7 +360563,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 60053904630361748}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &4679392978129104384
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -361690,7 +361577,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 91763351449586479}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &4719456672965097960
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -368029,7 +367915,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 374395597856766461}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4974489366275786924
 GameObject:
   m_ObjectHideFlags: 0
@@ -368417,7 +368302,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2911249899146212275}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &4986452841891587314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369331,7 +369215,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5244771599071976609}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5024958457115701883
 GameObject:
   m_ObjectHideFlags: 0
@@ -369603,7 +369486,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3223663772434340525}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &5039302362079465717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -370609,7 +370491,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 483896532219405413}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &5083986818747231490
 SpriteRenderer:
   serializedVersion: 2
@@ -374013,7 +373894,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 628768854921927524}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &5225919325578503629
 Transform:
   m_ObjectHideFlags: 0
@@ -380692,7 +380572,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2407525868766552235}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &5494512046706591063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -381793,7 +381672,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2278484245029646229}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5538114580292636810
 GameObject:
   m_ObjectHideFlags: 0
@@ -381952,7 +381830,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2716610938921421237}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &5543278434212007207
 SpriteRenderer:
   serializedVersion: 2
@@ -382097,7 +381974,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4352368802540865792}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &5545683389970104835
 Transform:
   m_ObjectHideFlags: 0
@@ -384954,7 +384830,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2148711644009484455}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!50 &5663915831224338804
 Rigidbody2D:
   serializedVersion: 5
@@ -385307,7 +385182,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4479310178500376114}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &5679154583035696750
 Transform:
   m_ObjectHideFlags: 0
@@ -388203,7 +388077,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2310642494265403989}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5801990407048225571
 GameObject:
   m_ObjectHideFlags: 0
@@ -514583,7 +514456,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4360993665296796324}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5895738276811701999
 GameObject:
   m_ObjectHideFlags: 0
@@ -515581,7 +515453,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4269081477406670615}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5937455200233131086
 GameObject:
   m_ObjectHideFlags: 0
@@ -516427,7 +516298,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 118910660489917426}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5976422596810194804
 GameObject:
   m_ObjectHideFlags: 0
@@ -518767,7 +518637,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2599672580660095980}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6089799175800456158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520112,7 +519981,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 489781227653999263}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6163577938881345790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520742,7 +520610,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4076397795538599641}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &6181145642812832280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -521654,7 +521521,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4552109505292754916}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6231149573428962988
 GameObject:
   m_ObjectHideFlags: 0
@@ -522605,7 +522471,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 406623548699832907}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6265223020147461567
 GameObject:
   m_ObjectHideFlags: 0
@@ -524174,7 +524039,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4505159316595259827}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6332383939199938744
 GameObject:
   m_ObjectHideFlags: 0
@@ -524275,7 +524139,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2844996132967691064}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &6335463862208560514
 SpriteRenderer:
   serializedVersion: 2
@@ -524543,7 +524406,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3553583891088732322}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &6344819192765127481
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -526102,7 +525964,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2902674115724663418}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &6403803804204984776
 RectTransform:
   m_ObjectHideFlags: 0
@@ -529229,7 +529090,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 720337604077405149}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6537554713724395954
 GameObject:
   m_ObjectHideFlags: 0
@@ -530882,7 +530742,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3957348947539543313}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6611698206507914123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531574,7 +531433,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3839256182675539167}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6637654016321711754
 GameObject:
   m_ObjectHideFlags: 0
@@ -532296,7 +532154,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1141696130551275330}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6670756598504171098
 GameObject:
   m_ObjectHideFlags: 0
@@ -532351,7 +532208,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3171676978202206816}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6672987131031252324
 GameObject:
   m_ObjectHideFlags: 0
@@ -532754,7 +532610,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2084855585194979384}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!95 &6689501266242715034
 Animator:
   serializedVersion: 7
@@ -533660,7 +533515,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3313283059849953026}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6730834596322736752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534627,7 +534481,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3697468066740421557}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6775595298208001130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535922,7 +535775,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 987263511708597191}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6844578660449414117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535949,7 +535801,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3346006376272676581}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6846668663262719266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535976,7 +535827,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 886185368552105637}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6847601710032621926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537428,7 +537278,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3673202681955821026}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!50 &6894530107410057078
 Rigidbody2D:
   serializedVersion: 5
@@ -540038,7 +539887,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1282379541917660758}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7015694563577098984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541324,7 +541172,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 812688034638382882}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7069845246180239427
 Transform:
   m_ObjectHideFlags: 0
@@ -543112,7 +542959,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3493831103010336753}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7149710431612797431
 Transform:
   m_ObjectHideFlags: 0
@@ -543606,7 +543452,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 780362483675669145}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7174023157818591938
 Transform:
   m_ObjectHideFlags: 0
@@ -543921,7 +543766,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1080355012412164308}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7181685956883303420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545217,7 +545061,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 947234311700073939}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &7243458814623386723
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -549665,7 +549508,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2823375283257897755}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7429152356635197979
 Transform:
   m_ObjectHideFlags: 0
@@ -551264,7 +551106,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1053977636263563339}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7492761311227773441
 Transform:
   m_ObjectHideFlags: 0
@@ -552878,7 +552719,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1760083349673367521}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!331 &7566549532898203463
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -554172,7 +554012,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1821229223320325831}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &7626494736796589422
 SpriteRenderer:
   serializedVersion: 2
@@ -554802,7 +554641,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 504938147845363871}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7662483061343035238
 Transform:
   m_ObjectHideFlags: 0
@@ -555027,7 +554865,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 228469936089576146}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &7669970611740761028
 SpriteRenderer:
   serializedVersion: 2
@@ -555398,7 +555235,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4168763142127668806}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7680088285660269879
 Transform:
   m_ObjectHideFlags: 0
@@ -557212,7 +557048,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4103122114378143584}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &7762778775371654010
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -557423,7 +557258,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 473650284536446244}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7767931649186470059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558211,7 +558045,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2076964207363614086}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7801899668102031241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560143,7 +559976,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 67766805068494805}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &7901273096771542255
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -561192,7 +561024,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3323993533942128643}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7935024506690988514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561280,7 +561111,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 249380274690353741}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!331 &7936906548410579979
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -561430,7 +561260,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4424120843362466849}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7940298777456567495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565448,7 +565277,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3507379692217620129}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8113838483410647049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565600,7 +565428,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2588618462467161846}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8117022473012104744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569410,7 +569237,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 169983674719266641}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8270983672915136811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572546,7 +572372,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3800530907520939602}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &8397000945319370609
 Transform:
   m_ObjectHideFlags: 0
@@ -573617,7 +573442,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3825789483932536837}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8443533006485420681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575557,7 +575381,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6612099853860755784}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &8525432023560620421
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -577721,7 +577544,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7958060080537418592}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &8611253591374511574
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -578594,7 +578416,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1921068648967545736}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8646890752807162076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578768,7 +578589,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3123683677837222709}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8652017985736870098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582740,7 +582560,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 787835574495148690}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!50 &8827886433899021585
 Rigidbody2D:
   serializedVersion: 5
@@ -583515,7 +583334,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4234149441708103956}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &8861206510491071532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -586435,7 +586253,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 931624629776194707}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &8972756807268958953
 GameObject:
   m_ObjectHideFlags: 0
@@ -589657,7 +589474,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3268120384323323188}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &9085236321265446882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589877,7 +589693,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1692369227979413902}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &9091027292684330886
 SpriteRenderer:
   serializedVersion: 2
@@ -591477,7 +591292,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4527704132187057513}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &9146937566637485565
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class GenericTransformFollower : MonoBehaviour
     public List<Transform> pathPoints = new List<Transform>();
 
     public int currentPointIndex = 0;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public bool isMoving = false;
 
     // --- AI SYSTEM CONNECTIONS ---
@@ -59,7 +59,7 @@ public class GenericTransformFollower : MonoBehaviour
         }
 
         // Cache your layer mask search variables early
-        armyLayersMask = LayerMask.GetMask( "Ally");
+        armyLayersMask = LayerMask.GetMask("Ally");
     }
 
     private void Start()

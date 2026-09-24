@@ -1000,10 +1000,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1112333504981240832, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1381896599444375007, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1812,14 +1808,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2774137978213758792, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
-      propertyPath: m_Color.a
-      value: 0.8666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2864871951548733137, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3252306828677533499, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
       propertyPath: onConversationComplete.m_PersistentCalls.m_Calls.Array.size
       value: 22
@@ -2492,10 +2480,6 @@ PrefabInstance:
       propertyPath: m_Text
       value: 0 K.O.
       objectReference: {fileID: 0}
-    - target: {fileID: 6236782479921236050, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6961130307597631030, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2612,19 +2596,7 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -195.9
       objectReference: {fileID: 0}
-    - target: {fileID: 8406405109766552913, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8454225647635226265, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8910007902838289200, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9035516474973569744, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -9449,11 +9421,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1587040007}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &205700437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9480,7 +9447,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1661728495}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &205700438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14759,11 +14725,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1286078375}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &340057497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14790,7 +14751,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1879246579}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &340057498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15715,11 +15675,6 @@ MonoBehaviour:
   visualsChild: {fileID: 94632720}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &363450502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15746,7 +15701,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 909258448}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &363450503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18995,11 +18949,6 @@ MonoBehaviour:
   visualsChild: {fileID: 70600835}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &415963096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19026,7 +18975,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 143181167}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &415963097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23908,11 +23856,6 @@ MonoBehaviour:
   visualsChild: {fileID: 419917160}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &516142806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23939,7 +23882,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1317446916}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &516142807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31634,11 +31576,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1455322499}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &706241771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31665,7 +31602,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 931307830}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &706241772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32766,11 +32702,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2062894043}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &734115207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32797,7 +32728,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2065925722}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &734115208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38654,11 +38584,6 @@ MonoBehaviour:
   visualsChild: {fileID: 863627568}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &821563009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38685,7 +38610,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 619460833}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &821563010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176415,11 +176339,6 @@ MonoBehaviour:
   visualsChild: {fileID: 193343700}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &886043719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176446,7 +176365,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1769750413}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &886043720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176539,7 +176457,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886043715}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01ea052e63e575a4db2684f1bedb1664, type: 3}
   m_Name: 
@@ -176746,11 +176664,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1361367932}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &888519174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176777,7 +176690,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1669510136}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &888519175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179859,11 +179771,6 @@ MonoBehaviour:
   visualsChild: {fileID: 386814154}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &940509077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179890,7 +179797,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 467854902}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &940509078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181916,11 +181822,6 @@ MonoBehaviour:
   visualsChild: {fileID: 870134905}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1000210716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181947,7 +181848,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1209113299}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1000210717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182679,13 +182579,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1748390047372491012, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: maxHealth
-      value: 120
+    - target: {fileID: 528944272819202469, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: basicStepForce
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1748390047372491012, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: currentHealth
-      value: 120
+    - target: {fileID: 528944272819202469, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: finisherStepForce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096086714959579074, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096086714959579074, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096086714959579074, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -563158939
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -182727,15 +182647,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2672738843618477493, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2672738843618477493, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4530718594491808079, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
       propertyPath: m_Mass
       value: 33.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530718594491808079, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: m_LinearDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530945187729893637, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
+      propertyPath: orthographic size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7530945187729893637, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 27105
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5600000998223918329, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -187380,11 +187317,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1574567587}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1098866457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187411,7 +187343,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1272446074}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1098866458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191231,11 +191162,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2100110203}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1199783681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191262,7 +191188,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1249208240}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1199783682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203566,11 +203491,6 @@ MonoBehaviour:
   visualsChild: {fileID: 763356239}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1241624863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203597,7 +203517,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1868693548}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1241624864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209544,11 +209463,6 @@ MonoBehaviour:
   visualsChild: {fileID: 945831548}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1370355544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209575,7 +209489,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1482146398}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1370355545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211179,11 +211092,6 @@ MonoBehaviour:
   visualsChild: {fileID: 725052073}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1420773357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211210,7 +211118,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1295744637}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1420773358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211436,11 +211343,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1968419886}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1425472115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211467,7 +211369,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1167936887}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1425472116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224539,11 +224440,6 @@ MonoBehaviour:
   visualsChild: {fileID: 692167044}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1677373036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224570,7 +224466,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1395219004}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1677373037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226241,10 +226136,6 @@ PrefabInstance:
       propertyPath: playerMoraleFillImage
       value: 
       objectReference: {fileID: 892605079}
-    - target: {fileID: 5426101404513080101, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
-      propertyPath: maxAttackerSlots
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 5471754867377923313, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: heavyHitLagDuration
       value: 0.2
@@ -226263,11 +226154,7 @@ PrefabInstance:
       objectReference: {fileID: 1535807170}
     - target: {fileID: 6575492326485452994, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: simulationTickRate
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6575492326485452994, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
-      propertyPath: offScreenDistanceThreshold
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7102659490823129912, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: defeatScreenPanel
@@ -227977,11 +227864,6 @@ MonoBehaviour:
   visualsChild: {fileID: 463914817}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1726400264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228008,7 +227890,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 770676672}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1726400265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230095,11 +229976,6 @@ MonoBehaviour:
   visualsChild: {fileID: 110802452}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1750977548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230126,7 +230002,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 339043631}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1750977549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231214,11 +231089,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2083100831}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1792478092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231245,7 +231115,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1097099099}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1792478093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234656,11 +234525,6 @@ MonoBehaviour:
   visualsChild: {fileID: 936527614}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1897626310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234687,7 +234551,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1727130769}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1897626311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247333,7 +247196,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7590912399216061522}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &1989393861075706
 Transform:
   m_ObjectHideFlags: 0
@@ -247663,7 +247525,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8117361146231793369}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &14979679838610347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248732,7 +248593,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7897559458110317449}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &60011476807237810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -249769,11 +249629,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7277374663280777888}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!70 &108487159793168813
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -250087,7 +249942,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8146858932873248910}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &118627317327068340
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -250169,11 +250023,6 @@ MonoBehaviour:
   visualsChild: {fileID: 292594616453527984}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &122195983176943096
 Transform:
   m_ObjectHideFlags: 0
@@ -250741,11 +250590,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6211747811822966502}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &149085371506574578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250826,11 +250670,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7464431789716537972}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &150960427848041703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251215,7 +251054,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5841680482951675774}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &169983674719266641
 GameObject:
   m_ObjectHideFlags: 0
@@ -251593,11 +251431,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1814901241457006778}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &184342992783164093
 GameObject:
   m_ObjectHideFlags: 0
@@ -251808,7 +251641,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8066699006641374988}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &191694752762774947
 GameObject:
   m_ObjectHideFlags: 0
@@ -252549,11 +252381,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6277969047863250880}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &227041224895163847
 GameObject:
   m_ObjectHideFlags: 0
@@ -252670,11 +252497,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1767116316417801965}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!95 &229074222646686112
 Animator:
   serializedVersion: 7
@@ -252932,7 +252754,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7930141899639298670}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &244270318707718051
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -253017,7 +252838,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7651833484131366022}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &249291083383521072
 Transform:
   m_ObjectHideFlags: 0
@@ -253851,7 +253671,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5816412730126391593}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!70 &285195368959072997
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -256471,11 +256290,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6988606793497352985}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &395959407835088428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256605,7 +256419,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8439165774580523133}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &400389475867940359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258456,11 +258269,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2106935403408046153}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &476484584813706271
 Transform:
   m_ObjectHideFlags: 0
@@ -258575,11 +258383,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5947924918556632193}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &482778116504278078
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -259050,7 +258853,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7763921890357329686}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &498544060019321214
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -259916,7 +259718,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7940461217554576703}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &535077967616098937
 Transform:
   m_ObjectHideFlags: 0
@@ -260004,11 +259805,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5515136612093297806}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &540425626444701394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260215,11 +260011,6 @@ MonoBehaviour:
   visualsChild: {fileID: 147702538941308849}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &554758630287027991
 Transform:
   m_ObjectHideFlags: 0
@@ -260270,7 +260061,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5182131274177614221}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &564990642544088864
 Transform:
   m_ObjectHideFlags: 0
@@ -260419,7 +260209,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6100839319618927066}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &568608133514592514
 GameObject:
   m_ObjectHideFlags: 0
@@ -260820,11 +260609,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4686493133454490481}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &579159836650782444
 Transform:
   m_ObjectHideFlags: 0
@@ -261494,11 +261278,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7860660009904557646}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &619245215844976861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262042,11 +261821,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1388308535964304257}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &643794836128401651
 Transform:
   m_ObjectHideFlags: 0
@@ -262126,11 +261900,6 @@ MonoBehaviour:
   visualsChild: {fileID: 917206309417542771}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &650046945818018472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262268,7 +262037,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6938997409882790287}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &655164640281283525
 Transform:
   m_ObjectHideFlags: 0
@@ -262695,7 +262463,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5286254107070163535}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &677556676297414079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262723,11 +262490,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7847951892600640300}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &677977379053683799
 Transform:
   m_ObjectHideFlags: 0
@@ -263073,7 +262835,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6544747158740926994}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!223 &693702741281769516
 Canvas:
   m_ObjectHideFlags: 0
@@ -263340,7 +263101,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7245684326576936532}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &710115709907384763
 Transform:
   m_ObjectHideFlags: 0
@@ -264232,11 +263992,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4724422313476593502}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &749735020771591655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264558,7 +264313,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7194508171873575016}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &759671010889395045
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -264864,7 +264618,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7486468130727562880}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &771635592951492497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265565,11 +265318,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7963189670567409577}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &794592521221791061
 RectTransform:
   m_ObjectHideFlags: 0
@@ -266115,7 +265863,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7072671335079574794}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &830055670540660496
 Transform:
   m_ObjectHideFlags: 0
@@ -266399,11 +266146,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6886690630574159697}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &841759042651454495
 GameObject:
   m_ObjectHideFlags: 0
@@ -266749,7 +266491,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8891483744056023989}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &862547117487791544
 Transform:
   m_ObjectHideFlags: 0
@@ -268386,11 +268127,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1680785846786488316}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &935756127154092002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268555,11 +268291,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7540670063220321078}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &947234311700073939
 GameObject:
   m_ObjectHideFlags: 0
@@ -269299,7 +269030,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6828730600480700015}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &976828844365036234
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -271184,7 +270914,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7198914336662835001}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &1059653240119477459
 GameObject:
   m_ObjectHideFlags: 0
@@ -271448,11 +271177,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4985287537585300793}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1070980482750970438
 GameObject:
   m_ObjectHideFlags: 0
@@ -272018,7 +271742,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7380129620042630416}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &1095011956042169612
 Transform:
   m_ObjectHideFlags: 0
@@ -272389,7 +272112,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5719487927684140110}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1109875214326073433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273172,7 +272894,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 9183965315223220168}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &1144031092247639340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -273319,11 +273040,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4901060665440599071}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &1152685227111823401
 Transform:
   m_ObjectHideFlags: 0
@@ -274101,7 +273817,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4839288132117961824}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &1180638059190931653
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -274515,7 +274230,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 9069994246350803806}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &1192561902579062125
 GameObject:
   m_ObjectHideFlags: 0
@@ -274549,11 +274263,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4951542339184769941}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &1194553221623345253
 RectTransform:
   m_ObjectHideFlags: 0
@@ -275402,11 +275111,6 @@ MonoBehaviour:
   visualsChild: {fileID: 774414030313627123}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &1231405882680467443
 Transform:
   m_ObjectHideFlags: 0
@@ -276963,7 +276667,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7106648790273689031}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!331 &1303686260483864588
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -277038,11 +276741,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1704396212880543205}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &1304928873653860205
 Transform:
   m_ObjectHideFlags: 0
@@ -278082,7 +277780,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 9191876750054599788}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &1354805707983013487
 Transform:
   m_ObjectHideFlags: 0
@@ -278949,11 +278646,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1624787348779291843}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &1384669740496334411
 Transform:
   m_ObjectHideFlags: 0
@@ -280963,7 +280655,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6087365683832127626}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1462208829809420508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281668,11 +281359,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8748927913831217048}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &1486967241422729022
 Transform:
   m_ObjectHideFlags: 0
@@ -282246,11 +281932,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6852712411207144841}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1508082070371605719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283736,11 +283417,6 @@ MonoBehaviour:
   visualsChild: {fileID: 266320201432788885}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!222 &1567473167812983723
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -285347,11 +285023,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4806561708053650836}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &1626635337458485668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -287220,11 +286891,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1311584289033184932}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &1697926621107372644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288291,11 +287957,6 @@ MonoBehaviour:
   visualsChild: {fileID: 265944561154035435}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1740152953328315024
 GameObject:
   m_ObjectHideFlags: 0
@@ -288445,11 +288106,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5477074797397091926}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1746901909969122875
 GameObject:
   m_ObjectHideFlags: 0
@@ -290221,11 +289877,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8974321243551889484}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &1804675336724022758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -290605,7 +290256,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8073430951734667608}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &1825206551801605578
 SpriteRenderer:
   serializedVersion: 2
@@ -290754,7 +290404,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6441163696308130650}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &1826634198990039677
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -290901,7 +290550,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5343253453768691576}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &1833620264283971414
 Transform:
   m_ObjectHideFlags: 0
@@ -292364,7 +292012,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 267527818866138283}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &1896743167882281535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292472,11 +292119,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5886087388114513483}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1900735388319725971
 GameObject:
   m_ObjectHideFlags: 0
@@ -292822,11 +292464,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2245774907129427316}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &1916651959465129263
 Transform:
   m_ObjectHideFlags: 0
@@ -293420,7 +293057,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7750823818324448991}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &1946724571960779816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -293621,7 +293257,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8234157019137267306}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &1955990471764022883
 Transform:
   m_ObjectHideFlags: 0
@@ -293919,11 +293554,6 @@ MonoBehaviour:
   visualsChild: {fileID: 9134493139859949438}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &1965990074871611797
 RectTransform:
   m_ObjectHideFlags: 0
@@ -294260,7 +293890,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3892275081122119299}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &1985076613035528774
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -296083,11 +295712,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6317612011456464970}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!212 &2042432451971475459
 SpriteRenderer:
   serializedVersion: 2
@@ -296818,7 +296442,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6698833846585849883}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &2076545420993513583
 GameObject:
   m_ObjectHideFlags: 0
@@ -298876,7 +298499,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6763375071941697853}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &2155832173061605621
 Transform:
   m_ObjectHideFlags: 0
@@ -305615,7 +305237,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7035365614195318064}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &2420930379394020899
 Transform:
   m_ObjectHideFlags: 0
@@ -307045,7 +306666,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5700264942730312191}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &2473191656752397557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308573,7 +308193,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7118558616770790884}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &2518039390693337308
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -308945,11 +308564,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2785805938100590936}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &2528743979840115015
 GameObject:
   m_ObjectHideFlags: 0
@@ -311665,11 +311279,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8102020938231887669}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &2615535116526555399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311696,7 +311305,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5267055620563869694}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &2615929992490363344
 GameObject:
   m_ObjectHideFlags: 0
@@ -313078,7 +312686,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5510370968629311547}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &2676845483157622653
 Transform:
   m_ObjectHideFlags: 0
@@ -313175,11 +312782,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2345832338488378823}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!212 &2680765891880128299
 SpriteRenderer:
   serializedVersion: 2
@@ -313757,7 +313359,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7322935093546310793}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!95 &2711022594930611655
 Animator:
   serializedVersion: 7
@@ -314586,11 +314187,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8232340011784603655}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!95 &2741303293079877211
 Animator:
   serializedVersion: 7
@@ -315566,11 +315162,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2529422532918475808}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &2784513881103075977
 Transform:
   m_ObjectHideFlags: 0
@@ -315785,11 +315376,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1431300457125795420}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &2797361208101226878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -316346,11 +315932,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4807151159801796125}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &2825952013971910450
 Transform:
   m_ObjectHideFlags: 0
@@ -316775,11 +316356,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2514550585388392770}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &2836319252366518927
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -317430,7 +317006,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3012774769723497619}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &2859912680451526308
 Transform:
   m_ObjectHideFlags: 0
@@ -319058,7 +318633,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7514927587053898206}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &2914036277960141693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319209,7 +318783,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2670614391343627114}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &2922914365284755224
 Transform:
   m_ObjectHideFlags: 0
@@ -319282,11 +318855,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7164077188044948714}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &2927287223987824489
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -320992,11 +320560,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5476450165504519647}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &2990815572219723456
 GameObject:
   m_ObjectHideFlags: 0
@@ -321068,7 +320631,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7617074438282646716}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!50 &2994827669032513569
 Rigidbody2D:
   serializedVersion: 5
@@ -321458,7 +321020,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6440044850271504100}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &3012013422064838521
 GameObject:
   m_ObjectHideFlags: 0
@@ -323056,11 +322617,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6999973418826775512}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &3085231945661358376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323152,11 +322708,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3566574594738446032}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &3089380817700915402
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -323951,11 +323502,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3382335382720424311}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!70 &3120637552122982124
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -324677,7 +324223,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4814042170750600185}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &3141793687694935951
 Transform:
   m_ObjectHideFlags: 0
@@ -324858,7 +324403,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8712454465620991811}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3144360079347542873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -325322,7 +324866,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7772685887923662905}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &3163429354550231806
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -325799,11 +325342,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2997710631520677914}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &3181800016238879398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327080,7 +326618,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4732513729703051837}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3241673710654326037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -327166,7 +326703,7 @@ Transform:
   m_GameObject: {fileID: 4792199286771979707}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -84.62, y: 116.3, z: 0}
+  m_LocalPosition: {x: -93.49, y: 116.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -327263,7 +326800,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3112534208336804668}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3251517315086866156
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -328170,7 +327706,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4957854287518852600}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3287278875135780573
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -328422,7 +327957,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7924392553765416102}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3298360940137954586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -328854,7 +328388,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 9080936691984473401}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &3310122347462315809
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -330996,11 +330529,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3094695835204905166}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &3409585160118050320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331167,11 +330695,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5333244394724445150}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &3423999612390120479
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -332016,7 +331539,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4648657511144328993}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &3464935629110314884
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -332655,11 +332177,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3109389180785085069}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!212 &3499837036216977306
 SpriteRenderer:
   serializedVersion: 2
@@ -335225,11 +334742,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8807116767803359712}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!212 &3588715592764989865
 SpriteRenderer:
   serializedVersion: 2
@@ -335556,7 +335068,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7111495402174073630}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &3601274686684901894
 GameObject:
   m_ObjectHideFlags: 0
@@ -335983,11 +335494,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7354874589323041661}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &3616501868476760694
 Transform:
   m_ObjectHideFlags: 0
@@ -336434,7 +335940,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6855737129474326762}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &3634943233127777323
 RectTransform:
   m_ObjectHideFlags: 0
@@ -336542,7 +336047,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7004259496393119366}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &3637919888711164042
 Transform:
   m_ObjectHideFlags: 0
@@ -336860,11 +336364,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8741973484210034996}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &3649958923649203338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337565,11 +337064,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2928465079426914069}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &3679275621375892836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338511,7 +338005,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4829656388159820473}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &3718104113728085437
 GameObject:
   m_ObjectHideFlags: 0
@@ -339341,11 +338834,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6933004448980797410}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!95 &3750745135012248516
 Animator:
   serializedVersion: 7
@@ -339881,7 +339369,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4969517646807580147}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!223 &3778349635864402970
 Canvas:
   m_ObjectHideFlags: 0
@@ -340124,11 +339611,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5847471825749853978}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &3794162828442744829
 Transform:
   m_ObjectHideFlags: 0
@@ -341517,11 +340999,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3515272646841070864}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &3852528017756097765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342086,7 +341563,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5000153394427680840}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3888913156466883136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -342272,7 +341748,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7295897912299398228}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &3894828363759688873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -342950,11 +342425,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7087982648506590055}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &3920611132788159463
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -343375,11 +342845,6 @@ MonoBehaviour:
   visualsChild: {fileID: 9030654011773343885}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &3939032929230913634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343487,7 +342952,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6911001317968013628}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &3943212758274782680
 RectTransform:
   m_ObjectHideFlags: 0
@@ -343625,7 +343089,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6601064372334867085}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &3950268010198328327
 GameObject:
   m_ObjectHideFlags: 0
@@ -343846,11 +343309,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3261937759577063548}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &3958268427577463715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344323,11 +343781,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3641104613155097122}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &3981559763673420251
 GameObject:
   m_ObjectHideFlags: 0
@@ -344747,11 +344200,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3231301815137281479}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &4006137823419020844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344767,11 +344215,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7179503759237856773}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &4006817419320727576
 Transform:
   m_ObjectHideFlags: 0
@@ -344813,7 +344256,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7265261140338131439}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4007631508744173879
 GameObject:
   m_ObjectHideFlags: 0
@@ -345424,7 +344866,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6534983909360036779}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4027619924449859403
 GameObject:
   m_ObjectHideFlags: 0
@@ -346796,11 +346237,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8299353405718311997}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &4096736215954866075
 RectTransform:
   m_ObjectHideFlags: 0
@@ -348458,11 +347894,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6647121958176412874}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &4160924397665224661
 GameObject:
   m_ObjectHideFlags: 0
@@ -348925,7 +348356,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8779767395234201564}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &4174498481676028889
 SpriteRenderer:
   serializedVersion: 2
@@ -349786,11 +349216,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7946760805247380306}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &4213063926923779604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350058,11 +349483,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8162301024861589688}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &4232093492457352290
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -350982,11 +350402,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8122659203128266202}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &4274415618018384014
 Transform:
   m_ObjectHideFlags: 0
@@ -351670,7 +351085,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 8906135923503333614}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4297058637380116591
 GameObject:
   m_ObjectHideFlags: 0
@@ -351797,7 +351211,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5976832518305643244}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &4300326682710484238
 RectTransform:
   m_ObjectHideFlags: 0
@@ -352496,11 +351909,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6461477539704979339}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &4336610191836558010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353648,11 +353056,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6377268295397697197}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &4396744700225658737
 GameObject:
   m_ObjectHideFlags: 0
@@ -353776,11 +353179,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7575873893458440767}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &4406377787561896929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354520,7 +353918,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5550847349795728824}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &4440199009591155579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -355566,7 +354963,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6297558570017100205}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &4486952004268605938
 Transform:
   m_ObjectHideFlags: 0
@@ -355767,11 +355163,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7659067922526612203}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!483693784 &4499335160528320455
 TilemapRenderer:
   serializedVersion: 2
@@ -355919,11 +355310,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2677447532789577100}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &4504759694402081319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356707,11 +356093,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8433553646047013026}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &4539282359190265896
 RectTransform:
   m_ObjectHideFlags: 0
@@ -356919,7 +356300,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6218960947182815371}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &4546181437673846684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357548,7 +356928,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5925978513368093498}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4570411473525729693
 GameObject:
   m_ObjectHideFlags: 0
@@ -358660,7 +358039,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7836241120502789151}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4610238138385624566
 GameObject:
   m_ObjectHideFlags: 0
@@ -358926,7 +358304,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1424036429425588978}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &4623709321834945113
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -360675,7 +360052,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 60053904630361748}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &4679392978129104384
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -361690,7 +361066,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 91763351449586479}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!222 &4719456672965097960
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -362932,7 +362307,7 @@ PrefabInstance:
       objectReference: {fileID: 1420773355}
     - target: {fileID: 5195008233530009031, guid: 92efb681749fe304daa1cf8fff5d8710, type: 3}
       propertyPath: m_Name
-      value: Lu Xun Leader
+      value: Lu Xun
       objectReference: {fileID: 0}
     - target: {fileID: 5195008233530009031, guid: 92efb681749fe304daa1cf8fff5d8710, type: 3}
       propertyPath: m_TagString
@@ -364674,11 +364049,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1659083235761358819}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &4844974822152235626
 Transform:
   m_ObjectHideFlags: 0
@@ -368029,7 +367399,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 374395597856766461}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &4974489366275786924
 GameObject:
   m_ObjectHideFlags: 0
@@ -368417,7 +367786,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2911249899146212275}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &4986452841891587314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369331,7 +368699,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 5244771599071976609}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5024958457115701883
 GameObject:
   m_ObjectHideFlags: 0
@@ -369603,7 +368970,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3223663772434340525}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &5039302362079465717
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -370308,11 +369674,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4893696759041863322}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &5069749411900505852
 GameObject:
   m_ObjectHideFlags: 0
@@ -370609,7 +369970,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 483896532219405413}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &5083986818747231490
 SpriteRenderer:
   serializedVersion: 2
@@ -372971,11 +372331,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2482163643537372299}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &5185638537695410618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373683,11 +373038,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5613481722061771163}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!95 &5213403614588875276
 Animator:
   serializedVersion: 7
@@ -374013,7 +373363,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 628768854921927524}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &5225919325578503629
 Transform:
   m_ObjectHideFlags: 0
@@ -378446,11 +377795,6 @@ MonoBehaviour:
   visualsChild: {fileID: 9087074884256625047}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!331 &5408366135071865361
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -379871,11 +379215,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5648125705546894339}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &5466964540774012589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380692,7 +380031,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2407525868766552235}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &5494512046706591063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -381793,7 +381131,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2278484245029646229}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5538114580292636810
 GameObject:
   m_ObjectHideFlags: 0
@@ -381952,7 +381289,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2716610938921421237}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &5543278434212007207
 SpriteRenderer:
   serializedVersion: 2
@@ -382097,7 +381433,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4352368802540865792}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &5545683389970104835
 Transform:
   m_ObjectHideFlags: 0
@@ -383185,11 +382520,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6199507007190035974}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &5595122491687532909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384341,11 +383671,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5441870083461143402}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &5637280777623901045
 GameObject:
   m_ObjectHideFlags: 0
@@ -384954,7 +384279,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2148711644009484455}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!50 &5663915831224338804
 Rigidbody2D:
   serializedVersion: 5
@@ -385307,7 +384631,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4479310178500376114}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &5679154583035696750
 Transform:
   m_ObjectHideFlags: 0
@@ -385582,11 +384905,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3133939026647295891}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!222 &5692702622274688344
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -386892,11 +386210,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5338508281626607313}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &5740563200714761343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387341,11 +386654,6 @@ MonoBehaviour:
   visualsChild: {fileID: 296670548365947964}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &5758572981791087897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387397,11 +386705,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6072574427523305780}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &5760845026823914788
 RectTransform:
   m_ObjectHideFlags: 0
@@ -388051,11 +387354,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3886739854240223537}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &5797889984835581867
 Transform:
   m_ObjectHideFlags: 0
@@ -388203,7 +387501,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2310642494265403989}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5801990407048225571
 GameObject:
   m_ObjectHideFlags: 0
@@ -514583,7 +513880,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4360993665296796324}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5895738276811701999
 GameObject:
   m_ObjectHideFlags: 0
@@ -514918,11 +514214,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6322728063323981254}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &5909811312328732352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515425,11 +514716,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1852416617123172139}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &5932246966601663368
 GameObject:
   m_ObjectHideFlags: 0
@@ -515581,7 +514867,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4269081477406670615}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5937455200233131086
 GameObject:
   m_ObjectHideFlags: 0
@@ -516427,7 +515712,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 118910660489917426}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &5976422596810194804
 GameObject:
   m_ObjectHideFlags: 0
@@ -517494,11 +516778,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5202127070201229921}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &6028169998134628373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517859,11 +517138,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1740152953328315024}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6041308220340094696
 GameObject:
   m_ObjectHideFlags: 0
@@ -518614,11 +517888,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3594713404926259650}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6081591306489001776
 GameObject:
   m_ObjectHideFlags: 0
@@ -518767,7 +518036,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2599672580660095980}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6089799175800456158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519361,11 +518629,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5718396088611973900}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &6120819289124030104
 Transform:
   m_ObjectHideFlags: 0
@@ -520112,7 +519375,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 489781227653999263}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6163577938881345790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520521,11 +519783,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2180934109174308961}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &6175127494485457469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520742,7 +519999,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4076397795538599641}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &6181145642812832280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -520778,11 +520034,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3479911656012781461}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &6184824799152716836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -521255,11 +520506,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2144003150093090297}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6212654045270085046
 GameObject:
   m_ObjectHideFlags: 0
@@ -521654,7 +520900,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4552109505292754916}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6231149573428962988
 GameObject:
   m_ObjectHideFlags: 0
@@ -522605,7 +521850,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 406623548699832907}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6265223020147461567
 GameObject:
   m_ObjectHideFlags: 0
@@ -523429,11 +522673,6 @@ MonoBehaviour:
   visualsChild: {fileID: 238989311761378495}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &6299644107398987142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -523606,11 +522845,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5490805389715076056}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &6313099118730753863
 RectTransform:
   m_ObjectHideFlags: 0
@@ -524174,7 +523408,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4505159316595259827}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6332383939199938744
 GameObject:
   m_ObjectHideFlags: 0
@@ -524275,7 +523508,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2844996132967691064}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &6335463862208560514
 SpriteRenderer:
   serializedVersion: 2
@@ -524543,7 +523775,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3553583891088732322}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &6344819192765127481
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -526102,7 +525333,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2902674115724663418}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!224 &6403803804204984776
 RectTransform:
   m_ObjectHideFlags: 0
@@ -526876,11 +526106,6 @@ MonoBehaviour:
   visualsChild: {fileID: 963769390215369662}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &6442712905502478776
 Transform:
   m_ObjectHideFlags: 0
@@ -528238,11 +527463,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4584231253543575172}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &6494050273022684771
 Transform:
   m_ObjectHideFlags: 0
@@ -529229,7 +528449,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 720337604077405149}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6537554713724395954
 GameObject:
   m_ObjectHideFlags: 0
@@ -529557,11 +528776,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1070384063605198374}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6548649047499268318
 GameObject:
   m_ObjectHideFlags: 0
@@ -530851,11 +530065,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1173975641965879136}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &6611068321277365224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530882,7 +530091,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3957348947539543313}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6611698206507914123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530913,11 +530121,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4641232797118775886}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!222 &6611936006670520850
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -531574,7 +530777,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3839256182675539167}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6637654016321711754
 GameObject:
   m_ObjectHideFlags: 0
@@ -532296,7 +531498,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1141696130551275330}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6670756598504171098
 GameObject:
   m_ObjectHideFlags: 0
@@ -532351,7 +531552,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3171676978202206816}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &6672987131031252324
 GameObject:
   m_ObjectHideFlags: 0
@@ -532754,7 +531954,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2084855585194979384}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!95 &6689501266242715034
 Animator:
   serializedVersion: 7
@@ -533660,7 +532859,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3313283059849953026}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6730834596322736752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534416,11 +533614,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5066480360678350545}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &6767007285929977075
 Transform:
   m_ObjectHideFlags: 0
@@ -534627,7 +533820,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3697468066740421557}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6775595298208001130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534655,11 +533847,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4290079528229317369}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6776542360587220182
 GameObject:
   m_ObjectHideFlags: 0
@@ -535188,11 +534375,6 @@ MonoBehaviour:
   visualsChild: {fileID: 5033761569616029494}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6805402803142313130
 GameObject:
   m_ObjectHideFlags: 0
@@ -535322,11 +534504,6 @@ MonoBehaviour:
   visualsChild: {fileID: 769790331378531572}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6815671572961971573
 GameObject:
   m_ObjectHideFlags: 0
@@ -535922,7 +535099,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 987263511708597191}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6844578660449414117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535949,7 +535125,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3346006376272676581}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6846668663262719266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535976,7 +535151,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 886185368552105637}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &6847601710032621926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535992,11 +535166,6 @@ MonoBehaviour:
   visualsChild: {fileID: 809945101241129295}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6848132828004648138
 GameObject:
   m_ObjectHideFlags: 0
@@ -537109,11 +536278,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4910235798186752596}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6886690630574159697
 GameObject:
   m_ObjectHideFlags: 0
@@ -537428,7 +536592,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3673202681955821026}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!50 &6894530107410057078
 Rigidbody2D:
   serializedVersion: 5
@@ -537906,11 +537069,6 @@ MonoBehaviour:
   visualsChild: {fileID: 399013628604672260}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6921275194687549430
 GameObject:
   m_ObjectHideFlags: 0
@@ -539095,11 +538253,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7309623899711870461}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &6982414212235361561
 GameObject:
   m_ObjectHideFlags: 0
@@ -539387,11 +538540,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3836355056731839154}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &6993056979458817256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -540038,7 +539186,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1282379541917660758}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7015694563577098984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540480,11 +539627,6 @@ MonoBehaviour:
   visualsChild: {fileID: 295773277506636991}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!223 &7034232292247805695
 Canvas:
   m_ObjectHideFlags: 0
@@ -541324,7 +540466,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 812688034638382882}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7069845246180239427
 Transform:
   m_ObjectHideFlags: 0
@@ -541636,11 +540777,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8785198507107544674}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!222 &7080189784415649342
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -543112,7 +542248,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3493831103010336753}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7149710431612797431
 Transform:
   m_ObjectHideFlags: 0
@@ -543606,7 +542741,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 780362483675669145}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7174023157818591938
 Transform:
   m_ObjectHideFlags: 0
@@ -543921,7 +543055,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1080355012412164308}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7181685956883303420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543952,11 +543085,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2909235672548758181}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &7181997206438326566
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -545217,7 +544345,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 947234311700073939}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &7243458814623386723
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -546187,11 +545314,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3542751850580913871}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &7282606126813871614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -547504,11 +546626,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3228802705773796538}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &7334691162846071059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547671,11 +546788,6 @@ MonoBehaviour:
   visualsChild: {fileID: 31191644776939117}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &7346868368874511050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547967,11 +547079,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3307038598298883073}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &7354874589323041661
 GameObject:
   m_ObjectHideFlags: 0
@@ -548610,11 +547717,6 @@ MonoBehaviour:
   visualsChild: {fileID: 282577957390672885}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &7380129620042630416
 GameObject:
   m_ObjectHideFlags: 0
@@ -549665,7 +548767,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2823375283257897755}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7429152356635197979
 Transform:
   m_ObjectHideFlags: 0
@@ -550783,11 +549884,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3192255986400801366}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &7474267783470398172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -551264,7 +550360,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1053977636263563339}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7492761311227773441
 Transform:
   m_ObjectHideFlags: 0
@@ -551979,11 +551074,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1001236743999462644}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &7522492834398609800
 Transform:
   m_ObjectHideFlags: 0
@@ -552878,7 +551968,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1760083349673367521}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!331 &7566549532898203463
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -553906,11 +552995,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7817851389608756965}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &7620669615667954287
 GameObject:
   m_ObjectHideFlags: 0
@@ -553944,11 +553028,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2463927676126829840}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &7622616768412418203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554172,7 +553251,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1821229223320325831}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &7626494736796589422
 SpriteRenderer:
   serializedVersion: 2
@@ -554802,7 +553880,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 504938147845363871}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7662483061343035238
 Transform:
   m_ObjectHideFlags: 0
@@ -555027,7 +554104,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 228469936089576146}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &7669970611740761028
 SpriteRenderer:
   serializedVersion: 2
@@ -555398,7 +554474,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4168763142127668806}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &7680088285660269879
 Transform:
   m_ObjectHideFlags: 0
@@ -555716,11 +554791,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4539405457553156062}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &7694498550740615984
 GameObject:
   m_ObjectHideFlags: 0
@@ -555845,11 +554915,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8171473992943965939}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &7695767391110293705
 Transform:
   m_ObjectHideFlags: 0
@@ -556771,11 +555836,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4564091231356322185}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &7741924325674504673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -557212,7 +556272,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4103122114378143584}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &7762778775371654010
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -557423,7 +556482,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 473650284536446244}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7767931649186470059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557693,11 +556751,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8092322438958370773}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &7778457021063516610
 GameObject:
   m_ObjectHideFlags: 0
@@ -558115,11 +557168,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4189015608721072357}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &7797997890277826626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558211,7 +557259,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2076964207363614086}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7801899668102031241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560143,7 +559190,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 67766805068494805}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &7901273096771542255
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -560424,11 +559470,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2749091031004146029}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &7913505704989405312
 RectTransform:
   m_ObjectHideFlags: 0
@@ -561192,7 +560233,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3323993533942128643}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7935024506690988514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561280,7 +560320,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 249380274690353741}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!331 &7936906548410579979
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -561430,7 +560469,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4424120843362466849}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &7940298777456567495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563255,11 +562293,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8426936288439893426}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!95 &8023627623313847039
 Animator:
   serializedVersion: 7
@@ -563484,11 +562517,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4270658525154861434}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8035421967894222300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564788,11 +563816,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8468333399911372951}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8087525275873175375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565448,7 +564471,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3507379692217620129}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8113838483410647049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565600,7 +564622,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 2588618462467161846}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8117022473012104744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567885,11 +566906,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7672798241923333989}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!223 &8202061709639777020
 Canvas:
   m_ObjectHideFlags: 0
@@ -568114,11 +567130,6 @@ MonoBehaviour:
   visualsChild: {fileID: 2722963569250752472}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8211443476402841314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569410,7 +568421,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 169983674719266641}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8270983672915136811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571831,11 +570841,6 @@ MonoBehaviour:
   visualsChild: {fileID: 4602042807850465055}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!224 &8370506827114380473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -571901,11 +570906,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8183756084427025642}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8373483527387952826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572546,7 +571546,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3800530907520939602}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!4 &8397000945319370609
 Transform:
   m_ObjectHideFlags: 0
@@ -573617,7 +572616,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3825789483932536837}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8443533006485420681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575557,7 +574555,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 6612099853860755784}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &8525432023560620421
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -577721,7 +576718,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 7958060080537418592}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &8611253591374511574
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -578594,7 +577590,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1921068648967545736}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8646890752807162076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578768,7 +577763,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3123683677837222709}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &8652017985736870098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579678,11 +578672,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7959248775392938078}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &8683007100341415310
 GameObject:
   m_ObjectHideFlags: 0
@@ -580435,11 +579424,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3226405468878521536}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &8718000389194328393
 Transform:
   m_ObjectHideFlags: 0
@@ -581152,11 +580136,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7119718627978764966}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!61 &8747325394225964460
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -581218,11 +580197,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1489752278977187923}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &8748927913831217048
 GameObject:
   m_ObjectHideFlags: 0
@@ -582515,11 +581489,6 @@ MonoBehaviour:
   visualsChild: {fileID: 9218305547922916268}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8813592870565526105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582740,7 +581709,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 787835574495148690}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!50 &8827886433899021585
 Rigidbody2D:
   serializedVersion: 5
@@ -583515,7 +582483,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4234149441708103956}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &8861206510491071532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -585520,11 +584487,6 @@ MonoBehaviour:
   visualsChild: {fileID: 9099485609841501691}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &8934162580852974431
 GameObject:
   m_ObjectHideFlags: 0
@@ -585876,11 +584838,6 @@ MonoBehaviour:
   visualsChild: {fileID: 1851590128633542568}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8950198477946171694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586435,7 +585392,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 931624629776194707}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!1 &8972756807268958953
 GameObject:
   m_ObjectHideFlags: 0
@@ -587187,11 +586143,6 @@ MonoBehaviour:
   visualsChild: {fileID: 6058392874120973136}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8997907595274456377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587908,11 +586859,6 @@ MonoBehaviour:
   visualsChild: {fileID: 3950268010198328327}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &9020439419618519651
 Transform:
   m_ObjectHideFlags: 0
@@ -589657,7 +588603,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 3268120384323323188}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!114 &9085236321265446882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589877,7 +588822,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 1692369227979413902}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!212 &9091027292684330886
 SpriteRenderer:
   serializedVersion: 2
@@ -590390,11 +589334,6 @@ MonoBehaviour:
   visualsChild: {fileID: 8934162580852974431}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!212 &9099316972638176115
 SpriteRenderer:
   serializedVersion: 2
@@ -591477,7 +590416,6 @@ MonoBehaviour:
   flashOverlay: {fileID: 4527704132187057513}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
-  accumulatedDamageThisTick: 0
 --- !u!61 &9146937566637485565
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -592335,11 +591273,6 @@ MonoBehaviour:
   visualsChild: {fileID: 7263582390113895591}
   cullDistance: 10
   wakeBuffer: 2
-  isDeflectingOffWall: 0
-  wallDeflectionDirection: {x: 0, y: 0}
-  solidEnvironmentLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!4 &9180611943351704575
 Transform:
   m_ObjectHideFlags: 0

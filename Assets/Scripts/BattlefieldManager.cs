@@ -6,16 +6,11 @@ public class BattlefieldManager : MonoBehaviour
 {
     public static BattlefieldManager Instance;
 
-    // Fast tracking list clusters for simple vector distance checks
     public List<MusouUnit> playerSideUnits = new List<MusouUnit>();
     public List<MusouUnit> enemySideUnits = new List<MusouUnit>();
 
-
-
     [Header("Off-Screen Simulation Settings")]
-    [Tooltip("How often background battles process their damage checks (in seconds).")]
     public float simulationTickRate = 1.5f;
-    [Tooltip("The minimum distance a unit must be from the player to be considered off-screen.")]
     public float offScreenDistanceThreshold = 25f;
 
     private Transform playerTransform;
@@ -28,11 +23,9 @@ public class BattlefieldManager : MonoBehaviour
 
     private void Start()
     {
-        // Find the player early to track global proximity circles
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) playerTransform = playerObj.transform;
 
-        // 🔥 ACTIVATE THE BACKGROUND SIMULATION MOTOR:
         StartCoroutine(BackgroundCombatSimulationRoutine());
     }
 
@@ -46,7 +39,6 @@ public class BattlefieldManager : MonoBehaviour
         }
     }
 
-    // --- REGISTRATION HOOKS ---
     public void RegisterUnit(MusouUnit unit)
     {
         if (unit.unitTeam == MusouUnit.Team.PlayerSide && !playerSideUnits.Contains(unit))
@@ -61,7 +53,6 @@ public class BattlefieldManager : MonoBehaviour
         if (enemySideUnits.Contains(unit)) enemySideUnits.Remove(unit);
     }
 
-    // --- HIGH PERFORMANCE GLOBAL SEARCH MOTOR ---
     public Transform RequestClosestGlobalEnemy(Vector2 queryingUnitPos, MusouUnit.Team queryingTeam)
     {
         List<MusouUnit> opposingList = (queryingTeam == MusouUnit.Team.PlayerSide) ? enemySideUnits : playerSideUnits;
@@ -93,20 +84,12 @@ public class BattlefieldManager : MonoBehaviour
         return closestTarget;
     }
 
-    // ========================================================================
-    // 🔥 THE OFF-SCREEN COMBAT BALANCING ENGINE (NEW)
-    // Runs automatically on a gentle background ticker. Iterates through units
-    // out of player sight to simulate territorial wars with safe pace dampening!
-    // ========================================================================
     private IEnumerator BackgroundCombatSimulationRoutine()
     {
-        float thresholdSqr = offScreenDistanceThreshold * offScreenDistanceThreshold;
-
         while (true)
         {
             yield return new WaitForSeconds(simulationTickRate);
 
-            // Clean up dead/destroyed object references safely before processing
             playerSideUnits.RemoveAll(u => u == null);
             enemySideUnits.RemoveAll(u => u == null);
 
@@ -117,40 +100,59 @@ public class BattlefieldManager : MonoBehaviour
                 continue;
             }
 
-            Vector2 playerPos = playerTransform.position;
-
-            // Loop through all active enemy units to find candidates for background clashes
+            // ========================================================================
+            // 🟩 LOOP PASS A: ENEMY ATTACK SQUAD TRACE
+            // Loops through all active enemies. If they have a valid, living target,
+            // they deal damage down to your allied soldiers cleanly!
+            // ========================================================================
             for (int i = 0; i < enemySideUnits.Count; i++)
             {
                 MusouUnit enemyUnit = enemySideUnits[i];
                 if (enemyUnit == null || enemyUnit.currentTarget == null) continue;
 
-                Vector2 enemyPos = enemyUnit.rb != null ? enemyUnit.rb.position : (Vector2)enemyUnit.transform.position;
+                Health targetHealth = enemyUnit.currentTarget.GetComponent<Health>() ?? enemyUnit.currentTarget.GetComponentInChildren<Health>();
+                if (targetHealth == null || targetHealth.currentHealth <= 0)
+                {
+                    enemyUnit.currentTarget = null;
+                    continue;
+                }
 
-                // 1. DISTANCE VALIDATION: Only simulate if they are far away from the player camera view!
-                if ((enemyPos - playerPos).sqrMagnitude < thresholdSqr) continue;
-
-                // 2. TARGET LOOKUP: Check if the enemy unit is currently targeting a friendly player-side unit
                 MusouUnit alliedTarget = enemyUnit.currentTarget.GetComponent<MusouUnit>() ?? enemyUnit.currentTarget.GetComponentInParent<MusouUnit>();
                 if (alliedTarget == null || alliedTarget.unitTeam != MusouUnit.Team.PlayerSide) continue;
 
-                // 3. 🔥 THE PACE LIMITER DIE ROLL:
-                // Background troops do not hit successfully on every single frame tick.
-                // This skips processing on 80% of ticks to stretch battles out organically!
                 if (Random.value > 0.20f) continue;
 
-                // 4. PROCESS SIMULATED STAT DUELS:
-                ExecuteSimulatedAttack(enemyUnit, alliedTarget); // Enemy attacks Ally
-                ExecuteSimulatedAttack(alliedTarget, enemyUnit); // Ally counters Enemy back
+                // Enemy physically strikes the Ally!
+                ExecuteSimulatedAttack(enemyUnit, alliedTarget);
+            }
+
+            // ========================================================================
+            // 🟩 LOOP PASS B: ALLY ATTACK SQUAD TRACE (FIXED IMMUNE ALLIES)
+            // Loops independently through all player-side soldiers. If they carry an active, 
+            // living enemy target, they deal damage back to the enemy units symmetrically!
+            // ========================================================================
+            for (int j = 0; j < playerSideUnits.Count; j++)
+            {
+                MusouUnit alliedUnit = playerSideUnits[j];
+                if (alliedUnit == null || alliedUnit.currentTarget == null) continue;
+
+                Health targetHealth = alliedUnit.currentTarget.GetComponent<Health>() ?? alliedUnit.currentTarget.GetComponentInChildren<Health>();
+                if (targetHealth == null || targetHealth.currentHealth <= 0)
+                {
+                    alliedUnit.currentTarget = null;
+                    continue;
+                }
+
+                MusouUnit enemyTarget = alliedUnit.currentTarget.GetComponent<MusouUnit>() ?? alliedUnit.currentTarget.GetComponentInParent<MusouUnit>();
+                if (enemyTarget == null || enemyTarget.unitTeam != MusouUnit.Team.EnemySide) continue;
+
+                if (Random.value > 0.20f) continue;
+
+                // Ally physically strikes the Enemy!
+                ExecuteSimulatedAttack(alliedUnit, enemyTarget);
             }
         }
     }
-
-    // ========================================================================
-    // 🟩 THE DISCRETE STEP ATTACK CORE (FIXED):
-    // Processes a clean stat duel once per heartbeat tick. 
-    // Uses strict rounding math to guarantee health drops in clear, integer steps!
-    // ========================================================================
     private void ExecuteSimulatedAttack(MusouUnit attacker, MusouUnit defender)
     {
         if (attacker == null || defender == null) return;
@@ -158,43 +160,72 @@ public class BattlefieldManager : MonoBehaviour
         Health defenderHealth = defender.GetComponent<Health>() ?? defender.GetComponentInChildren<Health>();
         if (defenderHealth == null || defenderHealth.currentHealth <= 0) return;
 
-        // 1. Pull raw statistics directly out of your pre-loaded data structs
         float rawAttack = attacker.stats.attackPower > 0 ? attacker.stats.attackPower : 5f;
         float baseDefense = defender.stats.defensePower;
 
-        // 2. Factor in active faction morale scales (50 Morale = 1.0x baseline multiplier)
         float attackerMoraleMultiplier = 1.0f + ((attacker.stats.morale - 50f) / 100f);
         float defenderMoraleMultiplier = 1.0f + ((defender.stats.morale - 50f) / 100f);
 
         float calculatedAttack = rawAttack * attackerMoraleMultiplier;
         float effectiveDefense = baseDefense * defenderMoraleMultiplier;
 
-        // 3. APPLY ATTACK RATIO DAMPENER:
-        // Scales your massive combat stats down into an appropriate background step size.
+        float baseCombatMitigation = calculatedAttack - (effectiveDefense * 0.5f);
+        float absoluteMinimumPenetrationFloor = calculatedAttack * 0.25f;
+        float rawCalculatedDamage = Mathf.Max(baseCombatMitigation, absoluteMinimumPenetrationFloor);
+
+        // ========================================================================
+        // 🟩 ANTI-SWARM FORCE DAMPENER (FIXED ENEMIES LACKING DAMAGE IN CROWDS):
+        // Automatically counts how many active rivals are currently targeting this defender!
+        // If 5 enemies are jumping 1 ally, we divide the incoming damage by a crowd factor.
+        // This stops swarms from instantly deleting targets, giving both sides plenty of 
+        // heartbeat ticks to trade hits and lose health steadily together!
+        // ========================================================================
+        int activeAttackerCount = 1;
+        List<MusouUnit> attackerFactionList = (attacker.unitTeam == MusouUnit.Team.EnemySide) ? enemySideUnits : playerSideUnits;
+
+        for (int i = 0; i < attackerFactionList.Count; i++)
+        {
+            if (attackerFactionList[i] != null && attackerFactionList[i] != attacker)
+            {
+                // If another teammate is also locked onto our current defender, increment the crowd scale
+                if (attackerFactionList[i].currentTarget == defender.transform)
+                {
+                    activeAttackerCount++;
+                }
+            }
+        }
+
+        // Apply a gentle division scale based on crowd density to preserve unit longevity
+        float crowdDampeningFactor = 1.0f / (1.0f + (activeAttackerCount * 0.4f));
+
         float offScreenScale = 0.05f;
-        float rawCalculatedDamage = (calculatedAttack - (effectiveDefense * 0.5f)) * offScreenScale;
+        float scaledDamage = rawCalculatedDamage * offScreenScale * crowdDampeningFactor;
 
-        // 4. 🔥 THE WHOLE-NUMBER CLAMP CUE:
-        // By casting this value through Mathf.RoundToInt(), we completely convert the damage 
-        // value from a sliding float scale into a solid whole number integer chunk!
-        int finalStepDamage = Mathf.RoundToInt(rawCalculatedDamage);
+        int finalStepDamage = Mathf.RoundToInt(scaledDamage);
 
-        // 5. Guarantee a minimum hard clamp of 1 solid point of damage per successful tick
         if (finalStepDamage < 1) finalStepDamage = 1;
 
-        // 6. Deliver the solid chunk damage directly to their primary health storage parameters
         defenderHealth.currentHealth -= finalStepDamage;
 
-        // Sync their visual health bar display values right on the tick frame
         if (defenderHealth.healthBar != null)
         {
             defenderHealth.healthBar.UpdateBar(defenderHealth.currentHealth, defenderHealth.maxHealth);
         }
 
-
-
         if (defenderHealth.currentHealth <= 0)
         {
+            defenderHealth.currentHealth = 0;
+
+            if (MoraleManager.Instance != null || MoraleManager.Instance != null)
+            {
+                float offScreenPointsGranted = defender.isOfficer ? 8f : 0.25f;
+                MusouUnit.Team victoriousFactionTeam = (defender.unitTeam == MusouUnit.Team.EnemySide) ?
+                                                       MusouUnit.Team.PlayerSide : MusouUnit.Team.EnemySide;
+
+                if (MoraleManager.Instance != null) MoraleManager.Instance.ChangeMorale(victoriousFactionTeam, offScreenPointsGranted);
+                else if (MoraleManager.Instance != null) MoraleManager.Instance.ChangeMorale(victoriousFactionTeam, offScreenPointsGranted);
+            }
+
             defenderHealth.Die();
         }
     }

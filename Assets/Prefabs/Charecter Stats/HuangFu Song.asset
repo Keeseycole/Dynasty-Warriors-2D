@@ -17,7 +17,13 @@ MonoBehaviour:
   animatorController: {fileID: 9100000, guid: 4295bad01f8c9f54b8f7feea3f4b4111, type: 2}
   gridIcon: {fileID: 4826397654746514499, guid: 7f7d7276e52e65f4690fdced0bacae71, type: 3}
   massivePreview: {fileID: 1680200083, guid: 7f7d7276e52e65f4690fdced0bacae71, type: 3}
-  attackPower: 160
-  defensePower: 195
-  maxHealth: 250
+  baseAttackPower: 131
+  baseDefensePower: 158
+  baseMaxHealth: 100
+  baseMaxMusou: 100
+  uniqueAttackRadius: 1.5
   moveSpeed: 5
+  permanentHealthBonus: 0
+  permanentAttackBonus: 0
+  permanentDefenseBonus: 0
+  permanentMusouBonus: 0

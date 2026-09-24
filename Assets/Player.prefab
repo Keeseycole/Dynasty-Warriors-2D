@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 4530718594491808079}
   - component: {fileID: 5735086031365336344}
   - component: {fileID: 3452759217847206136}
-  - component: {fileID: 5600000998223918329}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -231,7 +230,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 33.18
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 0
@@ -304,59 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bef22b1e62e88846b776bb4bd41f8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChildAnimationBridge
---- !u!114 &5600000998223918329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393334081821395625}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1863452493a877a478e6b1b88a3b12fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusouUnit
-  currentState: 0
-  baseAttack: 0
-  enemyName: 
-  moveSpeed: 0
-  rb: {fileID: 0}
-  currentTarget: {fileID: 0}
-  animator: {fileID: 0}
-  chaseRadius: 0
-  attackRadius: 0
-  currentMission: 0
-  missionTarget: {fileID: 0}
-  unitTeam: 0
-  followsPlayer: 0
-  searchLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  detectionRange: 10
-  followDistance: 3
-  strafeSpeed: 3
-  damageToGive: 10
-  baseAggressionScore: 0
-  aggressionScore: 0.5
-  attackCooldown: 1.5
-  separationRadius: 0.8
-  separationStrength: 3
-  isBusy: 0
-  playerTransform: {fileID: 0}
-  attackStepForce: 12.66
-  hitForce: 4
-  enemyHitLagDuration: 0.06
-  myLeader: {fileID: 0}
-  squadIndex: 0
-  stoppingDistance: 0.2
-  combatOffset: {x: 0, y: 0}
-  personalSpaceRadius: 1.5
-  startingDirection: {x: 0, y: -1}
-  isOfficer: 0
-  isStageCommander: 0
-  isLunging: 0
-  lungeForce: 17.32
-  lungeDuration: 0.15
 --- !u!1 &2303862948726828186
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +454,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 13815
+    m_Bits: 28129
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

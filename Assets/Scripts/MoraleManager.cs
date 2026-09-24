@@ -28,6 +28,8 @@ public class MoraleManager : MonoBehaviour
     [HideInInspector]
     public List<MusouUnit> activeBattlefieldUnits = new List<MusouUnit>();
 
+    public float EventMoraleLoss = 40f; // ◄── PUBLIC ADJUSTABLE SLIDER / INPUT!
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -36,11 +38,24 @@ public class MoraleManager : MonoBehaviour
 
     private void Start()
     {
-        // Set initial balance line precisely in the center on boot
         if (playerMoraleFillImage != null)
         {
             targetFillAmount = playerFactionMorale / 100f;
             playerMoraleFillImage.fillAmount = targetFillAmount;
+        }
+
+        // ========================================================================
+        // 🟩 THE BOOT LEVEL SWEEP (NEW PERFORMANCE GATHER):
+        // Sweeps the map layout on frame one to manually register any characters
+        // that were drag-and-dropped straight into the editor scene hierarchy view!
+        // ========================================================================
+        MusouUnit[] prePlacedUnits = FindObjectsByType<MusouUnit>(FindObjectsSortMode.None);
+        for (int i = 0; i < prePlacedUnits.Length; i++)
+        {
+            if (prePlacedUnits[i] != null && !activeBattlefieldUnits.Contains(prePlacedUnits[i]))
+            {
+                activeBattlefieldUnits.Add(prePlacedUnits[i]);
+            }
         }
     }
 
@@ -61,6 +76,14 @@ public class MoraleManager : MonoBehaviour
     /// <summary>
     /// Call this dynamically inside Health.Die() or BattleEventManager shifts!
     /// </summary>
+    /// <summary>
+    /// Adjusts the global team morale scales and triggers an event-driven broadcast pass.
+    /// Safely handles massive simultaneous death events (like fire traps) without thread crashes!
+    /// </summary>
+    /// <summary>
+    /// Adjusts the global team morale scales and triggers an event-driven broadcast pass.
+    /// Safely handles massive simultaneous death events (like fire traps) and prints out active count diagnostics.
+    /// </summary>
     public void ChangeMorale(MusouUnit.Team scoringTeam, float amount)
     {
         if (scoringTeam == MusouUnit.Team.PlayerSide)
@@ -77,30 +100,42 @@ public class MoraleManager : MonoBehaviour
         // Calculate what percentage of the bar should be filled by the Player Side
         targetFillAmount = playerFactionMorale / 100f;
 
+        if (activeBattlefieldUnits == null) return;
+
         // ========================================================================
-        // 🔥 THE GLOBAL BROADCAST RIPPLE PASS:
-        // Loops backward through the living army grid. Instantly forces every soldier
-        // to re-evaluate their attack values, defense, and speed based on the new bar!
+        // 🟩 THE RE-ENGINEERED THREAD GUARD (FIXED MASS DEATHTRAPS):
+        // 1. Instantly prunes out any missing, null, or dead references using an optimized
+        //    Lambda filter BEFORE we broadcast. This prevents any Null Reference Exceptions!
+        // 2. Safely loops through the remaining live array grid to pass the morale values.
         // ========================================================================
-        for (int i = activeBattlefieldUnits.Count - 1; i >= 0; i--)
+
+        // Step A: Clean out dead units first so they cannot block or crash our loops
+        activeBattlefieldUnits.RemoveAll(unit => unit == null || unit.gameObject == null);
+
+        int updatedAllies = 0;
+        int updatedEnemies = 0;
+
+        // Step B: Loop forward safely through 100% verified living, active combat units
+        for (int i = 0; i < activeBattlefieldUnits.Count; i++)
         {
-            if (activeBattlefieldUnits[i] != null)
+            MusouUnit currentUnit = activeBattlefieldUnits[i];
+
+            if (currentUnit != null)
             {
-                // Force individual unit attributes to scale to the global wave change
-                activeBattlefieldUnits[i].SyncIndividualWithGlobalMorale();
-            }
-            else
-            {
-                // Safety cleanup loop: Prunes out any destroyed array pointers safely
-                activeBattlefieldUnits.RemoveAt(i);
+                currentUnit.SyncIndividualWithGlobalMorale();
+
+                // Live internal tracking counts
+                if (currentUnit.unitTeam == MusouUnit.Team.PlayerSide) updatedAllies++;
+                else if (currentUnit.unitTeam == MusouUnit.Team.EnemySide) updatedEnemies++;
             }
         }
-    }
 
+
+    }
     /// <summary>
     /// Calculates an adjusted aggression score factoring in team morale and difficulty ceilings.
     /// </summary>
-   public float GetAdjustedAggression(MusouUnit.Team unitTeam, float baseAggression)
+    public float GetAdjustedAggression(MusouUnit.Team unitTeam, float baseAggression)
     {
         float activeBaseAggression = (baseAggression > 0.05f) ? baseAggression : 0.45f;
 
@@ -149,5 +184,54 @@ public class MoraleManager : MonoBehaviour
 
         float finalCalculatedScore = (activeBaseAggression * difficultyMultiplier) + moraleInfluenceValue;
         return Mathf.Clamp(finalCalculatedScore, minAggressionCap, maxAggressionCap);
+    }
+
+    // ========================================================================
+    // 🟩 SCRIPTED MORALE CRISIS ENGINE (FIXED YI LING FIRE ATTACK PLUMMET):
+    // Completely bypasses your standard casualty reward and team sorting logic!
+    // Call this explicitly from your map event managers to forcefully drop a faction's
+    // morale slider down to a crisis state with 100% mechanical consistency.
+    // ========================================================================
+    public void ApplyScriptedMoraleCrisis(MusouUnit.Team targetedTeam, float moraleLossAmount)
+    {
+        // If no custom loss parameter was explicitly passed, pull directly from your Inspector slider!
+        if (moraleLossAmount < 0f)
+        {
+            moraleLossAmount = EventMoraleLoss;
+        }
+
+        float absoluteLossValue = Mathf.Abs(moraleLossAmount);
+
+        if (BattlefieldManager.Instance != null)
+        {
+            var targetFactionList = (targetedTeam == MusouUnit.Team.EnemySide) ?
+                                     BattlefieldManager.Instance.enemySideUnits :
+                                     BattlefieldManager.Instance.playerSideUnits;
+
+            if (targetFactionList != null)
+            {
+                for (int u = 0; u < targetFactionList.Count; u++)
+                {
+                    MusouUnit soldier = targetFactionList[u];
+                    if (soldier != null)
+                    {
+                        // Drop their individual combat stats directly to simulate raw panic!
+                        soldier.stats.morale = (int)Mathf.Clamp(soldier.stats.morale - absoluteLossValue, 10f, 100f);
+                    }
+                }
+            }
+        }
+
+        if (targetedTeam == MusouUnit.Team.PlayerSide)
+        {
+            // Symmetrically boost the Enemy side by your positive loss value amount.
+            // This naturally forces the allied bar to plunge on your UI slider cleanly!
+            ChangeMorale(MusouUnit.Team.EnemySide, absoluteLossValue);
+        }
+        else if (targetedTeam == MusouUnit.Team.EnemySide)
+        {
+            // Symmetrically boost the Player side if the fire attack hits the enemy lines instead.
+            ChangeMorale(MusouUnit.Team.PlayerSide, absoluteLossValue);
+        }
     }
 }

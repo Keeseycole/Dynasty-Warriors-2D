@@ -26,4 +26,4 @@ MonoBehaviour:
   permanentHealthBonus: 0
   permanentAttackBonus: 0
   permanentDefenseBonus: 0
-  permanentMusouBonus: 190
+  permanentMusouBonus: 1

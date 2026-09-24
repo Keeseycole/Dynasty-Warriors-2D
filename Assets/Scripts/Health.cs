@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
     private Coroutine minimapFlashCoroutine;
     private Coroutine hitFlashCoroutine;
 
-    
+
     [HideInInspector] public bool blockedOnThisFrame = false;
 
     private Collider2D myCollider;
@@ -57,6 +57,10 @@ public class Health : MonoBehaviour
     [Header("Dialogue Object Settings")]
     [Tooltip("Drag and drop your active Conversation GameObject here from the hierarchy window!")]
     public GameObject gateBreachedConversationObject;
+
+    [Header("Background Combat Balance")]
+    [HideInInspector]
+    public float accumulatedDamageThisTick = 0f; // Tracks combined off-screen hits inside the current frame pass
     private void Awake()
     {
         myUnitComponent = GetComponent<MusouUnit>() ?? GetComponentInChildren<MusouUnit>();
@@ -103,6 +107,12 @@ public class Health : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        // Smoothly clear out accumulated background damage pools on every new physics frame pass
+        if (accumulatedDamageThisTick > 0f) accumulatedDamageThisTick = Mathf.MoveTowards(accumulatedDamageThisTick, 0f, Time.fixedDeltaTime * 100f);
+    }
+
 
 
     public void TakeDamage(float damage, Vector2 attackerPosition, Vector2 knockback, Animator attackerAnim, Rigidbody2D attackerRb)
@@ -117,14 +127,34 @@ public class Health : MonoBehaviour
 
         if (unitAI != null)
         {
-            int defenseBuffer = unitAI.stats.defensePower;
+            // 🔥 THE PERFORMANCE FLOATING CAP: Clamp baseline defense to prevent massive crowd densities
+            // from compounding their armor values exponentially behind the scenes!
+            int defenseBuffer = Mathf.Clamp(unitAI.stats.defensePower, 0, 40);
+
+            float currentUnitMorale = unitAI.stats.morale;
 
             // 50 Morale = 1.0x baseline. 100 Morale = 1.5x defense power. 0 Morale = 0.5x defense power.
-            float moraleMultiplier = 1.0f + ((unitAI.stats.morale - 50f) / 100f);
+            float moraleMultiplier = 1.0f + ((currentUnitMorale - 50f) / 100f);
+
+            // Hard clamp the multiplier so their effective defense can never cross unstable limits
+            moraleMultiplier = Mathf.Clamp(moraleMultiplier, 0.3f, 1.8f);
             float effectiveDefense = defenseBuffer * moraleMultiplier;
 
             // Arcade formula: Final Damage = Raw Attack - (Defense / 2)
-            finalMitigatedDamage = Mathf.Max(1f, damage - (effectiveDefense * 0.5f));
+            float calculatedMitigation = damage - (effectiveDefense * 0.5f);
+
+            // ========================================================================
+            // 🟩 THE RETRO ARCADE DAMAGE FLOOR (FIXED FOR 10+ CROWD BLOCKADES):
+            // Instead of snapping negative values down to a microscopic 1 HP, we enforce
+            // a hard damage floor! A hit is mathematically GUARANTEED to always deal at 
+            // least 25% of the raw incoming weapon power. Wipes out crowd invulnerability!
+            // ========================================================================
+            float minimumDamageFloor = damage * 0.25f;
+
+            finalMitigatedDamage = Mathf.Max(minimumDamageFloor, calculatedMitigation);
+
+            // Final safety round conversion pass
+            roundedTextValue = Mathf.RoundToInt(finalMitigatedDamage);
         }
 
         // REDUCE HEALTH: Subtracted exactly ONCE per combat impact frame!
@@ -208,7 +238,7 @@ public class Health : MonoBehaviour
             }
         }
 
-    // 5. DEATH CHECK & CLEANUP
+        // 5. DEATH CHECK & CLEANUP
         if (currentHealth <= 0)
         {
             if (hitFlashCoroutine != null) StopCoroutine(hitFlashCoroutine);
@@ -222,7 +252,7 @@ public class Health : MonoBehaviour
             }
 
             // Standard enemy verification lines
-            bool isEnemyByTag = gameObject.CompareTag("Enemy") || gameObject.name.Contains("Grunt") || gameObject.name.Contains("Soldier");
+            bool isEnemyByTag = gameObject.CompareTag("Enemy") || gameObject.name.Contains("Soldier");
             bool isEnemyByAI = (unitAI != null && (unitAI.unitTeam == MusouUnit.Team.EnemySide || unitAI.unitTeam == Team.EnemySide));
             bool isAnEnemyUnit = isEnemyByTag || isEnemyByAI;
 
@@ -238,13 +268,13 @@ public class Health : MonoBehaviour
                 if (attackerAnim != null)
                 {
                     GameObject rootAttacker = attackerAnim.gameObject;
-                    
+
                     // Trace up to find the true root object if the animator is nested inside a child layer
                     if (attackerAnim.transform.parent != null)
                     {
                         // Check if the parent or root carries a custom AI movement component
                         var isAIComponent = attackerAnim.GetComponentInParent<GenericTransformFollower>() ?? attackerAnim.GetComponent<GenericTransformFollower>();
-                        
+
                         // 🔥 THE ULTIMATE AI ALLY EXCLUSION FILTER:
                         // Even if their tag says "Player" by mistake, if they have a path follower script,
                         // they are mathematically PROVEN to be an automated ally, not the real player!
@@ -258,7 +288,7 @@ public class Health : MonoBehaviour
                         killedByPlayerDirectly = true;
                     }
 
-    
+
                 }
 
                 // Increments your text strings ONLY if the true player struck the blow!
@@ -272,130 +302,308 @@ public class Health : MonoBehaviour
         }
     }
 
-public void TakeDamage(float damageAmount, Vector2 attackerPosition, Vector2 knockbackVelocity, GameObject visualEffect = null, string customParameter = null)
-{
-    // 1. Convert the float stat cleanly to a whole number integer
-    int calculatedDamageValue = Mathf.RoundToInt(damageAmount);
-
-    // ========================================================================
-    // 🟩 REDIRECT SIGNATURE ALIGNMENT (FIXED SYNTAX):
-    // Explicitly passes component type definitions to the primary method instead of
-    // naked null fields, eliminating signature compilation crashes!
-    // ========================================================================
-    TakeDamage(calculatedDamageValue, attackerPosition, knockbackVelocity, (Animator)null, (Rigidbody2D)null);
-
-    // 3. HARD TRIGGER STAGGER: Force the enemy to break out of their AI pathfinding loops instantly!
-    if (unitAI != null)
+    public void TakeDamage(float damageAmount, Vector2 attackerPosition, Vector2 knockbackVelocity, GameObject visualEffect = null, string customParameter = null)
     {
-        unitAI.TriggerHit(attackerPosition);
-        
-    }
-}
-public void Die()
-    {
-        if (BattleManager.Instance != null)
-            BattleManager.Instance.activeUnits.Remove(this);
-
-        EvaluateItemDrop();
+        // 1. Convert the float stat cleanly to a whole number integer
+        int calculatedDamageValue = Mathf.RoundToInt(damageAmount);
 
         // ========================================================================
-        // 🔥 FIXED PART A: DECOUPLED INDEPENDENT GATE DIALOGUE TRIGGER
-        // This block now stands entirely on its own. It runs, fires its activations, 
-        // and exits immediately without trapping the rest of your game loop!
+        // 🟩 REDIRECT SIGNATURE ALIGNMENT (FIXED SYNTAX):
+        // Explicitly passes component type definitions to the primary method instead of
+        // naked null fields, eliminating signature compilation crashes!
         // ========================================================================
-        if (gameObject.CompareTag("Gate") || isGate)
+        TakeDamage(calculatedDamageValue, attackerPosition, knockbackVelocity, (Animator)null, (Rigidbody2D)null);
+
+        // 3. HARD TRIGGER STAGGER: Force the enemy to break out of their AI pathfinding loops instantly!
+        if (unitAI != null)
         {
-            // 1. DYNAMIC SEARCH FALLBACK ACCELERATOR
-            // If an inspector reference slot drops, automatically sweep the hierarchy to find it!
-            if (gateBreachedConversationObject == null)
+            unitAI.TriggerHit(attackerPosition);
+
+        }
+    }
+    public void Die()
+    {
+        // ========================================================================
+        // 🟩 ENDLESS CHAIN PROMOTION & SQUAD MEMBER CARRIER ENGINE (RECURSIVE FIXED):
+        // Must run first! Sweeps the entire faction list to find a living fallback grunt
+        // that shares this specific commander node instance. It transfers all path parameters,
+        // assigns all remaining squad members, and resets references so the chain
+        // repeats beautifully on autopilot until the entire column is completely wiped out!
+        // ========================================================================
+        if (unitAI != null && (gameObject.name.Contains("Leader") || unitAI.isOfficer))
+        {
+            if (BattlefieldManager.Instance != null)
             {
-                Debug.LogWarning($"[HEALTH WARNING]: Variable link empty on '{gameObject.name}'! Initiating manual hierarchy query sweep...");
-                GameObject dialogueFolder = GameObject.Find("Battle Dialogue");
-                if (dialogueFolder != null)
+                var myFactionList = (unitAI.unitTeam == MusouUnit.Team.EnemySide) ?
+                                     BattlefieldManager.Instance.enemySideUnits :
+                                     BattlefieldManager.Instance.playerSideUnits;
+
+                MusouUnit nextInCommand = null;
+
+                // Find the first available living follower who points to this dying leader
+                for (int m = 0; m < myFactionList.Count; m++)
                 {
-                    Transform childNode = dialogueFolder.transform.Find("Gate Breached");
-                    if (childNode != null)
+                    MusouUnit candidate = myFactionList[m];
+
+                    if (candidate != null && candidate != unitAI && candidate.currentState != EnemyState.Death)
                     {
-                        gateBreachedConversationObject = childNode.gameObject;
+                        // Check if this grunt belongs to the dying commander's team context
+                        if (candidate.myLeader != null && candidate.myLeader.gameObject == gameObject)
+                        {
+                            nextInCommand = candidate;
+                            break; // Successor found! Exit early to process inheritance channels
+                        }
                     }
                 }
-            }
 
-            // 2. ACTIVE TRIGGER STATE RUNNER
-            if (gateBreachedConversationObject != null)
-            {
-                gateBreachedConversationObject.SetActive(true);
-                Debug.Log($"[HEALTH SUCCESS]: Successfully activated node: '{gateBreachedConversationObject.name}'!");
-            }
-            else
-            {
-                Debug.LogError($"[CRITICAL HEALTH BREAK]: Could not locate the 'Gate Breached' object inside your hierarchy workspace!");
+                if (nextInCommand != null)
+                {
+                    // Active-Component Tracker Extraction for Dual-Paths
+                    GenericTransformFollower oldFollower = null;
+                    GenericTransformFollower[] allOldFollowers = GetComponents<GenericTransformFollower>();
+
+                    if (allOldFollowers != null && allOldFollowers.Length > 0)
+                    {
+                        for (int o = 0; o < allOldFollowers.Length; o++)
+                        {
+                            if (allOldFollowers[o] != null && allOldFollowers[o].enabled)
+                            {
+                                oldFollower = allOldFollowers[o];
+                                break;
+                            }
+                        }
+                    }
+
+                    if (oldFollower == null)
+                    {
+                        oldFollower = GetComponent<GenericTransformFollower>()
+                                   ?? GetComponentInChildren<GenericTransformFollower>()
+                                   ?? GetComponentInParent<GenericTransformFollower>();
+                    }
+
+                    // Attach or find the single exclusive SquadLeader component script on the successor
+                    SquadLeader promotedLeaderScript = nextInCommand.GetComponent<SquadLeader>();
+                    if (promotedLeaderScript == null)
+                    {
+                        promotedLeaderScript = nextInCommand.gameObject.AddComponent<SquadLeader>();
+                    }
+
+                    // Force the new commander command script completely awake right now!
+                    promotedLeaderScript.enabled = true;
+
+                    // Ensure their SquadLeader component initializes its member tracking list array
+                    // (Change "squadMembers" below to match the exact List variable string in your SquadLeader.cs file!)
+                    if (promotedLeaderScript.squadMembers == null)
+                    {
+                        promotedLeaderScript.squadMembers = new System.Collections.Generic.List<MusouUnit>();
+                    }
+                    else
+                    {
+                        promotedLeaderScript.squadMembers.Clear(); // Flush old junk values
+                    }
+
+                    if (oldFollower != null)
+                    {
+                        // Synchronize structural path parameters straight into the SquadLeader script data fields
+                        promotedLeaderScript.pathWaypoints = oldFollower.pathPoints;
+
+                        // Fetch EVERY duplicate path follower script running on the grunt prefab to populate them completely!
+                        GenericTransformFollower[] allNewFollowers = nextInCommand.gameObject.GetComponents<GenericTransformFollower>();
+
+                        if (allNewFollowers == null || allNewFollowers.Length == 0)
+                        {
+                            allNewFollowers = new GenericTransformFollower[] { nextInCommand.gameObject.AddComponent<GenericTransformFollower>() };
+                        }
+
+                        for (int f = 0; f < allNewFollowers.Length; f++)
+                        {
+                            GenericTransformFollower currentFollowerScript = allNewFollowers[f];
+                            if (currentFollowerScript == null) continue;
+
+                            currentFollowerScript.pathPoints = oldFollower.pathPoints;
+                            currentFollowerScript.currentPointIndex = oldFollower.currentPointIndex;
+                            currentFollowerScript.movementSpeed = oldFollower.movementSpeed;
+                            currentFollowerScript.arrivalThreshold = oldFollower.arrivalThreshold;
+                            currentFollowerScript.pathPriority = oldFollower.pathPriority;
+                            currentFollowerScript.isMoving = oldFollower.isMoving;
+                            currentFollowerScript.rb = nextInCommand.gameObject.GetComponent<Rigidbody2D>();
+                            currentFollowerScript.enabled = true;
+                        }
+
+                        // Re-brand their identity name string cleanly so they are recognized as a valid leader if *they* fall later!
+                        string originalGruntName = nextInCommand.gameObject.name;
+                        nextInCommand.gameObject.name = originalGruntName + "_Promoted_Leader";
+
+                        nextInCommand.myLeader = null; // Becomes their own independent master leader root node!
+
+                        // Physical Mass/Weight Inheritance
+                        Rigidbody2D oldLeaderRb = GetComponent<Rigidbody2D>();
+                        Rigidbody2D nextRb = nextInCommand.gameObject.GetComponent<Rigidbody2D>();
+
+                        if (oldLeaderRb != null && nextRb != null)
+                        {
+                            nextRb.mass = oldLeaderRb.mass;
+                        }
+
+                        if (nextRb != null) nextRb.simulated = true;
+
+                        // ========================================================================
+                        // 🟩 SQUAD TRANSFER CYCLER GATELINE (THE INFINITE REPEAT KEY):
+                        // Loops through all remaining units on this faction side. If a grunt was 
+                        // following the old dead leader, we forcefully point their 'myLeader' handle
+                        // to the new 'promotedLeaderScript' component, and log them into the new leader's
+                        // 'squadMembers' tracking list array! This seals the endless loop recursion.
+                        // ========================================================================
+                        for (int m = 0; m < myFactionList.Count; m++)
+                        {
+                            MusouUnit sibling = myFactionList[m];
+
+                            // Check if this sibling was a teammate under the old dying manager script component
+                            if (sibling != null && sibling != nextInCommand && sibling.currentState != EnemyState.Death)
+                            {
+                                if (sibling.myLeader != null && sibling.myLeader.gameObject == gameObject)
+                                {
+                                    // 1. Re-anchor their internal target leader node pointer
+                                    sibling.myLeader = promotedLeaderScript;
+
+                                    // 2. Register them into the new commander's live squad member collection tracker list
+                                    promotedLeaderScript.squadMembers.Add(sibling);
+                                }
+                            }
+                        }
+
+                        UnitCuller nextCuller = nextInCommand.GetComponent<UnitCuller>();
+                        if (nextCuller != null) nextCuller.enabled = true;
+
+                        Debug.Log($"[ENDLESS PROMOTION LINKED]: '{nextInCommand.gameObject.name}' has successfully taken command of ({promotedLeaderScript.squadMembers.Count}) surviving squad members!");
+                    }
+                }
             }
         }
 
         // ========================================================================
-        // 🔥 FIXED PART B: CORE GLOBAL DEATH LIFECYCLE (Runs for ALL units smoothly!)
+        // 🟩 GLOBAL LIST PURGE (WIPES OUT OFF-SCREEN GHOSTS)
         // ========================================================================
+        if (BattlefieldManager.Instance != null && unitAI != null)
+        {
+            if (BattlefieldManager.Instance.playerSideUnits.Contains(unitAI))
+            {
+                BattlefieldManager.Instance.playerSideUnits.Remove(unitAI);
+            }
+            if (BattlefieldManager.Instance.enemySideUnits.Contains(unitAI))
+            {
+                BattlefieldManager.Instance.enemySideUnits.Remove(unitAI);
+            }
+
+            BattlefieldManager.Instance.UnregisterUnit(unitAI);
+        }
+
         if (MoraleManager.Instance != null && unitAI != null)
         {
-            float pointsGranted = unitAI.isOfficer ? 8f : 0.25f;
-            MusouUnit.Team victoriousTeam = (unitAI.unitTeam == MusouUnit.Team.PlayerSide) ? MusouUnit.Team.EnemySide : MusouUnit.Team.PlayerSide;
-            MoraleManager.Instance.ChangeMorale(victoriousTeam, pointsGranted);
+            if (MoraleManager.Instance.activeBattlefieldUnits.Contains(unitAI))
+            {
+                MoraleManager.Instance.activeBattlefieldUnits.Remove(unitAI);
+            }
         }
 
         if (unitAI != null)
         {
-            // Remove this specific unit from the map-wide tracking lists the exact frame it dies
-            if (BattlefieldManager.Instance != null)
-            {
-                BattlefieldManager.Instance.UnregisterUnit(unitAI);
-            }
-
-            unitAI.StopAllCoroutines();
             unitAI.enabled = false;
             unitAI.ChangeState(EnemyState.Death);
+        }
+
+        // Disable physical body shapes immediately so players don't run in place against invisible walls
+        var myCollider = GetComponent<Collider2D>() ?? GetComponentInChildren<Collider2D>();
+        if (myCollider != null)
+        {
+            myCollider.enabled = false;
+        }
+
+        var localBoxCollider = GetComponent<BoxCollider2D>() ?? GetComponentInChildren<BoxCollider2D>();
+        if (localBoxCollider != null)
+        {
+            localBoxCollider.enabled = false;
         }
 
         if (rb != null)
         {
             rb.linearVelocity = Vector2.zero;
-            rb.simulated = false;
+            rb.simulated = false; // Put physics updates completely to sleep!
+        }
+
+        // Clean up any detached floating health bar objects instantly so allies don't attack ghost UI canvas spots
+        if (healthBar != null && healthBar.gameObject != null)
+        {
+            Destroy(healthBar.gameObject);
         }
 
         if (KOCounter.instance != null && unitAI != null && unitAI.unitTeam == MusouUnit.Team.EnemySide)
         {
-            
-
             if (unitAI.isStageCommander && BattleEndManager.Instance != null)
             {
                 BattleEndManager.Instance.NotifyCommanderDefeated(this);
             }
         }
 
-        // Smoothly fade out the mesh layers and clear the object memory cleanly
+        // ========================================================================
+        // 🟩 UNIVERSAL SYMMETRICAL DEATH PRESENTATION OVERRIDE:
+        // ========================================================================
+        if (hitFlashCoroutine != null) StopCoroutine(hitFlashCoroutine);
+        if (spriteRenderer != null) spriteRenderer.color = originalColor;
+
+        if (!isGate && anim != null)
+        {
+            anim.SetBool("isMoving", false);
+            anim.SetBool("isHit", false);
+            anim.SetBool("isBlocking", false);
+            anim.SetBool("isDead", true);
+        }
+
         StartCoroutine(DeathFadeRoutine());
     }
 
-
     private IEnumerator DeathFadeRoutine()
     {
-        // Keep this clean fallback delay intact to handle visual fading before turning off the collider meshes
-        yield return new WaitForSeconds(4f);
+        // 1. Establish absolute physical visibility flags natively
+        bool visuallyVisibleOnScreen = (spriteRenderer != null && spriteRenderer.isVisible);
+        bool isALeaderUnit = (unitAI != null && (unitAI.isOfficer || gameObject.name.Contains("Leader")));
 
-        if (spriteRenderer != null)
+        // ========================================================================
+        // 🟩 THE MASTER LEADER BYPASS GATELINE (FIXED FROZEN ENEMY LEADERS):
+        // If a master Squad Leader or Officer is defeated completely off-screen,
+        // we strictly FORBID them from entering the frame-by-frame Lerp wait loop!
+        // Because leader script loops can fight transparency variable adjustments,
+        // we force an immediate hard engine deletion to keep your corridors completely clean!
+        // ========================================================================
+        bool shouldBypassFadeAndDestroyInstantly = !isSimulating && !visuallyVisibleOnScreen && isALeaderUnit;
+
+        if (!shouldBypassFadeAndDestroyInstantly)
         {
-            float fadeTime = 1f;
-            float startAlpha = spriteRenderer.color.a;
-
-            for (float t = 0; t < fadeTime; t += Time.deltaTime)
+            // Standard On-Screen / Simulating character wait pass
+            if (isSimulating || visuallyVisibleOnScreen)
             {
-                if (spriteRenderer == null) break;
-                Color c = spriteRenderer.color;
-                c.a = Mathf.Lerp(startAlpha, 0f, t / fadeTime);
-                spriteRenderer.color = c;
-                yield return null;
+                yield return new WaitForSeconds(4f);
+            }
+
+            if (spriteRenderer != null)
+            {
+                float fadeTime = 1f;
+                float startAlpha = spriteRenderer.color.a;
+
+                if (isSimulating || visuallyVisibleOnScreen)
+                {
+                    for (float t = 0; t < fadeTime; t += Time.deltaTime)
+                    {
+                        if (spriteRenderer == null) break;
+                        Color c = spriteRenderer.color;
+                        c.a = Mathf.Lerp(startAlpha, 0f, t / fadeTime);
+                        spriteRenderer.color = c;
+                        yield return null;
+                    }
+                }
             }
         }
+
 
         if (gameObject.CompareTag("Gate") || isGate)
         {
@@ -407,11 +615,6 @@ public void Die()
         }
     }
 
-    // ========================================================================
-    // 🟩 THE MINIMAP ALARM BRIDGE (NEW):
-    // Public method that lets your squad leaders safely kick off this unit's 
-    // radar flash routine from anywhere on the map—even if they are off-screen!
-    // ========================================================================
     public void ForceMinimapFlash()
     {
         if (minimapIconRenderer == null) return;

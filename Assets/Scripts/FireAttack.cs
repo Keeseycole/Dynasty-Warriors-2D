@@ -37,15 +37,17 @@ public class FireAttack : MonoBehaviour
             if (BattleEventManager.Instance != null)
             {
                 BattleEventManager.Instance.ExecuteFireAttackCutscene(transform.position, caughtEnemies);
+
+                if (MoraleManager.Instance != null)
+                {
+                    // Forcefully plunge your Allies into panic using your inspector tuning values natively!
+                    MoraleManager.Instance.ApplyScriptedMoraleCrisis(MusouUnit.Team.PlayerSide, MoraleManager.Instance.EventMoraleLoss);
+                }
             }
+
         }
     }
 
-    /// <summary>
-    /// Pure Mathematical Check: Looks at every active unit on the map and checks 
-    /// if their world coordinates physically sit inside the polygon line boundary.
-    /// Completely bypasses all Unity physics layer, matrix, and contact filter bugs!
-    /// </summary>
     private List<Health> GatherEnemiesByMathematicalContains()
     {
         List<Health> victims = new List<Health>();

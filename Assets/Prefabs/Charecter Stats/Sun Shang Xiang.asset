@@ -23,7 +23,7 @@ MonoBehaviour:
   baseMaxMusou: 100
   uniqueAttackRadius: 1.78
   moveSpeed: 5
-  permanentHealthBonus: 150
+  permanentHealthBonus: 0
   permanentAttackBonus: 0
   permanentDefenseBonus: 0
-  permanentMusouBonus: 100
+  permanentMusouBonus: 0
