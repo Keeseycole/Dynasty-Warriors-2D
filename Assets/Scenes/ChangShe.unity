@@ -54910,6 +54910,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 0}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!4 &161968369
 Transform:
   m_ObjectHideFlags: 0
@@ -57481,6 +57482,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1511037920}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &254998137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59096,6 +59098,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1633909440}
     m_Modifications:
+    - target: {fileID: 2690227536645778262, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008426873459646153, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6726668049695253114, guid: 782b41a3e86c98d4380ce9bf0bb7a48c, type: 3}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.r
+      value: 0.061918736
+      objectReference: {fileID: 0}
     - target: {fileID: 1715940991600306269, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
       propertyPath: m_Name
       value: Task Manager (1)
@@ -59163,30 +59189,6 @@ PrefabInstance:
     - target: {fileID: 6368447286953641740, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
       propertyPath: m_LocalScale.y
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2690227536645778262, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5008426873459646153, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -6726668049695253114, guid: 782b41a3e86c98d4380ce9bf0bb7a48c, type: 3}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.r
-      value: 0.061918736
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7277015394334506033, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
@@ -59772,6 +59774,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1614523340}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &331153027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60609,6 +60612,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 779917679}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &381293736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62447,6 +62451,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1694576143}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &444085601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63908,6 +63913,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1825294129}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &531664952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65834,6 +65840,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1799966028}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &596533110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83928,6 +83935,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1668703173}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &627165466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84562,6 +84570,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 0}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!1 &639772421
 GameObject:
   m_ObjectHideFlags: 0
@@ -88957,6 +88966,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 895643478}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &755174794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91599,6 +91609,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 0}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!1 &834337541
 GameObject:
   m_ObjectHideFlags: 0
@@ -92727,6 +92738,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1393729460}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &888205648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93624,6 +93636,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 272907405}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &911746212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98234,6 +98247,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1897728664}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &1070320908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104880,6 +104894,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1832436690}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &1278799523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107626,6 +107641,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 306859689}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &1330297866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107921,6 +107937,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1352673178}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &1334646286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108854,6 +108871,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1117356393}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &1352117014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109216,37 +109234,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8680549222773250882, guid: fce2d7a9375dd6e4abe71dfbd539a3af, type: 3}
   m_PrefabInstance: {fileID: 575147015}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1368006569
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1368006570}
-  m_Layer: 0
-  m_Name: Spawn POint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1368006570
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368006569}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.4, y: 14.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1651712594}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1368962583
 GameObject:
   m_ObjectHideFlags: 0
@@ -117930,6 +117917,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 993702349}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &1465749626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120838,6 +120826,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1633909440}
     m_Modifications:
+    - target: {fileID: 2690227536645778262, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008426873459646153, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6726668049695253114, guid: 782b41a3e86c98d4380ce9bf0bb7a48c, type: 3}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
+      propertyPath: m_Color.r
+      value: 0.061918736
+      objectReference: {fileID: 0}
     - target: {fileID: 1715940991600306269, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
       propertyPath: m_Name
       value: Task Manager
@@ -120905,30 +120917,6 @@ PrefabInstance:
     - target: {fileID: 6368447286953641740, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
       propertyPath: m_LocalScale.y
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2690227536645778262, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5008426873459646153, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -6726668049695253114, guid: 782b41a3e86c98d4380ce9bf0bb7a48c, type: 3}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7300958081532137348, guid: 0dc472833599d594998124252f6601eb, type: 3}
-      propertyPath: m_Color.r
-      value: 0.061918736
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7277015394334506033, guid: 5d9abf432f45c6743a82c27c60c20e02, type: 3}
@@ -121820,6 +121808,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1647746210}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &1589450224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122676,6 +122665,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 2034252527}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &1593054747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125067,53 +125057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1863452493a877a478e6b1b88a3b12fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusouUnit
---- !u!1 &1651712592
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1651712594}
-  - component: {fileID: 1651712593}
-  m_Layer: 0
-  m_Name: LevelSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1651712593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651712592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e0c2ba2e5abf3a4f8717a569a16fcd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelSpawner
-  playerPrefab: {fileID: 393334081821395625, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-  spawnPoint: {fileID: 1368006570}
---- !u!4 &1651712594
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651712592}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.90091, y: -5.31302, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1368006570}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1654343788
 GameObject:
   m_ObjectHideFlags: 0
@@ -131012,6 +130955,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1717604252}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &1844379201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134688,6 +134632,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1048133526}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &1980703456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135817,6 +135762,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 0}
   isGate: 1
   gateBreachedConversationObject: {fileID: 694107674}
+  accumulatedDamageThisTick: 0
 --- !u!212 &2050260861
 SpriteRenderer:
   serializedVersion: 2
@@ -137422,6 +137368,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1779067422}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &2083950082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138128,6 +138075,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 0}
   isGate: 1
   gateBreachedConversationObject: {fileID: 694107674}
+  accumulatedDamageThisTick: 0
 --- !u!212 &2088473737
 SpriteRenderer:
   serializedVersion: 2
@@ -138524,6 +138472,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 0}
   isGate: 1
   gateBreachedConversationObject: {fileID: 694107674}
+  accumulatedDamageThisTick: 0
 --- !u!61 &2098771995
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138979,6 +138928,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 1688826915}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &2112903463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168610,6 +168560,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 29897504}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!114 &2139039946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170361,6 +170312,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 6768819798664528008}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!1 &1766588985738676573
 GameObject:
   m_ObjectHideFlags: 0
@@ -172796,6 +172748,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 8101485753990988845}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!1 &4780578760556684644
 GameObject:
   m_ObjectHideFlags: 0
@@ -174585,6 +174538,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 2867717166058709357}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!4 &6743551178417675273
 Transform:
   m_ObjectHideFlags: 0
@@ -175755,6 +175709,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8e8689a9cf5b1488f382859d167b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationProxy
+--- !u!1001 &7878678166835994307
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2247600328655017268, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -36.90091
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247600328655017268, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.31302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247600328655017268, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247600328655017268, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247600328655017268, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247600328655017268, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247600328655017268, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247600328655017268, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247600328655017268, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247600328655017268, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206705489655040700, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
+      propertyPath: m_Name
+      value: LevelSpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe408ecee18717a4a8a6e5207d5a802d, type: 3}
 --- !u!4 &7886829406906945892
 Transform:
   m_ObjectHideFlags: 0
@@ -176094,6 +176105,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 5418358044947782554}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!50 &8522660238206221669
 Rigidbody2D:
   serializedVersion: 5
@@ -176226,6 +176238,7 @@ MonoBehaviour:
   flashOverlay: {fileID: 2856599944874359131}
   isGate: 0
   gateBreachedConversationObject: {fileID: 0}
+  accumulatedDamageThisTick: 0
 --- !u!61 &8608108078747427114
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176820,7 +176833,7 @@ SceneRoots:
   - {fileID: 1467474226}
   - {fileID: 1633909440}
   - {fileID: 3522055952264891869}
-  - {fileID: 1651712594}
+  - {fileID: 7878678166835994307}
   - {fileID: 4194132472817343183}
   - {fileID: 4967674160582979512}
   - {fileID: 7079152254634893648}

@@ -54,9 +54,7 @@ public class MusouUnit : sleepEnemy
     public float attackCooldown = 1.5f;
     private float nextAttackTime;
 
-    [Header("Crowd Settings")]
-    public float separationRadius = 0.8f;
-    public float separationStrength = 3f;
+    
 
     // --- INTERNAL VARIABLES ---
     private List<System.Func<IEnumerator>> comboList;
@@ -327,10 +325,10 @@ public class MusouUnit : sleepEnemy
         Vector2 targetDir = (targetPos - physicalPos).normalized;
 
         // 1. Calculate and strictly clamp separation forces to prevent sudden spikes
-        Vector2 separationForce = ComputeSeparationForce();
-        separationForce = Vector2.ClampMagnitude(separationForce, 1.2f);
+ 
+   
 
-        Vector2 desiredDirection = (targetDir + separationForce).normalized;
+        Vector2 desiredDirection = (targetDir).normalized;
 
         if (!isChasing)
         {
@@ -591,63 +589,7 @@ public class MusouUnit : sleepEnemy
         currentTarget = bestTarget;
     }
 
-    private Vector2 ComputeSeparationForce()
-    {
-        Vector2 separation = Vector2.zero;
-        Vector2 myPhysicalPos = (rb != null) ? rb.position : (Vector2)transform.position;
-
-        // 🔥 SAFE FALLBACK: Uses standard OverlapCircleAll to remove the buffer dependency
-        Collider2D[] nearby = Physics2D.OverlapCircleAll(myPhysicalPos, separationRadius, searchLayers);
-        int neighborsCount = 0;
-
-        foreach (var other in nearby)
-        {
-            if (other == null || other.gameObject == this.gameObject) continue;
-
-            // 🔥 THE INTERCEPTOR GATE:
-            // Ignore the collider if it belongs to a child weapon hitbox or trigger.
-            // It must have a MusouUnit component on its body to affect crowd spacing!
-            MusouUnit otherUnit = other.GetComponent<MusouUnit>();
-            if (otherUnit == null)
-            {
-                otherUnit = other.GetComponentInParent<MusouUnit>();
-                if (otherUnit == null) continue; // Not a character body, skip it!
-            }
-
-            // Use the actual physical position of the neighbor's character body
-            Rigidbody2D otherRb = otherUnit.rb;
-            Vector2 otherPos = (otherRb != null) ? otherRb.position : (Vector2)otherUnit.transform.position;
-
-            Vector2 diff = myPhysicalPos - otherPos;
-            float distance = diff.magnitude;
-
-            // Prevent division-by-zero errors if they overlap exactly
-            if (distance < 0.2f)
-            {
-                Vector2 randomPush = Random.insideUnitCircle.normalized;
-                if (randomPush == Vector2.zero) randomPush = Vector2.up;
-
-                separation += randomPush * (separationStrength * 2f);
-                neighborsCount++;
-                continue;
-            }
-
-            if (distance < separationRadius)
-            {
-                float forceStrength = (separationRadius - distance) / distance;
-                separation += diff.normalized * forceStrength;
-                neighborsCount++;
-            }
-        }
-
-        if (neighborsCount > 0)
-        {
-            return (separation / neighborsCount) * separationStrength;
-        }
-
-        return Vector2.zero;
-    }
-
+ 
     // --- DAMAGE & STAGGER ---
     public void TriggerHit(Vector2 attackerPos)
     {
