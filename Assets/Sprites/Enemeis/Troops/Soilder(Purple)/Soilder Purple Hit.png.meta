@@ -497,6 +497,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Soilder Purple Hit_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 40
+        width: 40
+        height: 40
+      alignment: 9
+      pivot: {x: 0.6319469, y: 0.4887969}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d81db30bce3b8e2438c50182d4fa54b8
+      internalID: -1586077737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -522,6 +544,7 @@ TextureImporter:
       Soilder Purple Hit_14: 1650540
       Soilder Purple Hit_15: 1947259769
       Soilder Purple Hit_16: 2121442929
+      Soilder Purple Hit_17: -1586077737
       Soilder Purple Hit_2: -3298367811012597110
       Soilder Purple Hit_3: -2747949324847512699
       Soilder Purple Hit_4: 2264232225450764196

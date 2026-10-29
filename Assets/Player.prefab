@@ -112,7 +112,7 @@ Animator:
   m_GameObject: {fileID: 393334081821395625}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c5be6e0ac19bc99438026f4dd4038a9b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8deeae15cc7f9024aa308980c2711bcd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -186,6 +186,15 @@ MonoBehaviour:
   musouPixelsPerPoint: 1.5
   bonusSecondsPerMusouUp: 0.05
   universalMaxMusouCap: 200
+  attackSoundClips:
+  - {fileID: 8300000, guid: 6e0c2b8d5b90d9045a38c476132a8c31, type: 3}
+  - {fileID: 8300000, guid: 86d23861e56703d4187c5551b7849858, type: 3}
+  - {fileID: 8300000, guid: 4be41733a1bbdc1459d7c41c74650885, type: 3}
+  - {fileID: 8300000, guid: 58e18a12c0a733f478d529ea9049f322, type: 3}
+  - {fileID: 8300000, guid: 8b6c2599d948f5141863996f262d720b, type: 3}
+  - {fileID: 8300000, guid: d9408032a697d624fbb2507e0c1af18d, type: 3}
+  - {fileID: 8300000, guid: b3e322bd141d3aa43ab352b82a94acd3, type: 3}
+  - {fileID: 8300000, guid: 4f672e29573900a4f8d32b0f52d48824, type: 3}
 --- !u!114 &1748390047372491012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,8 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88963f4ac609ace449467a21e476da18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxHealth: 250
-  currentHealth: 250
+  maxHealth: 120
+  currentHealth: 120
   healthSlider: {fileID: 0}
   pixelsPerHealthPoint: 1.2
   invincibilityDuration: 0.5
@@ -454,7 +463,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 28129
+    m_Bits: 27105
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

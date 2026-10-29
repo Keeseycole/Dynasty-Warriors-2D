@@ -140,6 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a304cf1e30c890a4a809aefa7fc9862e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattlefieldManager
+  playerSideUnits: []
+  enemySideUnits: []
+  simulationTickRate: 1.5
+  offScreenDistanceThreshold: 25
 --- !u!1 &2554767442858110153
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,10 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01a5e789c9231249a9cb886363e11e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleEventManager
-  targetObjectsToDestroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  targetObjectsToDestroy: []
   fireAttackConversation: {fileID: 0}
   enemyGeneralToRetreat: {fileID: 0}
   retreatPathNodes:
@@ -213,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2528980fbc955d84fbc299aa3bb0d4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageMusicTrigger
-  stageBattleMusic: {fileID: 8300000, guid: 4c4a3f90013b7a741b15330a132b36ae, type: 3}
+  stageBattleMusic: {fileID: 0}
 --- !u!1 &2675924017999158886
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +311,7 @@ MonoBehaviour:
   sfxPoolSize: 12
   soundLibrary:
   - soundName: HitImpact
-    clip: {fileID: 8300000, guid: 388e4f3d068ef824f92d85d4a50e358d, type: 3}
+    clip: {fileID: 8300000, guid: d9408032a697d624fbb2507e0c1af18d, type: 3}
 --- !u!1 &4597078338713046502
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +360,8 @@ MonoBehaviour:
   enemyFactionMorale: 50
   playerMoraleFillImage: {fileID: 0}
   uiSmoothSpeed: 0.5
+  activeBattlefieldUnits: []
+  EventMoraleLoss: 40
 --- !u!1 &6641467006307331379
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +521,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7849452676625102797, guid: ce74d25c448d6ed4bbfd52653d19181b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7925333567483744723}
+    - targetCorrespondingSourceObject: {fileID: 7849452676625102797, guid: ce74d25c448d6ed4bbfd52653d19181b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3935613108898968592}
   m_SourcePrefab: {fileID: 100100000, guid: ce74d25c448d6ed4bbfd52653d19181b, type: 3}
 --- !u!1 &3293236984565922315 stripped
 GameObject:
@@ -585,6 +591,19 @@ MonoBehaviour:
   tier2Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   tier3Color: {r: 1, g: 0.5, b: 0, a: 1}
   tier4Color: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &3935613108898968592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3293236984565922315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ed1163a1cc55a4383b1ac56c762d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KOCounter
+  koText: {fileID: 0}
 --- !u!4 &7525920273090533902 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2966823858419029960, guid: ce74d25c448d6ed4bbfd52653d19181b, type: 3}

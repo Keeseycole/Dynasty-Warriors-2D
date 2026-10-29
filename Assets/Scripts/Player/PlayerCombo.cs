@@ -129,6 +129,10 @@ public class PlayerCombo : MonoBehaviour
     [Tooltip("The absolute maximum limit your Max Musou Capacity can reach via permanent upgrades.")]
     public float universalMaxMusouCap = 200f;
 
+    [Header("Combo Audio Pools")]
+    [Tooltip("Drag and drop your raw audio clip files directly from your project folders into this list layout slot!")]
+    public List<AudioClip> attackSoundClips = new List<AudioClip>(); // 🟩 FIXED: Changed from string to AudioClip assets!
+
 
 
     void Awake()
@@ -406,12 +410,7 @@ public class PlayerCombo : MonoBehaviour
     }
     private void ExecuteNextComboStrike()
     {
-        // 🔥 THE INPUT DOUBLE-TRIGGER SHIELD:
-        // Forcefully wipe the queue buffer flag to FALSE the exact frame a hit initiates.
-        // This stops overlapping inputs from triggering a ghost Attack2 string automatically!
         inputQueuedForNextAttack = false;
-
-        SoundManager.Instance.PlaySFX("swordswing", 0.8f, 0.05f);
 
         CharecterAnimations animScript = GetComponent<CharecterAnimations>();
         if (animScript == null) animScript = GetComponentInChildren<CharecterAnimations>();
@@ -443,7 +442,7 @@ public class PlayerCombo : MonoBehaviour
             case ComboState.Attack5: attackAnim.Attack5(); break;
         }
     }
-   public void ResetComboState()
+    public void ResetComboState()
 {
     if (isAttacking)
     {
@@ -827,7 +826,6 @@ public class PlayerCombo : MonoBehaviour
     }
     public void CheckForHit()
     {
-        // 🔥 THE EMERGENCY RUNTIME REFERENCE GATE:
         if (playerController == null)
         {
             playerController = GetComponent<PlayerController>();
@@ -855,8 +853,6 @@ public class PlayerCombo : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPos, currentRange, enemyLayer);
 
         List<MonoBehaviour> victimsThisFrame = new List<MonoBehaviour>();
-
-        // 🟢 TRACKER: Counts exactly how many individual enemy units were struck this swing
         int hitSuccessCount = 0;
 
         foreach (Collider2D enemy in hits)
@@ -879,11 +875,34 @@ public class PlayerCombo : MonoBehaviour
             }
 
             enemyHealth.TakeDamage(damage, transform.position, resultingForce, myNativeAnimator, rb);
-
-            // 🟢 FIXED: Increments our hit counter instead of trying to write to the bar inside the freeze block!
             hitSuccessCount++;
-
             victimsThisFrame.Add(enemyHealth);
+
+            // ========================================================================
+            // 🟩 PER-OBJECT RANDOMIZED AUDIO SURGE (FIXED FLAT CROWD IMPACTS):
+            // Moved out of the button-press pass straight into the individual enemy loop!
+            // If you slice through a cluster of 3 grunts, this block evaluates 3 unique times,
+            // pulling completely random audio files out of your drag-and-drop pool per unit.
+            // ========================================================================
+            if (SoundManager.Instance != null)
+            {
+                if (attackSoundClips != null && attackSoundClips.Count > 0)
+                {
+                    int randomIndex = Random.Range(0, attackSoundClips.Count);
+                    AudioClip chosenClip = attackSoundClips[randomIndex];
+
+                    if (chosenClip != null)
+                    {
+                        // Slight pitch variance prevents loud overlapping audio spikes!
+                        float randomPitchVariance = Random.Range(-0.05f, 0.05f);
+                        SoundManager.Instance.PlaySFX(chosenClip.name, 0.7f, randomPitchVariance);
+                    }
+                }
+                else
+                {
+                    SoundManager.Instance.PlaySFX("HitImpact", 0.7f, 0.02f);
+                }
+            }
 
             if (HitParticleManager.Instance != null)
             {
@@ -892,7 +911,6 @@ public class PlayerCombo : MonoBehaviour
             }
         }
 
-        // Inside PlayerCombo.cs -> CheckForHit() at the very bottom
         if (victimsThisFrame.Count > 0 && HitLagManager.Instance != null)
         {
             float hitStopDuration = isFinisher ?
@@ -908,28 +926,21 @@ public class PlayerCombo : MonoBehaviour
                 hitStopDuration,
                 combinedStructuralKnockback
             );
+        }
 
+        if (victimsThisFrame.Count > 0)
+        {
             if (ComboCounter.Instance != null)
             {
                 ComboCounter.Instance.AddHit(victimsThisFrame.Count);
             }
-
-            if (CameraShake.Instance != null)
-            {
-                if (isFinisher) CameraShake.Instance.HitPunch(attackDir, 0.6f, hitStopDuration + 0.08f);
-                else CameraShake.Instance.HitPunch(attackDir, 0.2f, hitStopDuration + 0.04f);
-            }
         }
 
- 
         if (hitSuccessCount > 0)
         {
-            // Multiply your baseline energy (1.5f) by the total number of enemies struck!
-            // Swinging into a dense crowd will now fill up your special meter massively.
             float totalEnergyEarned = hitSuccessCount * 1.5f;
             GainMusouEnergy(totalEnergyEarned);
         }
-
     }
 
     private System.Collections.IEnumerator DelayedHitScanRoutine(ComboState attackSnapshot, bool isHeavyAttack)

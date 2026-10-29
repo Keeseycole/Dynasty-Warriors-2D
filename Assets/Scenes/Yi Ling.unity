@@ -2029,6 +2029,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1669240908843881640, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1864271872041486443, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -205021,14 +205025,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1748390047372491012, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: maxHealth
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 1748390047372491012, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: currentHealth
-      value: 120
-      objectReference: {fileID: 0}
     - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -56.6
@@ -205068,10 +205064,6 @@ PrefabInstance:
     - target: {fileID: 2226807015158001929, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4530718594491808079, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
-      propertyPath: m_Mass
-      value: 33.18
       objectReference: {fileID: 0}
     - target: {fileID: 7530945187729893637, guid: 32e875f6e8beebe4c8738ff74c03a0b6, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -267494,11 +267486,15 @@ PrefabInstance:
     - target: {fileID: 6356868422681717410, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: stageBattleMusic
       value: 
-      objectReference: {fileID: 8300000, guid: 7c1b27fe4c11c074298d0d5ec1dad53a, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6430566456228558982, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: musicSource
       value: 
       objectReference: {fileID: 1535807170}
+    - target: {fileID: 6430566456228558982, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
+      propertyPath: soundLibrary.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e0c2b8d5b90d9045a38c476132a8c31, type: 3}
     - target: {fileID: 6575492326485452994, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: simulationTickRate
       value: 1.5
@@ -267525,6 +267521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6092909978724034034, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
+    - {fileID: 3935613108898968592, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

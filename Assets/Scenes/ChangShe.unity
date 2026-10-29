@@ -55974,8 +55974,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.5
   attackCooldown: 1.5
-  separationRadius: 4
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -57418,8 +57416,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -58102,8 +58098,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 5
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -59710,8 +59704,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -60548,8 +60540,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -62387,8 +62377,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -63849,8 +63837,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -64710,8 +64696,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -65776,8 +65760,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -83871,8 +83853,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -87297,8 +87277,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -88902,8 +88880,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -90655,8 +90631,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -92414,8 +92388,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 1
   attackCooldown: 1.5
-  separationRadius: 0.8
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -92674,8 +92646,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -93572,8 +93542,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 1
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -94568,8 +94536,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -96301,8 +96267,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -98183,8 +98147,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -98768,8 +98730,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -99181,8 +99141,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -101849,8 +101807,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.5
   attackCooldown: 1.5
-  separationRadius: 1.05
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -104830,8 +104786,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -107577,8 +107531,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -107873,8 +107825,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -108807,8 +108757,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -111003,8 +110951,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.277
   attackCooldown: 1.5
-  separationRadius: 0.8
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -117853,8 +117799,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -119894,8 +119838,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.6
   attackCooldown: 1.5
-  separationRadius: 0.8
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -121744,8 +121686,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -122601,8 +122541,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -123345,8 +123283,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.277
   attackCooldown: 1.5
-  separationRadius: 0.8
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -124770,8 +124706,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -125492,8 +125426,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -127838,8 +127770,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -130891,8 +130821,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -132810,8 +132738,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -134568,8 +134494,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -136369,8 +136293,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.353
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -137304,8 +137226,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -138864,8 +138784,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -168496,8 +168414,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 2
-  separationStrength: 16
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -171444,8 +171360,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 1
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -171516,8 +171430,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 1
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -174161,7 +174073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1864271872041486443, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1927965037312569406, guid: 7691ec1fa5267024795a3d29c7a43c7f, type: 3}
       propertyPath: m_Sprite
@@ -174353,8 +174265,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 1
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
@@ -174981,8 +174891,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.346
   attackCooldown: 1.5
-  separationRadius: 1
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 4
@@ -175659,8 +175567,6 @@ MonoBehaviour:
   baseAggressionScore: 0
   aggressionScore: 0.199
   attackCooldown: 1.5
-  separationRadius: 1
-  separationStrength: 3
   isBusy: 0
   playerTransform: {fileID: 0}
   attackStepForce: 1
