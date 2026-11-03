@@ -398,7 +398,7 @@ public class MusouUnit : sleepEnemy
             {
                 if (SoundManager.Instance != null)
                 {
-                    SoundManager.Instance.PlaySFX("swordswing", 0.6f, 0.08f);
+                    //SoundManager.Instance.PlaySFX("swordswing", 0.6f, 0.08f);
                 }
 
                 currentState = EnemyState.Attack;

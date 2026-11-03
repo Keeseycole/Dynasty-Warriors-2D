@@ -133,7 +133,13 @@ public class PlayerCombo : MonoBehaviour
     [Tooltip("Drag and drop your raw audio clip files directly from your project folders into this list layout slot!")]
     public List<AudioClip> attackSoundClips = new List<AudioClip>(); // 🟩 FIXED: Changed from string to AudioClip assets!
 
+    public AudioClip defaultHitImpactClip;
 
+    private bool canAdvanceCombo = false; // ◄── THE INTERLOCK LOCK: Set to false by default!
+
+    private bool hasStruckTargetsThisSwing = false;
+
+    private float safetyUnlockTime = 0f;
 
     void Awake()
     {
@@ -245,86 +251,92 @@ public class PlayerCombo : MonoBehaviour
         inputQueuedForNextAttack = false;
         ExecuteNextComboStrike();
     }
+
+
+    // ========================================================================
+    // 🟩 UNIFIED LOCK-STEP INPUT STREAM (FIXED FREEZING ON ATTACK1):
+    // Simplified your button checks! Pressing buttons mid-swing now strictly sets 
+    // your input queue flag. The script waits patiently for the swing to complete 
+    // before advancing your counters, completely stopping combo skipping bugs!
+    // ========================================================================
     public void ComboAttacks()
     {
         if (isExecutingMusouSpecial) return;
 
-        // 🟢 1. STANDARD NORMAL ATTACK SCANNER (Z KEY)
+        // 1. LIGHT ATTACK INPUT (J Key / Fire1)
         if (Input.GetButtonDown("Fire1"))
         {
             if (currentComboState == ComboState.Attack5) return;
 
-            // 🟢 THE ADVANCEMENT FIX:
-            // If we are already mid-attack, advance your combo tracking counter state 
-            // IMMEDIATELY before hitting your early return shields! 
-            // This guarantees Attack 2, 3, 4, and 5 successfully lock into system memory.
             if (isAttacking)
             {
+                // Mash protection: Queue up your intent safely without skipping states!
                 inputQueuedForNextAttack = true;
-
-                if (currentComboState >= ComboState.Attack1 && currentComboState < ComboState.Attack5)
-                {
-                    currentComboState++;
-                   
-                }
                 return;
             }
 
+            // Starting fresh from neutral idle stance
             inputQueuedForNextAttack = false;
-            ExecuteNextComboStrike(false); // Fires standard Attack 1 from neutral idle
+            ExecuteNextComboStrike(false);
         }
 
-        // 🔥 2. THE MUSOU CHARGE ATTACK INTERCEPTOR (X KEY)
+        // 2. HEAVY CHARGE ATTACK INPUT (I Key / Fire2)
         if (Input.GetButtonDown("Fire2"))
         {
             if (isAttacking && inputQueuedForNextAttack) return;
 
-            ExecuteNextComboStrike(true);
+            if (isAttacking)
+            {
+                switch (currentComboState)
+                {
+                    case ComboState.Attack1: currentComboState = ComboState.Charge1; break;
+                    case ComboState.Attack2: currentComboState = ComboState.Charge2; break;
+                    case ComboState.Attack3: currentComboState = ComboState.Charge3; break;
+                    case ComboState.Attack4: currentComboState = ComboState.Charge4; break;
+                    default: return;
+                }
+
+                inputQueuedForNextAttack = false;
+                ExecuteNextComboStrike(true);
+            }
+            else
+            {
+                currentComboState = ComboState.Charge1;
+                inputQueuedForNextAttack = false;
+                ExecuteNextComboStrike(true);
+            }
         }
     }
 
+
+    private float comboFinisherSafetyGraceWindow = 0f;
+
     private void ExecuteNextComboStrike(bool triggerChargeAttack)
     {
-        // 🔥 THE INPUT DOUBLE-TRIGGER SHIELD:
+        canAdvanceCombo = false;
         inputQueuedForNextAttack = false;
 
-        ComboState prospectiveState = currentComboState;
-        if (triggerChargeAttack)
+        if (!triggerChargeAttack)
         {
-            switch (currentComboState)
+            if (currentComboState == ComboState.None)
             {
-                case ComboState.None: prospectiveState = ComboState.Charge1; break;
-                case ComboState.Attack1: prospectiveState = ComboState.Charge2; break;
-                case ComboState.Attack2: prospectiveState = ComboState.Charge3; break;
-                case ComboState.Attack3: prospectiveState = ComboState.Charge4; break;
-                case ComboState.Attack4: prospectiveState = ComboState.Charge5; break;
-                default: return;
-            }
-        }
-        else
-        {
-            // 🟢 FIX: If we are not attacking yet, start at Attack1. 
-            // If we are mid-combo, currentComboState was already advanced cleanly by your ComboAttacks() buffer loop!
-            if (prospectiveState == ComboState.None)
-            {
-                prospectiveState = ComboState.Attack1;
+                currentComboState = ComboState.Attack1;
             }
         }
 
-        // =========================================================================
-        // 🟢 IMMUTABLE LOCAL SNAPSHOT LOGIC
-        // This freezes the exact attack index step into an unchangeable local variable!
-        // No matter how fast the player mashes keys, this specific instance cannot change.
-        // =========================================================================
-        ComboState absoluteStrikeSnapshot = prospectiveState;
+        ComboState absoluteStrikeSnapshot = currentComboState;
+        string requiredParameterName = absoluteStrikeSnapshot.ToString().ToLower();
 
-        string requiredParameterName = absoluteStrikeSnapshot.ToString().ToLower(); // e.g. "attack1"
+        if (myNativeAnimator == null)
+        {
+            myNativeAnimator = GetComponent<Animator>();
+            if (myNativeAnimator == null) myNativeAnimator = GetComponentInChildren<Animator>();
+        }
 
-        // 🔥 THE VALIDATION GATE: Keep spelling checks independent of case-sensitivity
+        ResetHitboxGateForNextSwing();
+
         if (myNativeAnimator != null && !HasAnimatorParameter(myNativeAnimator, requiredParameterName))
         {
-           
-
             if (!triggerChargeAttack && currentComboState != ComboState.None)
             {
                 currentComboState = ComboState.None;
@@ -337,19 +349,30 @@ public class PlayerCombo : MonoBehaviour
             return;
         }
 
-        // Standard audio feedback
-      //  if (SoundManager.Instance != null)
-       // {
-        //    SoundManager.Instance.PlaySFX("swordswing", 0.8f, 0.05f);
-       // }
-
-        // Sync your global structural tracking state
         currentComboState = absoluteStrikeSnapshot;
 
         bool isHeavyStrike = currentComboState >= ComboState.Charge1 || currentComboState == ComboState.Attack5;
-        float totalLockDuration = attackClipDuration + postAttackPauseWindow;
+        float currentStrikeMaxDuration = isHeavyStrike ? 0.85f : attackClipDuration;
+        float totalLockDuration = currentStrikeMaxDuration + postAttackPauseWindow;
+
         nextAllowedStrikeTime = Time.time + totalLockDuration;
+        safetyUnlockTime = Time.time + currentStrikeMaxDuration;
         lastStrikeTime = Time.time;
+
+        // ========================================================================
+        // 🟩 FINISHER INITIALIZATION BUFFER GATE (FIXED SNAP BACK TO IDLE):
+        // Sets a micro-window lock exactly 0.15 seconds into the future!
+        // This stops your ResetComboState ticker from running an instant cleanup loop,
+        // giving the Animator plenty of time to leave Attack4 and enter Charge4 safely!
+        // ========================================================================
+        if (triggerChargeAttack)
+        {
+            comboFinisherSafetyGraceWindow = Time.time + 0.15f;
+        }
+        else
+        {
+            comboFinisherSafetyGraceWindow = 0f;
+        }
 
         ActivateResetTimer = true;
         currentComboTimer = defultComboTimer;
@@ -360,14 +383,12 @@ public class PlayerCombo : MonoBehaviour
             playerController.currentState = PlayerState.attack;
         }
 
-
-        // Value routers matching parameters dynamically based on your configuration parameters setup
         if (myNativeAnimator != null)
         {
             string[] allComboParams = new string[]
             {
-            "attack1", "attack2", "attack3", "attack4", "attack5",
-            "charge1", "charge2", "charge3", "charge4", "charge5"
+                "attack1", "attack2", "attack3", "attack4", "attack5",
+                "charge1", "charge2", "charge3", "charge4", "charge5"
             };
 
             foreach (string paramName in allComboParams)
@@ -405,7 +426,6 @@ public class PlayerCombo : MonoBehaviour
             }
         }
 
-        // 🟢 PASS SNAPSHOT: Feed your frozen local variable directly down into the timing routine!
         StartCoroutine(DelayedHitScanRoutine(absoluteStrikeSnapshot, isHeavyStrike));
     }
     private void ExecuteNextComboStrike()
@@ -443,47 +463,46 @@ public class PlayerCombo : MonoBehaviour
         }
     }
     public void ResetComboState()
-{
-    if (isAttacking)
     {
-        currentComboTimer -= Time.deltaTime;
+        if (isAttacking)
+            currentComboTimer -= Time.deltaTime;
 
-        // 🟢 THE BUFFER UNLOADER FIX:
-        // Unleash the pre-advanced combo strike step the exact millisecond the pacing clock clears!
-        if (inputQueuedForNextAttack && Time.time >= nextAllowedStrikeTime)
+        // ========================================================================
+        // 🟩 SYNCHRONIZED CHARGE RECOVERY CONTROLLER:
+        // Checks to ensure the microsecond grace window has safely cleared before 
+        // allowing your safety clock to trigger FinishAttack() and flush parameters!
+        // ========================================================================
+        if (currentComboState >= ComboState.Charge1)
         {
-            inputQueuedForNextAttack = false;
-            
-            // Fires your pre-calculated Attack 2, 3, or 4 string cleanly!
-            ExecuteNextComboStrike(false); 
-            return;
+            if (Time.time >= comboFinisherSafetyGraceWindow && Time.time >= safetyUnlockTime)
+            {
+                FinishAttack();
+            }
+            return; // Protection block shields your finishers from lower timeout wipes!
+        }
+        else
+        {
+            if (inputQueuedForNextAttack && Time.time >= nextAllowedStrikeTime)
+            {
+                inputQueuedForNextAttack = false;
+
+                if (currentComboState >= ComboState.Attack1 && currentComboState < ComboState.Attack5)
+                {
+                    currentComboState++;
+                }
+
+                ExecuteNextComboStrike(false);
+                return;
+            }
         }
 
-        // Only clear out tracking variables back to None if the player has completely stopped pressing keys
         if (currentComboTimer <= 0)
         {
-            inputQueuedForNextAttack = false;
-            currentComboState = ComboState.None;
-            isAttacking = false;
-            currentComboTimer = defultComboTimer;
-
-            CharecterAnimations animScript = GetComponent<CharecterAnimations>();
-            if (animScript == null) animScript = GetComponentInChildren<CharecterAnimations>();
-
-            if (animScript != null)
-            {
-                animScript.ResetAllAttackStates();
-                animScript.AnimationFinished();
-            }
-
-            if (playerController != null)
-            {
-                playerController.currentState = PlayerState.idle;
-            }
+            FinishAttack();
         }
     }
-}
-   private bool HasAnimatorParameter(Animator animatorComponent, string paramName)
+
+private bool HasAnimatorParameter(Animator animatorComponent, string paramName)
     {
         foreach (AnimatorControllerParameter param in animatorComponent.parameters)
         {
@@ -493,26 +512,57 @@ public class PlayerCombo : MonoBehaviour
         return false;
     }
 
+    public void ResetHitboxGateForNextSwing()
+    {
+        hasStruckTargetsThisSwing = false;
+    }
+
     public void FinishAttack()
     {
-        // 🔥 THE AUTOMATED EXECUTION SPLICE:
-        // The current swing animation has completed its physical frames. 
-        // If the player mashed the key early, unleash the next combo strike instantly!
-        if (inputQueuedForNextAttack)
-        {
-            inputQueuedForNextAttack = false; // Reset the buffer checkbox flag
-            ExecuteNextComboStrike(); // Advances to your next hit smoothly
-        }
-        else
-        {
-            // If they stopped mashing keys, safely shut down the combat variables
-            isAttacking = false;
-            currentComboState = ComboState.None;
+        //isAnimationLocked = false;
+        isAttacking = false;
+        inputQueuedForNextAttack = false;
+        currentComboState = ComboState.None;
+        ActivateResetTimer = false;
+        ResetHitboxGateForNextSwing();
 
-            if (playerController != null)
+        if (playerController != null)
+        {
+            playerController.currentState = PlayerState.idle; // Restores free-movement control cleanly!
+        }
+
+        // Master Flush: Set every single attack and charge bool back to false on combo expiration
+        if (myNativeAnimator != null)
+        {
+            string[] allComboParams = {
+                "attack1", "attack2", "attack3", "attack4", "attack5",
+                "charge1", "charge2", "charge3", "charge4", "charge5"
+            };
+
+            for (int i = 0; i < allComboParams.Length; i++)
             {
-                playerController.currentState = PlayerState.idle;
+                myNativeAnimator.SetBool(allComboParams[i], false);
             }
+        }
+    }
+
+    public void UnlockComboWindow()
+    {
+        canAdvanceCombo = true;
+    }
+
+    /// <summary>
+    /// Place this keyframe event at the absolute final frame of your attack animations.
+    /// It ensures that if the player did NOT click any buttons, the state resets safely back to None.
+    /// </summary>
+    public void ClearComboLockOnAnimationEnd()
+    {
+        canAdvanceCombo = false;
+        if (!inputQueuedForNextAttack)
+        {
+            currentComboState = ComboState.None;
+            isAttacking = false;
+            if (playerController != null) playerController.currentState = PlayerState.idle;
         }
     }
 
@@ -669,7 +719,7 @@ public class PlayerCombo : MonoBehaviour
         if (health != null) health.invincibilityDuration = calculatedDynamicDuration + 0.5f;
 
         // 2. Heavy cinematic freeze-frame presentation
-        if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX("MusouActivateScream", 1f);
+        if (SoundManager.Instance != null) //SoundManager.Instance.PlaySFX("MusouActivateScream", 1f);
         Time.timeScale = 0.4f;
         yield return new WaitForSecondsRealtime(0.4f);
         Time.timeScale = 1f; // Restore normal speed
@@ -878,12 +928,7 @@ public class PlayerCombo : MonoBehaviour
             hitSuccessCount++;
             victimsThisFrame.Add(enemyHealth);
 
-            // ========================================================================
-            // 🟩 PER-OBJECT RANDOMIZED AUDIO SURGE (FIXED FLAT CROWD IMPACTS):
-            // Moved out of the button-press pass straight into the individual enemy loop!
-            // If you slice through a cluster of 3 grunts, this block evaluates 3 unique times,
-            // pulling completely random audio files out of your drag-and-drop pool per unit.
-            // ========================================================================
+    
             if (SoundManager.Instance != null)
             {
                 if (attackSoundClips != null && attackSoundClips.Count > 0)
@@ -893,14 +938,20 @@ public class PlayerCombo : MonoBehaviour
 
                     if (chosenClip != null)
                     {
-                        // Slight pitch variance prevents loud overlapping audio spikes!
                         float randomPitchVariance = Random.Range(-0.05f, 0.05f);
-                        SoundManager.Instance.PlaySFX(chosenClip.name, 0.7f, randomPitchVariance);
+                        
+                        Debug.Log($"<color=cyan>[PLAYER AUDIO] Striking target. Randomly selected asset: '{chosenClip.name}' from index {randomIndex}. Sending to SoundManager.</color>");
+                        SoundManager.Instance.PlaySFX(chosenClip, 0.7f, randomPitchVariance);
                     }
+                }
+                else if (defaultHitImpactClip != null)
+                {
+                    Debug.Log($"<color=cyan>[PLAYER AUDIO] Striking target. List empty, falling back to default asset: '{defaultHitImpactClip.name}'. Sending to SoundManager.</color>");
+                    SoundManager.Instance.PlaySFX(defaultHitImpactClip, 0.7f, 0.02f);
                 }
                 else
                 {
-                    SoundManager.Instance.PlaySFX("HitImpact", 0.7f, 0.02f);
+                    Debug.LogWarning("[PLAYER AUDIO] Target hit, but both attackSoundClips and defaultHitImpactClip are unassigned in the Inspector!");
                 }
             }
 

@@ -109,12 +109,12 @@ TextureImporter:
       name: Dong Zhuo_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 159
-        width: 22
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 172
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.29473606, y: 0.49660403}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -131,12 +131,12 @@ TextureImporter:
       name: Dong Zhuo_1
       rect:
         serializedVersion: 2
-        x: 85
-        y: 171
-        width: 10
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 42
+        y: 172
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.29473606, y: 0.49660403}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: Dong Zhuo_2
       rect:
         serializedVersion: 2
-        x: 50
-        y: 119
-        width: 18
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 84
+        y: 172
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.29473606, y: 0.49660403}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,11 +171,473 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_3
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 172
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.29473606, y: 0.49660403}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba10192efbc0cc45a1ea7631e6f598f
+      internalID: 806435451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_4
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 172
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.29473606, y: 0.49660403}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fbc836b957d8b04fa88c0b6370fa5ff
+      internalID: 1738652937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_5
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 172
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.29473606, y: 0.49660403}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50c4b6c99d50de547914d578d9bff395
+      internalID: 833127166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 129
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.43453175, y: 0.506457}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba5252c4035cb734588a94b2790223fb
+      internalID: -1485289719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_7
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 129
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.43453175, y: 0.506457}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95adbead853ecf64d911af70ad7ae532
+      internalID: 1164562318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_8
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 129
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.43453175, y: 0.506457}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bd7ace4834abb046aea423f1fce63c6
+      internalID: -75378561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_9
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 129
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.43453175, y: 0.506457}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4679b26be8d208d499756695e447947f
+      internalID: -870678015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_10
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 129
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.43453175, y: 0.506457}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5314e23560246484b8040126823b5e81
+      internalID: -813683480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_11
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 129
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.43453175, y: 0.506457}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094ea7d312470c84da2cbe588a106f33
+      internalID: -47020296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 86
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.61672276, y: 0.49806958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 848433ce28bfb7e408c72c27fa9594f8
+      internalID: 1890881941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_13
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 86
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.61672276, y: 0.49806958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a70e29644ecc1940840153a72c8d661
+      internalID: 471046967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_14
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 86
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.61672276, y: 0.49806958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0cc3e6dc62e66f45a87b631f0b6c8a1
+      internalID: -1108319307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_15
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 86
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.61672276, y: 0.49806958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49911704394850641b3fc72bfcea0d84
+      internalID: -1288797027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_16
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 86
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.61672276, y: 0.49806958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22d92bf01f0ee214f95a3fb20298ec2b
+      internalID: 876270512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_17
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 86
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.61672276, y: 0.49806958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2e57167f5d32f488654aa625d1c916
+      internalID: -1088877143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 43
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.2050776, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e67b9e9497792b46a7586adaf2accfc
+      internalID: 473154151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_19
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 43
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.2050776, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e4cf95814c6cd545b74a520a6b21358
+      internalID: -1975741324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_20
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 43
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.2050776, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd68fa4325ec5424aa7c63a3cad4c740
+      internalID: -797528245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_21
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 43
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.2050776, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d7ab8c2832d3644e85bcb12a95c9840
+      internalID: 1129436268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_22
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 43
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.2050776, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5df1e8e55eff4934582463d6a855c48f
+      internalID: -1972165337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dong Zhuo_23
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 43
+        width: 42
+        height: 43
+      alignment: 9
+      pivot: {x: 0.2050776, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b380d907e2c092d4ca1b7fc8e62baf01
+      internalID: 1211431571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5cb7a76f83575514fbcbac66dba9af2e
     internalID: 0
     vertices: []
     indices: 
@@ -183,11 +645,34 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":42.0,"y":43.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Dong Zhuo_0: -8975020605675735616
       Dong Zhuo_1: 594216852624773168
+      Dong Zhuo_10: -813683480
+      Dong Zhuo_11: -47020296
+      Dong Zhuo_12: 1890881941
+      Dong Zhuo_13: 471046967
+      Dong Zhuo_14: -1108319307
+      Dong Zhuo_15: -1288797027
+      Dong Zhuo_16: 876270512
+      Dong Zhuo_17: -1088877143
+      Dong Zhuo_18: 473154151
+      Dong Zhuo_19: -1975741324
       Dong Zhuo_2: -1544483120079843904
+      Dong Zhuo_20: -797528245
+      Dong Zhuo_21: 1129436268
+      Dong Zhuo_22: -1972165337
+      Dong Zhuo_23: 1211431571
+      Dong Zhuo_3: 806435451
+      Dong Zhuo_4: 1738652937
+      Dong Zhuo_5: 833127166
+      Dong Zhuo_6: -1485289719
+      Dong Zhuo_7: 1164562318
+      Dong Zhuo_8: -75378561
+      Dong Zhuo_9: -870678015
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

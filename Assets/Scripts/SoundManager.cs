@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,21 +7,39 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
 
     [Header("Audio Channels")]
-    [Tooltip("The audio source dedicated to playing the background music loop")]
     public AudioSource musicSource;
-
-    [Tooltip("The audio source dedicated to playing narrative officer dialogue lines")]
     public AudioSource dialogueSource;
 
     [Header("SFX Pooling System")]
-    [Tooltip("How many sound effects can physically overlap at the exact same time")]
     public int sfxPoolSize = 12;
     private List<AudioSource> sfxPool = new List<AudioSource>();
 
     [Header("Musou Sound Library")]
-    [Tooltip("Add your audio clips here. Give them recognizable names in the inspector.")]
     public List<NamedAudioClip> soundLibrary;
     private Dictionary<string, AudioClip> sfxDictionary = new Dictionary<string, AudioClip>();
+
+    [Header("Footstep Surface Pools")]
+    [Tooltip("Drag and drop your Grass footstep audio clips here!")]
+    public List<AudioClip> grassFootsteps = new List<AudioClip>();
+
+    [Tooltip("Drag and drop your Dirt footstep audio clips here!")]
+    public List<AudioClip> dirtFootsteps = new List<AudioClip>();
+
+    [Tooltip("Drag and drop your Stone footstep audio clips here!")]
+    public List<AudioClip> stoneFootsteps = new List<AudioClip>();
+
+    [Header("🟩 GLOBAL MIX VOLUMES")]
+    [Range(0f, 1f)]
+    [Tooltip("Global master slider for all background music tracks.")]
+    public float musicMasterVolume = 0.5f;
+
+    [Range(0f, 1f)]
+    [Tooltip("Global master slider for all sword slices, hits, and impact sound effects.")]
+    public float sfxMasterVolume = 0.8f;
+
+    [Range(0f, 1f)]
+    [Tooltip("Global master multiplier specifically for character footstep levels.")]
+    public float footstepMasterVolume = 0.3f;
 
     [System.Serializable]
     public struct NamedAudioClip
@@ -32,7 +50,6 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
-        // Establish the global Singleton pattern
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
@@ -40,84 +57,131 @@ public class SoundManager : MonoBehaviour
         BuildLibraryDictionary();
     }
 
+    private void Update()
+    {
+        // Dynamically recalculates active channel levels on every frame update step!
+        if (musicSource != null && musicSource.isPlaying)
+        {
+            musicSource.volume = musicMasterVolume;
+        }
+
+        if (dialogueSource != null && dialogueSource.isPlaying)
+        {
+            dialogueSource.volume = sfxMasterVolume; // Dialogue scales alongside Master SFX channels
+        }
+    }
+
     private void InitializeSFXPool()
     {
-        // Pre-warm a grid of audio channels so we never have to run Instantiate during combat
         for (int i = 0; i < sfxPoolSize; i++)
         {
             AudioSource newChannel = gameObject.AddComponent<AudioSource>();
             newChannel.playOnAwake = false;
-            newChannel.spatialBlend = 0f; // 2D Sound
-
-            // FIXED LINE: Changed lowercase '.add' to capital '.Add'
+            newChannel.spatialBlend = 0f;
             sfxPool.Add(newChannel);
         }
     }
 
     private void BuildLibraryDictionary()
     {
-        // Convert the list into a fast string dictionary lookup table
         foreach (var entry in soundLibrary)
         {
             if (!string.IsNullOrEmpty(entry.soundName) && entry.clip != null)
             {
-                sfxDictionary[entry.soundName.ToLower()] = entry.clip;
+                sfxDictionary[entry.soundName] = entry.clip;
+
+                string lowerKey = entry.soundName.ToLower();
+                if (!sfxDictionary.ContainsKey(lowerKey))
+                {
+                    sfxDictionary.Add(lowerKey, entry.clip);
+                }
             }
         }
     }
 
-    /// <summary>
-    /// Finds a free audio channel and plays a sound effect. 
-    /// If multiple sounds match (e.g., 'hitimpact_0', 'hitimpact_1'), it picks one randomly.
-    /// </summary>
-    public void PlaySFX(string soundName, float volume = 1f, float pitchRandomness = 0.05f)
+    public void PlaySFX(AudioClip clipToPlay, float volume = 1f, float pitchVariance = 0f)
     {
-        string lookupKey = soundName.ToLower();
-        List<AudioClip> matchingClips = new List<AudioClip>();
+        if (clipToPlay == null) return;
 
-        // 1. Scan the library to see if we have a pool of sounds (e.g., hitimpact_0, hitimpact_1)
-        foreach (var key in sfxDictionary.Keys)
+        AudioSource sourceToUse = null;
+
+        if (sfxPool != null && sfxPool.Count > 0)
         {
-            if (key == lookupKey || key.StartsWith(lookupKey + "_"))
+            for (int i = 0; i < sfxPool.Count; i++)
             {
-                matchingClips.Add(sfxDictionary[key]);
+                if (sfxPool[i] != null && !sfxPool[i].isPlaying)
+                {
+                    sourceToUse = sfxPool[i];
+                    break;
+                }
             }
+            if (sourceToUse == null) sourceToUse = sfxPool[0];
+            
         }
 
-        if (matchingClips.Count == 0)
-        {
-            Debug.LogWarning($"[SOUND] Audio clip or pool named '{soundName}' was not found.");
-            return;
-        }
+        if (sourceToUse == null) sourceToUse = GetComponent<AudioSource>();
 
-        // 2. Pick a random clip from the matching pool
-        AudioClip clipToPlay = matchingClips[Random.Range(0, matchingClips.Count)];
-        AudioSource freeChannel = GetAvailableChannel();
-
-        if (freeChannel != null)
+        if (sourceToUse != null)
         {
-            freeChannel.clip = clipToPlay;
-            freeChannel.volume = volume;
-            freeChannel.pitch = Random.Range(1f - pitchRandomness, 1f + pitchRandomness);
-            freeChannel.Play();
+            sourceToUse.pitch = 1.0f + pitchVariance;
+
+            // ========================================================================
+            // 🟩 SFX MASTER VOLUME SCALING:
+            // Multiplies the incoming volume flag by your global master slider coefficient!
+            // ========================================================================
+            float finalScaledSFXVolume = volume * sfxMasterVolume;
+
+            sourceToUse.PlayOneShot(clipToPlay, finalScaledSFXVolume);
         }
     }
 
-    /// <summary>
-    /// Plays or swaps the background battle music tracks.
-    /// </summary>
+    public void PlaySFX(string sfxName, float volume = 1f, float pitchVariance = 0f)
+    {
+        AudioClip clipToPlay = null;
+
+        if (sfxDictionary != null && sfxDictionary.TryGetValue(sfxName, out AudioClip foundClip))
+        {
+            clipToPlay = foundClip;
+        }
+
+        if (clipToPlay == null && sfxDictionary != null)
+        {
+            sfxDictionary.TryGetValue(sfxName.ToLower(), out clipToPlay);
+        }
+
+        if (clipToPlay == null && soundLibrary != null)
+        {
+            for (int i = 0; i < soundLibrary.Count; i++)
+            {
+                if (soundLibrary[i].soundName == sfxName || soundLibrary[i].soundName.ToLower() == sfxName.ToLower())
+                {
+                    clipToPlay = soundLibrary[i].clip;
+                    break;
+                }
+            }
+        }
+
+        if (clipToPlay != null)
+        {
+            PlaySFX(clipToPlay, volume, pitchVariance);
+        }
+        else
+        {
+            Debug.LogWarning($"[SOUND MANAGER] PlaySFX requested string name '{sfxName}', but no matching asset row exists in your Sound Library!");
+        }
+    }
+
     public void PlayBGM(AudioClip musicClip, bool loop = true)
     {
         if (musicSource == null || musicClip == null) return;
+
+        musicSource.volume = musicMasterVolume;
 
         musicSource.clip = musicClip;
         musicSource.loop = loop;
         musicSource.Play();
     }
 
-    /// <summary>
-    /// Plays narrative officer voicelines, overriding any current speaking line.
-    /// </summary>
     public void PlayDialogue(AudioClip voiceClip)
     {
         if (dialogueSource == null || voiceClip == null) return;
@@ -128,23 +192,63 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource GetAvailableChannel()
     {
-        // 1. Look for a channel that is completely quiet right now
         foreach (var channel in sfxPool)
         {
             if (!channel.isPlaying) return channel;
         }
-
-        // FIXED LINE: Emergency fallback grabs index 0 if the pool is full
         return sfxPool[0];
     }
 
     public void StopMusic()
     {
-        // If the audio source component is found and actively playing a song track, silence it!
         if (musicSource != null && musicSource.isPlaying)
         {
             musicSource.Stop();
-            Debug.Log("<color=#00FFFF>[SOUND MANAGER]:</color> Background battle music track forcefully silenced for cinematic event sequence.");
+        }
+    }
+
+  
+
+    // Tracking toggle to cleanly switch between left and right foot assets on every step!
+    private bool isLeftFootstep = false;
+
+    public void PlayFootstepSFX(string surfaceTag, float volume = 0.4f)
+    {
+        List<AudioClip> selectedPool = null;
+
+        switch (surfaceTag)
+        {
+            case "Grass": selectedPool = grassFootsteps; break;
+            case "Dirt": selectedPool = dirtFootsteps; break;
+            case "Stone": selectedPool = stoneFootsteps; break;
+            default: selectedPool = dirtFootsteps; break;
+        }
+
+        if (selectedPool == null || selectedPool.Count == 0) return;
+
+        AudioClip clipToPlay = null;
+
+        if (selectedPool.Count >= 2)
+        {
+            isLeftFootstep = !isLeftFootstep;
+            clipToPlay = isLeftFootstep ? selectedPool[0] : selectedPool[1]; // Left gets Element 0, Right gets Element 1
+        }
+        else
+        {
+            clipToPlay = selectedPool[0]; // Fallback baseline if only 1 sound is in the list
+        }
+
+        if (clipToPlay != null)
+        {
+            float randomPitchVariance = Random.Range(-0.04f, 0.04f);
+
+            // ========================================================================
+            // 🟩 FOOTSTEP MIX MUTLIPLIER:
+            // Combines your incoming step volume baseline with your dedicated master footstep slider!
+            // ========================================================================
+            float finalScaledStepVolume = volume * footstepMasterVolume;
+
+            PlaySFX(clipToPlay, finalScaledStepVolume, randomPitchVariance);
         }
     }
 }

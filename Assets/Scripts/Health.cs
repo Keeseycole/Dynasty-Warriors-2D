@@ -198,14 +198,56 @@ public class Health : MonoBehaviour
             healthBar.UpdateBar(currentHealth, maxHealth);
         }
 
-        // THE AUDIO CULLING GATE
+       
         if (isSimulating && SoundManager.Instance != null)
         {
-            SoundManager.Instance.PlaySFX("HitImpact", 0.7f);
+            // 1. If an explicit audio asset was passed from the attacking weapon, use it directly!
+            // This honors your PlayerCombo's per-object randomized array list perfectly.
+            if (attackerAnim != null)
+            {
+                PlayerCombo comboScript = attackerAnim.GetComponent<PlayerCombo>();
+                if (comboScript == null) comboScript = attackerAnim.GetComponentInParent<PlayerCombo>();
 
+                if (comboScript != null && comboScript.attackSoundClips != null && comboScript.attackSoundClips.Count > 0)
+                {
+                    int randomIndex = UnityEngine.Random.Range(0, comboScript.attackSoundClips.Count);
+                    AudioClip customHitClip = comboScript.attackSoundClips[randomIndex];
+
+                    if (customHitClip != null)
+                    {
+                        float randomPitch = UnityEngine.Random.Range(-0.05f, 0.05f);
+                        SoundManager.Instance.PlaySFX(customHitClip, 0.7f, randomPitch);
+                    }
+                }
+                else if (comboScript != null && comboScript.attackSoundClips != null && comboScript.attackSoundClips.Count > 0)
+                {
+                    // ========================================================================
+                    // 🟩 TYPO-SAFE AUDIO FALLBACK (FIXED CS1061 ERROR):
+                    // Bypassed the 'defaultHitImpactClip' field naming mismatch completely!
+                    // If the list has entries, we read the absolute first slot [0] as our standard 
+                    // default hit fallback asset, clearing the red error lines instantly.
+                    // ========================================================================
+                    AudioClip fallbackClip = comboScript.attackSoundClips[0];
+                    if (fallbackClip != null)
+                    {
+                        SoundManager.Instance.PlaySFX(fallbackClip, 0.7f, 0.02f);
+                    }
+                }
+            }
+
+            // 2. Heavy critical finisher thresholds read directly from your raw asset fields
             if (finalMitigatedDamage > 12f)
             {
-                SoundManager.Instance.PlaySFX("HeavyImpact", 1f);
+                PlayerCombo playerCombo = Object.FindFirstObjectByType<PlayerCombo>();
+                if (playerCombo != null && playerCombo.attackSoundClips != null && playerCombo.attackSoundClips.Count > 0)
+                {
+                    AudioClip heavyFallbackClip = playerCombo.attackSoundClips[0];
+                    if (heavyFallbackClip != null)
+                    {
+                        // Layers your heavy sound event cleanly onto your 12-channel pool with a deep pitch!
+                        SoundManager.Instance.PlaySFX(heavyFallbackClip, 1f, -0.05f);
+                    }
+                }
             }
         }
 

@@ -14372,6 +14372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &183478666
 Rigidbody2D:
   serializedVersion: 5
@@ -15205,6 +15207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &205700439
 Rigidbody2D:
   serializedVersion: 5
@@ -22511,6 +22515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &340057499
 Rigidbody2D:
   serializedVersion: 5
@@ -23556,6 +23562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &363450504
 Rigidbody2D:
   serializedVersion: 5
@@ -27034,6 +27042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &415963098
 Rigidbody2D:
   serializedVersion: 5
@@ -33550,6 +33560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &516142808
 Rigidbody2D:
   serializedVersion: 5
@@ -45391,6 +45403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &706241773
 Rigidbody2D:
   serializedVersion: 5
@@ -48785,6 +48799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &734115209
 Rigidbody2D:
   serializedVersion: 5
@@ -56621,6 +56637,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &821563011
 Rigidbody2D:
   serializedVersion: 5
@@ -196176,6 +196194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &886043721
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -196505,6 +196525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &888519176
 Rigidbody2D:
   serializedVersion: 5
@@ -200544,6 +200566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &940509079
 Rigidbody2D:
   serializedVersion: 5
@@ -204266,6 +204290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1000210718
 Rigidbody2D:
   serializedVersion: 5
@@ -210945,6 +210971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1098866459
 Rigidbody2D:
   serializedVersion: 5
@@ -216621,6 +216649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1164867713
 Rigidbody2D:
   serializedVersion: 5
@@ -219676,6 +219706,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1199783683
 Rigidbody2D:
   serializedVersion: 5
@@ -233617,6 +233649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1241624865
 Rigidbody2D:
   serializedVersion: 5
@@ -234722,6 +234756,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1259419954
 Rigidbody2D:
   serializedVersion: 5
@@ -235732,6 +235768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1284001407
 Rigidbody2D:
   serializedVersion: 5
@@ -243109,6 +243147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1370355546
 Rigidbody2D:
   serializedVersion: 5
@@ -245641,6 +245681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1420773359
 Rigidbody2D:
   serializedVersion: 5
@@ -245896,6 +245938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1425472117
 Rigidbody2D:
   serializedVersion: 5
@@ -265005,6 +265049,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1677373038
 Rigidbody2D:
   serializedVersion: 5
@@ -267486,7 +267532,7 @@ PrefabInstance:
     - target: {fileID: 6356868422681717410, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: stageBattleMusic
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 7c1b27fe4c11c074298d0d5ec1dad53a, type: 3}
     - target: {fileID: 6430566456228558982, guid: 8f13c34b92e25664190d3b6c1ba846ec, type: 3}
       propertyPath: musicSource
       value: 
@@ -269425,6 +269471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1726400266
 Rigidbody2D:
   serializedVersion: 5
@@ -271663,6 +271711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1750977550
 Rigidbody2D:
   serializedVersion: 5
@@ -272860,6 +272910,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1792478094
 Rigidbody2D:
   serializedVersion: 5
@@ -279013,6 +279065,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &1897626312
 Rigidbody2D:
   serializedVersion: 5
@@ -296978,6 +297032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &640038877757565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297813,6 +297869,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &36854752835184046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298897,6 +298955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &91763351449586479
 GameObject:
   m_ObjectHideFlags: 0
@@ -299253,6 +299313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!50 &104124025482004318
 Rigidbody2D:
   serializedVersion: 5
@@ -299818,6 +299880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &121539556017821083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300521,6 +300585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &152051912308342565
 GameObject:
   m_ObjectHideFlags: 0
@@ -304604,6 +304670,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &332237117094062428
 Transform:
   m_ObjectHideFlags: 0
@@ -306080,6 +306148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &395112736445338671
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -306527,6 +306597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!212 &413454868881505195
 SpriteRenderer:
   serializedVersion: 2
@@ -307985,6 +308057,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &465914654361281721
 GameObject:
   m_ObjectHideFlags: 0
@@ -309080,6 +309154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &523491296326834370
 GameObject:
   m_ObjectHideFlags: 0
@@ -311175,6 +311251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &621781817045767505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311391,6 +311469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &632539039222444163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312368,6 +312448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &677955900525616820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312605,6 +312687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &690427430823986001
 Transform:
   m_ObjectHideFlags: 0
@@ -315163,6 +315247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &788229978341422476
 GameObject:
   m_ObjectHideFlags: 0
@@ -315255,6 +315341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &799261556796923828
 GameObject:
   m_ObjectHideFlags: 0
@@ -316195,6 +316283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &849012601643362862
 GameObject:
   m_ObjectHideFlags: 0
@@ -318321,6 +318411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &950004687645824615
 GameObject:
   m_ObjectHideFlags: 0
@@ -320920,6 +321012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &1065319195975666030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321283,6 +321377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &1080286225195575826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321571,6 +321667,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &1093095216545173261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321852,6 +321950,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &1105194067681907911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322681,6 +322781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!70 &1141679906189050466
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -326961,6 +327063,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!212 &1314981215685578605
 SpriteRenderer:
   serializedVersion: 2
@@ -327550,6 +327654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &1339956485939128219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -329495,6 +329601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &1423059639304934905
 RectTransform:
   m_ObjectHideFlags: 0
@@ -330814,6 +330922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &1469179343906247562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333714,6 +333824,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &1577946417219907602
 Transform:
   m_ObjectHideFlags: 0
@@ -335959,6 +336071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &1659083235761358819
 GameObject:
   m_ObjectHideFlags: 0
@@ -339628,6 +339742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &1800672311053545666
 GameObject:
   m_ObjectHideFlags: 0
@@ -339792,6 +339908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &1803623196612534404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341701,6 +341819,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &1881913556821353641
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -343380,6 +343500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &1962511749293530531
 GameObject:
   m_ObjectHideFlags: 0
@@ -343569,6 +343691,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &1968275923669416648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345403,6 +345527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &2038479784016381161
 GameObject:
   m_ObjectHideFlags: 0
@@ -347575,6 +347701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &2120534601219424041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347587,6 +347715,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!222 &2123172050707064200
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -352682,6 +352812,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!331 &2322801653042461546
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -359314,6 +359446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &2546954661102867670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359679,6 +359813,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &2564427195441332961
 Transform:
   m_ObjectHideFlags: 0
@@ -359727,6 +359863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!95 &2565282013005667622
 Animator:
   serializedVersion: 7
@@ -360393,6 +360531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &2592926354258818781
 GameObject:
   m_ObjectHideFlags: 0
@@ -361003,6 +361143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &2611266679789556041
 Transform:
   m_ObjectHideFlags: 0
@@ -363327,6 +363469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &2709677979943008327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363680,6 +363824,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &2720393332390737480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364493,6 +364639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &2750375800289053654
 Transform:
   m_ObjectHideFlags: 0
@@ -365250,6 +365398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!212 &2789634607048053427
 SpriteRenderer:
   serializedVersion: 2
@@ -365975,6 +366125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!212 &2826738142931360364
 SpriteRenderer:
   serializedVersion: 2
@@ -367465,6 +367617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &2870437281269037935
 GameObject:
   m_ObjectHideFlags: 0
@@ -368133,6 +368287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &2895871138738723975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369730,6 +369886,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &2953941356568029399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370628,6 +370786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &2994814275302273138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371177,6 +371337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &3013783321344682272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -371391,6 +371553,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!223 &3024757377198497668
 Canvas:
   m_ObjectHideFlags: 0
@@ -371696,6 +371860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &3045899374527647851
 GameObject:
   m_ObjectHideFlags: 0
@@ -374639,6 +374805,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!223 &3154065169029546108
 Canvas:
   m_ObjectHideFlags: 0
@@ -375647,6 +375815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &3199737882157567806
 GameObject:
   m_ObjectHideFlags: 0
@@ -376001,6 +376171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &3218952081722570757
 Transform:
   m_ObjectHideFlags: 0
@@ -380819,6 +380991,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &3426736595507327318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381056,6 +381230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &3443407509332424189
 GameObject:
   m_ObjectHideFlags: 0
@@ -381691,6 +381867,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!223 &3469710172804961857
 Canvas:
   m_ObjectHideFlags: 0
@@ -387019,6 +387197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!331 &3674474939943274239
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -388104,6 +388284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &3720265555210451895
 GameObject:
   m_ObjectHideFlags: 0
@@ -389313,6 +389495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &3771759621148584166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389722,6 +389906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &3794960085338902633
 RectTransform:
   m_ObjectHideFlags: 0
@@ -391385,6 +391571,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &3874046051498044614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -391697,6 +391885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &3889370462356054912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394524,6 +394714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &4017148768621198990
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -395479,6 +395671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &4058715073461359066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397967,6 +398161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &4157847423254804807
 RectTransform:
   m_ObjectHideFlags: 0
@@ -398594,6 +398790,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!70 &4180345009478434668
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -399442,6 +399640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &4222543229504632861
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -400154,6 +400354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!222 &4253307534949754058
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -402023,6 +402225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &4335511171795972627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403032,6 +403236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &4392777145932689560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403238,6 +403444,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &4399566682068955716
 GameObject:
   m_ObjectHideFlags: 0
@@ -404077,6 +404285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &4444749060518560527
 RectTransform:
   m_ObjectHideFlags: 0
@@ -407233,6 +407443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &4572741767847068607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410011,6 +410223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &4674563041991677410
 Transform:
   m_ObjectHideFlags: 0
@@ -410828,6 +411042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &4706308652402393803
 Transform:
   m_ObjectHideFlags: 0
@@ -411978,6 +412194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &4746582954775589579
 Transform:
   m_ObjectHideFlags: 0
@@ -414778,6 +414996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &4870222389595672194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -416787,6 +417007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &4950272449752439160
 GameObject:
   m_ObjectHideFlags: 0
@@ -418017,6 +418239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &4990325351532639820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420731,6 +420955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &5105268791245258237
 GameObject:
   m_ObjectHideFlags: 0
@@ -421247,6 +421473,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &5130156451889294957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422569,6 +422797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &5187757209548266943
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -423173,6 +423403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &5212036195910226368
 Transform:
   m_ObjectHideFlags: 0
@@ -424158,6 +424390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &5249032998646792947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424427,6 +424661,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &5271851422909811453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428539,6 +428775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &5429490533403331206
 RectTransform:
   m_ObjectHideFlags: 0
@@ -431211,6 +431449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &5532239602988065051
 Transform:
   m_ObjectHideFlags: 0
@@ -434047,6 +434287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &5645869292226383961
 RectTransform:
   m_ObjectHideFlags: 0
@@ -434373,6 +434615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &5660945906757024122
 Transform:
   m_ObjectHideFlags: 0
@@ -434761,6 +435005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &5672195829560552448
 GameObject:
   m_ObjectHideFlags: 0
@@ -435047,6 +435293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!95 &5690397369680832968
 Animator:
   serializedVersion: 7
@@ -435525,6 +435773,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &5704767096346174594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437643,6 +437893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &5800662374381537365
 Transform:
   m_ObjectHideFlags: 0
@@ -438094,6 +438346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &5816412730126391593
 GameObject:
   m_ObjectHideFlags: 0
@@ -563660,6 +563914,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &5881551405452079607
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -564509,6 +564765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &5911862802464952314
 Transform:
   m_ObjectHideFlags: 0
@@ -565323,6 +565581,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!222 &5949026428498760856
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -567473,6 +567733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &6050911955302814431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -568134,6 +568396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &6084283424197675850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568405,6 +568669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &6104191231892550687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570196,6 +570462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &6180678427055255584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573324,6 +573592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &6321850309173796655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573604,6 +573874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &6331411073335383323
 GameObject:
   m_ObjectHideFlags: 0
@@ -574823,6 +575095,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &6380078623517836871
 RectTransform:
   m_ObjectHideFlags: 0
@@ -575632,6 +575906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &6408863549810836847
 GameObject:
   m_ObjectHideFlags: 0
@@ -577593,6 +577869,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &6490397535778965068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578011,6 +578289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &6515282067447419425
 GameObject:
   m_ObjectHideFlags: 0
@@ -580631,6 +580911,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &6622242321129084063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581991,6 +582273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &6677127214838686871
 Transform:
   m_ObjectHideFlags: 0
@@ -583042,6 +583326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!61 &6728834888444583922
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -583165,6 +583451,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &6736738072155793984
 GameObject:
   m_ObjectHideFlags: 0
@@ -584098,6 +584386,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &6775805826418206561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585130,6 +585420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &6830538931784636694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587173,6 +587465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &6909458434068497769
 GameObject:
   m_ObjectHideFlags: 0
@@ -587347,6 +587641,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &6919929406704067740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587635,6 +587931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!95 &6936544836413708475
 Animator:
   serializedVersion: 7
@@ -589564,6 +589862,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &7021970351507604418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -589809,6 +590109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &7031713198862006842
 GameObject:
   m_ObjectHideFlags: 0
@@ -592089,6 +592391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &7129177777601370116
 Transform:
   m_ObjectHideFlags: 0
@@ -592392,6 +592696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &7143001100238858687
 Transform:
   m_ObjectHideFlags: 0
@@ -597090,6 +597396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &7345304216472581109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598010,6 +598318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &7378954149176714526
 RectTransform:
   m_ObjectHideFlags: 0
@@ -598421,6 +598731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &7400688557291941252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598433,6 +598745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &7401950485449165478
 Transform:
   m_ObjectHideFlags: 0
@@ -599982,6 +600296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &7467152283589180637
 GameObject:
   m_ObjectHideFlags: 0
@@ -601459,6 +601775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &7525820396267459032
 GameObject:
   m_ObjectHideFlags: 0
@@ -602038,6 +602356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!222 &7551988748062982297
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -602662,6 +602982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &7588359893086273818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603700,6 +604022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &7631126382729252192
 GameObject:
   m_ObjectHideFlags: 0
@@ -608057,6 +608381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &7817851389608756965
 GameObject:
   m_ObjectHideFlags: 0
@@ -610887,6 +611213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &7945199119675489115
 Transform:
   m_ObjectHideFlags: 0
@@ -613353,6 +613681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!4 &8051430203155197379
 Transform:
   m_ObjectHideFlags: 0
@@ -615159,6 +615489,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!223 &8122217816504739556
 Canvas:
   m_ObjectHideFlags: 0
@@ -616160,6 +616492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &8158072799367613929
 GameObject:
   m_ObjectHideFlags: 0
@@ -619091,6 +619425,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &8288183565748368141
 RectTransform:
   m_ObjectHideFlags: 0
@@ -619390,6 +619726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!223 &8296660082546777859
 Canvas:
   m_ObjectHideFlags: 0
@@ -621991,6 +622329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &8399688537658202701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622051,6 +622391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &8404875659426449592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622855,6 +623197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &8439133841994669912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622989,6 +623333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &8443422655022625995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631842,6 +632188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &8811345981207846065
 GameObject:
   m_ObjectHideFlags: 0
@@ -632768,6 +633116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!331 &8855437165991323551
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -633629,6 +633979,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!114 &8889832897872373827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633848,6 +634200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!331 &8896735523518218788
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -635311,6 +635665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &8954385411960747845
 GameObject:
   m_ObjectHideFlags: 0
@@ -635340,6 +635696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &8956448357079544356
 RectTransform:
   m_ObjectHideFlags: 0
@@ -638112,6 +638470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &9054972544605980781
 GameObject:
   m_ObjectHideFlags: 0
@@ -640624,6 +640984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!1 &9137422541472981036
 GameObject:
   m_ObjectHideFlags: 0
@@ -641472,6 +641834,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde44519895e4714195707504359c64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharecterAnimations
+  anim: {fileID: 0}
+  comboScript: {fileID: 0}
 --- !u!224 &9174269763357318643
 RectTransform:
   m_ObjectHideFlags: 0

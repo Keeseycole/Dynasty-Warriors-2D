@@ -3,29 +3,27 @@
 public class AnimationProxy : MonoBehaviour
 {
     private MusouUnit parentUnit;
-    private PlayerController parentPlayer; // 🔥 ADDED: Support link tracking for the player entity
+    private PlayerController parentPlayer;
+
+    public void UnlockComboWindow() => GetComponentInParent<PlayerCombo>()?.UnlockComboWindow();
+    public void ClearComboLockOnAnimationEnd() => GetComponentInParent<PlayerCombo>()?.ClearComboLockOnAnimationEnd();
 
     void Awake()
     {
-        // 1. Attempt to cache an AI soldier component link
         parentUnit = GetComponentInParent<MusouUnit>();
 
-        // 2. If it is null, look for the player controller link instead!
         if (parentUnit == null)
         {
             parentPlayer = GetComponentInParent<PlayerController>();
         }
     }
 
-    // This is the clean, single function the Animation Event timeline looks for
     public void ApplyDamageToTarget()
     {
-        // Path A: If an AI unit is swinging, pass the signal over to its combat brain
         if (parentUnit != null)
         {
             parentUnit.ApplyDamageToTarget();
         }
-        // Path B: 🔥 FIXED: If the Player is swinging, safely pass the signal over to their controller!
         else if (parentPlayer != null)
         {
             parentPlayer.ApplyDamageToTarget();
@@ -34,5 +32,30 @@ public class AnimationProxy : MonoBehaviour
         {
             Debug.LogWarning($"AnimationProxy on {gameObject.name} has no valid Player or AI parent script component attached!");
         }
+    }
+
+    public void TriggerFootstepFromAnimationEvent()
+    {
+        if (SoundManager.Instance == null) return;
+
+        // Use a slight negative vertical offset to check the ground directly below the character pivot anchor point
+        Vector2 checkOrigin = (Vector2)transform.position + new Vector2(0f, -0.2f);
+        float sensorRadius = 0.2f;
+
+   
+        Collider2D hitFloor = Physics2D.OverlapCircle(checkOrigin, sensorRadius);
+
+        string activeSurfaceTag = "Dirt"; // Fallback baseline
+
+        if (hitFloor != null)
+        {
+            activeSurfaceTag = hitFloor.gameObject.tag;
+
+            // OPTIONAL DIAGNOSTIC DEBUG TELEMETRY: 
+            // Un-comment this next line if you want your console to print out exactly what it senses!
+            // Debug.Log($"<color=yellow>[FOOTSTEP] Physics stamped collider '{hitFloor.gameObject.name}' with Tag: '{activeSurfaceTag}'</color>");
+        }
+
+        SoundManager.Instance.PlayFootstepSFX(activeSurfaceTag);
     }
 }

@@ -2,8 +2,8 @@
 
 public class CharecterAnimations : MonoBehaviour
 {
-    private Animator anim;
-    private PlayerCombo comboScript;
+    public Animator anim;
+    public PlayerCombo comboScript;
 
     private void Awake()
     {

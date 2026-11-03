@@ -27,4 +27,6 @@ public class ChildAnimationBridge : MonoBehaviour
             parentMusouUnit.TriggerLungeFromAnimationEvent();
         }
     }
+
+
 }
