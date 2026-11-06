@@ -141,6 +141,57 @@ public class PlayerCombo : MonoBehaviour
 
     private float safetyUnlockTime = 0f;
 
+    [Header("🔥 Custom Attack Lunge Matrix")]
+    public float lightLungeSpeed = 8f;
+    public float heavyLungeSpeed = 15f;
+    [Range(0.01f, 0.5f)] public float lungeActiveDuration = 0.12f;
+    private Coroutine activeLungeRoutine;
+
+    [Header("🎯 Selective AOE Configuration")]
+    [Tooltip("If checked, Charge 1 will act as a full circular crowd-clearing sweep.")]
+    public bool charge1IsAOE = false;
+
+    [Tooltip("If checked, Charge 2 will act as a full circular crowd-clearing sweep.")]
+    public bool charge2IsAOE = false;
+
+    [Tooltip("If checked, Charge 3 will act as a full circular crowd-clearing sweep.")]
+    public bool charge3IsAOE = false;
+
+    [Tooltip("If checked, Charge 4 will act as a full circular crowd-clearing sweep.")]
+    public bool charge4IsAOE = true; // Enabled by default for your main finisher!
+
+    [Tooltip("If checked, Charge 5 will act as a full circular crowd-clearing sweep.")]
+    public bool charge5IsAOE = true;
+
+    [Header("💥 AOE Blast Zone Tuning")]
+    [Tooltip("Base damage dealt by standard light attacks.")]
+    public float lightAttackDamage = 10f;
+
+    [Tooltip("Base knockback multiplier applied to standard light attacks.")]
+    public float lightAttackKnockback = 0.5f;
+
+    [Tooltip("Damage multiplier applied to heavy finisher/charge attacks (e.g., 2.5 means 250% damage).")]
+    public float heavyFinisherDamageMultiplier = 2.5f;
+
+    [Tooltip("Knockback multiplier applied to heavy finisher/charge attacks.")]
+    public float heavyFinisherKnockback = 2.5f;
+
+    [Header("📐 Selective AOE Hitbox Radii Customization")]
+    [Tooltip("The explicit circle radius size used if Charge 1 is checked as an AOE strike.")]
+    public float charge1AOERadius = 2.5f;
+
+    [Tooltip("The explicit circle radius size used if Charge 2 is checked as an AOE strike.")]
+    public float charge2AOERadius = 3.0f;
+
+    [Tooltip("The explicit circle radius size used if Charge 3 is checked as an AOE strike.")]
+    public float charge3AOERadius = 3.5f;
+
+    [Tooltip("The explicit circle radius size used if Charge 4 is checked as an AOE strike.")]
+    public float charge4AOERadius = 5.0f;
+
+    [Tooltip("The explicit circle radius size used if Charge 5 is checked as an AOE strike.")]
+    public float charge5AOERadius = 5.5f;
+
     void Awake()
     {
         attackAnim = GetComponent<CharecterAnimations>();
@@ -316,6 +367,14 @@ public class PlayerCombo : MonoBehaviour
         canAdvanceCombo = false;
         inputQueuedForNextAttack = false;
 
+        // Fetch and reset CharacterAnimations abstraction layer cleanly
+        CharecterAnimations animScript = GetComponent<CharecterAnimations>();
+        if (animScript == null) animScript = GetComponentInChildren<CharecterAnimations>();
+        if (animScript != null)
+        {
+            animScript.ResetAllAttackStates();
+        }
+
         if (!triggerChargeAttack)
         {
             if (currentComboState == ComboState.None)
@@ -327,13 +386,14 @@ public class PlayerCombo : MonoBehaviour
         ComboState absoluteStrikeSnapshot = currentComboState;
         string requiredParameterName = absoluteStrikeSnapshot.ToString().ToLower();
 
+        ResetHitboxGateForNextSwing();
+
+        // Check animator integrity
         if (myNativeAnimator == null)
         {
             myNativeAnimator = GetComponent<Animator>();
             if (myNativeAnimator == null) myNativeAnimator = GetComponentInChildren<Animator>();
         }
-
-        ResetHitboxGateForNextSwing();
 
         if (myNativeAnimator != null && !HasAnimatorParameter(myNativeAnimator, requiredParameterName))
         {
@@ -359,21 +419,15 @@ public class PlayerCombo : MonoBehaviour
         safetyUnlockTime = Time.time + currentStrikeMaxDuration;
         lastStrikeTime = Time.time;
 
-        // ========================================================================
-        // 🟩 FINISHER INITIALIZATION BUFFER GATE (FIXED SNAP BACK TO IDLE):
-        // Sets a micro-window lock exactly 0.15 seconds into the future!
-        // This stops your ResetComboState ticker from running an instant cleanup loop,
-        // giving the Animator plenty of time to leave Attack4 and enter Charge4 safely!
-        // ========================================================================
         if (triggerChargeAttack)
         {
-            comboFinisherSafetyGraceWindow = Time.time + 0.15f;
+            // 🟢 EXTEND THE SAFETY WINDOW FOR HEAVY CHARGES
+            comboFinisherSafetyGraceWindow = Time.time + 0.25f;
         }
         else
         {
             comboFinisherSafetyGraceWindow = 0f;
         }
-
         ActivateResetTimer = true;
         currentComboTimer = defultComboTimer;
         isAttacking = true;
@@ -383,49 +437,31 @@ public class PlayerCombo : MonoBehaviour
             playerController.currentState = PlayerState.attack;
         }
 
+        if (activeLungeRoutine != null) StopCoroutine(activeLungeRoutine);
+        activeLungeRoutine = StartCoroutine(SmoothLungeMovementCo(isHeavyStrike));
+
         if (myNativeAnimator != null)
         {
+            // Master flush: wipe out competing bool variables cleanly 
             string[] allComboParams = new string[]
             {
-                "attack1", "attack2", "attack3", "attack4", "attack5",
-                "charge1", "charge2", "charge3", "charge4", "charge5"
+            "attack1", "attack2", "attack3", "attack4", "attack5",
+            "charge1", "charge2", "charge3", "charge4", "charge5"
             };
 
             foreach (string paramName in allComboParams)
             {
-                foreach (AnimatorControllerParameter parameterObject in myNativeAnimator.parameters)
+                if (paramName != requiredParameterName) // Protect current selection
                 {
-                    if (parameterObject.name.ToLower() == paramName)
-                    {
-                        if (parameterObject.type == AnimatorControllerParameterType.Bool)
-                        {
-                            myNativeAnimator.SetBool(parameterObject.name, false);
-                        }
-                        else if (parameterObject.type == AnimatorControllerParameterType.Trigger)
-                        {
-                            myNativeAnimator.ResetTrigger(parameterObject.name);
-                        }
-                    }
+                    myNativeAnimator.SetBool(paramName, false);
                 }
             }
 
-            foreach (AnimatorControllerParameter parameterObject in myNativeAnimator.parameters)
-            {
-                if (parameterObject.name.ToLower() == requiredParameterName)
-                {
-                    if (parameterObject.type == AnimatorControllerParameterType.Bool)
-                    {
-                        myNativeAnimator.SetBool(parameterObject.name, true);
-                    }
-                    else if (parameterObject.type == AnimatorControllerParameterType.Trigger)
-                    {
-                        myNativeAnimator.SetTrigger(parameterObject.name);
-                    }
-                    break;
-                }
-            }
+            // Securely activate target charge condition line step
+            myNativeAnimator.SetBool(requiredParameterName, true);
         }
 
+        // Call your delayed hit scanner pass
         StartCoroutine(DelayedHitScanRoutine(absoluteStrikeSnapshot, isHeavyStrike));
     }
     private void ExecuteNextComboStrike()
@@ -1008,6 +1044,20 @@ private bool HasAnimatorParameter(Animator animatorComponent, string paramName)
         CheckForHitWithSnapshot(attackSnapshot);
     }
 
+    private float GetCustomAOEHitboxRadius(ComboState attackSnapshot, float fallbackBaselineRadius)
+    {
+        switch (attackSnapshot)
+        {
+            case ComboState.Charge1: return charge1AOERadius;
+            case ComboState.Charge2: return charge2AOERadius;
+            case ComboState.Charge3: return charge3AOERadius;
+            case ComboState.Charge4: return charge4AOERadius;
+            case ComboState.Charge5: return charge5AOERadius;
+            case ComboState.Attack5: return fallbackBaselineRadius * finisherRangeMultiplier;
+            default: return fallbackBaselineRadius;
+        }
+    }
+
     public void CheckForHitWithSnapshot(ComboState attackSnapshot)
     {
         if (playerController == null)
@@ -1016,31 +1066,37 @@ private bool HasAnimatorParameter(Animator animatorComponent, string paramName)
             if (playerController == null) playerController = GetComponentInParent<PlayerController>();
         }
 
-        // 1. Establish weapon reach parameters dynamically based on the current attack state
+        // 1. Evaluate whether this attack uses a specialized AOE blast zone
+        bool isAOEBlast = IsCurrentAttackConfiguredAsAOE(attackSnapshot);
         float currentRange = attackRange;
-        bool isFinisher = (attackSnapshot == ComboState.Attack5 || (attackSnapshot >= ComboState.Charge1 && attackSnapshot <= ComboState.Charge5));
 
-        if (isFinisher)
+        // Pull individual customized hit radius settings from fields if AOE is toggled on
+        if (isAOEBlast)
         {
-            currentRange = attackRange * finisherRangeMultiplier;
+            currentRange = GetCustomAOEHitboxRadius(attackSnapshot, attackRange);
         }
 
         LayerMask enemyLayer = LayerMask.GetMask("Enemy");
 
-        // 2. Calculate the directional vector based on the player's last look direction
+        // 2. Resolve tracking directions for the overlap scanning center
         Vector2 attackDir = Vector2.right;
         if (playerController != null && playerController.lastLookDir != Vector2.zero)
         {
-            attackDir = playerController.lastLookDir;
+            attackDir = playerController.lastLookDir.normalized;
         }
         else
         {
             attackDir = (transform.localScale.x > 0) ? Vector2.right : Vector2.left;
         }
 
-        Vector2 attackPos = (Vector2)transform.position + attackDir * 1.0f;
+        // Centered bursts occur directly over the player; standard cuts shift outward
+        Vector2 attackPos = (Vector2)transform.position;
+        if (!isAOEBlast)
+        {
+            attackPos += attackDir * 1.0f;
+        }
 
-        // 3. Sweep the localized combat area for targets on the Enemy layer
+        // 3. Sweep the physics layer purely to count targets caught in the zone
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPos, currentRange, enemyLayer);
         int hitSuccessCount = 0;
 
@@ -1051,20 +1107,17 @@ private bool HasAnimatorParameter(Animator animatorComponent, string paramName)
             Health enemyHealth = enemy.GetComponent<Health>();
             if (enemyHealth == null) enemyHealth = enemy.GetComponentInChildren<Health>();
 
-            // 🟢 FILTER: Ensure the unit is a valid, living target
+            // FILTER: Simply verify the target is valid and alive without dealing damage
             if (enemyHealth == null || enemyHealth.currentHealth <= 0) continue;
 
-            // Increment our success counter for this specific frame event pass
             hitSuccessCount++;
         }
 
         // 4. 🔥 THE FUEL INJECTION GATE:
-        // All damage physics, screen shakes, and hitlags are stripped away. 
-        // This now ONLY rewards energy points based on the exact amount of enemies caught!
+        // Only rewards energy points to your Musou gauge based on enemy crowd density
         if (hitSuccessCount > 0)
         {
             float totalEnergyEarned = hitSuccessCount * 1.5f;
-
             GainMusouEnergy(totalEnergyEarned);
         }
     }
@@ -1073,9 +1126,20 @@ private bool HasAnimatorParameter(Animator animatorComponent, string paramName)
     {
         if (playerController == null) return;
         Gizmos.color = Color.red;
-        Vector2 attackDir = playerController.lastLookDir;
-        Vector2 attackPos = (Vector2)transform.position + attackDir * 1.0f;
-        float finalRange = (currentComboState == ComboState.Attack5) ? (attackRange * finisherRangeMultiplier) : attackRange;
+
+        Vector2 attackDir = playerController.lastLookDir != Vector2.zero ? playerController.lastLookDir.normalized : Vector2.right;
+        Vector2 attackPos = (Vector2)transform.position;
+
+        bool isAOEBlast = IsCurrentAttackConfiguredAsAOE(currentComboState);
+
+        if (!isAOEBlast)
+        {
+            attackPos += attackDir * 1.0f;
+        }
+
+        // 🟢 UPDATED: Force editor wireframe to pull the exact configured radius metrics
+        float finalRange = isAOEBlast ? GetCustomAOEHitboxRadius(currentComboState, attackRange) : attackRange;
+
         Gizmos.DrawWireSphere(attackPos, finalRange);
     }
 
@@ -1165,6 +1229,63 @@ private bool HasAnimatorParameter(Animator animatorComponent, string paramName)
 
         // Instantly force your canvas elements to re-evaluate their width dimensions
         UpdateMusouUI();
+    }
+
+
+    private IEnumerator SmoothLungeMovementCo(bool isHeavyFinisher)
+    {
+        if (rb == null) yield break;
+
+        // 🟢 2D VECTOR CALCULATION:
+        // Read the complete direction vector from your player controller tracking system
+        Vector2 lungeDirection = Vector2.zero;
+
+        if (playerController != null && playerController.lastLookDir != Vector2.zero)
+        {
+            // Normalize the vector so diagonal lunges don't accidentally move faster than straight ones
+            lungeDirection = playerController.lastLookDir.normalized;
+        }
+        else
+        {
+            // Fallback: If no directional data is cached, default along your horizontal transform scale axis
+            float fallbackX = transform.localScale.x > 0f ? 1f : -1f;
+            lungeDirection = new Vector2(fallbackX, 0f);
+        }
+
+        // Pull your speed parameters directly from your custom Inspector properties
+        float targetSpeed = isHeavyFinisher ? heavyLungeSpeed : lightLungeSpeed;
+        float remainingDuration = lungeActiveDuration;
+
+        // Drive the physical velocity tracking loop across frames
+        while (remainingDuration > 0f)
+        {
+            remainingDuration -= Time.deltaTime;
+
+            // Overwrite both horizontal and vertical axes to apply a clean directional punch
+            rb.linearVelocity = lungeDirection * targetSpeed;
+
+            yield return null;
+        }
+
+        // Cleanly stop all momentum when the lunge timer expires
+        rb.linearVelocity = Vector2.zero;
+        activeLungeRoutine = null;
+    }
+
+    private bool IsCurrentAttackConfiguredAsAOE(ComboState attackSnapshot)
+    {
+        // Attack 5 is your primary natural light-combo finisher, so it always sweeps
+        if (attackSnapshot == ComboState.Attack5) return true;
+
+        switch (attackSnapshot)
+        {
+            case ComboState.Charge1: return charge1IsAOE;
+            case ComboState.Charge2: return charge2IsAOE;
+            case ComboState.Charge3: return charge3IsAOE;
+            case ComboState.Charge4: return charge4IsAOE;
+            case ComboState.Charge5: return charge5IsAOE;
+            default: return false; // Standard Light Attacks 1-4 remain focused cuts
+        }
     }
 
 }

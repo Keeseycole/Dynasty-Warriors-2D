@@ -215,28 +215,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dong_Zhuo_Charge_Attack_4
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 86
-        width: 43
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ec6d534cc95739e60800000000000000
-      internalID: 7967841481915750094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Dong_Zhuo_Charge_Attack_5
       rect:
         serializedVersion: 2
@@ -244,8 +222,8 @@ TextureImporter:
         y: 43
         width: 43
         height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.23774809, y: 0.4950517}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -266,8 +244,8 @@ TextureImporter:
         y: 43
         width: 43
         height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.21300729, y: 0.47031102}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -288,8 +266,8 @@ TextureImporter:
         y: 43
         width: 43
         height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.6781331, y: 0.7424591}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -309,9 +287,9 @@ TextureImporter:
         x: 129
         y: 43
         width: 43
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 44
+      alignment: 9
+      pivot: {x: 0.77709603, y: 0.7611273}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -332,8 +310,8 @@ TextureImporter:
         y: 43
         width: 43
         height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.74245894, y: 0.4851555}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
